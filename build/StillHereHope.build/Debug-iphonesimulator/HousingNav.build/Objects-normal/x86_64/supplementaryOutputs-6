@@ -1,0 +1,23 @@
+{
+  "/Users/ivan/Documents/New project/StillHereHope/Services/HopeRepository.swift" : {
+    "const-values" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HopeRepository.swiftconstvalues",
+    "dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HopeRepository.d",
+    "diagnostics" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HopeRepository.dia",
+    "object" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HopeRepository.o",
+    "swift-dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HopeRepository.swiftdeps"
+  },
+  "/Users/ivan/Documents/New project/StillHereHope/Services/SupportEngine.swift" : {
+    "const-values" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/SupportEngine.swiftconstvalues",
+    "dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/SupportEngine.d",
+    "diagnostics" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/SupportEngine.dia",
+    "object" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/SupportEngine.o",
+    "swift-dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/SupportEngine.swiftdeps"
+  },
+  "/Users/ivan/Documents/New project/StillHereHope/ViewModels/HomeViewModel.swift" : {
+    "const-values" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeViewModel.swiftconstvalues",
+    "dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeViewModel.d",
+    "diagnostics" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeViewModel.dia",
+    "object" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeViewModel.o",
+    "swift-dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeViewModel.swiftdeps"
+  }
+}

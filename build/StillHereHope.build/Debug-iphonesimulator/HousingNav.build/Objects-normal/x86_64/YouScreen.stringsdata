@@ -1,0 +1,32 @@
+{
+  "source": "/Users/ivan/Documents/New project/StillHereHope/Views/Screens/YouScreen.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "You",
+        "location": {
+          "startingColumn": 26,
+          "startingLine": 26
+        }
+      },
+      {
+        "comment": "",
+        "key": "Your notes helped %lld people",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 43
+        }
+      },
+      {
+        "comment": "",
+        "key": "Even short words can help someone keep going.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 46
+        }
+      }
+    ]
+  },
+  "version": 1
+}

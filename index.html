@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Still Here Hope is a supportive wellness website featuring an AI reflection guide, anonymous notes of encouragement, and crisis resources for people navigating difficult moments."
+    />
+    <title>Still Here Hope | A Calmer Next Step</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Still Here Hope home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Still Here Hope</span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#chat">Calm Chat</a>
+        <a href="#connect">Connect</a>
+        <a href="#resources">Resources</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero section-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">A support-centered digital experience</p>
+          <h1>You are still here. That matters.</h1>
+          <p class="hero-text">
+            Still Here Hope is a reflective support space designed to help people slow
+            down, feel encouraged, and find one calmer next step when life feels heavy.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#chat">Start the chat</a>
+            <a class="button secondary" href="#connect">Leave a note of hope</a>
+          </div>
+        </div>
+
+        <aside class="hope-card" aria-label="Hope pledge">
+          <div class="pulse-orb" aria-hidden="true"></div>
+          <h2>Still here. Still worthy. Still becoming.</h2>
+          <p>
+            A calm, judgment-free experience built to support reflection, emotional
+            grounding, and encouragement one step at a time.
+          </p>
+        </aside>
+      </section>
+
+      <section class="promise-band" aria-label="Core promises">
+        <article>
+          <span>01</span>
+          <h2>Meet people where they are</h2>
+          <p>Start with empathy, acknowledge what feels heavy, and make space for what is still possible.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h2>Turn pain into a next step</h2>
+          <p>Offer small actions, grounding techniques, and language that can make the next hour feel more manageable.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h2>Build belonging</h2>
+          <p>Anonymous notes of encouragement remind visitors that persistence and hope can be shared.</p>
+        </article>
+      </section>
+
+      <section class="section-grid chat-section" id="chat">
+        <div class="section-copy">
+          <p class="eyebrow">Calm companion</p>
+          <h2>An AI chat that listens gently and helps people find a calmer next step.</h2>
+          <p>
+            The guide can work in two modes: a live AI conversation when the server is
+            configured, or a local fallback guide when it is not. In both cases, it is
+            designed to offer grounding, encouragement, practical coping ideas, and clear
+            crisis escalation when needed.
+          </p>
+          <ul class="feature-list">
+            <li>Try words like "anxious," "sad," "angry," "alone," or "ground me."</li>
+            <li>Use the quick buttons when words feel hard.</li>
+            <li>If someone may be in danger, use the crisis links below right away.</li>
+          </ul>
+        </div>
+
+        <div class="chat-shell" aria-label="Calm companion chat">
+          <div class="chat-header">
+            <div>
+              <p>The Still Here Guide</p>
+              <span id="chatModeLabel">Checking AI connection...</span>
+            </div>
+            <span class="status-dot" id="chatStatusDot">Starting</span>
+          </div>
+          <div class="chat-messages" id="chatMessages" aria-live="polite"></div>
+          <p class="chat-note" id="chatNotice">
+            If AI is not configured yet, the guide will keep working in local support mode.
+          </p>
+          <div class="quick-prompts" aria-label="Quick chat prompts">
+            <button type="button" data-prompt="I feel anxious">I feel anxious</button>
+            <button type="button" data-prompt="Ground me">Ground me</button>
+            <button type="button" data-prompt="I feel alone">I feel alone</button>
+          </div>
+          <form class="chat-form" id="chatForm">
+            <label class="sr-only" for="chatInput">Message</label>
+            <input
+              id="chatInput"
+              type="text"
+              autocomplete="off"
+              placeholder="Tell the guide what is heavy right now..."
+              required
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="connect-section" id="connect">
+        <div class="section-copy centered">
+          <p class="eyebrow">Notes from people still trying</p>
+          <h2>Leave a note that might help someone keep going.</h2>
+          <p>
+            Visitors can share anonymous notes of encouragement. Notes are stored in the
+            browser, allowing the experience to stay private, lightweight, and easy to explore.
+          </p>
+        </div>
+
+        <form class="spark-form" id="sparkForm">
+          <label for="sparkInput">Your hopeful note</label>
+          <div>
+            <input
+              id="sparkInput"
+              type="text"
+              maxlength="120"
+              placeholder="Example: You are allowed to begin again slowly."
+              required
+            />
+            <button type="submit">Add spark</button>
+          </div>
+        </form>
+
+        <div class="spark-wall" id="sparkWall" aria-live="polite"></div>
+      </section>
+
+      <section class="resources" id="resources">
+        <div>
+          <p class="eyebrow">When help cannot wait</p>
+          <h2>Real people can help right now.</h2>
+          <p>
+            If you or someone else may be in immediate danger, call emergency services or
+            go to the nearest emergency room. In the U.S., the 988 Suicide & Crisis
+            Lifeline offers 24/7 support by call, text, or chat.
+          </p>
+        </div>
+        <div class="resource-cards">
+          <a href="tel:988" class="resource-card">
+            <span>Call or text</span>
+            <strong>988</strong>
+          </a>
+          <a href="https://988lifeline.org/" target="_blank" rel="noreferrer" class="resource-card">
+            <span>Chat online</span>
+            <strong>988lifeline.org</strong>
+          </a>
+          <a
+            href="https://www.samhsa.gov/find-support/in-crisis"
+            target="_blank"
+            rel="noreferrer"
+            class="resource-card"
+          >
+            <span>More support</span>
+            <strong>SAMHSA crisis help</strong>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Built to offer hope, encouragement, and one calmer next step. This site is not a
+        substitute for medical, mental health, or crisis care.
+      </p>
+      <div class="footer-links">
+        <span>Built by Ivan Sanchez</span>
+        <a href="#top">Back to top</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

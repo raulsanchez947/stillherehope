@@ -1,0 +1,23 @@
+{
+  "/Users/ivan/Documents/New project/StillHereHope/Views/Components/UIComponents.swift" : {
+    "const-values" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/UIComponents.swiftconstvalues",
+    "dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/UIComponents.d",
+    "diagnostics" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/UIComponents.dia",
+    "object" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/UIComponents.o",
+    "swift-dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/UIComponents.swiftdeps"
+  },
+  "/Users/ivan/Documents/New project/StillHereHope/Views/Screens/HomeScreen.swift" : {
+    "const-values" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeScreen.swiftconstvalues",
+    "dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeScreen.d",
+    "diagnostics" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeScreen.dia",
+    "object" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeScreen.o",
+    "swift-dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/HomeScreen.swiftdeps"
+  },
+  "/Users/ivan/Documents/New project/StillHereHope/Views/Screens/TalkScreen.swift" : {
+    "const-values" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/TalkScreen.swiftconstvalues",
+    "dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/TalkScreen.d",
+    "diagnostics" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/TalkScreen.dia",
+    "object" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/TalkScreen.o",
+    "swift-dependencies" : "/Users/ivan/Documents/New project/build/StillHereHope.build/Debug-iphonesimulator/HousingNav.build/Objects-normal/x86_64/TalkScreen.swiftdeps"
+  }
+}

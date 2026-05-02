@@ -1,0 +1,72 @@
+{
+  "source": "/Users/ivan/Documents/New project/StillHereHope/Views/Components/UIComponents.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Mood %@",
+        "location": {
+          "startingColumn": 29,
+          "startingLine": 102
+        }
+      },
+      {
+        "comment": "",
+        "key": "If you may be in immediate danger or might hurt yourself, call emergency services now. In the U.S., call or text 988 for immediate crisis support.",
+        "location": {
+          "startingColumn": 18,
+          "startingLine": 141
+        }
+      },
+      {
+        "comment": "",
+        "key": "Get immediate help now",
+        "location": {
+          "startingColumn": 19,
+          "startingLine": 137
+        }
+      },
+      {
+        "comment": "",
+        "key": "Open crisis resources",
+        "location": {
+          "startingColumn": 22,
+          "startingLine": 148
+        }
+      },
+      {
+        "comment": "",
+        "key": "This helped",
+        "location": {
+          "startingColumn": 28,
+          "startingLine": 225
+        }
+      },
+      {
+        "comment": "",
+        "key": "Saved",
+        "location": {
+          "startingColumn": 43,
+          "startingLine": 230
+        }
+      },
+      {
+        "comment": "",
+        "key": "Save",
+        "location": {
+          "startingColumn": 53,
+          "startingLine": 230
+        }
+      },
+      {
+        "comment": "",
+        "key": "%lld",
+        "location": {
+          "startingColumn": 27,
+          "startingLine": 238
+        }
+      }
+    ]
+  },
+  "version": 1
+}

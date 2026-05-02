@@ -1,0 +1,9 @@
+{
+  "name": "still-here-hope",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "check": "node --check api/chat.js && node --check api/status.js"
+  }
+}
