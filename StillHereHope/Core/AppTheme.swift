@@ -2,24 +2,24 @@ import SwiftUI
 
 enum AppTheme {
     enum Colors {
-        static let background = Color(red: 0.95, green: 0.95, blue: 0.94)
-        static let backgroundElevated = Color.white.opacity(0.68)
-        static let backgroundSoft = Color(red: 0.98, green: 0.98, blue: 0.97)
-        static let card = Color.white.opacity(0.84)
-        static let cardStrong = Color.white.opacity(0.96)
-        static let shadow = Color(red: 0.11, green: 0.13, blue: 0.16).opacity(0.08)
+        static let background = Color(uiColor: .systemGroupedBackground)
+        static let backgroundElevated = Color(uiColor: .secondarySystemBackground)
+        static let backgroundSoft = Color(uiColor: .tertiarySystemBackground)
+        static let card = Color(uiColor: .systemBackground).opacity(0.92)
+        static let cardStrong = Color(uiColor: .systemBackground)
+        static let shadow = Color.black.opacity(0.10)
         static let shadowSoft = Color.black.opacity(0.03)
-        static let textPrimary = Color(red: 0.15, green: 0.17, blue: 0.20)
-        static let textSecondary = Color(red: 0.40, green: 0.43, blue: 0.47)
-        static let textTertiary = Color(red: 0.53, green: 0.56, blue: 0.60)
+        static let textPrimary = Color(uiColor: .label)
+        static let textSecondary = Color(uiColor: .secondaryLabel)
+        static let textTertiary = Color(uiColor: .tertiaryLabel)
         static let accent = Color(red: 0.35, green: 0.49, blue: 0.64)
         static let accentSoft = Color(red: 0.86, green: 0.91, blue: 0.95)
         static let calm = Color(red: 0.60, green: 0.74, blue: 0.69)
         static let calmSoft = Color(red: 0.90, green: 0.95, blue: 0.93)
         static let warning = Color(red: 0.76, green: 0.42, blue: 0.39)
         static let warningSoft = Color(red: 0.98, green: 0.93, blue: 0.91)
-        static let border = Color.black.opacity(0.06)
-        static let borderStrong = Color.black.opacity(0.10)
+        static let border = Color.primary.opacity(0.10)
+        static let borderStrong = Color.primary.opacity(0.16)
     }
 
     enum Spacing {
@@ -45,6 +45,34 @@ enum AppTheme {
         static let bodyStrong = Font.body.weight(.semibold)
     }
 
+    enum Layout {
+        static func horizontalPadding(for width: CGFloat, sizeClass: UserInterfaceSizeClass?) -> CGFloat {
+            if sizeClass == .regular || width >= 744 { return 32 }
+            return Spacing.medium
+        }
+
+        static func verticalPadding(for width: CGFloat, sizeClass: UserInterfaceSizeClass?) -> CGFloat {
+            if sizeClass == .regular || width >= 744 { return Spacing.xLarge + Spacing.small }
+            return Spacing.large
+        }
+
+        static func sectionSpacing(for width: CGFloat, sizeClass: UserInterfaceSizeClass?) -> CGFloat {
+            if sizeClass == .regular || width >= 744 { return Spacing.xLarge + Spacing.small }
+            return Spacing.xLarge
+        }
+
+        static func contentMaxWidth(for width: CGFloat, sizeClass: UserInterfaceSizeClass?) -> CGFloat {
+            if sizeClass == .regular || width >= 900 {
+                return min(width - 64, 960)
+            }
+            return width
+        }
+
+        static func isWideLayout(width: CGFloat, sizeClass: UserInterfaceSizeClass?) -> Bool {
+            sizeClass == .regular || width >= 744
+        }
+    }
+
     static let cardStroke = LinearGradient(
         colors: [
             Color.white.opacity(0.8),
@@ -56,9 +84,9 @@ enum AppTheme {
 
     static let backgroundWash = LinearGradient(
         colors: [
-            Color(red: 0.99, green: 0.98, blue: 0.97),
+            Color(uiColor: .secondarySystemGroupedBackground),
             Colors.background,
-            Color(red: 0.94, green: 0.95, blue: 0.96)
+            Color(uiColor: .systemGroupedBackground)
         ],
         startPoint: .topLeading,
         endPoint: .bottomTrailing

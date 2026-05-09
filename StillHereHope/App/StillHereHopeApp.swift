@@ -2,8 +2,8 @@ import SwiftUI
 
 @main
 struct StillHereHopeApp: App {
-    @AppStorage("hasCompletedStillHereHopeOnboarding")
-    private var hasCompletedOnboarding = false
+    @AppStorage("hasAcceptedStillHereHopeTermsAndGuidelines")
+    private var hasAcceptedTermsAndGuidelines = false
 
     @StateObject
     private var dataStoreProvider = HopeDataStoreProvider()
@@ -33,7 +33,7 @@ struct StillHereHopeApp: App {
 
     @ViewBuilder
     private var mainFlow: some View {
-        if hasCompletedOnboarding {
+        if hasAcceptedTermsAndGuidelines {
             AppRootView(
                 repository: dataStoreProvider.store,
                 supportEngine: supportEngine,
@@ -41,7 +41,7 @@ struct StillHereHopeApp: App {
             )
         } else {
             OnboardingView {
-                hasCompletedOnboarding = true
+                hasAcceptedTermsAndGuidelines = true
             }
         }
     }

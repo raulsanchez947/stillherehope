@@ -2,6 +2,7 @@ import SwiftUI
 
 struct TalkView: View {
     @StateObject var viewModel: TalkViewModel
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         VStack(spacing: 0) {
@@ -47,27 +48,44 @@ struct TalkView: View {
     }
 
     private var starterChips: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: AppTheme.Spacing.xxSmall) {
-                ForEach(viewModel.starterChips) { chip in
-                    Button(action: {
-                        viewModel.sendStarter(chip)
-                    }) {
-                        Text(chip.rawValue)
-                            .font(.subheadline.weight(.semibold))
-                            .padding(.horizontal, 14)
-                            .padding(.vertical, 10)
-                            .background(AppTheme.Colors.backgroundSoft)
-                            .foregroundStyle(AppTheme.Colors.textPrimary)
-                            .clipShape(Capsule())
-                            .overlay(
-                                Capsule()
-                                    .stroke(AppTheme.Colors.border, lineWidth: 1)
-                            )
+        Group {
+            if horizontalSizeClass == .regular {
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: AppTheme.Spacing.xxSmall), count: 3), spacing: AppTheme.Spacing.xxSmall) {
+                    starterChipButtons
+                }
+            } else {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: AppTheme.Spacing.xxSmall) {
+                        starterChipButtons
                     }
-                    .buttonStyle(.plain)
                 }
             }
+        }
+    }
+
+    @ViewBuilder
+    private var starterChipButtons: some View {
+        ForEach(viewModel.starterChips) { chip in
+            Button(action: {
+                viewModel.sendStarter(chip)
+            }) {
+                Text(chip.rawValue)
+                    .font(.subheadline.weight(.semibold))
+                    .lineLimit(nil)
+                    .minimumScaleFactor(0.8)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 14)
+                    .padding(.vertical, 10)
+                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .background(AppTheme.Colors.backgroundSoft)
+                    .foregroundStyle(AppTheme.Colors.textPrimary)
+                    .clipShape(Capsule())
+                    .overlay(
+                        Capsule()
+                            .stroke(AppTheme.Colors.border, lineWidth: 1)
+                    )
+            }
+            .buttonStyle(.plain)
         }
     }
 
@@ -107,7 +125,7 @@ struct TalkView: View {
                 } label: {
                     Image(systemName: "arrow.up")
                         .font(.headline.weight(.bold))
-                        .frame(width: 50, height: 50)
+                        .frame(minWidth: 52, minHeight: 52)
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(AppTheme.Colors.accent)
@@ -131,6 +149,18 @@ struct TalkView: View {
 }
 
 #Preview("Talk") {
+    NavigationStack {
+        TalkView(viewModel: TalkViewModel(supportEngine: SupportResponseEngine(), safetyClassifier: SafetyClassifier()))
+    }
+}
+
+#Preview("Talk - iPad Portrait", traits: .fixedLayout(width: 820, height: 1180)) {
+    NavigationStack {
+        TalkView(viewModel: TalkViewModel(supportEngine: SupportResponseEngine(), safetyClassifier: SafetyClassifier()))
+    }
+}
+
+#Preview("Talk - iPad Landscape", traits: .fixedLayout(width: 1180, height: 820)) {
     NavigationStack {
         TalkView(viewModel: TalkViewModel(supportEngine: SupportResponseEngine(), safetyClassifier: SafetyClassifier()))
     }

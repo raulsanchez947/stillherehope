@@ -1,0 +1,3059 @@
+{
+    "MAP_UNDERWATER_SEAFLOOR_CAVERN": {
+        "map_name": "Underwater_SeafloorCavern",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNUSED_CONTEST_HALL1": {
+        "map_name": "UnusedContestHall1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MIRAGE_TOWER_1F": {
+        "map_name": "MirageTower_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_UP1": {
+        "map_name": "NavelRock_Up1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ELEVATOR": {
+        "map_name": "LilycoveCity_DepartmentStoreElevator",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE2": {
+        "map_name": "SootopolisCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PIKE_CORRIDOR": {
+        "map_name": "BattleFrontier_BattlePikeCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SAFARI_ZONE_NORTH": {
+        "map_name": "SafariZone_North",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_CALCIUM"
+        ]
+    },
+    "MAP_LAVARIDGE_TOWN_MART": {
+        "map_name": "LavaridgeTown_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LAVARIDGE_TOWN_GYM_1F": {
+        "map_name": "LavaridgeTown_Gym_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM": {
+        "map_name": "ShoalCave_LowTideIceRoom",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM07",
+            "ITEM_NEVER_MELT_ICE"
+        ]
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE8": {
+        "map_name": "Route110_TrickHousePuzzle8",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_BEAD_MAIL"
+        ]
+    },
+    "MAP_SAFARI_ZONE_SOUTHEAST": {
+        "map_name": "SafariZone_Southeast",
+        "hidden_items": [
+            "ITEM_FULL_RESTORE",
+            "ITEM_PP_UP"
+        ],
+        "item_ball_items": [
+            "ITEM_BIG_PEARL"
+        ]
+    },
+    "MAP_ROUTE119": {
+        "map_name": "Route119",
+        "hidden_items": [
+            "ITEM_EEVIUM_Z",
+            "ITEM_ALAKAZITE",
+            "ITEM_MARSHADIUM_Z",
+            "ITEM_INCINIUM_Z"
+        ],
+        "item_ball_items": [
+            "ITEM_SUPER_REPEL",
+            "ITEM_ZINC",
+            "ITEM_ELIXIR",
+            "ITEM_LEAF_STONE",
+            "ITEM_RARE_CANDY",
+            "ITEM_HYPER_POTION",
+            "ITEM_HYPER_POTION",
+            "ITEM_NUGGET",
+            "ITEM_ELIXIR"
+        ]
+    },
+    "MAP_MAGMA_HIDEOUT_2F_1R": {
+        "map_name": "MagmaHideout_2F_1R",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VIRIZIONS_CAVE": {
+        "map_name": "VirizionsCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_1F": {
+        "map_name": "SlateportCity_OceanicMuseum_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE118": {
+        "map_name": "Route118",
+        "hidden_items": [
+            "ITEM_POISONIUM_Z",
+            "ITEM_GARDEVOIRITE"
+        ],
+        "item_ball_items": [
+            "ITEM_HYPER_POTION"
+        ]
+    },
+    "MAP_DARKRAIS_CAVE": {
+        "map_name": "DarkraisCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_TREE3": {
+        "map_name": "SecretBase_Tree3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_ENTRANCE_ROOM": {
+        "map_name": "ShoalCave_LowTideEntranceRoom",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_BIG_PEARL"
+        ]
+    },
+    "MAP_PETALBURG_CITY_HOUSE1": {
+        "map_name": "PetalburgCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN_HOUSE2": {
+        "map_name": "PacifidlogTown_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_DRAKES_ROOM": {
+        "map_name": "EverGrandeCity_DrakesRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_OUTSIDE": {
+        "map_name": "SkyPillar_Outside",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_1F": {
+        "map_name": "SlateportCity_SternsShipyard_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN02": {
+        "map_name": "NavelRock_Down02",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NEW_MAUVILLE_INSIDE": {
+        "map_name": "NewMauville_Inside",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_ULTRA_BALL",
+            "ITEM_ELECTRIC_GEM",
+            "ITEM_THUNDER_STONE",
+            "ITEM_FULL_HEAL",
+            "ITEM_CHOICE_SPECS"
+        ]
+    },
+    "MAP_MT_PYRE_1F": {
+        "map_name": "MtPyre_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_BIKE_SHOP": {
+        "map_name": "MauvilleCity_BikeShop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_3F": {
+        "map_name": "SkyPillar_3F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE106": {
+        "map_name": "Route106",
+        "hidden_items": [
+            "ITEM_HEART_SCALE",
+            "ITEM_STEELIUM_Z",
+            "ITEM_SLOWBRONITE"
+        ],
+        "item_ball_items": [
+            "ITEM_ABILITY_CAPSULE"
+        ]
+    },
+    "MAP_ROUTE104_PROTOTYPE_PRETTY_PETAL_FLOWER_SHOP": {
+        "map_name": "Route104_PrototypePrettyPetalFlowerShop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_GYM_1F": {
+        "map_name": "SootopolisCity_Gym_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_HOUSE3": {
+        "map_name": "FortreeCity_House3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_HALL2": {
+        "map_name": "EverGrandeCity_Hall2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_HOUSE2": {
+        "map_name": "MossdeepCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_INSIDE_OF_TRUCK": {
+        "map_name": "InsideOfTruck",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_AQUA_HIDEOUT_B1F": {
+        "map_name": "AquaHideout_B1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_MAX_ELIXIR",
+            "ITEM_MASTER_BALL",
+            "ITEM_DAMP_ROCK"
+        ]
+    },
+    "MAP_LAVARIDGE_TOWN": {
+        "map_name": "LavaridgeTown",
+        "hidden_items": [
+            "ITEM_HOUNDOOMINITE"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_CONTEST_HALL_CUTE": {
+        "map_name": "ContestHallCute",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_MART": {
+        "map_name": "MauvilleCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_1F": {
+        "map_name": "SkyPillar_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE122": {
+        "map_name": "Route122",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_UP2": {
+        "map_name": "NavelRock_Up2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE3": {
+        "map_name": "SootopolisCity_House3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_MART": {
+        "map_name": "VerdanturfTown_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_OCEANIC_MUSEUM_2F": {
+        "map_name": "SlateportCity_OceanicMuseum_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE7": {
+        "map_name": "BattleFrontier_Lounge7",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SS_TIDAL_ROOMS": {
+        "map_name": "SSTidalRooms",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM1": {
+        "map_name": "SeafloorCavern_Room1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_BOTTOM": {
+        "map_name": "NavelRock_Bottom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN08": {
+        "map_name": "NavelRock_Down08",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY": {
+        "map_name": "FortreeCity",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE123_BERRY_MASTERS_HOUSE": {
+        "map_name": "Route123_BerryMastersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_UP3": {
+        "map_name": "NavelRock_Up3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM": {
+        "map_name": "EverGrandeCity_SidneysRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNUSED_CONTEST_HALL5": {
+        "map_name": "UnusedContestHall5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PALACE_LOBBY": {
+        "map_name": "BattleFrontier_BattlePalaceLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_MOVE_DELETERS_HOUSE": {
+        "map_name": "LilycoveCity_MoveDeletersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE3": {
+        "map_name": "BattleFrontier_Lounge3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_SHRUB4": {
+        "map_name": "SecretBase_Shrub4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_LOTAD_AND_SEEDOT_HOUSE": {
+        "map_name": "SootopolisCity_LotadAndSeedotHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_ELEVATOR": {
+        "map_name": "BattleFrontier_BattleTowerElevator",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE116_TUNNELERS_REST_HOUSE": {
+        "map_name": "Route116_TunnelersRestHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_BATTLE_TENT_LOBBY": {
+        "map_name": "FallarborTown_BattleTentLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VICTORY_ROAD_B2F": {
+        "map_name": "VictoryRoad_B2F",
+        "hidden_items": [
+            "ITEM_ELIXIR",
+            "ITEM_MAX_REPEL"
+        ],
+        "item_ball_items": [
+            "ITEM_FULL_HEAL"
+        ]
+    },
+    "MAP_AQUA_HIDEOUT_UNUSED_RUBY_MAP2": {
+        "map_name": "AquaHideout_UnusedRubyMap2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_HOUSE2": {
+        "map_name": "LilycoveCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_4F": {
+        "map_name": "SkyPillar_4F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_END": {
+        "map_name": "Route110_TrickHouseEnd",
+        "hidden_items": [
+            "ITEM_NUGGET"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN05": {
+        "map_name": "NavelRock_Down05",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_2F": {
+        "map_name": "LilycoveCity_CoveLilyMotel_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_DOME_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleDomeBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_PHOEBES_ROOM": {
+        "map_name": "EverGrandeCity_PhoebesRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LITTLEROOT_TOWN": {
+        "map_name": "LittlerootTown",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_METEOR_FALLS_B1F_1R": {
+        "map_name": "MeteorFalls_B1F_1R",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_OLDALE_TOWN_HOUSE1": {
+        "map_name": "OldaleTown_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE8": {
+        "map_name": "BattleFrontier_Lounge8",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY": {
+        "map_name": "SlateportCity",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_2F": {
+        "map_name": "SkyPillar_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_RED_CAVE3": {
+        "map_name": "SecretBase_RedCave3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_POKEMON_SCHOOL": {
+        "map_name": "RustboroCity_PokemonSchool",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_AQUA_HIDEOUT_UNUSED_RUBY_MAP1": {
+        "map_name": "AquaHideout_UnusedRubyMap1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN_HOUSE4": {
+        "map_name": "PacifidlogTown_House4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_POKEMON_CENTER_2F": {
+        "map_name": "MossdeepCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_OUTSIDE_EAST": {
+        "map_name": "BattleFrontier_OutsideEast",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_POKEMON_CENTER_1F": {
+        "map_name": "VerdanturfTown_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_FLAT1_2F": {
+        "map_name": "RustboroCity_Flat1_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_1F": {
+        "map_name": "LittlerootTown_MaysHouse_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_ROUTE105": {
+        "map_name": "Underwater_Route105",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_LOBBY": {
+        "map_name": "BattleFrontier_BattleTowerLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM9": {
+        "map_name": "SeafloorCavern_Room9",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM26"
+        ]
+    },
+    "MAP_SKY_PILLAR_5F": {
+        "map_name": "SkyPillar_5F",
+        "hidden_items": [
+            "ITEM_DARKINIUM_Z"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_STAIRS_ROOM": {
+        "map_name": "ShoalCave_LowTideStairsRoom",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_ICE_HEAL"
+        ]
+    },
+    "MAP_PETALBURG_WOODS": {
+        "map_name": "PetalburgWoods",
+        "hidden_items": [
+            "ITEM_MIMIKIUM_Z",
+            "ITEM_BUGINIUM_Z",
+            "ITEM_POKE_BALL",
+            "ITEM_PINSIRITE"
+        ],
+        "item_ball_items": [
+            "ITEM_GREAT_BALL",
+            "ITEM_X_ATTACK",
+            "ITEM_ETHER",
+            "ITEM_PARALYZE_HEAL"
+        ]
+    },
+    "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_SOUTH_ENTRANCE": {
+        "map_name": "Route110_SeasideCyclingRoadSouthEntrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE1": {
+        "map_name": "Route110_TrickHousePuzzle1",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_ORANGE_MAIL"
+        ]
+    },
+    "MAP_ROUTE113_GLASS_WORKSHOP": {
+        "map_name": "Route113_GlassWorkshop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOUTHERN_ISLAND_EXTERIOR": {
+        "map_name": "SouthernIsland_Exterior",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_BATTLE_TENT_BATTLE_ROOM": {
+        "map_name": "FallarborTown_BattleTentBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_OLDALE_TOWN": {
+        "map_name": "OldaleTown",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNUSED_CONTEST_HALL2": {
+        "map_name": "UnusedContestHall2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN11": {
+        "map_name": "NavelRock_Down11",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_INNER_ROOM": {
+        "map_name": "ShoalCave_LowTideInnerRoom",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_RARE_CANDY"
+        ]
+    },
+    "MAP_EVER_GRANDE_CITY_GLACIAS_ROOM": {
+        "map_name": "EverGrandeCity_GlaciasRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BLUE_CAVE2": {
+        "map_name": "SecretBase_BlueCave2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM2": {
+        "map_name": "SeafloorCavern_Room2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE119_WEATHER_INSTITUTE_2F": {
+        "map_name": "Route119_WeatherInstitute_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_DECK": {
+        "map_name": "AbandonedShip_Deck",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_RANKING_HALL": {
+        "map_name": "BattleFrontier_RankingHall",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE121": {
+        "map_name": "Route121",
+        "hidden_items": [
+            "ITEM_FULL_HEAL",
+            "ITEM_PSYCHIUM_Z",
+            "ITEM_LYCANIUM_Z",
+            "ITEM_MAX_REVIVE"
+        ],
+        "item_ball_items": [
+            "ITEM_CARBOS",
+            "ITEM_REVIVE",
+            "ITEM_ZINC"
+        ]
+    },
+    "MAP_MOSSDEEP_CITY_HOUSE4": {
+        "map_name": "MossdeepCity_House4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_POKEMON_CENTER_1F": {
+        "map_name": "FallarborTown_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE114_LANETTES_HOUSE": {
+        "map_name": "Route114_LanettesHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_GYM": {
+        "map_name": "MauvilleCity_Gym",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE116": {
+        "map_name": "Route116",
+        "hidden_items": [
+            "ITEM_ROCKIUM_Z",
+            "ITEM_BLACK_GLASSES"
+        ],
+        "item_ball_items": [
+            "ITEM_ETHER",
+            "ITEM_REPEL",
+            "ITEM_HP_UP",
+            "ITEM_X_SP_ATK",
+            "ITEM_POTION"
+        ]
+    },
+    "MAP_VICTORY_ROAD_B1F": {
+        "map_name": "VictoryRoad_B1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM29",
+            "ITEM_FULL_RESTORE"
+        ]
+    },
+    "MAP_MOSSDEEP_CITY_MART": {
+        "map_name": "MossdeepCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE124_DIVING_TREASURE_HUNTERS_HOUSE": {
+        "map_name": "Route124_DivingTreasureHuntersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BROWN_CAVE1": {
+        "map_name": "SecretBase_BrownCave1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TERRAKIONS_CAVE_F1_1B": {
+        "map_name": "TerrakionsCave_F1_1B",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_DEWFORD_TOWN_HALL": {
+        "map_name": "DewfordTown_Hall",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BROWN_CAVE3": {
+        "map_name": "SecretBase_BrownCave3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_MARINE_CAVE": {
+        "map_name": "Underwater_MarineCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN_HOUSE1": {
+        "map_name": "PacifidlogTown_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_SOOTOPOLIS_CITY": {
+        "map_name": "Underwater_SootopolisCity",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE119_HOUSE": {
+        "map_name": "Route119_House",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BLUE_CAVE3": {
+        "map_name": "SecretBase_BlueCave3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP3": {
+        "map_name": "CaveOfOrigin_UnusedRubySapphireMap3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY": {
+        "map_name": "MossdeepCity",
+        "hidden_items": [
+            "ITEM_KOMMONIUM_Z"
+        ],
+        "item_ball_items": [
+            "ITEM_NET_BALL"
+        ]
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_NORMAL": {
+        "map_name": "BattleFrontier_BattlePikeRoomNormal",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE101": {
+        "map_name": "Route101",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE14": {
+        "map_name": "BattlePyramidSquare14",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PALACE_CORRIDOR": {
+        "map_name": "BattleFrontier_BattlePalaceCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_1F": {
+        "map_name": "EverGrandeCity_PokemonLeague_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_6F": {
+        "map_name": "MtPyre_6F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM30"
+        ]
+    },
+    "MAP_ROUTE132": {
+        "map_name": "Route132",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_RARE_CANDY",
+            "ITEM_PROTEIN"
+        ]
+    },
+    "MAP_RUSTBORO_CITY_POKEMON_CENTER_1F": {
+        "map_name": "RustboroCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_JAGGED_PASS": {
+        "map_name": "JaggedPass",
+        "hidden_items": [
+            "ITEM_FULL_HEAL",
+            "ITEM_GREAT_BALL"
+        ],
+        "item_ball_items": [
+            "ITEM_BURN_HEAL"
+        ]
+    },
+    "MAP_SEALED_CHAMBER_OUTER_ROOM": {
+        "map_name": "SealedChamber_OuterRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_DECORATION_SHOP": {
+        "map_name": "FortreeCity_DecorationShop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_ROOMS": {
+        "map_name": "AbandonedShip_HiddenFloorRooms",
+        "hidden_items": [
+            "ITEM_KEY_TO_ROOM_1",
+            "ITEM_KEY_TO_ROOM_4",
+            "ITEM_KEY_TO_ROOM_2",
+            "ITEM_KEY_TO_ROOM_6"
+        ],
+        "item_ball_items": [
+            "ITEM_CRACKED_POT",
+            "ITEM_SCANNER",
+            "ITEM_TM18",
+            "ITEM_WATER_STONE"
+        ]
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_LOBBY": {
+        "map_name": "BattleFrontier_BattlePyramidLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_ROOFTOP": {
+        "map_name": "LilycoveCity_DepartmentStoreRooftop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE114_FOSSIL_MANIACS_TUNNEL": {
+        "map_name": "Route114_FossilManiacsTunnel",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE117_POKEMON_DAY_CARE": {
+        "map_name": "Route117_PokemonDayCare",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTURF_TUNNEL": {
+        "map_name": "RusturfTunnel",
+        "hidden_items": [
+            "ITEM_AGGRONITE"
+        ],
+        "item_ball_items": [
+            "ITEM_POKE_BALL",
+            "ITEM_MAX_ETHER"
+        ]
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE5": {
+        "map_name": "SootopolisCity_House5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_DEWFORD_TOWN_POKEMON_CENTER_1F": {
+        "map_name": "DewfordTown_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY": {
+        "map_name": "SootopolisCity",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE109_SEASHORE_HOUSE": {
+        "map_name": "Route109_SeashoreHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_HOUSE1": {
+        "map_name": "LilycoveCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_METEOR_FALLS_1F_2R": {
+        "map_name": "MeteorFalls_1F_2R",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_FLAT2_1F": {
+        "map_name": "RustboroCity_Flat2_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_UP4": {
+        "map_name": "NavelRock_Up4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CAVE_OF_ORIGIN_1F": {
+        "map_name": "CaveOfOrigin_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_2F": {
+        "map_name": "LilycoveCity_LilycoveMuseum_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_1F": {
+        "map_name": "LavaridgeTown_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MARINE_CAVE_ENTRANCE": {
+        "map_name": "MarineCave_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE103": {
+        "map_name": "Route103",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_YELLOW_NECTAR",
+            "ITEM_SHINY_STONE"
+        ]
+    },
+    "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_1F": {
+        "map_name": "EverGrandeCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_POKEMON_CENTER_1F": {
+        "map_name": "FortreeCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LITTLEROOT_TOWN_MAYS_HOUSE_2F": {
+        "map_name": "LittlerootTown_MaysHouse_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_BATTLE_TENT_BATTLE_ROOM": {
+        "map_name": "SlateportCity_BattleTentBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FIERY_PATH_B1F": {
+        "map_name": "FieryPath_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BIRTH_ISLAND_HARBOR": {
+        "map_name": "BirthIsland_Harbor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE13": {
+        "map_name": "BattlePyramidSquare13",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_ROOM_B1F": {
+        "map_name": "AbandonedShip_Room_B1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM13"
+        ]
+    },
+    "MAP_FORTREE_CITY_MART": {
+        "map_name": "FortreeCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BROWN_CAVE2": {
+        "map_name": "SecretBase_BrownCave2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_BATTLE_TENT_LOBBY": {
+        "map_name": "VerdanturfTown_BattleTentLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_POKEMON_CENTER_2F": {
+        "map_name": "MauvilleCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE15": {
+        "map_name": "BattlePyramidSquare15",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_POKEMON_CENTER_1F": {
+        "map_name": "SlateportCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TRAINER_HILL_ENTRANCE": {
+        "map_name": "TrainerHill_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_FLAT2_2F": {
+        "map_name": "RustboroCity_Flat2_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE114": {
+        "map_name": "Route114",
+        "hidden_items": [
+            "ITEM_FAIRIUM_Z",
+            "ITEM_SALAMENCITE"
+        ],
+        "item_ball_items": [
+            "ITEM_RARE_CANDY",
+            "ITEM_PROTEIN",
+            "ITEM_ENERGY_POWDER"
+        ]
+    },
+    "MAP_ROUTE104_PROTOTYPE": {
+        "map_name": "Route104_Prototype",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_1F": {
+        "map_name": "PacifidlogTown_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_STERNS_SHIPYARD_2F": {
+        "map_name": "SlateportCity_SternsShipyard_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_CORRIDOR": {
+        "map_name": "BattleFrontier_BattleTowerMultiCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_COLOSSEUM_2P": {
+        "map_name": "BattleColosseum_2P",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_COVE_LILY_MOTEL_1F": {
+        "map_name": "LilycoveCity_CoveLilyMotel_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_UNUSED_MART": {
+        "map_name": "LilycoveCity_UnusedMart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_HOUSE1": {
+        "map_name": "RustboroCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_ROUTE127": {
+        "map_name": "Underwater_Route127",
+        "hidden_items": [
+            "ITEM_HP_UP",
+            "ITEM_HEART_SCALE",
+            "ITEM_RED_SHARD",
+            "ITEM_STAR_PIECE"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE09": {
+        "map_name": "BattlePyramidSquare09",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_GYM": {
+        "map_name": "FortreeCity_Gym",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_YELLOW_CAVE4": {
+        "map_name": "SecretBase_YellowCave4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TERRAKIONS_CAVE_F1_1": {
+        "map_name": "TerrakionsCave_F1_1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_POKEMON_FAN_CLUB": {
+        "map_name": "SlateportCity_PokemonFanClub",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM8": {
+        "map_name": "SeafloorCavern_Room8",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_POKEMON_CENTER_2F": {
+        "map_name": "RustboroCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN_HOUSE5": {
+        "map_name": "PacifidlogTown_House5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CAVE_OF_ORIGIN_ENTRANCE": {
+        "map_name": "CaveOfOrigin_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN10": {
+        "map_name": "NavelRock_Down10",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_HIGH_TIDE_ENTRANCE_ROOM": {
+        "map_name": "ShoalCave_HighTideEntranceRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_SPACE_CENTER_1F": {
+        "map_name": "MossdeepCity_SpaceCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BIRTH_ISLAND_EXTERIOR": {
+        "map_name": "BirthIsland_Exterior",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN_HOUSE3": {
+        "map_name": "PacifidlogTown_House3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE120": {
+        "map_name": "Route120",
+        "hidden_items": [
+            "ITEM_VENUSAURITE",
+            "ITEM_DECIDIUM_Z",
+            "ITEM_MARSHADIUM_Z",
+            "ITEM_PRIMARIUM_Z"
+        ],
+        "item_ball_items": [
+            "ITEM_NUGGET",
+            "ITEM_FULL_HEAL",
+            "ITEM_NEST_BALL",
+            "ITEM_HYPER_POTION",
+            "ITEM_REVIVE"
+        ]
+    },
+    "MAP_METEOR_FALLS_1F_1R": {
+        "map_name": "MeteorFalls_1F_1R",
+        "hidden_items": [
+            "ITEM_N_LUNARIZER"
+        ],
+        "item_ball_items": [
+            "ITEM_TM23",
+            "ITEM_MOON_STONE",
+            "ITEM_FULL_HEAL",
+            "ITEM_PP_UP"
+        ]
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_FACTORY_PRE_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleFactoryPreBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY": {
+        "map_name": "LilycoveCity",
+        "hidden_items": [
+            "ITEM_PIKASHUNIUM_Z",
+            "ITEM_POKE_BALL",
+            "ITEM_PP_UP"
+        ],
+        "item_ball_items": [
+            "ITEM_MAX_REPEL"
+        ]
+    },
+    "MAP_ROUTE108": {
+        "map_name": "Route108",
+        "hidden_items": [
+            "ITEM_RARE_CANDY"
+        ],
+        "item_ball_items": [
+            "ITEM_STAR_PIECE"
+        ]
+    },
+    "MAP_SECRET_BASE_SHRUB1": {
+        "map_name": "SecretBase_Shrub1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_HOUSE2": {
+        "map_name": "MauvilleCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_DEVON_CORP_2F": {
+        "map_name": "RustboroCity_DevonCorp_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_METEOR_FALLS_STEVENS_CAVE": {
+        "map_name": "MeteorFalls_StevensCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_CAPTAINS_OFFICE": {
+        "map_name": "AbandonedShip_CaptainsOffice",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_STORAGE_KEY"
+        ]
+    },
+    "MAP_RUSTBORO_CITY_FLAT2_3F": {
+        "map_name": "RustboroCity_Flat2_3F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE128": {
+        "map_name": "Route128",
+        "hidden_items": [
+            "ITEM_HEART_SCALE"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN": {
+        "map_name": "VerdanturfTown",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_HOUSE3": {
+        "map_name": "RustboroCity_House3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNION_ROOM": {
+        "map_name": "UnionRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE06": {
+        "map_name": "BattlePyramidSquare06",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PETALBURG_CITY_MART": {
+        "map_name": "PetalburgCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_ROOMS2_B1F": {
+        "map_name": "AbandonedShip_Rooms2_B1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_DIVE_BALL"
+        ]
+    },
+    "MAP_ANCIENT_TOMB": {
+        "map_name": "AncientTomb",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE1": {
+        "map_name": "BattleFrontier_Lounge1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_DEWFORD_TOWN_HOUSE2": {
+        "map_name": "DewfordTown_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_YELLOW_CAVE3": {
+        "map_name": "SecretBase_YellowCave3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_AQUA_HIDEOUT_1F": {
+        "map_name": "AquaHideout_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_OLDALE_TOWN_HOUSE2": {
+        "map_name": "OldaleTown_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SAFARI_ZONE_SOUTHWEST": {
+        "map_name": "SafariZone_Southwest",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_MAX_REVIVE"
+        ]
+    },
+    "MAP_ISLAND_CAVE": {
+        "map_name": "IslandCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE115": {
+        "map_name": "Route115",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_SUPER_POTION",
+            "ITEM_TM01",
+            "ITEM_IRON",
+            "ITEM_GREAT_BALL",
+            "ITEM_PP_UP",
+            "ITEM_HEAL_POWDER"
+        ]
+    },
+    "MAP_DESERT_UNDERPASS": {
+        "map_name": "DesertUnderpass",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP2": {
+        "map_name": "CaveOfOrigin_UnusedRubySapphireMap2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_NAME_RATERS_HOUSE": {
+        "map_name": "SlateportCity_NameRatersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RECORD_CORNER": {
+        "map_name": "RecordCorner",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_BATTLE_TENT_CORRIDOR": {
+        "map_name": "FallarborTown_BattleTentCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE4": {
+        "map_name": "BattleFrontier_Lounge4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_GRANITE_CAVE_B1F": {
+        "map_name": "GraniteCave_B1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_POKE_BALL"
+        ]
+    },
+    "MAP_DESERT_RUINS": {
+        "map_name": "DesertRuins",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_POKEMON_CENTER_1F": {
+        "map_name": "MossdeepCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE125": {
+        "map_name": "Route125",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_BIG_PEARL"
+        ]
+    },
+    "MAP_SLATEPORT_CITY_MART": {
+        "map_name": "SlateportCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_HOUSE4": {
+        "map_name": "FortreeCity_House4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_4F": {
+        "map_name": "MtPyre_4F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_SEA_INCENSE"
+        ]
+    },
+    "MAP_SS_TIDAL_CORRIDOR": {
+        "map_name": "SSTidalCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_OUTSIDE_WEST": {
+        "map_name": "BattleFrontier_OutsideWest",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PIKE_THREE_PATH_ROOM": {
+        "map_name": "BattleFrontier_BattlePikeThreePathRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM5": {
+        "map_name": "SeafloorCavern_Room5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MIRAGE_TOWER_2F": {
+        "map_name": "MirageTower_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE104_PRETTY_PETAL_FLOWER_SHOP": {
+        "map_name": "Route104_PrettyPetalFlowerShop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ARTISAN_CAVE_1F": {
+        "map_name": "ArtisanCave_1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_CARBOS"
+        ]
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PALACE_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattlePalaceBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_POKEMON_CENTER_2F": {
+        "map_name": "FallarborTown_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_DEWFORD_TOWN_POKEMON_CENTER_2F": {
+        "map_name": "DewfordTown_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_1F": {
+        "map_name": "MagmaHideout_1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_RARE_CANDY"
+        ]
+    },
+    "MAP_ABANDONED_SHIP_ROOMS_1F": {
+        "map_name": "AbandonedShip_Rooms_1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_CHOICE_SCARF"
+        ]
+    },
+    "MAP_NAVEL_ROCK_TOP": {
+        "map_name": "NavelRock_Top",
+        "hidden_items": [
+            "ITEM_SACRED_ASH"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE7": {
+        "map_name": "Route110_TrickHousePuzzle7",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TROPIC_MAIL"
+        ]
+    },
+    "MAP_LITTLEROOT_TOWN_PROFESSOR_BIRCHS_LAB": {
+        "map_name": "LittlerootTown_ProfessorBirchsLab",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY": {
+        "map_name": "RustboroCity",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_SWEET_APPLE"
+        ]
+    },
+    "MAP_DEWFORD_TOWN": {
+        "map_name": "DewfordTown",
+        "hidden_items": [
+            "ITEM_KANGASKHANITE"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_TOP": {
+        "map_name": "BattleFrontier_BattlePyramidTop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_FINAL": {
+        "map_name": "BattleFrontier_BattlePikeRoomFinal",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_METEOR_FALLS_UXIE_CAVE": {
+        "map_name": "MeteorFalls_Uxie_Cave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE11": {
+        "map_name": "BattlePyramidSquare11",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE105": {
+        "map_name": "Route105",
+        "hidden_items": [
+            "ITEM_BIG_PEARL",
+            "ITEM_GYARADOSITE"
+        ],
+        "item_ball_items": [
+            "ITEM_DUSK_STONE"
+        ]
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE1": {
+        "map_name": "SootopolisCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_HALL_OF_FAME": {
+        "map_name": "EverGrandeCity_HallOfFame",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY": {
+        "map_name": "EverGrandeCity",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE02": {
+        "map_name": "BattlePyramidSquare02",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleTowerMultiBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_CHIMNEY_CABLE_CAR_STATION": {
+        "map_name": "MtChimney_CableCarStation",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_ROUTE129": {
+        "map_name": "Underwater_Route129",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE12": {
+        "map_name": "BattlePyramidSquare12",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_DEVON_CORP_1F": {
+        "map_name": "RustboroCity_DevonCorp_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TRADE_CENTER": {
+        "map_name": "TradeCenter",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_FRIENDSHIP_RATERS_HOUSE": {
+        "map_name": "VerdanturfTown_FriendshipRatersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_TREE4": {
+        "map_name": "SecretBase_Tree4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE2": {
+        "map_name": "BattleFrontier_Lounge2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM6": {
+        "map_name": "SeafloorCavern_Room6",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_CORRIDORS_1F": {
+        "map_name": "AbandonedShip_Corridors_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE131": {
+        "map_name": "Route131",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM3": {
+        "map_name": "SeafloorCavern_Room3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_1F": {
+        "map_name": "LilycoveCity_DepartmentStore_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS": {
+        "map_name": "AbandonedShip_HiddenFloorCorridors",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_GAME_CORNER": {
+        "map_name": "MauvilleCity_GameCorner",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_FACTORY_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleFactoryBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_2F": {
+        "map_name": "LittlerootTown_BrendansHouse_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_CORRIDOR": {
+        "map_name": "BattleFrontier_BattleTowerCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY_POKEMON_CENTER_1F": {
+        "map_name": "MauvilleCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNUSED_CONTEST_HALL3": {
+        "map_name": "UnusedContestHall3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_POKEMON_CENTER_2F": {
+        "map_name": "FortreeCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNUSED_CONTEST_HALL6": {
+        "map_name": "UnusedContestHall6",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PIKE_ROOM_WILD_MONS": {
+        "map_name": "BattleFrontier_BattlePikeRoomWildMons",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_POKEMON_CENTER_2F": {
+        "map_name": "VerdanturfTown_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_HOUSE3": {
+        "map_name": "LilycoveCity_House3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ALTERING_CAVE": {
+        "map_name": "AlteringCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_WANDAS_HOUSE": {
+        "map_name": "VerdanturfTown_WandasHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_MART": {
+        "map_name": "RustboroCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_OPEN_WORLD": {
+        "map_name": "OpenWorld",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MIRAGE_TOWER_3F": {
+        "map_name": "MirageTower_3F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_SCOTTS_HOUSE": {
+        "map_name": "BattleFrontier_ScottsHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PETALBURG_CITY_HOUSE2": {
+        "map_name": "PetalburgCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PETALBURG_CITY": {
+        "map_name": "PetalburgCity",
+        "hidden_items": [
+            "ITEM_CAMERUPTITE"
+        ],
+        "item_ball_items": [
+            "ITEM_MAX_REVIVE",
+            "ITEM_ETHER"
+        ]
+    },
+    "MAP_SECRET_BASE_RED_CAVE2": {
+        "map_name": "SecretBase_RedCave2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_MART": {
+        "map_name": "SootopolisCity_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_3F": {
+        "map_name": "MtPyre_3F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_SUPER_REPEL"
+        ]
+    },
+    "MAP_AQUA_HIDEOUT_B2F": {
+        "map_name": "AquaHideout_B2F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_DARK_GEM"
+        ]
+    },
+    "MAP_ROUTE117": {
+        "map_name": "Route117",
+        "hidden_items": [
+            "ITEM_MAWILITE"
+        ],
+        "item_ball_items": [
+            "ITEM_GREAT_BALL",
+            "ITEM_REVIVE"
+        ]
+    },
+    "MAP_FORTREE_CITY_HOUSE2": {
+        "map_name": "FortreeCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_BATTLE_TENT_LOBBY": {
+        "map_name": "SlateportCity_BattleTentLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_SPACE_CENTER_2F": {
+        "map_name": "MossdeepCity_SpaceCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_SUMMIT": {
+        "map_name": "MtPyre_Summit",
+        "hidden_items": [
+            "ITEM_ZINC",
+            "ITEM_RARE_CANDY"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_TOP": {
+        "map_name": "SkyPillar_Top",
+        "hidden_items": [
+            "ITEM_FLYINIUM_Z"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_MART": {
+        "map_name": "BattleFrontier_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_3F_2R": {
+        "map_name": "MagmaHideout_3F_2R",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_PP_MAX"
+        ]
+    },
+    "MAP_ROUTE110_SEASIDE_CYCLING_ROAD_NORTH_ENTRANCE": {
+        "map_name": "Route110_SeasideCyclingRoadNorthEntrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_HARBOR": {
+        "map_name": "SlateportCity_Harbor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE104": {
+        "map_name": "Route104",
+        "hidden_items": [
+            "ITEM_GRASSIUM_Z",
+            "ITEM_HEART_SCALE",
+            "ITEM_SCEPTILITE",
+            "ITEM_BEEDRILLITE",
+            "ITEM_POTION"
+        ],
+        "item_ball_items": [
+            "ITEM_PP_UP",
+            "ITEM_POKE_BALL",
+            "ITEM_X_ACCURACY",
+            "ITEM_POTION"
+        ]
+    },
+    "MAP_UNDERWATER_ROUTE126": {
+        "map_name": "Underwater_Route126",
+        "hidden_items": [
+            "ITEM_IRON",
+            "ITEM_PEARL",
+            "ITEM_BLUE_SHARD",
+            "ITEM_HEART_SCALE",
+            "ITEM_STARDUST",
+            "ITEM_ULTRA_BALL",
+            "ITEM_BIG_PEARL",
+            "ITEM_YELLOW_SHARD"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_3F": {
+        "map_name": "LilycoveCity_DepartmentStore_3F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN04": {
+        "map_name": "NavelRock_Down04",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN": {
+        "map_name": "FallarborTown",
+        "hidden_items": [
+            "ITEM_NUGGET"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_ARENA_LOBBY": {
+        "map_name": "BattleFrontier_BattleArenaLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TERRA_CAVE_ENTRANCE": {
+        "map_name": "TerraCave_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE133": {
+        "map_name": "Route133",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_BIG_PEARL",
+            "ITEM_STAR_PIECE",
+            "ITEM_MAX_REVIVE"
+        ]
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE2": {
+        "map_name": "Route110_TrickHousePuzzle2",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_WAVE_MAIL",
+            "ITEM_HARBOR_MAIL"
+        ]
+    },
+    "MAP_SAFARI_ZONE_REST_HOUSE": {
+        "map_name": "SafariZone_RestHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_BATTLE_TENT_CORRIDOR": {
+        "map_name": "SlateportCity_BattleTentCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE111": {
+        "map_name": "Route111",
+        "hidden_items": [
+            "ITEM_LATIASITE",
+            "ITEM_GLALITITE",
+            "ITEM_GROUNDIUM_Z"
+        ],
+        "item_ball_items": [
+            "ITEM_TM37",
+            "ITEM_STARDUST",
+            "ITEM_HP_UP",
+            "ITEM_ELIXIR"
+        ]
+    },
+    "MAP_ABANDONED_SHIP_ROOMS_B1F": {
+        "map_name": "AbandonedShip_Rooms_B1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_WATER_GEM"
+        ]
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_MULTI_PARTNER_ROOM": {
+        "map_name": "BattleFrontier_BattleTowerMultiPartnerRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TERRAKIONS_CAVE": {
+        "map_name": "TerrakionsCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE104_MR_BRINEYS_HOUSE": {
+        "map_name": "Route104_MrBrineysHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE5": {
+        "map_name": "Route110_TrickHousePuzzle5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE112_CABLE_CAR_STATION": {
+        "map_name": "Route112_CableCarStation",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VICTORY_ROAD_1F": {
+        "map_name": "VictoryRoad_1F",
+        "hidden_items": [
+            "ITEM_ULTRA_BALL"
+        ],
+        "item_ball_items": [
+            "ITEM_MAX_ELIXIR",
+            "ITEM_PP_UP"
+        ]
+    },
+    "MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_2F": {
+        "map_name": "SootopolisCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_STEVENS_HOUSE": {
+        "map_name": "MossdeepCity_StevensHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PETALBURG_CITY_POKEMON_CENTER_1F": {
+        "map_name": "PetalburgCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE126": {
+        "map_name": "Route126",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_GREEN_SHARD"
+        ]
+    },
+    "MAP_ABANDONED_SHIP_UNDERWATER1": {
+        "map_name": "AbandonedShip_Underwater1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NEW_MAUVILLE_ENTRANCE": {
+        "map_name": "NewMauville_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CONTEST_HALL_BEAUTY": {
+        "map_name": "ContestHallBeauty",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_3F_3R": {
+        "map_name": "MagmaHideout_3F_3R",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_FIRE_GEM"
+        ]
+    },
+    "MAP_UNDERWATER_ROUTE134": {
+        "map_name": "Underwater_Route134",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE129": {
+        "map_name": "Route129",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE119_WEATHER_INSTITUTE_1F": {
+        "map_name": "Route119_WeatherInstitute_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_1F": {
+        "map_name": "SootopolisCity_MysteryEventsHouse_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TRAINER_HILL_ROOF": {
+        "map_name": "TrainerHill_Roof",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_CHIMNEY": {
+        "map_name": "MtChimney",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE08": {
+        "map_name": "BattlePyramidSquare08",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_HOUSE1": {
+        "map_name": "MossdeepCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_TOWER_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleTowerBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN07": {
+        "map_name": "NavelRock_Down07",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ARTISAN_CAVE_B1F": {
+        "map_name": "ArtisanCave_B1F",
+        "hidden_items": [
+            "ITEM_CALCIUM",
+            "ITEM_PROTEIN",
+            "ITEM_ZINC"
+        ],
+        "item_ball_items": [
+            "ITEM_HP_UP"
+        ]
+    },
+    "MAP_GRANITE_CAVE_STEVENS_ROOM": {
+        "map_name": "GraniteCave_StevensRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_POKEMON_TRAINER_FAN_CLUB": {
+        "map_name": "LilycoveCity_PokemonTrainerFanClub",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_RECEPTION_GATE": {
+        "map_name": "BattleFrontier_ReceptionGate",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_HARBOR": {
+        "map_name": "NavelRock_Harbor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_ARENA_CORRIDOR": {
+        "map_name": "BattleFrontier_BattleArenaCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FARAWAY_ISLAND_ENTRANCE": {
+        "map_name": "FarawayIsland_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_UNDERWATER2": {
+        "map_name": "AbandonedShip_Underwater2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE107": {
+        "map_name": "Route107",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_BATTLE_TENT_BATTLE_ROOM": {
+        "map_name": "VerdanturfTown_BattleTentBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_GYM_B1F": {
+        "map_name": "SootopolisCity_Gym_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_GRANITE_CAVE_B2F": {
+        "map_name": "GraniteCave_B2F",
+        "hidden_items": [
+            "ITEM_LOPUNNITE",
+            "ITEM_EVERSTONE"
+        ],
+        "item_ball_items": [
+            "ITEM_REPEL",
+            "ITEM_RARE_CANDY"
+        ]
+    },
+    "MAP_UNUSED_CONTEST_HALL4": {
+        "map_name": "UnusedContestHall4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_LILYCOVE_MUSEUM_1F": {
+        "map_name": "LilycoveCity_LilycoveMuseum_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_EXTERIOR": {
+        "map_name": "MtPyre_Exterior",
+        "hidden_items": [
+            "ITEM_LATIOSITE",
+            "ITEM_BANETTITE"
+        ],
+        "item_ball_items": [
+            "ITEM_MAX_POTION",
+            "ITEM_TM48"
+        ]
+    },
+    "MAP_PETALBURG_CITY_POKEMON_CENTER_2F": {
+        "map_name": "PetalburgCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SAFARI_ZONE_NORTHWEST": {
+        "map_name": "SafariZone_Northwest",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM22"
+        ]
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE01": {
+        "map_name": "BattlePyramidSquare01",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_TREE2": {
+        "map_name": "SecretBase_Tree2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN03": {
+        "map_name": "NavelRock_Down03",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE134": {
+        "map_name": "Route134",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_DRAGON_GEM",
+            "ITEM_STAR_PIECE"
+        ]
+    },
+    "MAP_MAUVILLE_CITY_HOUSE1": {
+        "map_name": "MauvilleCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SS_TIDAL_LOWER_DECK": {
+        "map_name": "SSTidalLowerDeck",
+        "hidden_items": [
+            "ITEM_LEFTOVERS"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_SKY_PILLAR_ENTRANCE": {
+        "map_name": "SkyPillar_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_POKEMON_LEAGUE_2F": {
+        "map_name": "EverGrandeCity_PokemonLeague_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE03": {
+        "map_name": "BattlePyramidSquare03",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FORTREE_CITY_HOUSE1": {
+        "map_name": "FortreeCity_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TRAINER_HILL_3F": {
+        "map_name": "TrainerHill_3F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_YELLOW_CAVE2": {
+        "map_name": "SecretBase_YellowCave2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_YELLOW_CAVE1": {
+        "map_name": "SecretBase_YellowCave1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BLUE_CAVE4": {
+        "map_name": "SecretBase_BlueCave4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CAVE_OF_ORIGIN_UNUSED_RUBY_SAPPHIRE_MAP1": {
+        "map_name": "CaveOfOrigin_UnusedRubySapphireMap1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN01": {
+        "map_name": "NavelRock_Down01",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE04": {
+        "map_name": "BattlePyramidSquare04",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_ROUTE125": {
+        "map_name": "Underwater_Route125",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CONTEST_HALL_COOL": {
+        "map_name": "ContestHallCool",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE3": {
+        "map_name": "Route110_TrickHousePuzzle3",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_WOOD_MAIL",
+            "ITEM_SHADOW_MAIL"
+        ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM7": {
+        "map_name": "SeafloorCavern_Room7",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE124": {
+        "map_name": "Route124",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_RED_SHARD",
+            "ITEM_BLUE_SHARD",
+            "ITEM_YELLOW_SHARD"
+        ]
+    },
+    "MAP_LAVARIDGE_TOWN_HOUSE": {
+        "map_name": "LavaridgeTown_House",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE10": {
+        "map_name": "BattlePyramidSquare10",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_HALL1": {
+        "map_name": "EverGrandeCity_Hall1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_DOME_CORRIDOR": {
+        "map_name": "BattleFrontier_BattleDomeCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_GRANITE_CAVE_1F": {
+        "map_name": "GraniteCave_1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_ESCAPE_ROPE"
+        ]
+    },
+    "MAP_ROUTE130": {
+        "map_name": "Route130",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_FACTORY_LOBBY": {
+        "map_name": "BattleFrontier_BattleFactoryLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_CONTEST_HALL": {
+        "map_name": "LilycoveCity_ContestHall",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_MART": {
+        "map_name": "FallarborTown_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_MYSTERY_EVENTS_HOUSE_B1F": {
+        "map_name": "SootopolisCity_MysteryEventsHouse_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PACIFIDLOG_TOWN": {
+        "map_name": "PacifidlogTown",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_POKEMON_CENTER_2F": {
+        "map_name": "BattleFrontier_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN06": {
+        "map_name": "NavelRock_Down06",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LAVARIDGE_TOWN_GYM_B1F": {
+        "map_name": "LavaridgeTown_Gym_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_DOWN09": {
+        "map_name": "NavelRock_Down09",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_5F": {
+        "map_name": "LilycoveCity_DepartmentStore_5F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_B1F": {
+        "map_name": "NavelRock_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM": {
+        "map_name": "EverGrandeCity_ChampionsRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_DOME_PRE_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleDomePreBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_RED_CAVE1": {
+        "map_name": "SecretBase_RedCave1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_HOUSE2": {
+        "map_name": "RustboroCity_House2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_2F": {
+        "map_name": "LilycoveCity_DepartmentStore_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOUTHERN_ISLAND_INTERIOR": {
+        "map_name": "SouthernIsland_Interior",
+        "hidden_items": [
+            "ITEM_EON_FLUTE"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_TRAINER_HILL_ELEVATOR": {
+        "map_name": "TrainerHill_Elevator",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_OLDALE_TOWN_POKEMON_CENTER_2F": {
+        "map_name": "OldaleTown_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TRAINER_HILL_1F": {
+        "map_name": "TrainerHill_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_DOME_LOBBY": {
+        "map_name": "BattleFrontier_BattleDomeLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE4": {
+        "map_name": "Route110_TrickHousePuzzle4",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_MECH_MAIL"
+        ]
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PYRAMID_FLOOR": {
+        "map_name": "BattleFrontier_BattlePyramidFloor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TRAINER_HILL_4F": {
+        "map_name": "TrainerHill_4F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE123": {
+        "map_name": "Route123",
+        "hidden_items": [
+            "ITEM_RARE_CANDY",
+            "ITEM_SUPER_REPEL",
+            "ITEM_PP_UP",
+            "ITEM_HYPER_POTION",
+            "ITEM_ALTARIANITE"
+        ],
+        "item_ball_items": [
+            "ITEM_CALCIUM",
+            "ITEM_ULTRA_BALL",
+            "ITEM_ELIXIR",
+            "ITEM_PP_UP",
+            "ITEM_REVIVAL_HERB"
+        ]
+    },
+    "MAP_NAVEL_ROCK_EXTERIOR": {
+        "map_name": "NavelRock_Exterior",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_RED_CAVE4": {
+        "map_name": "SecretBase_RedCave4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE114_FOSSIL_MANIACS_HOUSE": {
+        "map_name": "Route114_FossilManiacsHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FALLARBOR_TOWN_MOVE_RELEARNERS_HOUSE": {
+        "map_name": "FallarborTown_MoveRelearnersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_ROUTE124": {
+        "map_name": "Underwater_Route124",
+        "hidden_items": [
+            "ITEM_CALCIUM",
+            "ITEM_PEARL",
+            "ITEM_HEART_SCALE",
+            "ITEM_SHARPEDONITE",
+            "ITEM_GREEN_SHARD",
+            "ITEM_BIG_PEARL"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_CORRIDORS_B1F": {
+        "map_name": "AbandonedShip_Corridors_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MARINE_CAVE_END": {
+        "map_name": "MarineCave_End",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RAIKOUS_CAVE": {
+        "map_name": "RaikousCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_POKEMON_CENTER_2F": {
+        "map_name": "SlateportCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE127": {
+        "map_name": "Route127",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_ZINC",
+            "ITEM_CARBOS",
+            "ITEM_RARE_CANDY"
+        ]
+    },
+    "MAP_MOSSDEEP_CITY_GAME_CORNER_B1F": {
+        "map_name": "MossdeepCity_GameCorner_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_GYM": {
+        "map_name": "MossdeepCity_Gym",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_HARBOR": {
+        "map_name": "LilycoveCity_Harbor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110": {
+        "map_name": "Route110",
+        "hidden_items": [
+            "ITEM_HERACRONITE",
+            "ITEM_AERODACTYLITE",
+            "ITEM_POKE_BALL",
+            "ITEM_MANECTITE"
+        ],
+        "item_ball_items": [
+            "ITEM_DIRE_HIT",
+            "ITEM_RARE_CANDY",
+            "ITEM_ELIXIR"
+        ]
+    },
+    "MAP_OLDALE_TOWN_POKEMON_CENTER_1F": {
+        "map_name": "OldaleTown_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_HIGH_TIDE_INNER_ROOM": {
+        "map_name": "ShoalCave_HighTideInnerRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE111_OLD_LADYS_REST_STOP": {
+        "map_name": "Route111_OldLadysRestStop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_METEOR_FALLS_B1F_2R": {
+        "map_name": "MeteorFalls_B1F_2R",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM02"
+        ]
+    },
+    "MAP_TRAINER_HILL_2F": {
+        "map_name": "TrainerHill_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_DEPARTMENT_STORE_4F": {
+        "map_name": "LilycoveCity_DepartmentStore_4F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_HALL4": {
+        "map_name": "EverGrandeCity_Hall4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BLUE_CAVE1": {
+        "map_name": "SecretBase_BlueCave1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEAFLOOR_CAVERN_ROOM4": {
+        "map_name": "SeafloorCavern_Room4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_DEWFORD_TOWN_GYM": {
+        "map_name": "DewfordTown_Gym",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_COBLIONS_CAVE": {
+        "map_name": "CoblionsCave",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_3F_1R": {
+        "map_name": "MagmaHideout_3F_1R",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_NUGGET"
+        ]
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_ENTRANCE": {
+        "map_name": "Route110_TrickHouseEntrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE9": {
+        "map_name": "BattleFrontier_Lounge9",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_FORK": {
+        "map_name": "NavelRock_Fork",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_HOUSE3": {
+        "map_name": "MossdeepCity_House3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_COLOSSEUM_4P": {
+        "map_name": "BattleColosseum_4P",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_4F": {
+        "map_name": "MagmaHideout_4F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_MAX_REVIVE"
+        ]
+    },
+    "MAP_PACIFIDLOG_TOWN_POKEMON_CENTER_2F": {
+        "map_name": "PacifidlogTown_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MOSSDEEP_CITY_GAME_CORNER_1F": {
+        "map_name": "MossdeepCity_GameCorner_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_EXCHANGE_SERVICE_CORNER": {
+        "map_name": "BattleFrontier_ExchangeServiceCorner",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_CORRIDOR": {
+        "map_name": "Route110_TrickHouseCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SHOAL_CAVE_LOW_TIDE_LOWER_ROOM": {
+        "map_name": "ShoalCave_LowTideLowerRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ABANDONED_SHIP_ROOMS2_1F": {
+        "map_name": "AbandonedShip_Rooms2_1F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_CHIPPED_POT"
+        ]
+    },
+    "MAP_FALLARBOR_TOWN_COZMOS_HOUSE": {
+        "map_name": "FallarborTown_CozmosHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_TREE1": {
+        "map_name": "SecretBase_Tree1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_TERRAKIONS_CAVE_F2": {
+        "map_name": "TerrakionsCave_F2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_POKEMON_CENTER_1F": {
+        "map_name": "BattleFrontier_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE5": {
+        "map_name": "BattleFrontier_Lounge5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_POKEMON_CENTER_2F": {
+        "map_name": "EverGrandeCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE7": {
+        "map_name": "SootopolisCity_House7",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE16": {
+        "map_name": "BattlePyramidSquare16",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_CONTEST_LOBBY": {
+        "map_name": "LilycoveCity_ContestLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_HALL3": {
+        "map_name": "EverGrandeCity_Hall3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_AQUA_HIDEOUT_UNUSED_RUBY_MAP3": {
+        "map_name": "AquaHideout_UnusedRubyMap3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_CUTTERS_HOUSE": {
+        "map_name": "RustboroCity_CuttersHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE4": {
+        "map_name": "SootopolisCity_House4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_2F_2R": {
+        "map_name": "MagmaHideout_2F_2R",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_MAX_ELIXIR",
+            "ITEM_FULL_RESTORE"
+        ]
+    },
+    "MAP_SEAFLOOR_CAVERN_ENTRANCE": {
+        "map_name": "SeafloorCavern_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_FLAT1_1F": {
+        "map_name": "RustboroCity_Flat1_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE112": {
+        "map_name": "Route112",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_NUGGET"
+        ]
+    },
+    "MAP_CAVE_OF_ORIGIN_B1F": {
+        "map_name": "CaveOfOrigin_B1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_ROUTE128": {
+        "map_name": "Underwater_Route128",
+        "hidden_items": [
+            "ITEM_BLASTOISINITE",
+            "ITEM_PEARL"
+        ],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_2F": {
+        "map_name": "MtPyre_2F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_ULTRA_BALL"
+        ]
+    },
+    "MAP_SAFARI_ZONE_NORTHEAST": {
+        "map_name": "SafariZone_Northeast",
+        "hidden_items": [
+            "ITEM_ZINC",
+            "ITEM_RARE_CANDY"
+        ],
+        "item_ball_items": [
+            "ITEM_NUGGET"
+        ]
+    },
+    "MAP_ROUTE121_SAFARI_ZONE_ENTRANCE": {
+        "map_name": "Route121_SafariZoneEntrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_HOUSE4": {
+        "map_name": "LilycoveCity_House4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_SHRUB2": {
+        "map_name": "SecretBase_Shrub2",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SCORCHED_SLAB": {
+        "map_name": "ScorchedSlab",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_TM11"
+        ]
+    },
+    "MAP_TERRA_CAVE_END": {
+        "map_name": "TerraCave_End",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_LOUNGE6": {
+        "map_name": "BattleFrontier_Lounge6",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LILYCOVE_CITY_POKEMON_CENTER_2F": {
+        "map_name": "LilycoveCity_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE109": {
+        "map_name": "Route109",
+        "hidden_items": [
+            "ITEM_STEELIXITE",
+            "ITEM_HEART_SCALE",
+            "ITEM_LUCARIONITE",
+            "ITEM_ETHER",
+            "ITEM_CHARIZARDITE_Y",
+            "ITEM_AUDINITE"
+        ],
+        "item_ball_items": [
+            "ITEM_PP_UP",
+            "ITEM_POTION"
+        ]
+    },
+    "MAP_MIRAGE_TOWER_4F": {
+        "map_name": "MirageTower_4F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAGMA_HIDEOUT_2F_3R": {
+        "map_name": "MagmaHideout_2F_3R",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_HOUSE": {
+        "map_name": "VerdanturfTown_House",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_PIKE_LOBBY": {
+        "map_name": "BattleFrontier_BattlePikeLobby",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_SHRUB3": {
+        "map_name": "SecretBase_Shrub3",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE07": {
+        "map_name": "BattlePyramidSquare07",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CONTEST_HALL_TOUGH": {
+        "map_name": "ContestHallTough",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CONTEST_HALL_SMART": {
+        "map_name": "ContestHallSmart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_NAVEL_ROCK_ENTRANCE": {
+        "map_name": "NavelRock_Entrance",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MT_PYRE_5F": {
+        "map_name": "MtPyre_5F",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_LAX_INCENSE"
+        ]
+    },
+    "MAP_ROUTE113": {
+        "map_name": "Route113",
+        "hidden_items": [
+            "ITEM_BLAZIKENITE",
+            "ITEM_SNORLIUM_Z",
+            "ITEM_GALLADITE"
+        ],
+        "item_ball_items": [
+            "ITEM_MAX_ETHER",
+            "ITEM_SUPER_REPEL",
+            "ITEM_HYPER_POTION"
+        ]
+    },
+    "MAP_RUSTBORO_CITY_DEVON_CORP_3F": {
+        "map_name": "RustboroCity_DevonCorp_3F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_VERDANTURF_TOWN_BATTLE_TENT_CORRIDOR": {
+        "map_name": "VerdanturfTown_BattleTentCorridor",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_EVER_GRANDE_CITY_HALL5": {
+        "map_name": "EverGrandeCity_Hall5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PETALBURG_CITY_WALLYS_HOUSE": {
+        "map_name": "PetalburgCity_WallysHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LITTLEROOT_TOWN_BRENDANS_HOUSE_1F": {
+        "map_name": "LittlerootTown_BrendansHouse_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LAVARIDGE_TOWN_POKEMON_CENTER_2F": {
+        "map_name": "LavaridgeTown_PokemonCenter_2F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_OLDALE_TOWN_MART": {
+        "map_name": "OldaleTown_Mart",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_UNDERWATER_SEALED_CHAMBER": {
+        "map_name": "Underwater_SealedChamber",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_MAUVILLE_CITY": {
+        "map_name": "MauvilleCity",
+        "hidden_items": [
+            "ITEM_ALORAICHIUM_Z"
+        ],
+        "item_ball_items": [
+            "ITEM_TART_APPLE"
+        ]
+    },
+    "MAP_SOOTOPOLIS_CITY_HOUSE6": {
+        "map_name": "SootopolisCity_House6",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE102": {
+        "map_name": "Route102",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_KINGS_ROCK"
+        ]
+    },
+    "MAP_DEWFORD_TOWN_HOUSE1": {
+        "map_name": "DewfordTown_House1",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE111_WINSTRATE_FAMILYS_HOUSE": {
+        "map_name": "Route111_WinstrateFamilysHouse",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SAFARI_ZONE_SOUTH": {
+        "map_name": "SafariZone_South",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FIERY_PATH": {
+        "map_name": "FieryPath",
+        "hidden_items": [
+            "ITEM_FIRIUM_Z"
+        ],
+        "item_ball_items": [
+            "ITEM_TM06",
+            "ITEM_FIRE_STONE"
+        ]
+    },
+    "MAP_LILYCOVE_CITY_POKEMON_CENTER_1F": {
+        "map_name": "LilycoveCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_FARAWAY_ISLAND_INTERIOR": {
+        "map_name": "FarawayIsland_Interior",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SLATEPORT_CITY_HOUSE": {
+        "map_name": "SlateportCity_House",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_ROUTE110_TRICK_HOUSE_PUZZLE6": {
+        "map_name": "Route110_TrickHousePuzzle6",
+        "hidden_items": [],
+        "item_ball_items": [
+            "ITEM_GLITTER_MAIL"
+        ]
+    },
+    "MAP_FORTREE_CITY_HOUSE5": {
+        "map_name": "FortreeCity_House5",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SOOTOPOLIS_CITY_POKEMON_CENTER_1F": {
+        "map_name": "SootopolisCity_PokemonCenter_1F",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_PETALBURG_CITY_GYM": {
+        "map_name": "PetalburgCity_Gym",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_PYRAMID_SQUARE05": {
+        "map_name": "BattlePyramidSquare05",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_BATTLE_FRONTIER_BATTLE_ARENA_BATTLE_ROOM": {
+        "map_name": "BattleFrontier_BattleArenaBattleRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_LAVARIDGE_TOWN_HERB_SHOP": {
+        "map_name": "LavaridgeTown_HerbShop",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SEALED_CHAMBER_INNER_ROOM": {
+        "map_name": "SealedChamber_InnerRoom",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_CONTEST_HALL": {
+        "map_name": "ContestHall",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_SECRET_BASE_BROWN_CAVE4": {
+        "map_name": "SecretBase_BrownCave4",
+        "hidden_items": [],
+        "item_ball_items": []
+    },
+    "MAP_RUSTBORO_CITY_GYM": {
+        "map_name": "RustboroCity_Gym",
+        "hidden_items": [],
+        "item_ball_items": []
+    }
+}

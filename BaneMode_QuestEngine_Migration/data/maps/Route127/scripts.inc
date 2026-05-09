@@ -1,0 +1,118 @@
+Route127_MapScripts::
+	map_script MAP_SCRIPT_ON_TRANSITION, Route127_OnTransition
+	map_script MAP_SCRIPT_ON_LOAD, Route127_OnLoad
+	map_script MAP_SCRIPT_ON_FRAME_TABLE, Route127_OnFrame
+	.byte 0
+
+Route127_OnTransition:
+	call EventScript_WB_7
+	call_if_set FLAG_SYS_WEATHER_CTRL, Common_EventScript_SetAbnormalWeather
+	call_if_eq VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_HideMapNamePopup
+	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_127_NORTH, AbnormalWeather_StartKyogreWeather
+	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_127_SOUTH, AbnormalWeather_StartKyogreWeather
+	end
+
+EventScript_WB_7::	
+	callnative TryGenerateShinyOW		
+	callnative GenerateWildBoss
+	return
+
+Route127_OnLoad:
+	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_127_NORTH, AbnormalWeather_EventScript_PlaceTilesRoute127North
+	call_if_eq VAR_ABNORMAL_WEATHER_LOCATION, ABNORMAL_WEATHER_ROUTE_127_SOUTH, AbnormalWeather_EventScript_PlaceTilesRoute127South
+	end
+
+Route127_OnFrame:
+	map_script_2 VAR_SHOULD_END_ABNORMAL_WEATHER, 1, AbnormalWeather_EventScript_EndEventAndCleanup_1
+	.2byte 0
+
+Route127_EventScript_Camden::
+	trainerbattle_single TRAINER_CAMDEN, Route127_Text_CamdenIntro, Route127_Text_CamdenDefeat
+	msgbox Route127_Text_CamdenPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Donny::
+	trainerbattle_single TRAINER_DONNY, Route127_Text_DonnyIntro, Route127_Text_DonnyDefeat
+	msgbox Route127_Text_DonnyPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Jonah::
+	trainerbattle_single TRAINER_JONAH, Route127_Text_JonahIntro, Route127_Text_JonahDefeat
+	msgbox Route127_Text_JonahPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Henry::
+	trainerbattle_single TRAINER_HENRY, Route127_Text_HenryIntro, Route127_Text_HenryDefeat
+	msgbox Route127_Text_HenryPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Roger::
+	trainerbattle_single TRAINER_ROGER, Route127_Text_RogerIntro, Route127_Text_RogerDefeat
+	msgbox Route127_Text_RogerPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Aidan::
+	trainerbattle_single TRAINER_AIDAN, Route127_Text_AidanIntro, Route127_Text_AidanDefeat
+	msgbox Route127_Text_AidanPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Athena::
+	trainerbattle_single TRAINER_ATHENA, Route127_Text_AthenaIntro, Route127_Text_AthenaDefeat
+	msgbox Route127_Text_AthenaPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+Route127_EventScript_Koji::
+	trainerbattle_single TRAINER_KOJI_1, Route127_Text_KojiIntro, Route127_Text_KojiDefeat, Route127_EventScript_RegisterKoji
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, Route127_EventScript_RematchKoji
+	msgbox Route127_Text_KojiPostBattle, MSGBOX_DEFAULT
+	release
+	end
+
+Route127_EventScript_RegisterKoji::
+	special PlayerFaceTrainerAfterBattle
+	waitmovement 0
+	msgbox Route127_Text_KojiRegister, MSGBOX_DEFAULT
+	register_matchcall TRAINER_KOJI_1
+	release
+	end
+
+Route127_EventScript_RematchKoji::
+	trainerbattle_rematch TRAINER_KOJI_1, Route127_Text_KojiRematchIntro, Route127_Text_KojiRematchDefeat
+	msgbox Route127_Text_KojiPostRematch, MSGBOX_AUTOCLOSE
+	end
+
+Roaming_Pokemon_7::
+    lockall
+	faceplayer
+	setflag FLAG_NO_ESCAPE
+	call Eventscript_TryGenerateShinyMon
+	playmoncry VAR_TEMP_6, CRY_MODE_ENCOUNTER
+    waitmoncry
+	callnative setwildbossbattle
+	dowildbattle
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, Eventscript_Won7
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, Eventscript_Escapedbossmon
+	goto_if_eq VAR_RESULT, B_OUTCOME_MON_FLED, Eventscript_Escaped7
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, Eventscript_Won7
+	goto_if_eq VAR_RESULT, B_OUTCOME_LOST, Eventscript_Escaped7
+	goto_if_eq VAR_RESULT, B_OUTCOME_DREW, Eventscript_Escaped7
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, Eventscript_Escaped7
+	clearflag FLAG_NO_ESCAPE
+	releaseall
+    end
+
+Eventscript_Won7::
+  	setflag FLAG_UNUSED_0x93B
+	removeobject VAR_LAST_TALKED
+	clearflag FLAG_NO_ESCAPE
+	addrankpoints 10
+	releaseall
+	end
+
+Eventscript_Escaped7::
+    clearflag FLAG_NO_ESCAPE
+    releaseall
+    end
+

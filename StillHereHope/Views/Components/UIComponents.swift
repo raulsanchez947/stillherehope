@@ -4,39 +4,53 @@ struct AppScreen<Content: View>: View {
     let title: String
     let subtitle: String?
     @ViewBuilder var content: Content
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: AppTheme.Spacing.xLarge) {
-                VStack(alignment: .leading, spacing: AppTheme.Spacing.xSmall) {
-                    Text(title)
-                        .font(AppTheme.Typography.hero)
-                        .foregroundStyle(AppTheme.Colors.textPrimary)
-                    if let subtitle {
-                        Text(subtitle)
-                        .font(.body)
-                            .foregroundStyle(AppTheme.Colors.textSecondary)
-                            .fixedSize(horizontal: false, vertical: true)
-                    }
-                }
-                .padding(.top, AppTheme.Spacing.small)
+        GeometryReader { geometry in
+            let width = geometry.size.width
+            let horizontalPadding = AppTheme.Layout.horizontalPadding(for: width, sizeClass: horizontalSizeClass)
+            let verticalPadding = AppTheme.Layout.verticalPadding(for: width, sizeClass: horizontalSizeClass)
+            let sectionSpacing = AppTheme.Layout.sectionSpacing(for: width, sizeClass: horizontalSizeClass)
+            let maxContentWidth = AppTheme.Layout.contentMaxWidth(for: width, sizeClass: horizontalSizeClass)
 
-                content
+            ScrollView {
+                VStack(alignment: .leading, spacing: sectionSpacing) {
+                    VStack(alignment: .leading, spacing: AppTheme.Spacing.xSmall) {
+                        Text(title)
+                            .font(AppTheme.Typography.hero)
+                            .foregroundStyle(AppTheme.Colors.textPrimary)
+                            .lineLimit(nil)
+                            .minimumScaleFactor(0.85)
+                        if let subtitle {
+                            Text(subtitle)
+                                .font(.body)
+                                .foregroundStyle(AppTheme.Colors.textSecondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                                .lineLimit(nil)
+                        }
+                    }
+                    .padding(.top, AppTheme.Spacing.small)
+
+                    content
+                }
+                .frame(maxWidth: maxContentWidth, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal, horizontalPadding)
+                .padding(.top, verticalPadding)
+                .padding(.bottom, 136)
             }
-            .padding(.horizontal, AppTheme.Spacing.medium)
-            .padding(.top, AppTheme.Spacing.large)
-            .padding(.bottom, 136)
-        }
-        .background {
-            ZStack {
-                AppTheme.backgroundWash
-                AppTheme.accentGlow
-                    .blendMode(.plusLighter)
-                    .offset(x: 80, y: -120)
+            .background {
+                ZStack {
+                    AppTheme.backgroundWash
+                    AppTheme.accentGlow
+                        .blendMode(.plusLighter)
+                        .offset(x: 80, y: -120)
+                }
+                .ignoresSafeArea()
             }
-            .ignoresSafeArea()
+            .scrollIndicators(.hidden)
         }
-        .scrollIndicators(.hidden)
     }
 }
 
@@ -63,12 +77,14 @@ struct SectionHeader: View {
             Text(title)
                 .font(AppTheme.Typography.sectionTitle)
                 .foregroundStyle(AppTheme.Colors.textPrimary)
+                .lineLimit(nil)
 
             if let subtitle {
                 Text(subtitle)
                     .font(.body)
                     .foregroundStyle(AppTheme.Colors.textSecondary)
                     .fixedSize(horizontal: false, vertical: true)
+                    .lineLimit(nil)
             }
         }
     }
@@ -86,6 +102,8 @@ struct MoodChip: View {
                     .font(.subheadline.weight(.semibold))
                 Text(mood.title)
                     .font(.subheadline.weight(.semibold))
+                    .lineLimit(nil)
+                    .minimumScaleFactor(0.8)
             }
             .frame(maxWidth: .infinity)
             .padding(.vertical, 12)
@@ -116,6 +134,8 @@ struct QuietActionButton: View {
                 Text(title)
                     .font(AppTheme.Typography.bodyStrong)
                     .multilineTextAlignment(.leading)
+                    .lineLimit(nil)
+                    .minimumScaleFactor(0.8)
                 Spacer(minLength: 0)
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.bold))
@@ -128,6 +148,32 @@ struct QuietActionButton: View {
             .quietSurfaceStyle()
         }
         .buttonStyle(.plain)
+    }
+}
+
+struct QuietActionRow: View {
+    let title: String
+    let systemImage: String
+
+    var body: some View {
+        HStack(spacing: AppTheme.Spacing.xxSmall) {
+            Image(systemName: systemImage)
+                .font(.body.weight(.semibold))
+            Text(title)
+                .font(AppTheme.Typography.bodyStrong)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+                .minimumScaleFactor(0.8)
+            Spacer(minLength: 0)
+            Image(systemName: "chevron.right")
+                .font(.footnote.weight(.bold))
+                .foregroundStyle(AppTheme.Colors.textTertiary)
+        }
+        .padding(AppTheme.Spacing.small)
+        .frame(maxWidth: .infinity, minHeight: 56)
+        .background(AppTheme.Colors.backgroundElevated)
+        .foregroundStyle(AppTheme.Colors.textPrimary)
+        .quietSurfaceStyle()
     }
 }
 
@@ -147,6 +193,8 @@ struct CrisisBanner: View {
             } label: {
                 Text("Open crisis resources")
                     .font(AppTheme.Typography.bodyStrong)
+                    .lineLimit(nil)
+                    .multilineTextAlignment(.center)
                     .frame(maxWidth: .infinity, minHeight: 50)
             }
             .buttonStyle(.borderedProminent)
@@ -198,6 +246,7 @@ struct HopeNoteCard: View {
     let showsActions: Bool
     let onHelpful: (() -> Void)?
     let onSave: (() -> Void)?
+    let onReport: (() -> Void)?
 
     var body: some View {
         VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
@@ -221,27 +270,51 @@ struct HopeNoteCard: View {
                 .fixedSize(horizontal: false, vertical: true)
 
             if showsActions {
-                HStack(spacing: AppTheme.Spacing.small) {
-                    Button("This helped") {
-                        onHelpful?()
+                ViewThatFits(in: .horizontal) {
+                    HStack(spacing: AppTheme.Spacing.small) {
+                        actionButtons
                     }
-                    .buttonStyle(.bordered)
 
-                    Button(note.isSaved ? "Saved" : "Save") {
-                        onSave?()
+                    VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
+                        actionButtons
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(note.isSaved ? AppTheme.Colors.calm : AppTheme.Colors.accent)
+                }
 
-                    Spacer()
-
-                    Label("\(note.helpedCount)", systemImage: "heart.fill")
-                        .font(.footnote)
-                        .foregroundStyle(AppTheme.Colors.textSecondary)
+                if let onReport {
+                    Button {
+                        onReport()
+                    } label: {
+                        Label("Report", systemImage: "flag")
+                            .font(.footnote.weight(.semibold))
+                            .lineLimit(nil)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .buttonStyle(.plain)
+                    .foregroundStyle(AppTheme.Colors.textSecondary)
                 }
             }
         }
         .hopeCardStyle()
+    }
+
+    @ViewBuilder
+    private var actionButtons: some View {
+        Button("This helped") {
+            onHelpful?()
+        }
+        .buttonStyle(.bordered)
+
+        Button(note.isSaved ? "Saved" : "Save") {
+            onSave?()
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(note.isSaved ? AppTheme.Colors.calm : AppTheme.Colors.accent)
+
+        Spacer(minLength: 0)
+
+        Label("\(note.helpedCount)", systemImage: "heart.fill")
+            .font(.footnote)
+            .foregroundStyle(AppTheme.Colors.textSecondary)
     }
 }
 
@@ -266,6 +339,7 @@ struct MessageBubble: View {
                 .font(.body)
                 .foregroundStyle(message.role == .assistant ? AppTheme.Colors.textPrimary : Color.white)
                 .fixedSize(horizontal: false, vertical: true)
+                .lineLimit(nil)
 
             Text(message.timestamp.formatted(date: .omitted, time: .shortened))
                 .font(.caption)

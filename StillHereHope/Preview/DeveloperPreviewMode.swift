@@ -163,6 +163,24 @@ struct ScreenshotMarketingCopy {
     let subheadline: String
 }
 
+enum DeveloperToolState: String, CaseIterable, Identifiable {
+    case moderation
+
+    var id: String { rawValue }
+
+    var title: String {
+        "Moderation Preview"
+    }
+
+    var subtitle: String {
+        "Flagged notes, reports, and blocked sources"
+    }
+
+    var symbol: String {
+        "flag.text"
+    }
+}
+
 @MainActor
 struct DeveloperPreviewGalleryView: View {
     @State private var locale: ScreenshotLocaleVariant = .englishUS
@@ -236,6 +254,45 @@ struct DeveloperPreviewGalleryView: View {
                                     Text(sizePreset.title)
                                         .font(.caption.weight(.semibold))
                                         .foregroundStyle(AppTheme.Colors.textTertiary)
+
+                                    Image(systemName: "chevron.right")
+                                        .font(.footnote.weight(.bold))
+                                        .foregroundStyle(AppTheme.Colors.textTertiary)
+                                }
+                                .padding(AppTheme.Spacing.medium)
+                                .hopeCardStyle(padding: 0)
+                            }
+                            .buttonStyle(.plain)
+                        }
+                    }
+
+                    VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
+                        SectionHeader(
+                            eyebrow: "Moderation",
+                            title: "Developer tools",
+                            subtitle: "Quiet internal previews for safety and reporting flows."
+                        )
+
+                        ForEach(DeveloperToolState.allCases) { state in
+                            NavigationLink {
+                                DeveloperModerationPreviewView(repository: PreviewFactory.repository)
+                            } label: {
+                                HStack(spacing: AppTheme.Spacing.small) {
+                                    Image(systemName: state.symbol)
+                                        .font(.title3.weight(.semibold))
+                                        .foregroundStyle(AppTheme.Colors.accent)
+                                        .frame(width: 28)
+
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text(state.title)
+                                            .font(.headline)
+                                            .foregroundStyle(AppTheme.Colors.textPrimary)
+                                        Text(state.subtitle)
+                                            .font(.subheadline)
+                                            .foregroundStyle(AppTheme.Colors.textSecondary)
+                                    }
+
+                                    Spacer()
 
                                     Image(systemName: "chevron.right")
                                         .font(.footnote.weight(.bold))
@@ -442,6 +499,189 @@ struct AppStoreDeviceFrame<Content: View>: View {
                 .padding(.top, 24)
         }
         .frame(width: preset.devicePoints.width + 24, height: preset.devicePoints.height + 24)
+    }
+}
+
+struct DeveloperModerationPreviewView: View {
+    let repository: any HopeDataStore
+    @State private var simulationCount = 0
+
+    var body: some View {
+        AppScreen(
+            title: "Moderation Preview",
+            subtitle: "Developer-only view of local moderation state before wiring a backend."
+        ) {
+            summaryCards
+            simulationControls
+            flaggedNotesSection
+            reportsSection
+            blockedSourcesSection
+        }
+        .navigationTitle("Moderation")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private var summaryCards: some View {
+        HStack(alignment: .top, spacing: AppTheme.Spacing.small) {
+            StatCard(title: "flagged", value: "\(repository.flaggedNotes.count)", systemImage: "flag")
+            StatCard(title: "reports", value: "\(repository.noteReports.count)", systemImage: "exclamationmark.bubble")
+            StatCard(title: "blocked", value: "\(repository.blockedSourceUserIDs.count)", systemImage: "hand.raised")
+        }
+    }
+
+    private var simulationControls: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
+            SectionHeader(
+                eyebrow: "Simulation",
+                title: "Create sample moderation events",
+                subtitle: "Use this to test how the local moderation records change without editing seed data."
+            )
+
+            Button {
+                simulateModerationEvent()
+            } label: {
+                Label("Simulate report event", systemImage: "wand.and.stars")
+                    .font(.body.weight(.semibold))
+                    .frame(maxWidth: .infinity, minHeight: 52)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(AppTheme.Colors.accent)
+
+            Text("Each tap creates one flagged-note record. If a visible note is available, it also creates a local report and hides that note for review.")
+                .font(.footnote)
+                .foregroundStyle(AppTheme.Colors.textSecondary)
+        }
+        .hopeCardStyle()
+    }
+
+    private var flaggedNotesSection: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
+            SectionHeader(
+                eyebrow: "Admin MVP",
+                title: "Flagged notes",
+                subtitle: "Stored records prepared for a future moderation dashboard."
+            )
+
+            if repository.flaggedNotes.isEmpty {
+                EmptyStateCard(
+                    title: "No flagged notes",
+                    message: "Flagged content will collect here when notes are reviewed or blocked.",
+                    systemImage: "flag.slash"
+                )
+            } else {
+                VStack(spacing: AppTheme.Spacing.small) {
+                    ForEach(repository.flaggedNotes) { flagged in
+                        VStack(alignment: .leading, spacing: AppTheme.Spacing.xxSmall) {
+                            Text(flagged.reportReason.title)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(AppTheme.Colors.accent)
+                            Text(flagged.content)
+                                .font(.body)
+                                .foregroundStyle(AppTheme.Colors.textPrimary)
+                                .fixedSize(horizontal: false, vertical: true)
+                            Text("userID: \(flagged.userID) • \(flagged.timestamp.formatted(date: .abbreviated, time: .shortened))")
+                                .font(.footnote)
+                                .foregroundStyle(AppTheme.Colors.textSecondary)
+                        }
+                        .hopeCardStyle()
+                    }
+                }
+            }
+        }
+    }
+
+    private var reportsSection: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
+            SectionHeader(
+                eyebrow: "Reports",
+                title: "Note reports",
+                subtitle: "Local reports saved with source and reporter identifiers."
+            )
+
+            if repository.noteReports.isEmpty {
+                EmptyStateCard(
+                    title: "No reports yet",
+                    message: "Reported notes will appear here for moderation review.",
+                    systemImage: "tray"
+                )
+            } else {
+                VStack(spacing: AppTheme.Spacing.small) {
+                    ForEach(repository.noteReports) { report in
+                        VStack(alignment: .leading, spacing: AppTheme.Spacing.xxSmall) {
+                            Text(report.reportReason.title)
+                                .font(.caption.weight(.semibold))
+                                .foregroundStyle(AppTheme.Colors.accent)
+                            Text("noteID: \(report.noteID.uuidString)")
+                                .font(.footnote.monospaced())
+                                .foregroundStyle(AppTheme.Colors.textSecondary)
+                            Text("reporter: \(report.reporterUserID)")
+                                .font(.footnote)
+                                .foregroundStyle(AppTheme.Colors.textSecondary)
+                            Text("source: \(report.reportedUserID)")
+                                .font(.footnote)
+                                .foregroundStyle(AppTheme.Colors.textSecondary)
+                        }
+                        .hopeCardStyle()
+                    }
+                }
+            }
+        }
+    }
+
+    private var blockedSourcesSection: some View {
+        VStack(alignment: .leading, spacing: AppTheme.Spacing.small) {
+            SectionHeader(
+                eyebrow: "Blocks",
+                title: "Blocked source IDs",
+                subtitle: "Future notes from these anonymous sources are hidden from the feed."
+            )
+
+            if repository.blockedSourceUserIDs.isEmpty {
+                EmptyStateCard(
+                    title: "No blocked sources",
+                    message: "Blocked source IDs will appear here after a report chooses to hide future notes.",
+                    systemImage: "hand.raised.slash"
+                )
+            } else {
+                VStack(spacing: AppTheme.Spacing.small) {
+                    ForEach(Array(repository.blockedSourceUserIDs).sorted(), id: \.self) { blockedID in
+                        HStack {
+                            Image(systemName: "hand.raised.fill")
+                                .foregroundStyle(AppTheme.Colors.accent)
+                            Text(blockedID)
+                                .font(.footnote.monospaced())
+                                .foregroundStyle(AppTheme.Colors.textPrimary)
+                            Spacer()
+                        }
+                        .hopeCardStyle(padding: AppTheme.Spacing.small)
+                    }
+                }
+            }
+        }
+    }
+
+    private func simulateModerationEvent() {
+        simulationCount += 1
+        let categories: [ReportCategory] = [.harmfulOrTriggering, .harassmentOrAbuse, .encouragesSelfHarm, .hateSpeech, .spam]
+        let category = categories[(simulationCount - 1) % categories.count]
+
+        if let note = repository.visibleNotes.first {
+            repository.report(noteID: note.id, reason: category)
+            if simulationCount.isMultiple(of: 2) {
+                repository.blockSource(userID: note.sourceUserID)
+            }
+        } else {
+            repository.saveFlaggedNote(
+                FlaggedNote(
+                    id: UUID(),
+                    noteID: nil,
+                    content: "Simulated moderation event \(simulationCount)",
+                    reportReason: category,
+                    timestamp: .now,
+                    userID: repository.currentUserID
+                )
+            )
+        }
     }
 }
 

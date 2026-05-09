@@ -283,7 +283,9 @@ struct SupportResponseEngine {
             createdAt: .now,
             tags: [mood],
             helpedCount: 0,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "system.fallback",
+            moderationStatus: .visible
         )
     }
 
@@ -295,7 +297,9 @@ struct SupportResponseEngine {
             createdAt: .now,
             tags: [mood],
             helpedCount: 0,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "system.fallback",
+            moderationStatus: .visible
         )
     }
 
@@ -306,7 +310,9 @@ struct SupportResponseEngine {
             createdAt: .now,
             tags: [],
             helpedCount: 0,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "system.fallback",
+            moderationStatus: .visible
         )
     }
 
@@ -368,4 +374,92 @@ private enum DetectedIntent {
     case mood(MoodType)
     case quickAction(QuickAction)
     case generic
+}
+
+struct ContentModerationService {
+    func isFlagged(_ text: String) -> Bool {
+        if case .blocked = evaluate(text) {
+            return true
+        }
+        return false
+    }
+
+    func evaluate(_ text: String) -> ModerationReviewState {
+        let normalized = normalize(text)
+
+        if matchesAny(in: normalized, phrases: [
+            "kill yourself",
+            "go kill yourself",
+            "you should die",
+            "people like you should die",
+            "i will kill you",
+            "i'm going to kill you",
+            "i am going to kill you",
+            "i'll hurt you",
+            "burn in hell"
+        ]) {
+            return .blocked(
+                category: matchesAny(in: normalized, phrases: ["kill yourself", "go kill yourself"]) ? .encouragesSelfHarm : .harassmentOrAbuse,
+                message: "That note can’t be shared here. Try rewriting it as something grounding, gentle, or safe."
+            )
+        }
+
+        if matchesAny(in: normalized, phrases: [
+            "worthless trash",
+            "subhuman",
+            "dirty immigrant",
+            "fag",
+            "kike",
+            "nigger",
+            "spic",
+            "tranny"
+        ]) {
+            return .blocked(
+                category: .hateSpeech,
+                message: "That note can’t be shared here. Try rewriting it in a way that does not target or degrade anyone."
+            )
+        }
+
+        if matchesAny(in: normalized, phrases: [
+            "nobody wants you",
+            "you're pathetic",
+            "you are pathetic",
+            "everyone hates you",
+            "shut up",
+            "you deserve pain",
+            "end it already",
+            "just disappear"
+        ]) {
+            return .pendingReview(
+                category: .harassmentOrAbuse,
+                message: "That note needs a review before it can be shared. Try rewriting it as support instead of harm."
+            )
+        }
+
+        if matchesAny(in: normalized, phrases: [
+            "buy now",
+            "click this link",
+            "dm me for",
+            "make money fast"
+        ]) {
+            return .pendingReview(
+                category: .spam,
+                message: "That note is being held for review."
+            )
+        }
+
+        return .clear
+    }
+
+    private func normalize(_ text: String) -> String {
+        text
+            .lowercased()
+            .replacingOccurrences(of: "[^a-z0-9\\s]", with: " ", options: .regularExpression)
+            .replacingOccurrences(of: "\\s+", with: " ", options: .regularExpression)
+            .trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private func matchesAny(in text: String, phrases: [String]) -> Bool {
+        phrases.contains(where: text.contains)
+    }
 }

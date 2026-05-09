@@ -7,14 +7,22 @@ protocol HopeDataStore: AnyObject {
     var changePublisher: AnyPublisher<Void, Never> { get }
     var checkIns: [MoodCheckIn] { get }
     var notes: [HopeNote] { get }
+    var visibleNotes: [HopeNote] { get }
     var authoredNoteIDs: Set<UUID> { get }
+    var noteReports: [NoteReport] { get }
+    var flaggedNotes: [FlaggedNote] { get }
+    var blockedSourceUserIDs: Set<String> { get }
+    var currentUserID: String { get }
     var savedNotes: [HopeNote] { get }
     var stats: UserStats { get }
 
     func saveCheckIn(_ checkIn: MoodCheckIn)
-    func addNote(text: String, tags: [MoodType])
+    func addNote(text: String, tags: [MoodType], moderationStatus: ModerationStatus) -> HopeNote
     func toggleSaved(for noteID: UUID)
     func markHelpful(for noteID: UUID)
+    func report(noteID: UUID, reason: ReportCategory)
+    func blockSource(userID: String)
+    func saveFlaggedNote(_ flaggedNote: FlaggedNote)
     func noteForMood(_ mood: MoodType?) -> HopeNote?
 }
 
@@ -29,6 +37,10 @@ final class HopeRepository: ObservableObject, HopeDataStore {
     @Published private(set) var checkIns: [MoodCheckIn]
     @Published private(set) var notes: [HopeNote]
     @Published private(set) var authoredNoteIDs: Set<UUID>
+    @Published private(set) var noteReports: [NoteReport]
+    @Published private(set) var flaggedNotes: [FlaggedNote]
+    @Published private(set) var blockedSourceUserIDs: Set<String>
+    @Published private(set) var currentUserID: String
 
     private let defaults: UserDefaults
     private let encoder = JSONEncoder()
@@ -38,6 +50,10 @@ final class HopeRepository: ObservableObject, HopeDataStore {
         static let checkIns = "stillHereHope.checkIns"
         static let notes = "stillHereHope.notes"
         static let authoredNoteIDs = "stillHereHope.authoredNoteIDs"
+        static let noteReports = "stillHereHope.noteReports"
+        static let flaggedNotes = "stillHereHope.flaggedNotes"
+        static let blockedSourceUserIDs = "stillHereHope.blockedSourceUserIDs"
+        static let currentUserID = "stillHereHope.currentUserID"
     }
 
     init(defaults: UserDefaults = .standard) {
@@ -48,6 +64,14 @@ final class HopeRepository: ObservableObject, HopeDataStore {
         self.checkIns = Self.load([MoodCheckIn].self, key: StorageKey.checkIns, defaults: defaults, decoder: decoder) ?? []
         self.notes = Self.load([HopeNote].self, key: StorageKey.notes, defaults: defaults, decoder: decoder) ?? SeedContent.notes
         self.authoredNoteIDs = Self.load(Set<UUID>.self, key: StorageKey.authoredNoteIDs, defaults: defaults, decoder: decoder) ?? []
+        self.noteReports = Self.load([NoteReport].self, key: StorageKey.noteReports, defaults: defaults, decoder: decoder) ?? []
+        self.flaggedNotes = Self.load([FlaggedNote].self, key: StorageKey.flaggedNotes, defaults: defaults, decoder: decoder) ?? []
+        self.blockedSourceUserIDs = Self.load(Set<String>.self, key: StorageKey.blockedSourceUserIDs, defaults: defaults, decoder: decoder) ?? []
+        self.currentUserID = defaults.string(forKey: StorageKey.currentUserID) ?? UUID().uuidString
+
+        if defaults.string(forKey: StorageKey.currentUserID) == nil {
+            defaults.set(currentUserID, forKey: StorageKey.currentUserID)
+        }
 
         persistNotesIfNeeded()
     }
@@ -59,7 +83,16 @@ final class HopeRepository: ObservableObject, HopeDataStore {
     }
 
     var savedNotes: [HopeNote] {
-        notes.filter(\.isSaved)
+        visibleNotes.filter(\.isSaved)
+    }
+
+    var visibleNotes: [HopeNote] {
+        notes.filter { note in
+            if blockedSourceUserIDs.contains(note.userID) {
+                return false
+            }
+            return !note.isHidden
+        }
     }
 
     var stats: UserStats {
@@ -87,19 +120,23 @@ final class HopeRepository: ObservableObject, HopeDataStore {
         persist(checkIns, key: StorageKey.checkIns)
     }
 
-    func addNote(text: String, tags: [MoodType]) {
+    @discardableResult
+    func addNote(text: String, tags: [MoodType], moderationStatus: ModerationStatus = .visible) -> HopeNote {
         let note = HopeNote(
             id: UUID(),
             text: text,
             createdAt: .now,
             tags: tags,
             helpedCount: 0,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: currentUserID,
+            moderationStatus: moderationStatus
         )
         notes.insert(note, at: 0)
         authoredNoteIDs.insert(note.id)
         persist(notes, key: StorageKey.notes)
         persist(authoredNoteIDs, key: StorageKey.authoredNoteIDs)
+        return note
     }
 
     func toggleSaved(for noteID: UUID) {
@@ -114,15 +151,55 @@ final class HopeRepository: ObservableObject, HopeDataStore {
         persist(notes, key: StorageKey.notes)
     }
 
+    func report(noteID: UUID, reason: ReportCategory) {
+        guard let index = notes.firstIndex(where: { $0.id == noteID }) else { return }
+
+        notes[index].isHidden = true
+
+        let report = NoteReport(
+            id: UUID(),
+            noteID: noteID,
+            reportReason: reason,
+            timestamp: .now,
+            reporterUserID: currentUserID,
+            reportedUserID: notes[index].sourceUserID
+        )
+        noteReports.insert(report, at: 0)
+
+        let flagged = FlaggedNote(
+            id: UUID(),
+            noteID: noteID,
+            content: notes[index].text,
+            reportReason: reason,
+            timestamp: .now,
+            userID: notes[index].sourceUserID
+        )
+        flaggedNotes.insert(flagged, at: 0)
+
+        persist(notes, key: StorageKey.notes)
+        persist(noteReports, key: StorageKey.noteReports)
+        persist(flaggedNotes, key: StorageKey.flaggedNotes)
+    }
+
+    func blockSource(userID: String) {
+        blockedSourceUserIDs.insert(userID)
+        persist(blockedSourceUserIDs, key: StorageKey.blockedSourceUserIDs)
+    }
+
+    func saveFlaggedNote(_ flaggedNote: FlaggedNote) {
+        flaggedNotes.insert(flaggedNote, at: 0)
+        persist(flaggedNotes, key: StorageKey.flaggedNotes)
+    }
+
     func noteForMood(_ mood: MoodType?) -> HopeNote? {
         let filtered: [HopeNote]
         if let mood {
-            filtered = notes.filter { $0.tags.contains(mood) }
+            filtered = visibleNotes.filter { $0.tags.contains(mood) }
         } else {
-            filtered = notes
+            filtered = visibleNotes
         }
 
-        return (filtered.isEmpty ? notes : filtered)
+        return (filtered.isEmpty ? visibleNotes : filtered)
             .sorted { $0.helpedCount > $1.helpedCount }
             .first
     }
@@ -150,6 +227,15 @@ final class HopeRepository: ObservableObject, HopeDataStore {
     private func persistNotesIfNeeded() {
         if defaults.data(forKey: StorageKey.notes) == nil {
             persist(notes, key: StorageKey.notes)
+        }
+        if defaults.data(forKey: StorageKey.noteReports) == nil {
+            persist(noteReports, key: StorageKey.noteReports)
+        }
+        if defaults.data(forKey: StorageKey.flaggedNotes) == nil {
+            persist(flaggedNotes, key: StorageKey.flaggedNotes)
+        }
+        if defaults.data(forKey: StorageKey.blockedSourceUserIDs) == nil {
+            persist(blockedSourceUserIDs, key: StorageKey.blockedSourceUserIDs)
         }
     }
 
@@ -185,7 +271,12 @@ final class CloudKitHopeDataStore: HopeDataStore {
     var changePublisher: AnyPublisher<Void, Never> { localFallback.changePublisher }
     var checkIns: [MoodCheckIn] { localFallback.checkIns }
     var notes: [HopeNote] { localFallback.notes }
+    var visibleNotes: [HopeNote] { localFallback.visibleNotes }
     var authoredNoteIDs: Set<UUID> { localFallback.authoredNoteIDs }
+    var noteReports: [NoteReport] { localFallback.noteReports }
+    var flaggedNotes: [FlaggedNote] { localFallback.flaggedNotes }
+    var blockedSourceUserIDs: Set<String> { localFallback.blockedSourceUserIDs }
+    var currentUserID: String { localFallback.currentUserID }
     var savedNotes: [HopeNote] { localFallback.savedNotes }
     var stats: UserStats { localFallback.stats }
 
@@ -197,8 +288,8 @@ final class CloudKitHopeDataStore: HopeDataStore {
         }
     }
 
-    func addNote(text: String, tags: [MoodType]) {
-        localFallback.addNote(text: text, tags: tags)
+    func addNote(text: String, tags: [MoodType], moderationStatus: ModerationStatus) -> HopeNote {
+        localFallback.addNote(text: text, tags: tags, moderationStatus: moderationStatus)
     }
 
     func toggleSaved(for noteID: UUID) {
@@ -207,6 +298,18 @@ final class CloudKitHopeDataStore: HopeDataStore {
 
     func markHelpful(for noteID: UUID) {
         localFallback.markHelpful(for: noteID)
+    }
+
+    func report(noteID: UUID, reason: ReportCategory) {
+        localFallback.report(noteID: noteID, reason: reason)
+    }
+
+    func blockSource(userID: String) {
+        localFallback.blockSource(userID: userID)
+    }
+
+    func saveFlaggedNote(_ flaggedNote: FlaggedNote) {
+        localFallback.saveFlaggedNote(flaggedNote)
     }
 
     func noteForMood(_ mood: MoodType?) -> HopeNote? {
@@ -245,7 +348,12 @@ final class BackendHopeDataStore: HopeDataStore {
     var changePublisher: AnyPublisher<Void, Never> { localFallback.changePublisher }
     var checkIns: [MoodCheckIn] { localFallback.checkIns }
     var notes: [HopeNote] { localFallback.notes }
+    var visibleNotes: [HopeNote] { localFallback.visibleNotes }
     var authoredNoteIDs: Set<UUID> { localFallback.authoredNoteIDs }
+    var noteReports: [NoteReport] { localFallback.noteReports }
+    var flaggedNotes: [FlaggedNote] { localFallback.flaggedNotes }
+    var blockedSourceUserIDs: Set<String> { localFallback.blockedSourceUserIDs }
+    var currentUserID: String { localFallback.currentUserID }
     var savedNotes: [HopeNote] { localFallback.savedNotes }
     var stats: UserStats { localFallback.stats }
 
@@ -253,8 +361,8 @@ final class BackendHopeDataStore: HopeDataStore {
         localFallback.saveCheckIn(checkIn)
     }
 
-    func addNote(text: String, tags: [MoodType]) {
-        localFallback.addNote(text: text, tags: tags)
+    func addNote(text: String, tags: [MoodType], moderationStatus: ModerationStatus) -> HopeNote {
+        localFallback.addNote(text: text, tags: tags, moderationStatus: moderationStatus)
     }
 
     func toggleSaved(for noteID: UUID) {
@@ -263,6 +371,18 @@ final class BackendHopeDataStore: HopeDataStore {
 
     func markHelpful(for noteID: UUID) {
         localFallback.markHelpful(for: noteID)
+    }
+
+    func report(noteID: UUID, reason: ReportCategory) {
+        localFallback.report(noteID: noteID, reason: reason)
+    }
+
+    func blockSource(userID: String) {
+        localFallback.blockSource(userID: userID)
+    }
+
+    func saveFlaggedNote(_ flaggedNote: FlaggedNote) {
+        localFallback.saveFlaggedNote(flaggedNote)
     }
 
     func noteForMood(_ mood: MoodType?) -> HopeNote? {
@@ -389,7 +509,9 @@ enum SeedContent {
             createdAt: .now.addingTimeInterval(-86_400 * 5),
             tags: [.overwhelmed, .anxious],
             helpedCount: 18,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "seed.community.1",
+            moderationStatus: .visible
         ),
         HopeNote(
             id: UUID(uuidString: "C319B463-4A80-4FF1-9830-F70E61D531D1") ?? UUID(),
@@ -397,7 +519,9 @@ enum SeedContent {
             createdAt: .now.addingTimeInterval(-86_400 * 4),
             tags: [.low, .numb],
             helpedCount: 25,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "seed.community.2",
+            moderationStatus: .visible
         ),
         HopeNote(
             id: UUID(uuidString: "90FD2A93-9335-457E-B8F8-0CC86A17C204") ?? UUID(),
@@ -405,7 +529,9 @@ enum SeedContent {
             createdAt: .now.addingTimeInterval(-86_400 * 3),
             tags: [.low, .anxious],
             helpedCount: 11,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "seed.community.3",
+            moderationStatus: .visible
         ),
         HopeNote(
             id: UUID(uuidString: "8D785B1E-22C8-4028-A976-172220F8FC3E") ?? UUID(),
@@ -413,7 +539,9 @@ enum SeedContent {
             createdAt: .now.addingTimeInterval(-86_400 * 2),
             tags: [.angry],
             helpedCount: 8,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "seed.community.4",
+            moderationStatus: .visible
         ),
         HopeNote(
             id: UUID(uuidString: "8E2A8A35-3BD6-4777-B557-F9F1D9A8A6F0") ?? UUID(),
@@ -421,7 +549,9 @@ enum SeedContent {
             createdAt: .now.addingTimeInterval(-86_400),
             tags: [.overwhelmed, .low],
             helpedCount: 31,
-            isSaved: false
+            isSaved: false,
+            sourceUserID: "seed.community.5",
+            moderationStatus: .visible
         )
     ]
 }
@@ -472,7 +602,9 @@ extension HopeRepository {
                     createdAt: .now.addingTimeInterval(-15_000),
                     tags: [.overwhelmed, .anxious],
                     helpedCount: 46,
-                    isSaved: true
+                    isSaved: true,
+                    sourceUserID: "preview.community.1",
+                    moderationStatus: .visible
                 ),
                 HopeNote(
                     id: UUID(uuidString: "B4E85A11-209C-4256-BD93-44FE96700002") ?? UUID(),
@@ -480,7 +612,9 @@ extension HopeRepository {
                     createdAt: .now.addingTimeInterval(-28_000),
                     tags: [.low, .anxious],
                     helpedCount: 31,
-                    isSaved: true
+                    isSaved: true,
+                    sourceUserID: "preview.community.2",
+                    moderationStatus: .visible
                 ),
                 HopeNote(
                     id: UUID(uuidString: "B4E85A11-209C-4256-BD93-44FE96700003") ?? UUID(),
@@ -488,7 +622,9 @@ extension HopeRepository {
                     createdAt: .now.addingTimeInterval(-39_000),
                     tags: [.anxious],
                     helpedCount: 18,
-                    isSaved: false
+                    isSaved: false,
+                    sourceUserID: "preview.community.3",
+                    moderationStatus: .visible
                 ),
                 HopeNote(
                     id: UUID(uuidString: "B4E85A11-209C-4256-BD93-44FE96700004") ?? UUID(),
@@ -496,7 +632,9 @@ extension HopeRepository {
                     createdAt: .now.addingTimeInterval(-52_000),
                     tags: [.numb, .low],
                     helpedCount: 12,
-                    isSaved: false
+                    isSaved: false,
+                    sourceUserID: "preview.community.4",
+                    moderationStatus: .visible
                 ),
                 HopeNote(
                     id: UUID(uuidString: "B4E85A11-209C-4256-BD93-44FE96700005") ?? UUID(),
@@ -504,13 +642,61 @@ extension HopeRepository {
                     createdAt: .now.addingTimeInterval(-63_000),
                     tags: [.angry, .overwhelmed],
                     helpedCount: 9,
-                    isSaved: false
+                    isSaved: false,
+                    sourceUserID: "preview.community.5",
+                    moderationStatus: .visible
                 )
             ]
         }
 
         var authoredNoteIDs: Set<UUID> {
             [notes[0].id, notes[1].id]
+        }
+
+        var noteReports: [NoteReport] {
+            [
+                NoteReport(
+                    id: UUID(uuidString: "A4E85A11-209C-4256-BD93-44FE96700001") ?? UUID(),
+                    noteID: notes[2].id,
+                    reportReason: .harmfulOrTriggering,
+                    timestamp: .now.addingTimeInterval(-1_800),
+                    reporterUserID: "preview.user.current",
+                    reportedUserID: notes[2].sourceUserID
+                ),
+                NoteReport(
+                    id: UUID(uuidString: "A4E85A11-209C-4256-BD93-44FE96700002") ?? UUID(),
+                    noteID: notes[4].id,
+                    reportReason: .harassmentOrAbuse,
+                    timestamp: .now.addingTimeInterval(-900),
+                    reporterUserID: "preview.user.current",
+                    reportedUserID: notes[4].sourceUserID
+                )
+            ]
+        }
+
+        var flaggedNotes: [FlaggedNote] {
+            [
+                FlaggedNote(
+                    id: UUID(uuidString: "F4E85A11-209C-4256-BD93-44FE96700001") ?? UUID(),
+                    noteID: notes[2].id,
+                    content: notes[2].text,
+                    reportReason: .harmfulOrTriggering,
+                    timestamp: .now.addingTimeInterval(-1_800),
+                    userID: notes[2].sourceUserID
+                ),
+                FlaggedNote(
+                    id: UUID(uuidString: "F4E85A11-209C-4256-BD93-44FE96700002") ?? UUID(),
+                    noteID: nil,
+                    content: "Everyone hates you and you should disappear.",
+                    reportReason: .harassmentOrAbuse,
+                    timestamp: .now.addingTimeInterval(-600),
+                    userID: "preview.user.current"
+                )
+            ]
+        }
+
+        var blockedSourceUserIDs: Set<String> {
+            [notes[4].sourceUserID]
         }
     }
 
@@ -525,6 +711,10 @@ extension HopeRepository {
         defaults.set(try? encoder.encode(previewSeed.checkIns), forKey: StorageKey.checkIns)
         defaults.set(try? encoder.encode(previewSeed.notes), forKey: StorageKey.notes)
         defaults.set(try? encoder.encode(previewSeed.authoredNoteIDs), forKey: StorageKey.authoredNoteIDs)
+        defaults.set(try? encoder.encode(previewSeed.noteReports), forKey: StorageKey.noteReports)
+        defaults.set(try? encoder.encode(previewSeed.flaggedNotes), forKey: StorageKey.flaggedNotes)
+        defaults.set(try? encoder.encode(previewSeed.blockedSourceUserIDs), forKey: StorageKey.blockedSourceUserIDs)
+        defaults.set("preview.user.current", forKey: StorageKey.currentUserID)
 
         self.init(defaults: defaults)
     }

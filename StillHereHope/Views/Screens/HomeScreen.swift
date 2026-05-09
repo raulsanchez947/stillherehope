@@ -2,6 +2,8 @@ import SwiftUI
 
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
+    @FocusState private var isHeavinessFieldFocused: Bool
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
         AppScreen(
@@ -42,6 +44,15 @@ struct HomeView: View {
         }
         .navigationTitle("Home")
         .navigationBarTitleDisplayMode(.inline)
+        .scrollDismissesKeyboard(.interactively)
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button("Done") {
+                    isHeavinessFieldFocused = false
+                }
+            }
+        }
     }
 
     private var shouldShowPresentationAfterCheckIn: Bool {
@@ -60,7 +71,7 @@ struct HomeView: View {
                 subtitle: "How does today feel in your body right now?"
             )
 
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: AppTheme.Spacing.small) {
+            LazyVGrid(columns: moodColumns, spacing: AppTheme.Spacing.small) {
                 ForEach(MoodType.allCases) { mood in
                     MoodChip(
                         mood: mood,
@@ -79,11 +90,16 @@ struct HomeView: View {
 
                     TextField("Optional", text: $viewModel.heavinessText, axis: .vertical)
                         .textFieldStyle(.plain)
+                        .focused($isHeavinessFieldFocused)
+                        .submitLabel(.done)
                         .padding(AppTheme.Spacing.small)
-                        .frame(minHeight: 88, alignment: .topLeading)
+                        .frame(maxWidth: .infinity, minHeight: 88, alignment: .topLeading)
                         .quietSurfaceStyle()
                         .onChange(of: viewModel.heavinessText) { _, _ in
                             viewModel.refreshPresentation()
+                        }
+                        .onSubmit {
+                            isHeavinessFieldFocused = false
                         }
                 }
             }
@@ -99,14 +115,25 @@ struct HomeView: View {
                 subtitle: "Choose one small kind of help for the next few minutes."
             )
 
-            VStack(spacing: AppTheme.Spacing.small) {
+            LazyVGrid(columns: quickActionColumns, spacing: AppTheme.Spacing.small) {
                 ForEach(viewModel.quickActions) { action in
                     QuietActionButton(title: action.rawValue, systemImage: action.symbol) {
+                        isHeavinessFieldFocused = false
                         viewModel.applyQuickAction(action)
                     }
                 }
             }
         }
+    }
+
+    private var moodColumns: [GridItem] {
+        let count = horizontalSizeClass == .regular ? 3 : 2
+        return Array(repeating: GridItem(.flexible(), spacing: AppTheme.Spacing.small), count: count)
+    }
+
+    private var quickActionColumns: [GridItem] {
+        let count = horizontalSizeClass == .regular ? 2 : 1
+        return Array(repeating: GridItem(.flexible(), spacing: AppTheme.Spacing.small), count: count)
     }
 }
 
@@ -174,6 +201,18 @@ struct CheckInResultCard: View {
 }
 
 #Preview("Home - Resting") {
+    NavigationStack {
+        HomeView(viewModel: HomeViewModel(repository: HopeRepository(), supportEngine: SupportResponseEngine()))
+    }
+}
+
+#Preview("Home - iPad Portrait", traits: .fixedLayout(width: 820, height: 1180)) {
+    NavigationStack {
+        HomeView(viewModel: HomeViewModel(repository: HopeRepository(), supportEngine: SupportResponseEngine()))
+    }
+}
+
+#Preview("Home - iPad Landscape", traits: .fixedLayout(width: 1180, height: 820)) {
     NavigationStack {
         HomeView(viewModel: HomeViewModel(repository: HopeRepository(), supportEngine: SupportResponseEngine()))
     }

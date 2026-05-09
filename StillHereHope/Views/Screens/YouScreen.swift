@@ -12,14 +12,21 @@ struct YouView: View {
             NavigationLink {
                 SavedNotesView(notes: viewModel.savedNotes)
             } label: {
-                QuietActionButton(title: "Saved notes", systemImage: "bookmark.fill") { }
+                QuietActionRow(title: "Saved notes", systemImage: "bookmark.fill")
             }
             .buttonStyle(.plain)
 
             NavigationLink {
                 SettingsView()
             } label: {
-                QuietActionButton(title: "Settings", systemImage: "gearshape.fill") { }
+                QuietActionRow(title: "Settings", systemImage: "gearshape.fill")
+            }
+            .buttonStyle(.plain)
+
+            NavigationLink {
+                ReportConcernView()
+            } label: {
+                QuietActionRow(title: "Report a concern", systemImage: "flag.fill")
             }
             .buttonStyle(.plain)
         }
@@ -101,6 +108,12 @@ struct YouView: View {
 }
 
 #Preview("You") {
+    NavigationStack {
+        YouView(viewModel: YouViewModel(repository: HopeRepository()))
+    }
+}
+
+#Preview("You - iPad", traits: .fixedLayout(width: 820, height: 1180)) {
     NavigationStack {
         YouView(viewModel: YouViewModel(repository: HopeRepository()))
     }
