@@ -66,27 +66,19 @@ JaggedPass_EventScript_OpenMagmaHideout::
 
 JaggedPass_EventScript_MagmaHideoutGuard::
 	lockall
-	goto_if_set FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS, JaggedPass_EventScript_GuardDefeated
 	waitse
-	playse SE_PIN
-	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_ExclamationMark
-	waitmovement 0
-	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_Delay48
-	waitmovement 0
 	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_FacePlayer
 	waitmovement 0
+	checkitem ITEM_MAGMA_EMBLEM
+	goto_if_eq VAR_RESULT, TRUE, JaggedPass_EventScript_DefenderAlliedPassage
 	msgbox JaggedPass_Text_GruntIntro, MSGBOX_DEFAULT
 	closemessage
-	trainerbattle_no_intro TRAINER_GRUNT_JAGGED_PASS, JaggedPass_Text_GruntDefeat
-	setflag FLAG_BEAT_MAGMA_GRUNT_JAGGED_PASS
 	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	releaseall
 	end
 
-JaggedPass_EventScript_GuardDefeated::
-	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_FacePlayer
-	waitmovement 0
+JaggedPass_EventScript_DefenderAlliedPassage::
 	msgbox JaggedPass_Text_GoWhereverYouWant, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_HIDEOUT_GUARD, Common_Movement_FaceOriginalDirection
@@ -223,21 +215,19 @@ JaggedPass_Text_EthanPostRematch:
 	.string "in MAUVILLE CITY…$"
 
 JaggedPass_Text_GruntIntro:
-	.string "Wah!\n"
-	.string "What are you doing here?\p"
-	.string "What am I doing in a place like this?\p"
-	.string "What business is it of yours?$"
+	.string "Stop right there.\p"
+	.string "This is HOENN DEFENDERS territory.\n"
+	.string "Unauthorized personnel turn back.\p"
+	.string "Show your EMBLEM or move along.$"
 
 JaggedPass_Text_GruntDefeat:
-	.string "Urrrgh…\p"
-	.string "I should've ducked into our HIDEOUT\n"
-	.string "right away…$"
+	.string "…$"
 
 JaggedPass_Text_GoWhereverYouWant:
-	.string "Okay, oh-kay!\n"
-	.string "I admit it--you're strong!\p"
-	.string "Don't worry about me.\n"
-	.string "Go wherever you want!$"
+	.string "The MAGMA EMBLEM-\n"
+	.string "you're cleared.\p"
+	.string "Go ahead.\n"
+	.string "The HIDEOUT entrance is just ahead.$"
 
 JaggedPass_Text_BoulderShakingInResponseToEmblem:
 	.string "Oh! This boulder is shaking in response\n"

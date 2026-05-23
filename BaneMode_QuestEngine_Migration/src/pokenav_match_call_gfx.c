@@ -604,17 +604,10 @@ static u32 DoMatchCallMessage(s32 state)
         if (IsDma3ManagerBusyWithBgCopy2(gfx))
             return LT_PAUSE;
 
-        PrintCallingDots(gfx);
-        PlaySE(SE_POKENAV_CALL);
-        gfx->skipHangUpSE = FALSE;
+        PrintMatchCallMessage(gfx);
+        gfx->skipHangUpSE = TRUE;
         return LT_INC_AND_PAUSE;
     case 2:
-        if (WaitForCallingDotsText(gfx))
-            return LT_PAUSE;
-
-        PrintMatchCallMessage(gfx);
-        return LT_INC_AND_PAUSE;
-    case 3:
         if (WaitForMatchCallMessageText(gfx))
             return LT_PAUSE;
         break;

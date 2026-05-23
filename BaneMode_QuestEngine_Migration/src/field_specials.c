@@ -4276,7 +4276,6 @@ void BaneModeGiveLegacyBirchBundle(void)
     u16 itemId;
     static const u16 sItems[] =
     {
-        ITEM_TM_CASE,
         ITEM_POKEMON_BOX_LINK,
         ITEM_SACRED_ASH,
         ITEM_FIRE_STONE,
@@ -4321,7 +4320,61 @@ void BaneModeGiveLegacyBirchBundle(void)
         ITEM_SYRUPY_APPLE,
         ITEM_UNREMARKABLE_TEACUP,
         ITEM_MASTERPIECE_TEACUP,
+        ITEM_NORMAL_GEM,
+        ITEM_FIRE_GEM,
+        ITEM_WATER_GEM,
+        ITEM_ELECTRIC_GEM,
+        ITEM_GRASS_GEM,
+        ITEM_ICE_GEM,
+        ITEM_FIGHTING_GEM,
+        ITEM_POISON_GEM,
+        ITEM_GROUND_GEM,
+        ITEM_FLYING_GEM,
+        ITEM_PSYCHIC_GEM,
+        ITEM_BUG_GEM,
+        ITEM_ROCK_GEM,
+        ITEM_GHOST_GEM,
+        ITEM_DRAGON_GEM,
+        ITEM_DARK_GEM,
+        ITEM_STEEL_GEM,
+        ITEM_FAIRY_GEM,
+        ITEM_DOUSE_DRIVE,
+        ITEM_SHOCK_DRIVE,
+        ITEM_BURN_DRIVE,
+        ITEM_CHILL_DRIVE,
+        ITEM_RED_ORB,
+        ITEM_BLUE_ORB,
+        ITEM_MIRROR_HERB,
+        ITEM_BOOSTER_ENERGY,
+        ITEM_FAIRY_FEATHER,
+        ITEM_BERSERK_GENE,
+        ITEM_CORNERSTONE_MASK,
+        ITEM_WELLSPRING_MASK,
+        ITEM_HEARTHFLAME_MASK,
+        // Competitive hold items missing from original new-game bundle
+        ITEM_LEFTOVERS,
+        ITEM_ROCKY_HELMET,
+        ITEM_SHELL_BELL,
+        ITEM_EXPERT_BELT,
+        ITEM_MUSCLE_BAND,
+        ITEM_WISE_GLASSES,
+        ITEM_TOXIC_ORB,
+        ITEM_FLAME_ORB,
+        ITEM_WIDE_LENS,
+        ITEM_ZOOM_LENS,
+        ITEM_EJECT_BUTTON,
+        ITEM_RED_CARD,
+        ITEM_THROAT_SPRAY,
     };
+
+    // Replace old TM Case with SafetyLine (infinite Escape Rope key item)
+    RemoveBagItem(ITEM_TM_CASE, 99);
+    for (itemId = 0; itemId < PC_ITEMS_COUNT; itemId++)
+    {
+        if (gSaveBlock1Ptr->pcItems[itemId].itemId == ITEM_TM_CASE)
+            RemovePCItem(itemId, 999);
+    }
+    AddBagItem(ITEM_TM_CASE, 1);
 
     for (itemId = ITEM_TM01; itemId <= ITEM_TM100; itemId++)
         BaneModeGiveBagOrPcItem(itemId, 1);
@@ -4332,8 +4385,7 @@ void BaneModeGiveLegacyBirchBundle(void)
     for (itemId = 0; itemId < ARRAY_COUNT(sItems); itemId++)
     {
         u16 quantity = 99;
-        if (sItems[itemId] == ITEM_TM_CASE
-         || sItems[itemId] == ITEM_POKEMON_BOX_LINK
+        if (sItems[itemId] == ITEM_POKEMON_BOX_LINK
          || sItems[itemId] == ITEM_SACRED_ASH)
             quantity = 1;
         BaneModeGiveBagOrPcItem(sItems[itemId], quantity);

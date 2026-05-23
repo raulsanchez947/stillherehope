@@ -1,5 +1,5 @@
 .set LOCALID_CAPT_STERN, 1
-.set LOCALID_ARCHIE, 2
+.set LOCALID_GIOVANNI, 2
 .set LOCALID_GRUNT_1, 3
 .set LOCALID_GRUNT_2, 4
 
@@ -28,7 +28,7 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	msgbox SlateportCity_OceanicMuseum_2F_Text_SternWhoAreYou, MSGBOX_DEFAULT
 	msgbox SlateportCity_OceanicMuseum_2F_Text_WereTeamRocket, MSGBOX_DEFAULT
 	closemessage
-	goto_if_eq VAR_BANEMODE_BATTLE_MODE, 2, SlateportCity_OceanicMuseum_2F_EventScript_DoubleBattle
+	@ GRUNT_2 steps forward and fights first (vanilla order)
 	applymovement LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle
 	waitmovement 0
 	call_if_eq VAR_FACING, DIR_SOUTH, SlateportCity_OceanicMuseum_2F_EventScript_PlayerApproachGruntSouth
@@ -36,26 +36,39 @@ SlateportCity_OceanicMuseum_2F_EventScript_CaptStern::
 	trainerbattle_no_intro TRAINER_GRUNT_MUSEUM_1, SlateportCity_OceanicMuseum_2F_Text_Grunt1Defeat
 	msgbox SlateportCity_OceanicMuseum_2F_Text_BossGoingToBeFurious, MSGBOX_DEFAULT
 	closemessage
+	@ GRUNT_2 steps back, GRUNT_1 steps forward
 	applymovement LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated
 	waitmovement 0
 	applymovement LOCALID_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_GruntApproachToBattle
 	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_LetMeTakeCareOfThis, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_GRUNT_MUSEUM_2, SlateportCity_OceanicMuseum_2F_Text_Grunt2Defeat
-	goto SlateportCity_OceanicMuseum_2F_EventScript_AfterRocketBattle
-	end
-
-SlateportCity_OceanicMuseum_2F_EventScript_DoubleBattle::
-	msgbox SlateportCity_OceanicMuseum_2F_Text_RocketDoubleChallenge, MSGBOX_DEFAULT
-	trainerbattle_double TRAINER_GRUNT_MUSEUM_1, SlateportCity_OceanicMuseum_2F_Text_RocketDoubleChallenge, SlateportCity_OceanicMuseum_2F_Text_RocketDoubleDefeat, SlateportCity_OceanicMuseum_2F_Text_RocketDoubleNeedTwoMons, SlateportCity_OceanicMuseum_2F_EventScript_AfterRocketBattle, NO_MUSIC
-	end
-
-SlateportCity_OceanicMuseum_2F_EventScript_AfterRocketBattle::
+	@ GRUNT_1 steps back
+	applymovement LOCALID_GRUNT_1, SlateportCity_OceanicMuseum_2F_Movement_GruntDefeated
+	waitmovement 0
+	@ Both grunts face for Giovanni entrance simultaneously
+	applymovement LOCALID_GRUNT_1, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GRUNT_2, Common_Movement_WalkInPlaceFasterUp
+	waitmovement 0
+	msgbox SlateportCity_OceanicMuseum_2F_Text_MeddlingKid, MSGBOX_DEFAULT
+	closemessage
+	delay 35
+	@ Giovanni spawns and enters simultaneously with GRUNT_2 moving aside
+	addobject LOCALID_GIOVANNI
+	applymovement LOCALID_GIOVANNI, SlateportCity_OceanicMuseum_2F_Movement_ArchieEnter
+	applymovement LOCALID_GRUNT_2, SlateportCity_OceanicMuseum_2F_Movement_GruntMoveForArchie
+	waitmovement 0
+	@ Giovanni's entrance speech (no battle)
+	msgbox SlateportCity_OceanicMuseum_2F_Text_GiovanniIntro, MSGBOX_DEFAULT
+	closemessage
+	applymovement LOCALID_GIOVANNI, SlateportCity_OceanicMuseum_2F_Movement_ArchieApproachPlayer
+	waitmovement 0
 	msgbox SlateportCity_OceanicMuseum_2F_Text_MuseumGiovanniAfterBattle, MSGBOX_DEFAULT
 	closemessage
 	savebgm MUS_DUMMY
 	fadedefaultbgm
 	fadescreen FADE_TO_BLACK
+	removeobject LOCALID_GIOVANNI
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
 	fadescreen FADE_FROM_BLACK
@@ -278,17 +291,25 @@ SlateportCity_OceanicMuseum_2F_Text_ThankYouForTheParts:
 	.string "We can prepare for our expedition now.$"
 
 SlateportCity_OceanicMuseum_2F_Text_WellTakeThoseParts:
-	.string "Hold up!\n"
-	.string "We'll take those parts right now!$"
+	.string "ROCKET: Yo, hold it right there!\n"
+	.string "Run those DEVON PARTS over, now.$"
 
 SlateportCity_OceanicMuseum_2F_Text_SternWhoAreYou:
-	.string "CAPT. STERN: Wh-what?\n"
+	.string "CAPT. STERN: Wh-what?!\n"
 	.string "Who are you people?$"
 
 SlateportCity_OceanicMuseum_2F_Text_WereTeamRocket:
-	.string "We're TEAM ROCKET!\p"
-	.string "Boss wants those parts, so don't make\n"
-	.string "this weird. Hand them over.$"
+	.string "ROCKET: TEAM ROCKET, old man.\p"
+	.string "We don't repeat ourselves.\n"
+	.string "Hand it over or it gets ugly.$"
+
+SlateportCity_OceanicMuseum_2F_Text_GiovanniIntro:
+	.string "GIOVANNI: I'll take it from here.\p"
+	.string "The name is GIOVANNI.\n"
+	.string "I run TEAM ROCKET.\p"
+	.string "Those parts were ours the moment\n"
+	.string "we walked through that door.\p"
+	.string "Step off or get dropped, kid.$"
 
 SlateportCity_OceanicMuseum_2F_Text_Grunt1Defeat:
 	.string "Nahhhh!\n"
@@ -312,18 +333,23 @@ SlateportCity_OceanicMuseum_2F_Text_MeddlingKid:
 	.string "You really had to blow up the plan,\n"
 	.string "huh, kid?$"
 
+SlateportCity_OceanicMuseum_2F_Text_GruntBattleChallenge:
+	.string "ROCKET: Don't even think about it.\n"
+	.string "You're not getting past me.\p"
+	.string "Word to you about get smoked, YN.$"
+
 SlateportCity_OceanicMuseum_2F_Text_RocketDoubleChallenge:
-	.string "That's enough playing around.\p"
-	.string "Both of us are pressing you right here,\n"
-	.string "then the DEVON PARTS go straight to HQ.$"
+	.string "GIOVANNI: Now you deal with me.\p"
+	.string "I didn't come all the way out here\n"
+	.string "to watch a kid embarrass my grunt.$"
 
 SlateportCity_OceanicMuseum_2F_Text_RocketDoubleDefeat:
-	.string "No way…\n"
-	.string "We both got dropped?$"
+	.string "ROCKET: Nah!\n"
+	.string "This kid is built different!$"
 
 SlateportCity_OceanicMuseum_2F_Text_RocketDoubleNeedTwoMons:
-	.string "If you want to face both of us at once,\n"
-	.string "bring at least two battle-ready POKeMON.$"
+	.string "GIOVANNI: You're facing two of us.\n"
+	.string "Bring at least two POKeMON.$"
 
 SlateportCity_OceanicMuseum_2F_Text_MuseumGiovanniAfterBattle:
 	.string "GIOVANNI: Pathetic.\p"

@@ -459,29 +459,29 @@ Route103_Text_MayTimeToHeadBack:
 	.string "before Dad starts wildin'.$"
 
 Route103_Text_BrendanRoute103Pokemon:
-	.string "BRENDAN: Okay, so it's this one and\n"
-	.string "that one that live on ROUTE 103…$"
+	.string "BRENDAN: Aight, so it's this one\n"
+	.string "and that one posted on ROUTE 103…$"
 
 Route103_Text_BrendanLetsBattle:
-	.string "Hey, it's {PLAYER}!\p"
-	.string "…Oh, yeah, Dad gave you a POKéMON.\p"
-	.string "Since we're here, how about a little\n"
-	.string "battle?\p"
-	.string "I'll teach you what being a TRAINER's\n"
+	.string "Yo, it's {PLAYER}!\p"
+	.string "…Oh, word, Dad gave you a POKéMON.\p"
+	.string "Since we're here, run a quick\n"
+	.string "battle with me.\p"
+	.string "I'll show you what being a TRAINER's\n"
 	.string "about!$"
 
 Route103_Text_BrendanDefeated:
-	.string "Huh, {PLAYER}, you're not too shabby.$"
+	.string "Huh, {PLAYER}, you're nice with it.$"
 
 Route103_Text_BrendanTimeToHeadBack:
-	.string "BRENDAN: I think I get it.\n"
-	.string "I think I know why my dad has his eye\l"
-	.string "out for you now.\p"
-	.string "Look, your POKéMON already likes you,\n"
-	.string "even though you just got it.\p"
-	.string "{PLAYER}, I get the feeling that you\n"
-	.string "could befriend any POKéMON with ease.\p"
-	.string "We should head back to the LAB.$"
+	.string "BRENDAN: Aight, I get it now.\n"
+	.string "I see why my dad's been watching\l"
+	.string "you like that.\p"
+	.string "Your POKéMON already rocks with you,\n"
+	.string "and you just got it.\p"
+	.string "{PLAYER}, feels like any POKéMON\n"
+	.string "would trust you easy.\p"
+	.string "Come on, back to the LAB.$"
 
 Route103_Text_ShouldHaveBroughtPotion:
 	.string "My POKéMON is staggeringly tired…\n"

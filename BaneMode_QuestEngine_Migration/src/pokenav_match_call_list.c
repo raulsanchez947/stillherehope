@@ -353,17 +353,8 @@ int GetMatchCallTrainerPic(int index)
 
 const u8 *GetMatchCallMessageText(int index, bool8 *newRematchRequest)
 {
-    struct Pokenav_MatchCallMenu *state = GetSubstructPtr(POKENAV_SUBSTRUCT_MATCH_CALL_MAIN);
     *newRematchRequest = FALSE;
-    if (!Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType))
-        return gText_CallCantBeMadeHere;
-
-    if (!state->matchCallEntries[index].isSpecialTrainer)
-        *newRematchRequest = SelectMatchCallMessage(GetTrainerIdxByRematchIdx(state->matchCallEntries[index].headerId), gStringVar4);
-    else
-        MatchCall_GetMessage(state->matchCallEntries[index].headerId, gStringVar4);
-
-    return gStringVar4;
+    return gText_NumberBlocked;
 }
 
 const u8 *GetMatchCallFlavorText(int index, int checkPageEntry)

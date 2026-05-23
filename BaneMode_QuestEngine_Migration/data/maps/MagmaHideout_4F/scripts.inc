@@ -1,10 +1,10 @@
-.set LOCALID_GROUDON, 1
+.set LOCALID_G_ARTICUNO, 1
 .set LOCALID_GRUNT_1, 2
 .set LOCALID_GRUNT_2, 3
 .set LOCALID_GRUNT_3, 4
-.set LOCALID_TABITHA, 5
-.set LOCALID_MAXIE, 6
-.set LOCALID_GROUDON_SLEEPING, 7
+.set LOCALID_ROCKET_ADMIN, 5
+.set LOCALID_WALLACE, 6
+.set LOCALID_G_ARTICUNO_SLEEPING, 7
 
 MagmaHideout_4F_MapScripts::
 	.byte 0
@@ -27,11 +27,11 @@ MagmaHideout_4F_EventScript_Maxie::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 150
-	removeobject LOCALID_GROUDON_SLEEPING
-	addobject LOCALID_GROUDON
+	removeobject LOCALID_G_ARTICUNO_SLEEPING
+	addobject LOCALID_G_ARTICUNO
 	waitstate
 	delay 60
-	applymovement LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonApproach
+	applymovement LOCALID_G_ARTICUNO, MagmaHideout_4F_Movement_G_ArticunoApproach
 	waitmovement 0
 	special FadeOutOrbEffect
 	waitstate
@@ -41,9 +41,9 @@ MagmaHideout_4F_EventScript_Maxie::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_GROUDON, MagmaHideout_4F_Movement_GroudonExit
+	applymovement LOCALID_G_ARTICUNO, MagmaHideout_4F_Movement_G_ArticunoExit
 	waitmovement 0
-	removeobject LOCALID_GROUDON
+	removeobject LOCALID_G_ARTICUNO
 	delay 4
 	setvar VAR_0x8004, 2  @ vertical pan
 	setvar VAR_0x8005, 2  @ horizontal pan
@@ -52,18 +52,17 @@ MagmaHideout_4F_EventScript_Maxie::
 	special ShakeCamera
 	waitstate
 	delay 30
-	applymovement LOCALID_MAXIE, MagmaHideout_4F_Movement_MaxieLookAround
+	applymovement LOCALID_WALLACE, MagmaHideout_4F_Movement_MaxieLookAround
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieGroudonWhatsWrong, MSGBOX_DEFAULT
 	closemessage
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 30
-	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
+	applymovement LOCALID_WALLACE, Common_Movement_FacePlayer
 	waitmovement 0
 	msgbox MagmaHideout_4F_Text_MaxieOhItWasYou, MSGBOX_DEFAULT
 	closemessage
-	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat
 	msgbox MagmaHideout_4F_Text_MaxieImGoingAfterGroudon, MSGBOX_DEFAULT
 	closemessage
 	clearflag FLAG_HIDE_SLATEPORT_CITY_CAPTAIN_STERN
@@ -72,34 +71,33 @@ MagmaHideout_4F_EventScript_Maxie::
 	setflag FLAG_GROUDON_AWAKENED_MAGMA_HIDEOUT
 	setvar VAR_SLATEPORT_HARBOR_STATE, 1
 	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_MAXIE
+	removeobject LOCALID_WALLACE
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
 	removeobject LOCALID_GRUNT_3
-	removeobject LOCALID_TABITHA
+	removeobject LOCALID_ROCKET_ADMIN
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
 
-EventScript_MagmaHideout_4F_EventScript_MaxieOP::	
+EventScript_MagmaHideout_4F_EventScript_MaxieOP::
 	msgbox MagmaHideout_4F_Text_MaxieOhItWasYou, MSGBOX_DEFAULT
 	closemessage
-	trainerbattle_no_intro TRAINER_MAXIE_MAGMA_HIDEOUT, MagmaHideout_4F_Text_MaxieDefeat
 	msgbox MagmaHideout_4F_Text_MaxieImGoingAfterGroudon, MSGBOX_DEFAULT
 	closemessage
 	fadescreen FADE_TO_BLACK
-	removeobject LOCALID_MAXIE
+	removeobject LOCALID_WALLACE
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
 	removeobject LOCALID_GRUNT_3
-	removeobject LOCALID_TABITHA
+	removeobject LOCALID_ROCKET_ADMIN
 	setflag FLAG_HIDE_MAGMA_HIDEOUT_GRUNTS
 	fadescreen FADE_FROM_BLACK
 	releaseall
 	end
 
-MagmaHideout_4F_Movement_GroudonApproach:
+MagmaHideout_4F_Movement_G_ArticunoApproach:
 	delay_16
 	delay_16
 	walk_slow_down
@@ -112,7 +110,7 @@ MagmaHideout_4F_Movement_GroudonApproach:
 	delay_16
 	step_end
 
-MagmaHideout_4F_Movement_GroudonExit:
+MagmaHideout_4F_Movement_G_ArticunoExit:
 	slide_up
 	slide_up
 	step_end
@@ -152,99 +150,98 @@ MagmaHideout_4F_EventScript_Tabitha::
 	end
 
 MagmaHideout_4F_Text_Grunt11Intro:
-	.string "I want to see GROUDON, too, but they\n"
-	.string "won't let me see even its tail…\p"
-	.string "It's got me feeling really frustrated.\p"
-	.string "Oh, no!\n"
-	.string "I blabbed about GROUDON!$"
+	.string "TEAM ROCKET seized this base!\n"
+	.string "You don't belong here!\p"
+	.string "The BOSS is taking ARTICUNO,\n"
+	.string "and nothing's going to stop us!$"
 
 MagmaHideout_4F_Text_Grunt11Defeat:
-	.string "I guess it's impossible to win if one\n"
-	.string "doesn't have a calm mind…$"
+	.string "How… did I get beaten so fast?!$"
 
 MagmaHideout_4F_Text_Grunt11PostBattle:
-	.string "I wonder if GROUDON even has a tail?$"
+	.string "TEAM ROCKET never runs from\n"
+	.string "a fight… but maybe today…$"
 
 MagmaHideout_4F_Text_Grunt12Intro:
-	.string "Fuhahaha!\n"
-	.string "Soon! Very soon!\l"
-	.string "Our grand objective will be achieved!$"
+	.string "Fuhaha!\n"
+	.string "ARTICUNO is almost ours!\l"
+	.string "TEAM ROCKET's plan is unstoppable!$"
 
 MagmaHideout_4F_Text_Grunt12Defeat:
 	.string "Grrr…\n"
-	.string "I've come so far, but now this?$"
+	.string "I've never seen a trainer like you!$"
 
 MagmaHideout_4F_Text_Grunt12PostBattle:
-	.string "MAXIE, sir!\n"
-	.string "An intruder is headed your way!$"
+	.string "BOSS! An intruder is past me!\n"
+	.string "Heading your way!$"
 
 MagmaHideout_4F_Text_Grunt13Intro:
-	.string "You're not finished yet!\n"
-	.string "You're not getting by me easily!$"
+	.string "You're not done yet!\n"
+	.string "I'm not letting you through!$"
 
 MagmaHideout_4F_Text_Grunt13Defeat:
-	.string "Was I that easy to knock down?$"
+	.string "Wh-was I really that weak?!$"
 
 MagmaHideout_4F_Text_Grunt13PostBattle:
-	.string "C-come on, one more match…$"
+	.string "Just you wait…\n"
+	.string "The BOSS won't lose like I did…$"
 
 MagmaHideout_4F_Text_TabithaIntro:
-	.string "Hehehe!\n"
-	.string "You made it this far, so I'll tell you!\p"
-	.string "That's right!\n"
-	.string "Up ahead, GROUDON is sleeping!\p"
-	.string "MAXIE went to GROUDON just seconds\n"
-	.string "ago!\p"
-	.string "It's going to awaken real soon!\n"
-	.string "Hehe! Hehehe!$"
+	.string "Heh!\n"
+	.string "You've gotten this deep, huh?\p"
+	.string "Up ahead - ARTICUNO's chamber.\p"
+	.string "The BOSS went there to claim it\n"
+	.string "just moments ago.\p"
+	.string "By now it's too late to stop him!\n"
+	.string "ARTICUNO belongs to TEAM ROCKET!$"
 
 MagmaHideout_4F_Text_TabithaDefeat:
-	.string "Taken down again…\n"
-	.string "Hehe…$"
+	.string "Tch…\n"
+	.string "You're something else…$"
 
 MagmaHideout_4F_Text_TabithaPostBattle:
-	.string "…And while you wasted time with me,\n"
-	.string "MAXIE should have awakened GROUDON…$"
+	.string "…While you wasted time on me,\n"
+	.string "the BOSS had his way with ARTICUNO…$"
 
 MagmaHideout_4F_Text_MaxieAwakenGroudon:
-	.string "MAXIE: GROUDON…\p"
-	.string "Nothing could awaken you from your\n"
-	.string "sleep bathed in magma…\p"
-	.string "This BLUE ORB is what you sought.\n"
-	.string "Wasn't it?\p"
-	.string "I have brought you the BLUE ORB.\n"
-	.string "Let its shine awaken you!\p"
-	.string "And show me…\n"
-	.string "Show me the full extent of your power!$"
+	.string "WALLACE: ARTICUNO…\p"
+	.string "Resting here in the heart of\n"
+	.string "the magma…\p"
+	.string "TEAM ROCKET breached this chamber.\n"
+	.string "They tried to seize the ORB.\p"
+	.string "I used it to try to calm you,\n"
+	.string "to keep you from their reach-\p"
+	.string "But now… ARTICUNO!\n"
+	.string "Please, hear me!$"
 
 MagmaHideout_4F_Text_MaxieGroudonWhatsWrong:
-	.string "MAXIE: GROUDON!\n"
-	.string "What's wrong?\p"
-	.string "Wasn't the BLUE ORB the key?\p"
-	.string "GROUDON!\n"
-	.string "Where have you gone…$"
+	.string "WALLACE: ARTICUNO!\p"
+	.string "It's frightened… or enraged.\p"
+	.string "TEAM ROCKET's interference\n"
+	.string "destabilised the connection…\p"
+	.string "ARTICUNO!\n"
+	.string "Wait- where are you going?!$"
 
 MagmaHideout_4F_Text_MaxieOhItWasYou:
-	.string "MAXIE: Oh, so it was you?\p"
-	.string "I've seen you poking around uninvited\n"
-	.string "here and there…\p"
-	.string "I get it now!\n"
-	.string "You must have pulled a cheap stunt!$"
+	.string "WALLACE: {PLAYER}!\n"
+	.string "Thank goodness you're here.\p"
+	.string "TEAM ROCKET stormed this base.\n"
+	.string "We fought them off, but the chaos\l"
+	.string "disturbed ARTICUNO's rest.\p"
+	.string "It fled before I could calm it.\p"
+	.string "This is bad.\n"
+	.string "A distressed ARTICUNO is dangerous.$"
 
 MagmaHideout_4F_Text_MaxieDefeat:
-	.string "What makes you so adept at handling\n"
-	.string "POKéMON?$"
+	.string "WALLACE: …$"
 
 MagmaHideout_4F_Text_MaxieImGoingAfterGroudon:
-	.string "MAXIE: There has to be some reason\n"
-	.string "why GROUDON fled…\p"
-	.string "That's what you're trying to say,\n"
-	.string "aren't you?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Humph…\n"
-	.string "You think I didn't know that?\p"
-	.string "With GROUDON gone, there is no longer\n"
-	.string "any need for this blasted volcano.\p"
-	.string "I am going after GROUDON, so this\n"
-	.string "is where we part!$"
+	.string "WALLACE: I have to go after ARTICUNO\n"
+	.string "before it reaches populated areas.\p"
+	.string "The HOENN DEFENDERS will handle\n"
+	.string "what's left of TEAM ROCKET here.\p"
+	.string "But {PLAYER}-\p"
+	.string "TEAM ROCKET is escalating.\n"
+	.string "They've made their move on HOENN.\p"
+	.string "Stay alert.\n"
+	.string "We'll need every ally we have.$"

@@ -997,7 +997,7 @@
       "width": 20,
       "height": 25,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_FortreeGym",
+      "secondary_tileset": "gTileset_MossdeepGym",
       "border_filepath": "data/layouts/FortreeCity_Gym/border.bin",
       "blockdata_filepath": "data/layouts/FortreeCity_Gym/map.bin"
     },

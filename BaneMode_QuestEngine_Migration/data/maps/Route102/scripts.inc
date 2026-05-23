@@ -93,7 +93,8 @@ Route102_Text_ImNotVeryTall:
 	.string "in with the tall grass. \p"
 	.string "I can sneak up on POKéMON that way!\l"
 	.string "Just press the A button while using\n"
-	.string "DEXNAV to sneak up on the target.$"
+	.string "the DEXNAV to sneak up on\l"
+	.string "the target.$"
 
 Route102_Text_CatchWholeBunchOfPokemon:
 	.string "I'm going to catch a whole bunch of\n"

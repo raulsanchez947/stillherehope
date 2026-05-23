@@ -377,12 +377,30 @@ void BaneModeGiveShinyScraggyInsurance(void)
     u8 ivs[NUM_STATS] = {31, 31, 31, 31, 31, 31};
     u16 moves[MAX_MON_MOVES] = {MOVE_NONE, MOVE_NONE, MOVE_NONE, MOVE_NONE};
 
-    gSpecialVar_Result = ScriptGiveCustomMon(SPECIES_SCRAGGY,
+    gSpecialVar_Result = ScriptGiveCustomMon(SPECIES_SCRAFTY,
                                              10,
                                              ITEM_NONE,
                                              BALL_PREMIER,
                                              NATURE_ADAMANT,
                                              0xFF,
+                                             evs,
+                                             ivs,
+                                             moves,
+                                             TRUE);
+}
+
+void BaneModeGiveJoeMagikarp(void)
+{
+    u8 evs[NUM_STATS] = {0};
+    u8 ivs[NUM_STATS] = {31, 31, 31, 31, 31, 31};
+    u16 moves[MAX_MON_MOVES] = {MOVE_SPLASH, MOVE_TACKLE, MOVE_NONE, MOVE_NONE};
+
+    gSpecialVar_Result = ScriptGiveCustomMon(SPECIES_MAGIKARP,
+                                             5,
+                                             ITEM_NONE,
+                                             BALL_DIVE,
+                                             NATURE_JOLLY,
+                                             2,
                                              evs,
                                              ivs,
                                              moves,

@@ -151,8 +151,122 @@ static bool32 IsBaneModeRocketTrainer(const struct Trainer *trainer)
         || trainer->trainerClass == TRAINER_CLASS_TEAM_MAGMA;
 }
 
+static bool32 IsBaneModeRouteMinibossTrainer(u16 trainerNum)
+{
+    switch (trainerNum)
+    {
+    case TRAINER_BANEMODE_AEG:
+    case TRAINER_CALVIN_1:
+    case TRAINER_RICK:
+    case TRAINER_TIANA:
+    case TRAINER_MAY_ROUTE_103_TREECKO:
+    case TRAINER_MAY_ROUTE_103_TORCHIC:
+    case TRAINER_MAY_ROUTE_103_MUDKIP:
+    case TRAINER_MAY_RUSTBORO_TREECKO:
+    case TRAINER_MAY_RUSTBORO_TORCHIC:
+    case TRAINER_MAY_RUSTBORO_MUDKIP:
+    case TRAINER_FOSTER:
+    case TRAINER_LUIS:
+    case TRAINER_DOMINIK:
+    case TRAINER_DOUGLAS:
+    case TRAINER_KYLA:
+    case TRAINER_ELLIOT_1:
+    case TRAINER_DARRIN:
+    case TRAINER_TONY_1:
+    case TRAINER_DENISE:
+    case TRAINER_JEROME:
+    case TRAINER_MATTHEW:
+    case TRAINER_TARA:
+    case TRAINER_DAVID:
+    case TRAINER_ALICE:
+    case TRAINER_HUEY:
+    case TRAINER_EDWARD:
+    case TRAINER_JACLYN:
+    case TRAINER_EDWIN_1:
+    case TRAINER_VICTOR:
+    case TRAINER_VICTORIA:
+    case TRAINER_VIVI:
+    case TRAINER_BRICE:
+    case TRAINER_TRENT_1:
+    case TRAINER_LARRY:
+    case TRAINER_JAYLEN:
+    case TRAINER_DILLON:
+    case TRAINER_MADELINE_1:
+    case TRAINER_LENNY:
+    case TRAINER_LUCAS_1:
+    case TRAINER_SHANE:
+    case TRAINER_TIMOTHY_1:
+    case TRAINER_KOICHI:
+    case TRAINER_NOB_1:
+    case TRAINER_JOEY:
+    case TRAINER_JOSE:
+    case TRAINER_JERRY_1:
+    case TRAINER_ISAAC_1:
+    case TRAINER_LYDIA_1:
+    case TRAINER_DYLAN_1:
+    case TRAINER_ROSE_1:
+    case TRAINER_BARNY:
+    case TRAINER_WADE:
+    case TRAINER_MAY_ROUTE_119_TREECKO:
+    case TRAINER_MAY_ROUTE_119_TORCHIC:
+    case TRAINER_MAY_ROUTE_119_MUDKIP:
+    case TRAINER_COLIN:
+    case TRAINER_ROBERT_1:
+    case TRAINER_LORENZO:
+    case TRAINER_VANESSA:
+    case TRAINER_WALTER_1:
+    case TRAINER_TAMMY:
+    case TRAINER_BANEMODE_ROUTE122_NACHO:
+    case TRAINER_BANEMODE_ROUTE122_DOUGLAS:
+    case TRAINER_BANEMODE_ROUTE122_SPECIAL:
+    case TRAINER_BANEMODE_WINSTRATE_BANE:
+    case TRAINER_WENDY:
+    case TRAINER_BRAXTON:
+    case TRAINER_VIOLET:
+    case TRAINER_SPENCER:
+    case TRAINER_ROLAND:
+    case TRAINER_JENNY_1:
+    case TRAINER_NOLEN:
+    case TRAINER_STAN:
+    case TRAINER_TANYA:
+    case TRAINER_BARRY:
+    case TRAINER_DEAN:
+    case TRAINER_NIKKI:
+    case TRAINER_CAMDEN:
+    case TRAINER_DONNY:
+    case TRAINER_JONAH:
+    case TRAINER_ISAIAH_1:
+    case TRAINER_KATELYN_1:
+    case TRAINER_ALEXA:
+    case TRAINER_CHASE:
+    case TRAINER_ALLISON:
+    case TRAINER_REED:
+    case TRAINER_RODNEY:
+    case TRAINER_KATIE:
+    case TRAINER_SANTIAGO:
+    case TRAINER_RICHARD:
+    case TRAINER_HERMAN:
+    case TRAINER_SUSIE:
+    case TRAINER_GILBERT:
+    case TRAINER_DANA:
+    case TRAINER_RONALD:
+    case TRAINER_FRANKLIN:
+    case TRAINER_DEBRA:
+    case TRAINER_LINDA:
+    case TRAINER_JACK:
+    case TRAINER_LAUREL:
+    case TRAINER_ALEX:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
 static bool32 IsBaneModeKaizoTrainer(u16 trainerNum, const struct Trainer *trainer)
 {
+    if (IsBaneModeRouteMinibossTrainer(trainerNum))
+        return TRUE;
+
     switch (trainer->trainerClass)
     {
     case TRAINER_CLASS_LEADER:
@@ -163,7 +277,7 @@ static bool32 IsBaneModeKaizoTrainer(u16 trainerNum, const struct Trainer *train
     case TRAINER_CLASS_MAGMA_LEADER:
         return TRUE;
     default:
-        return trainerNum == TRAINER_PAUL;
+        return trainerNum == TRAINER_PAUL || FlagGet(FLAG_ADVENTURE_STARTED);
     }
 }
 
@@ -273,6 +387,22 @@ static void GetBaneModeKaizoEvs(u16 species, u8 evs[NUM_STATS])
             evs[STAT_SPEED] = 4;
         }
     }
+}
+
+static u16 GetBaneModeKaizoHeldItem(u16 species)
+{
+    const struct SpeciesInfo *speciesInfo = &gSpeciesInfo[species];
+    bool32 isPhysical = speciesInfo->baseAttack >= speciesInfo->baseSpAttack;
+    bool32 isFast = speciesInfo->baseSpeed >= 95;
+    bool32 isDefensive = max(speciesInfo->baseDefense, speciesInfo->baseSpDefense) >= max(speciesInfo->baseAttack, speciesInfo->baseSpAttack) + 20;
+
+    if (isDefensive)
+        return ITEM_LEFTOVERS;
+    if (isFast)
+        return ITEM_LIFE_ORB;
+    if (isPhysical)
+        return ITEM_CHOICE_BAND;
+    return ITEM_CHOICE_SPECS;
 }
 
 static void GetBaneModeRocketEvs(u16 species, u8 evs[NUM_STATS])
@@ -445,6 +575,11 @@ static void ApplyBaneModeKaizoTrainerBuffs(struct Pokemon *party, u8 monsCount, 
         SetMonData(&party[i], MON_DATA_SPATK_EV, &evs[STAT_SPATK]);
         SetMonData(&party[i], MON_DATA_SPDEF_EV, &evs[STAT_SPDEF]);
         SetMonData(&party[i], MON_DATA_SPEED_EV, &evs[STAT_SPEED]);
+        if (GetMonData(&party[i], MON_DATA_HELD_ITEM) == ITEM_NONE)
+        {
+            u16 heldItem = GetBaneModeKaizoHeldItem(species);
+            SetMonData(&party[i], MON_DATA_HELD_ITEM, &heldItem);
+        }
         CalculateMonStats(&party[i]);
     }
 }
@@ -541,7 +676,8 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                     totalPlayerLevel += GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
                 }
             }
-            playerPartyAverageLevel = totalPlayerLevel / playerPartySize;
+            if (playerPartySize > 0)
+                playerPartyAverageLevel = totalPlayerLevel / playerPartySize;
         }
 
         BadgeCount();
@@ -642,7 +778,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                 {
                     maxLevel = RegularTrainerPartyMaxLevel;
                     minLevel = RegularTrainerPartyMinLevel;
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -658,7 +794,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                 {
                     maxLevel = RegularTrainerPartyMaxLevel;
                     minLevel = RegularTrainerPartyMinLevel;
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -667,13 +803,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                         trainerPartyLevel[k] = minLevel;
                     }
                 // Check if the Pokémon can evolve at its current level
-                    evolvedSpecies = CheckEvolve(partyData[i].species, trainerPartyLevel[k]);
-                    // Create the Pokémon
-                    if (evolvedSpecies != 0) {
-                        CreateMon(&party[i], evolvedSpecies, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    } else {
-                        CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    }
+                    CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
                 break;
             }
@@ -689,7 +819,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                 {                    
                     maxLevel = RegularTrainerPartyMaxLevel;
                     minLevel = RegularTrainerPartyMinLevel;
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -705,7 +835,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                 {
                     maxLevel = RegularTrainerPartyMaxLevel;
                     minLevel = RegularTrainerPartyMinLevel;
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -714,17 +844,8 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                         trainerPartyLevel[k] = minLevel;
                     }
                 // Check if the Pokémon can evolve at its current level
-                    evolvedSpecies = CheckEvolve(partyData[i].species, trainerPartyLevel[k]);
-                    // Create the Pokémon
-                    if (evolvedSpecies != 0){
-                        CreateMon(&party[i], evolvedSpecies, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    } else {
-                        CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    }
+                    CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
-            if (evolvedSpecies != 0) {
-                break;
-            } else {       
                 for (j = 0; j < 4; j++)
                 {
                     move = GetMonData(&party[i], MON_DATA_MOVE1 + j);
@@ -733,7 +854,6 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                     SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                     SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
                 }
-            }
                 break;
             }
             case F_TRAINER_PARTY_HELD_ITEM:
@@ -748,7 +868,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                 {                    
                     maxLevel = RegularTrainerPartyMaxLevel;
                     minLevel = RegularTrainerPartyMinLevel;
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -764,7 +884,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                 {
                     maxLevel = RegularTrainerPartyMaxLevel;
                     minLevel = RegularTrainerPartyMinLevel;
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -773,13 +893,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                         trainerPartyLevel[k] = minLevel;
                     }
                 // Check if the Pokémon can evolve at its current level
-                    evolvedSpecies = CheckEvolve(partyData[i].species, trainerPartyLevel[k]);
-                    // Create the Pokémon
-                    if (evolvedSpecies != 0) {
-                        CreateMon(&party[i], evolvedSpecies, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    } else {
-                        CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    }
+                    CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }                
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
                 break;
@@ -787,10 +901,10 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
             case F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET:
             {
                 const struct TrainerMonItemCustomMoves *partyData = trainer->party.ItemCustomMoves;
-                if (trainer->trainerClass == TRAINER_CLASS_LEADER || 
-                    trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR || 
+                if (trainer->trainerClass == TRAINER_CLASS_LEADER ||
+                    trainer->trainerClass == TRAINER_CLASS_ELITE_FOUR ||
                     trainer->trainerClass == TRAINER_CLASS_CHAMPION) {
-                    if (gSaveBlock1Ptr->tx_Difficulty >= 2) {
+                    if (gSaveBlock1Ptr->tx_Difficulty >= 2 && gTrainers[trainerNum].partyHard.ItemCustomMoves != NULL) {
                         partyData = gTrainers[trainerNum].partyHard.ItemCustomMoves;
                     }
                 }
@@ -824,7 +938,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                     {
                        trainerPartyLevel[k] = maxLevel; 
                     } else {
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -864,7 +978,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                     {
                        trainerPartyLevel[k] = maxLevel; 
                     } else {
-                    levelRange = maxLevel - playerPartyAverageLevel + 1;
+                    levelRange = (maxLevel >= playerPartyAverageLevel) ? (maxLevel - playerPartyAverageLevel + 1) : 1;
                     randomOffset = Random() % levelRange;
                     trainerPartyLevel[k] = playerPartyAverageLevel + randomOffset;
                     if (trainerPartyLevel[k] > maxLevel) {
@@ -873,14 +987,7 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                         trainerPartyLevel[k] = minLevel;
                     }
                     }
-                    // Check if the Pokémon can evolve at its current level
-                    evolvedSpecies = CheckEvolve(partyData[i].species, trainerPartyLevel[k]);
-                    // Create the Pokémon
-                    if (evolvedSpecies != 0) {
-                        CreateMon(&party[i], evolvedSpecies, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    } else {
-                        CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
-                    }
+                    CreateMon(&party[i], partyData[i].species, trainerPartyLevel[k], fixedIV, TRUE, personalityValue, OT_ID_RANDOM_NO_SHINY, 0);
                 }
                 }                     
                 SetMonData(&party[i], MON_DATA_HELD_ITEM, &partyData[i].heldItem);
@@ -900,14 +1007,10 @@ u8 DynamicTarinerParty(struct Pokemon *party, const struct Trainer *trainer, boo
                         }
                         else
                         {
-                            if (evolvedSpecies != 0){
-                            break;
-                            } else {
                             if (gSaveBlock1Ptr->tx_Random_Trainer) 
                                 continue;
                             SetMonData(&party[i], MON_DATA_MOVE1 + j, &partyData[i].moves[j]);
                             SetMonData(&party[i], MON_DATA_PP1 + j, &gBattleMoves[partyData[i].moves[j]].pp);
-                            }
                         }
                     }
                 }

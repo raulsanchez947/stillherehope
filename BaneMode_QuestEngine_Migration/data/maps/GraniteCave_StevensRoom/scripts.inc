@@ -82,40 +82,40 @@ GraniteCave_StevensRoom_Movement_StevenExitSouth:
 	step_end
 
 GraniteCave_StevensRoom_Text_ImStevenLetterForMe:
-	.string "My name is STEVEN.\p"
-	.string "I'm interested in rare stones,\n"
-	.string "so I travel here and there.\p"
+	.string "STEVEN: Name's STEVEN, fam.\p"
+	.string "I'm out here from Brooklyn chasing\n"
+	.string "rare stones and clean metal.\p"
+	.string "And nah, don't laugh, but a wild ARON\n"
+	.string "just scuffed my beef and broccolis.\p"
 	.string "Oh?\n"
-	.string "A LETTER for me?$"
+	.string "You got a LETTER for me?$"
 
 GraniteCave_StevensRoom_Text_ThankYouTakeThis:
-	.string "STEVEN: Okay, thank you.\p"
-	.string "You went through all this trouble to\n"
-	.string "deliver that. I need to thank you.\p"
-	.string "Let me see…\n"
-	.string "I'll give you this TM.\p"
-	.string "It contains my favorite move,\n"
-	.string "STEEL WING.$"
+	.string "STEVEN: Respect. Good lookin' out.\p"
+	.string "You came all the way through this cave\n"
+	.string "to bring that to me, no hesitation.\p"
+	.string "Take this TM, my guy.\n"
+	.string "It's STEEL WING.\p"
+	.string "That move still hits crazy even when\n"
+	.string "your Timbs catching cave dust.$"
 
 GraniteCave_StevensRoom_Text_CouldBecomeChampionLetsRegister:
-	.string "STEVEN: Your POKéMON appear quite\n"
-	.string "capable.\p"
-	.string "If you keep training, you could even\n"
-	.string "become the CHAMPION of the POKéMON\l"
-	.string "LEAGUE one day. That's what I think.\p"
-	.string "I know, since we've gotten to know each\n"
-	.string "other, let's register one another in\l"
-	.string "our POKéNAVS.\p"
+	.string "STEVEN: Your squad got real promise.\p"
+	.string "Keep building like that and you can\n"
+	.string "run the whole LEAGUE one day, easy.\p"
+	.string "Let's lock in the BURNER info,\n"
+	.string "even if every number on there stay\l"
+	.string "blocked anyway.\p"
 	.string "… … … … … …$"
 
 GraniteCave_StevensRoom_Text_RegisteredSteven:
-	.string "Registered STEVEN\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 GraniteCave_StevensRoom_Text_IveGotToHurryAlong:
-	.string "Now, I've got to hurry along.$"
+	.string "Aight, I gotta move. These beat-up\n"
+	.string "beef and broccolis ain't walking\l"
+	.string "themselves.$"
 
 GraniteCave_StevensRoom_Text_OhBagIsFull:
 	.string "Oh, your BAG is full…\n"
 	.string "That's too bad, then.$"
-

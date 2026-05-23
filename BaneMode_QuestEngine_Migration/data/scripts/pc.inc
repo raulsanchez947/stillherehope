@@ -112,29 +112,40 @@ BaneMode_PC_EventScript_Menu::
 	waitmessage
 	dynmultipush BaneMode_PC_Text_LevelUpTutor, 0
 	dynmultipush BaneMode_PC_Text_EggMoveTutor, 1
-	dynmultipush BaneMode_PC_Text_NatureChanger, 2
-	dynmultipush BaneMode_PC_Text_Shiny, 3
-	dynmultipush BaneMode_PC_Text_Return, 4
-	dynmultistack 0, 0, FALSE, 5, 0, 0, DYN_MULTICHOICE_CB_NONE
+	dynmultipush BaneMode_PC_Text_TMOverflowTutor, 2
+	dynmultipush BaneMode_PC_Text_NatureChanger, 3
+	dynmultipush BaneMode_PC_Text_Shiny, 4
+	dynmultipush BaneMode_PC_Text_Return, 5
+	dynmultistack 0, 0, FALSE, 6, 0, 0, DYN_MULTICHOICE_CB_NONE
 	closemessage
 	switch VAR_RESULT
 	case 0, BaneMode_PC_EventScript_LevelUpTutor
 	case 1, BaneMode_PC_EventScript_EggMoveTutor
-	case 2, BaneMode_PC_EventScript_NatureChanger
-	case 3, BaneMode_PC_EventScript_ShinyRate
-	case 4, EventScript_PCMainMenu
+	case 2, BaneMode_PC_EventScript_TMOverflowTutor
+	case 3, BaneMode_PC_EventScript_NatureChanger
+	case 4, BaneMode_PC_EventScript_ShinyRate
+	case 5, EventScript_PCMainMenu
 	case MULTI_B_PRESSED, EventScript_PCMainMenu
 	end
 
 BaneMode_PC_EventScript_LevelUpTutor::
 	clearflag FLAG_EGG_MOVES_TUTOR
+	clearflag FLAG_TM_OVERFLOW_TUTOR
 	msgbox BaneMode_Text_LevelUpTutorIntro, MSGBOX_DEFAULT
 	goto BaneMode_PC_EventScript_ChooseMonForTutor
 	end
 
 BaneMode_PC_EventScript_EggMoveTutor::
+	clearflag FLAG_TM_OVERFLOW_TUTOR
 	setflag FLAG_EGG_MOVES_TUTOR
 	msgbox BaneMode_Text_EggMoveTutorIntro, MSGBOX_DEFAULT
+	goto BaneMode_PC_EventScript_ChooseMonForTutor
+	end
+
+BaneMode_PC_EventScript_TMOverflowTutor::
+	clearflag FLAG_EGG_MOVES_TUTOR
+	setflag FLAG_TM_OVERFLOW_TUTOR
+	msgbox BaneMode_Text_TMOverflowTutorIntro, MSGBOX_DEFAULT
 	goto BaneMode_PC_EventScript_ChooseMonForTutor
 	end
 
@@ -163,6 +174,7 @@ BaneMode_PC_EventScript_NoMoveToTeach::
 
 BaneMode_PC_EventScript_ClearEggTutorAndMenu::
 	clearflag FLAG_EGG_MOVES_TUTOR
+	clearflag FLAG_TM_OVERFLOW_TUTOR
 	goto BaneMode_PC_EventScript_Menu
 	end
 
@@ -446,6 +458,9 @@ BaneMode_PC_Text_LevelUpTutor:
 BaneMode_PC_Text_EggMoveTutor:
 	.string "EGG MOVES$"
 
+BaneMode_PC_Text_TMOverflowTutor:
+	.string "SV TM TUTOR$"
+
 BaneMode_PC_Text_NatureChanger:
 	.string "NATURE$"
 
@@ -462,6 +477,11 @@ BaneMode_Text_LevelUpTutorIntro:
 BaneMode_Text_EggMoveTutorIntro:
 	.string "This station also unlocks egg moves\n"
 	.string "your POKeMON can inherit.$"
+
+BaneMode_Text_TMOverflowTutorIntro:
+	.string "Past TM100 lives here.\p"
+	.string "This station teaches the Scarlet /\n"
+	.string "Violet overflow set.$"
 
 BaneMode_Text_MoveTutorChooseMon:
 	.string "Which POKeMON needs tutoring?$"

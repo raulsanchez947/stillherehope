@@ -6071,7 +6071,7 @@ static void BufferMonStatsToTaskData(struct Pokemon *mon, s16 *data)
 
 void ItemUseCB_SacredAsh(u8 taskId, TaskFunc task)
 {
-    static const u8 sText_HolyBluntUsed[] = _("{STR_VAR_1} fully recovered\nand reached Lv. {STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+    static const u8 sText_HolyBluntUsed[] = _("{STR_VAR_1} got fully right,\nPP restored, Lv. {STR_VAR_2}!\pA purple haze kicked up.\nFolks nearby noticed.{PAUSE_UNTIL_PRESS}");
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     u32 species = GetMonData(mon, MON_DATA_SPECIES);
     u32 level = GetMonData(mon, MON_DATA_LEVEL);
@@ -6103,6 +6103,8 @@ void ItemUseCB_SacredAsh(u8 taskId, TaskFunc task)
     maxHp = GetMonData(mon, MON_DATA_MAX_HP);
     SetMonData(mon, MON_DATA_HP, &maxHp);
     SetMonData(mon, MON_DATA_STATUS, &status);
+    MonRestorePP(mon);
+    FlagSet(FLAG_USED_HOLY_BLUNT_RECENTLY);
     PlaySE(SE_USE_ITEM);
     gPartyMenuUseExitCallback = TRUE;
     GetMonNickname(mon, gStringVar1);

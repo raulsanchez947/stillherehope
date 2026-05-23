@@ -1,15 +1,22 @@
-.set LOCALID_COLE, 2
-.set LOCALID_GERALD, 3
-.set LOCALID_AXLE, 4
-.set LOCALID_DANIELLE, 5
+.set LOCALID_WINONA, 1
+.set LOCALID_GYM_GUIDE, 2
 
 LavaridgeTown_Gym_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_Gym_1F_OnTransition
+	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, LavaridgeTown_Gym_1F_OnWarp
 	.byte 0
 
 LavaridgeTown_Gym_1F_OnTransition:
-	call LavaridgeTown_Gym_1F_EventScript_SetTrainerTempVars
-	call LavaridgeTown_Gym_1F_EventScript_CheckBuryTrainers
+	special RotatingGate_InitPuzzle
+	setflag FLAG_TEMP_HIDE_FOLLOWER
+	end
+
+LavaridgeTown_Gym_1F_OnWarp:
+	map_script_2 VAR_TEMP_0, VAR_TEMP_0, LavaridgeTown_Gym_1F_EventScript_InitRotatingGates
+	.2byte 0
+
+LavaridgeTown_Gym_1F_EventScript_InitRotatingGates::
+	special RotatingGate_InitPuzzleAndGraphics
 	end
 
 @ Unclear where/if these temp vars are getting checked
@@ -48,20 +55,20 @@ LavaridgeTown_Gym_1F_EventScript_CheckBuryDanielle::
 LavaridgeTown_Gym_1F_EventScript_EndCheckBuryTrainers::
 	return
 
-LavaridgeTown_Gym_1F_EventScript_Flannery::
-	trainerbattle_single TRAINER_WINONA_1, LavaridgeTown_Gym_1F_Text_FlanneryIntro, LavaridgeTown_Gym_1F_Text_FlanneryDefeat, LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated, NO_MUSIC
+LavaridgeTown_Gym_1F_EventScript_Winona::
+	trainerbattle_single TRAINER_WINONA_1, LavaridgeTown_Gym_1F_Text_WinonaIntro, LavaridgeTown_Gym_1F_Text_WinonaDefeat, LavaridgeTown_Gym_1F_EventScript_WinonaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
-	goto_if_eq VAR_RESULT, TRUE, LavaridgeTown_Gym_1F_EventScript_FlanneryRematch
-	goto_if_unset FLAG_RECEIVED_TM40, LavaridgeTown_Gym_1F_EventScript_GiveOverheat2
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostBattle, MSGBOX_DEFAULT
+	goto_if_eq VAR_RESULT, TRUE, LavaridgeTown_Gym_1F_EventScript_WinonaRematch
+	goto_if_unset FLAG_RECEIVED_TM40, LavaridgeTown_Gym_1F_EventScript_GiveAerialAce2
+	msgbox LavaridgeTown_Gym_1F_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
-LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
-	message LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge
+LavaridgeTown_Gym_1F_EventScript_WinonaDefeated::
+	message LavaridgeTown_Gym_1F_Text_ReceivedFeatherBadge
 	waitmessage
 	call Common_EventScript_PlayGymBadgeFanfare
-	msgbox LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_Gym_1F_Text_ExplainFeatherBadgeTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_WHITEOUT_TO_LAVARIDGE
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
 	setflag FLAG_BADGE04_GET
@@ -71,11 +78,11 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	call Common_EventScript_SetGymTrainers
 	setflag FLAG_HIDE_VERDANTURF_TOWN_WANDAS_HOUSE_WALLY
 	setvar VAR_LAVARIDGE_TOWN_STATE, 1
-	call LavaridgeTown_Gym_1F_EventScript_GiveOverheat
+	call LavaridgeTown_Gym_1F_EventScript_GiveAerialAce
 	closemessage
 	delay 30
 	playfanfare MUS_REGISTER_MATCH_CALL
-	msgbox LavaridgeTown_Gym_1F_Text_RegisteredFlannery, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_Gym_1F_Text_RegisteredWinona, MSGBOX_DEFAULT
 	waitfanfare
 	closemessage
 	delay 30
@@ -90,24 +97,24 @@ EventScript_OPLavaridge::
 	call_if_unset FLAG_BADGE05_GET, Common_EventScript_ReadyPetalburgGymForBattleOP
 	return
 
-LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
-	giveitem ITEM_TM40
+LavaridgeTown_Gym_1F_EventScript_GiveAerialAce2::
+	giveitem ITEM_HEAVY_DUTY_BOOTS
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_Gym_1F_Text_ExplainAerialAce, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM40
 	release
 	end
 
-LavaridgeTown_Gym_1F_EventScript_GiveOverheat::
-	giveitem ITEM_TM40
+LavaridgeTown_Gym_1F_EventScript_GiveAerialAce::
+	giveitem ITEM_HEAVY_DUTY_BOOTS
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
-	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
+	msgbox LavaridgeTown_Gym_1F_Text_ExplainAerialAce, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM40
 	return
 
-LavaridgeTown_Gym_1F_EventScript_FlanneryRematch::
-	trainerbattle_rematch_double TRAINER_WINONA_1, LavaridgeTown_Gym_1F_Text_FlanneryPreRematch, LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat, LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons
-	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostRematch, MSGBOX_AUTOCLOSE
+LavaridgeTown_Gym_1F_EventScript_WinonaRematch::
+	trainerbattle_rematch_double TRAINER_WINONA_1, LavaridgeTown_Gym_1F_Text_WinonaPreRematch, LavaridgeTown_Gym_1F_Text_WinonaRematchDefeat, LavaridgeTown_Gym_1F_Text_WinonaRematchNeedTwoMons
+	msgbox LavaridgeTown_Gym_1F_Text_WinonaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Cole::
@@ -196,11 +203,11 @@ LavaridgeTown_Gym_1F_Text_GymGuideAdvice:
 	.string "Hey, how's it going, CHAMPION-\n"
 	.string "bound {PLAYER}?\p"
 	.string "LAVARIDGE's GYM LEADER WINONA\n"
-	.string "uses a nasty GRASS core.\p"
-	.string "She likes to slow challengers down,\n"
-	.string "stack chip, and make the floor matter.\p"
-	.string "Pack heat and be ready for pressure\n"
-	.string "from below, not above.$"
+	.string "turned this place into an air maze.\p"
+	.string "Those rotating doors will swing the whole\n"
+	.string "battle path if you lose your bearings.\p"
+	.string "Keep your footing, read the angles,\n"
+	.string "and don't get blown off course.$"
 
 LavaridgeTown_Gym_1F_Text_GymGuidePostVictory:
 	.string "Yow! That was a high-flying battle!$"
@@ -308,24 +315,24 @@ LavaridgeTown_Gym_B1F_Text_EliPostBattle:
 	.string "of WINONA's power.\p"
 	.string "Hehehehe.$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryIntro:
+LavaridgeTown_Gym_1F_Text_WinonaIntro:
 	.string "WINONA: You made it through the maze.\n"
 	.string "Nice.\p"
 	.string "Now keep those Buttas planted and try\n"
-	.string "not to get wrapped up by the garden.\p"
-	.string "I don't just stall teams.\n"
-	.string "I let them wither.$"
+	.string "not to get spun by the airflow.\p"
+	.string "I don't just control the pace.\n"
+	.string "I own the skies above it.$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryDefeat:
+LavaridgeTown_Gym_1F_Text_WinonaDefeat:
 	.string "WINONA: Clean timing.\p"
-	.string "You never let the grass steal the pace.\n"
+	.string "You never let the wind steal the pace.\n"
 	.string "That earns a badge.$"
 
-LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge:
+LavaridgeTown_Gym_1F_Text_ReceivedFeatherBadge:
 	.string "{PLAYER} received the FEATHER BADGE\n"
 	.string "from WINONA.$"
 
-LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
+LavaridgeTown_Gym_1F_Text_ExplainFeatherBadgeTakeThis:
 	.string "If you have a FEATHER BADGE, all POKéMON\n"
 	.string "up to Level 50, even those you get in\l"
 	.string "trades from other people, will obey\l"
@@ -335,21 +342,19 @@ LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
 	.string "This is a token of my appreciation.\n"
 	.string "Don't be shy about taking it!$"
 
-LavaridgeTown_Gym_1F_Text_ExplainOverheat:
-	.string "That TM40 contains AERIAL ACE.\p"
-	.string "It cuts through evasive tricks and\n"
-	.string "lands cleanly every time.\p"
-	.string "When you need a precise strike instead\n"
-	.string "of brute force, it delivers.$"
+LavaridgeTown_Gym_1F_Text_ExplainAerialAce:
+	.string "Those HEAVY-DUTY BOOTS keep your\n"
+	.string "switch-ins clean.\p"
+	.string "Flying teams live by movement.\n"
+	.string "Don't let hazards tax the trip.$"
 
-LavaridgeTown_Gym_1F_Text_RegisteredFlannery:
-	.string "Registered GYM LEADER WINONA\n"
-	.string "in the POKéNAV.$"
+LavaridgeTown_Gym_1F_Text_RegisteredWinona:
+	.string "This number is blocked!$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryPostBattle:
+LavaridgeTown_Gym_1F_Text_WinonaPostBattle:
 	.string "WINONA: Sharp work.\p"
-	.string "You cracked the canopy open and didn't let\n"
-	.string "me get comfortable once.$"
+	.string "You broke the air lanes open and never\n"
+	.string "let me settle into the flow.$"
 
 LavaridgeTown_Gym_1F_Text_GymStatue:
 	.string "LAVARIDGE TOWN POKéMON GYM$"
@@ -359,20 +364,20 @@ LavaridgeTown_Gym_1F_Text_GymStatueCertified:
 	.string "WINONA'S CERTIFIED TRAINERS:\n"
 	.string "{PLAYER}$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryPreRematch:
+LavaridgeTown_Gym_1F_Text_WinonaPreRematch:
 	.string "WINONA: Losing a battle isn't going\n"
 	.string "to shake me.\p"
 	.string "I love POKéMON.\n"
 	.string "I love to battle.\l"
-	.string "And I adore this garden.\p"
+	.string "And I adore this airspace.\p"
 	.string "Let's test each other in another\n"
-	.string "battle of roots and restraint!$"
+	.string "battle of clean turns and open skies!$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat:
+LavaridgeTown_Gym_1F_Text_WinonaRematchDefeat:
 	.string "Whew!\n"
 	.string "You grounded me again!$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryPostRematch:
+LavaridgeTown_Gym_1F_Text_WinonaPostRematch:
 	.string "WINONA: I lost the match,\n"
 	.string "but I'm completely satisfied.\p"
 	.string "It's not often I get to enjoy a battle\n"
@@ -380,14 +385,14 @@ LavaridgeTown_Gym_1F_Text_FlanneryPostRematch:
 	.string "Let's have another one like this\n"
 	.string "again sometime!$"
 
-LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons:
+LavaridgeTown_Gym_1F_Text_WinonaRematchNeedTwoMons:
 	.string "WINONA: Losing a battle isn't going\n"
 	.string "to shake me.\p"
 	.string "I love POKéMON.\n"
 	.string "I love to battle.\l"
 	.string "And I adore this GYM!\p"
-	.string "Let's exchange another clean battle\n"
-	.string "when you're ready!\p"
+	.string "Let's exchange another clean aerial\n"
+	.string "battle when you're ready!\p"
 	.string "Oh, wait. Do you only have one POKéMON\n"
 	.string "that can battle?\p"
 	.string "I hate to say this, but when you come\n"

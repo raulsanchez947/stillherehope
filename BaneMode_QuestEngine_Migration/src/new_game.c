@@ -241,6 +241,7 @@ static void AddBaneModeFreshGameBundle(void)
     AddBagItem(ITEM_POKEMON_BOX_LINK, 1);
     gSaveBlock1Ptr->registeredItemCompat = ITEM_POKEMON_BOX_LINK;
     AddBagItem(ITEM_SACRED_ASH, 1);
+    AddBagItem(ITEM_TM_CASE, 1); // SafetyLine — infinite-use Escape Rope
 
     AddBagItem(ITEM_REPEL, 99);
     AddBagItem(ITEM_RARE_CANDY, 99);
@@ -308,7 +309,36 @@ static void AddBaneModeFreshGameBundle(void)
 
     AddBagItem(ITEM_LOADED_DICE, 99);
     AddBagItem(ITEM_MIRROR_HERB, 99);
+    AddBagItem(ITEM_NORMAL_GEM, 99);
+    AddBagItem(ITEM_FIRE_GEM, 99);
+    AddBagItem(ITEM_WATER_GEM, 99);
+    AddBagItem(ITEM_ELECTRIC_GEM, 99);
+    AddBagItem(ITEM_GRASS_GEM, 99);
+    AddBagItem(ITEM_ICE_GEM, 99);
+    AddBagItem(ITEM_FIGHTING_GEM, 99);
+    AddBagItem(ITEM_POISON_GEM, 99);
+    AddBagItem(ITEM_GROUND_GEM, 99);
+    AddBagItem(ITEM_FLYING_GEM, 99);
+    AddBagItem(ITEM_PSYCHIC_GEM, 99);
+    AddBagItem(ITEM_BUG_GEM, 99);
+    AddBagItem(ITEM_ROCK_GEM, 99);
+    AddBagItem(ITEM_GHOST_GEM, 99);
+    AddBagItem(ITEM_DRAGON_GEM, 99);
+    AddBagItem(ITEM_DARK_GEM, 99);
+    AddBagItem(ITEM_STEEL_GEM, 99);
+    AddBagItem(ITEM_FAIRY_GEM, 99);
+    AddBagItem(ITEM_DOUSE_DRIVE, 99);
+    AddBagItem(ITEM_SHOCK_DRIVE, 99);
+    AddBagItem(ITEM_BURN_DRIVE, 99);
+    AddBagItem(ITEM_CHILL_DRIVE, 99);
+    AddBagItem(ITEM_RED_ORB, 99);
+    AddBagItem(ITEM_BLUE_ORB, 99);
     AddBagItem(ITEM_BOOSTER_ENERGY, 99);
+    AddBagItem(ITEM_FAIRY_FEATHER, 99);
+    AddBagItem(ITEM_BERSERK_GENE, 99);
+    AddBagItem(ITEM_CORNERSTONE_MASK, 99);
+    AddBagItem(ITEM_WELLSPRING_MASK, 99);
+    AddBagItem(ITEM_HEARTHFLAME_MASK, 99);
     AddBagItem(ITEM_CHOICE_BAND, 99);
     AddBagItem(ITEM_CHOICE_SPECS, 99);
     AddBagItem(ITEM_CHOICE_SCARF, 99);
@@ -322,6 +352,20 @@ static void AddBaneModeFreshGameBundle(void)
     AddBagItem(ITEM_HEAVY_DUTY_BOOTS, 99);
     AddBagItem(ITEM_WEAKNESS_POLICY, 99);
     AddBagItem(ITEM_BLUNDER_POLICY, 99);
+    // Hold items missing from original bundle
+    AddBagItem(ITEM_LEFTOVERS, 99);
+    AddBagItem(ITEM_ROCKY_HELMET, 99);
+    AddBagItem(ITEM_SHELL_BELL, 99);
+    AddBagItem(ITEM_EXPERT_BELT, 99);
+    AddBagItem(ITEM_MUSCLE_BAND, 99);
+    AddBagItem(ITEM_WISE_GLASSES, 99);
+    AddBagItem(ITEM_TOXIC_ORB, 99);
+    AddBagItem(ITEM_FLAME_ORB, 99);
+    AddBagItem(ITEM_WIDE_LENS, 99);
+    AddBagItem(ITEM_ZOOM_LENS, 99);
+    AddBagItem(ITEM_EJECT_BUTTON, 99);
+    AddBagItem(ITEM_RED_CARD, 99);
+    AddBagItem(ITEM_THROAT_SPRAY, 99);
 }
 
 void Sav2_ClearSetDefault(void)
@@ -424,6 +468,8 @@ void NewGameInitData(void)
     gSaveBlock2Ptr->specialMysteryGiftCount = 0;
     gSaveBlock1Ptr->checks = 0;
     gSaveBlock1Ptr->seasons = 0;
+    gSaveBlock1Ptr->tx_Challenges_NoEVs = 1;
+    gSaveBlock1Ptr->tx_Challenges_TrainerScalingEVs = 1;
     EnableNationalPokedex();
     SetSeasonChangeDay();
 }

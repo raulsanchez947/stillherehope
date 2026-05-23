@@ -330,18 +330,18 @@ BattleFrontier_ReceptionGate_Text_IfItIsntPlayerYouCame:
 	.string "You came out here!$"
 
 BattleFrontier_ReceptionGate_Text_OhMrScottGoodDay:
-	.string "GUIDE: Oh! MR. SCOTT, sir!\n"
+	.string "GUIDE: Oh! MR. BRENDAN, sir!\n"
 	.string "Good day to you, sir!$"
 
 BattleFrontier_ReceptionGate_Text_ScottGreatToSeeYouHere:
-	.string "SCOTT: It's great to see you here,\n"
-	.string "it really is!\p"
-	.string "I hope you'll take your time and\n"
-	.string "explore everywhere.\p"
-	.string "Naturally, I hope you'll also experience\n"
-	.string "the pure essence of battling.\p"
-	.string "I also have my quarters here, so feel\n"
-	.string "free to visit if you have time.$"
+	.string "BRENDAN: It's good seeing you here,\n"
+	.string "for real.\p"
+	.string "Take your time and look around\n"
+	.string "everywhere.\p"
+	.string "And yeah, get a taste of what real\n"
+	.string "battle pressure feels like.\p"
+	.string "I got quarters here too, so swing by\n"
+	.string "if you got time.$"
 
 BattleFrontier_ReceptionGate_Text_YourGuideToFacilities:
 	.string "I'm your guide to the various facilities\n"
@@ -507,4 +507,3 @@ BattleFrontier_ReceptionGate_Text_BattlePointsInfo:
 	.string "You may trade in your Battle Points\n"
 	.string "for prizes at the EXCHANGE SERVICE\l"
 	.string "CORNER.$"
-

@@ -204,6 +204,7 @@ EWRAM_DATA u16 gLastUsedMove = 0;
 EWRAM_DATA u8 gLastHitBy[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u16 gChosenMoveByBattler[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u16 gMoveResultFlags = 0;
+EWRAM_DATA u8 gPaulFightingSpiritTriggered = 0;
 EWRAM_DATA u32 gHitMarker = 0;
 EWRAM_DATA u8 gTakenDmgByBattler[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA u8 gUnusedFirstBattleVar2 = 0; // Never read
@@ -2130,7 +2131,7 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             case F_TRAINER_PARTY_HELD_ITEM | F_TRAINER_PARTY_CUSTOM_MOVESET:
             {
                 const struct TrainerMonItemCustomMoves *partyData = trainer->party.ItemCustomMoves;
-                if (gSaveBlock1Ptr->tx_Difficulty >= 2) {
+                if (gSaveBlock1Ptr->tx_Difficulty >= 2 && gTrainers[trainerNum].partyHard.ItemCustomMoves != NULL) {
                     partyData = gTrainers[trainerNum].partyHard.ItemCustomMoves;
                 }
                 fixedIV = partyData[i].iv * MAX_PER_STAT_IVS / 255;
@@ -3246,6 +3247,8 @@ void BeginBattleIntroDummy(void)
 
 }
 
+EWRAM_DATA bool8 gBaneModeLockArenaEffects = FALSE;
+
 static bool32 IsBaneModeRocketPressureTrainer(u16 trainerId)
 {
     if (trainerId == TRAINER_NONE)
@@ -3261,6 +3264,126 @@ static bool32 IsBaneModeRocketPressureTrainer(u16 trainerId)
     }
 }
 
+static bool32 IsBaneModeRouteMinibossTrainer(u16 trainerId)
+{
+    switch (trainerId)
+    {
+    case TRAINER_BANEMODE_AEG:
+    case TRAINER_CALVIN_1:
+    case TRAINER_RICK:
+    case TRAINER_TIANA:
+    case TRAINER_MAY_ROUTE_103_TREECKO:
+    case TRAINER_MAY_ROUTE_103_TORCHIC:
+    case TRAINER_MAY_ROUTE_103_MUDKIP:
+    case TRAINER_MAY_RUSTBORO_TREECKO:
+    case TRAINER_MAY_RUSTBORO_TORCHIC:
+    case TRAINER_MAY_RUSTBORO_MUDKIP:
+    case TRAINER_FOSTER:
+    case TRAINER_LUIS:
+    case TRAINER_DOMINIK:
+    case TRAINER_DOUGLAS:
+    case TRAINER_KYLA:
+    case TRAINER_ELLIOT_1:
+    case TRAINER_DARRIN:
+    case TRAINER_TONY_1:
+    case TRAINER_DENISE:
+    case TRAINER_JEROME:
+    case TRAINER_MATTHEW:
+    case TRAINER_TARA:
+    case TRAINER_DAVID:
+    case TRAINER_ALICE:
+    case TRAINER_HUEY:
+    case TRAINER_EDWARD:
+    case TRAINER_JACLYN:
+    case TRAINER_EDWIN_1:
+    case TRAINER_VICTOR:
+    case TRAINER_VICTORIA:
+    case TRAINER_VIVI:
+    case TRAINER_BRICE:
+    case TRAINER_TRENT_1:
+    case TRAINER_LARRY:
+    case TRAINER_JAYLEN:
+    case TRAINER_DILLON:
+    case TRAINER_MADELINE_1:
+    case TRAINER_LENNY:
+    case TRAINER_LUCAS_1:
+    case TRAINER_SHANE:
+    case TRAINER_TIMOTHY_1:
+    case TRAINER_KOICHI:
+    case TRAINER_NOB_1:
+    case TRAINER_JOEY:
+    case TRAINER_JOSE:
+    case TRAINER_JERRY_1:
+    case TRAINER_ISAAC_1:
+    case TRAINER_LYDIA_1:
+    case TRAINER_DYLAN_1:
+    case TRAINER_ROSE_1:
+    case TRAINER_BARNY:
+    case TRAINER_WADE:
+    case TRAINER_MAY_ROUTE_119_TREECKO:
+    case TRAINER_MAY_ROUTE_119_TORCHIC:
+    case TRAINER_MAY_ROUTE_119_MUDKIP:
+    case TRAINER_COLIN:
+    case TRAINER_ROBERT_1:
+    case TRAINER_LORENZO:
+    case TRAINER_VANESSA:
+    case TRAINER_WALTER_1:
+    case TRAINER_TAMMY:
+    case TRAINER_BANEMODE_ROUTE122_NACHO:
+    case TRAINER_BANEMODE_ROUTE122_DOUGLAS:
+    case TRAINER_BANEMODE_ROUTE122_SPECIAL:
+    case TRAINER_BANEMODE_WINSTRATE_BANE:
+    case TRAINER_WENDY:
+    case TRAINER_BRAXTON:
+    case TRAINER_VIOLET:
+    case TRAINER_SPENCER:
+    case TRAINER_ROLAND:
+    case TRAINER_JENNY_1:
+    case TRAINER_NOLEN:
+    case TRAINER_STAN:
+    case TRAINER_TANYA:
+    case TRAINER_BARRY:
+    case TRAINER_DEAN:
+    case TRAINER_NIKKI:
+    case TRAINER_CAMDEN:
+    case TRAINER_DONNY:
+    case TRAINER_JONAH:
+    case TRAINER_ISAIAH_1:
+    case TRAINER_KATELYN_1:
+    case TRAINER_ALEXA:
+    case TRAINER_CHASE:
+    case TRAINER_ALLISON:
+    case TRAINER_REED:
+    case TRAINER_RODNEY:
+    case TRAINER_KATIE:
+    case TRAINER_SANTIAGO:
+    case TRAINER_RICHARD:
+    case TRAINER_HERMAN:
+    case TRAINER_SUSIE:
+    case TRAINER_GILBERT:
+    case TRAINER_DANA:
+    case TRAINER_RONALD:
+    case TRAINER_FRANKLIN:
+    case TRAINER_DEBRA:
+    case TRAINER_LINDA:
+    case TRAINER_JACK:
+    case TRAINER_LAUREL:
+    case TRAINER_ALEX:
+        return TRUE;
+    default:
+        return FALSE;
+    }
+}
+
+static bool32 IsBaneModeLockedArenaTrainer(u16 trainerId)
+{
+    if (trainerId == TRAINER_NONE)
+        return FALSE;
+
+    return (gTrainers[trainerId].trainerClass == TRAINER_CLASS_LEADER
+         || IsBaneModeRouteMinibossTrainer(trainerId));
+}
+
 static void ApplyBaneModeRoutePressure(void)
 {
     // Route pressure now comes from overworld weather + VAR_TERRAIN,
@@ -3269,8 +3392,24 @@ static void ApplyBaneModeRoutePressure(void)
 
 static void ApplyBaneModeBattlePressure(void)
 {
+    gBaneModeLockArenaEffects = FALSE;
+
     if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER))
         return;
+
+    if (IsBaneModeLockedArenaTrainer(gTrainerBattleOpponent_A)
+     || IsBaneModeLockedArenaTrainer(gTrainerBattleOpponent_B))
+        gBaneModeLockArenaEffects = TRUE;
+
+    if (IsBaneModeRouteMinibossTrainer(gTrainerBattleOpponent_A)
+     || IsBaneModeRouteMinibossTrainer(gTrainerBattleOpponent_B))
+    {
+        gSideTimers[B_SIDE_PLAYER].stealthRockAmount = 1;
+        gSideStatuses[B_SIDE_OPPONENT] |= SIDE_STATUS_TAILWIND;
+        gSideTimers[B_SIDE_OPPONENT].tailwindBattlerId = GetBattlerAtPosition(B_POSITION_OPPONENT_LEFT);
+        gSideTimers[B_SIDE_OPPONENT].tailwindTimer = 0xFF;
+        return;
+    }
 
     if (IsBaneModeRocketPressureTrainer(gTrainerBattleOpponent_A)
      || IsBaneModeRocketPressureTrainer(gTrainerBattleOpponent_B))
@@ -3284,7 +3423,6 @@ static void ApplyBaneModeBattlePressure(void)
     case TRAINER_JUAN_4:
     case TRAINER_JUAN_5:
         gBattleWeather = B_WEATHER_RAIN_PERMANENT;
-        gBattleTerrain = BATTLE_TERRAIN_POND;
         break;
     case TRAINER_BRENDAN_RUSTBORO_TREECKO:
     case TRAINER_BRENDAN_RUSTBORO_TORCHIC:
@@ -3292,22 +3430,41 @@ static void ApplyBaneModeBattlePressure(void)
     case TRAINER_BRENDAN_PLACEHOLDER:
         gSideTimers[B_SIDE_PLAYER].stealthRockAmount = 1;
         break;
+    case TRAINER_MAY_RUSTBORO_TREECKO:
+    case TRAINER_MAY_RUSTBORO_TORCHIC:
+    case TRAINER_MAY_RUSTBORO_MUDKIP:
+    case TRAINER_MAY_ROUTE_110_TREECKO:
+    case TRAINER_MAY_ROUTE_110_TORCHIC:
+    case TRAINER_MAY_ROUTE_110_MUDKIP:
+    case TRAINER_MAY_ROUTE_119_TREECKO:
+    case TRAINER_MAY_ROUTE_119_TORCHIC:
+    case TRAINER_MAY_ROUTE_119_MUDKIP:
+    case TRAINER_MAY_LILYCOVE_TREECKO:
+    case TRAINER_MAY_LILYCOVE_TORCHIC:
+    case TRAINER_MAY_LILYCOVE_MUDKIP:
+        gSideStatuses[B_SIDE_OPPONENT] |= SIDE_STATUS_TAILWIND;
+        break;
     case TRAINER_FLANNERY_5:
-        gBattleWeather = B_WEATHER_SUN_PERMANENT;
+        gBattleWeather = B_WEATHER_SUN_PRIMAL;
         break;
     case TRAINER_FLANNERY_1:
     case TRAINER_FLANNERY_2:
     case TRAINER_FLANNERY_3:
     case TRAINER_FLANNERY_4:
-        gBattleWeather = B_WEATHER_SUN_PERMANENT;
+        gBattleWeather = B_WEATHER_SUN_PRIMAL;
         break;
     case TRAINER_BRAWLY_1:
     case TRAINER_BRAWLY_2:
     case TRAINER_BRAWLY_3:
     case TRAINER_BRAWLY_4:
     case TRAINER_BRAWLY_5:
+        // Brawly pressure: Sticky Web + 1 Spikes on player side at battle start.
+        // Both the SIDE_STATUS flag AND the amount field must be set for the
+        // in-battle hazard check to trigger on switch-in.
+        gSideStatuses[B_SIDE_PLAYER] |= SIDE_STATUS_STICKY_WEB;
         gSideTimers[B_SIDE_PLAYER].stickyWebAmount = 1;
         gSideTimers[B_SIDE_PLAYER].stickyWebBattlerSide = B_SIDE_OPPONENT;
+        gSideStatuses[B_SIDE_PLAYER] |= SIDE_STATUS_SPIKES;
         gSideTimers[B_SIDE_PLAYER].spikesAmount = 1;
         break;
     case TRAINER_WINONA_5:
@@ -3470,6 +3627,7 @@ static void BattleStartClearSetData(void)
 
     gPauseCounterBattle = 0;
     gBattleMoveDamage = 0;
+    gPaulFightingSpiritTriggered = 0;
     gIntroSlideFlags = 0;
     gBattleScripting.animTurn = 0;
     gBattleScripting.animTargetsHit = 0;
@@ -5151,6 +5309,14 @@ u32 GetBattlerTotalSpeedStat(u8 battlerId)
         speed *= 2;
     if (gBattleResources->flags->flags[battlerId] & RESOURCE_FLAG_UNBURDEN)
         speed *= 2;
+    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+        && GetBattlerSide(battlerId) == B_SIDE_PLAYER
+        && (gTrainerBattleOpponent_A == TRAINER_JUAN_1
+         || gTrainerBattleOpponent_A == TRAINER_JUAN_2
+         || gTrainerBattleOpponent_A == TRAINER_JUAN_3
+         || gTrainerBattleOpponent_A == TRAINER_JUAN_4
+         || gTrainerBattleOpponent_A == TRAINER_JUAN_5))
+        speed /= 3;
 
     // paralysis drop
     if (gBattleMons[battlerId].status1 & STATUS1_PARALYSIS && ability != ABILITY_QUICK_FEET)

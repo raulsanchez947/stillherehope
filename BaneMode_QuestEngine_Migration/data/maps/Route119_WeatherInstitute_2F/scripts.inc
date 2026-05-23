@@ -1,6 +1,6 @@
 .set LOCALID_GRUNT_1, 1
 .set LOCALID_GRUNT_2, 2
-.set LOCALID_SHELLY, 3
+.set LOCALID_ROCKET_ADMIN, 3
 .set LOCALID_SCIENTIST, 5
 .set LOCALID_GRUNT_3, 7
 .set LOCALID_GRUNT_4, 8
@@ -60,9 +60,9 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 	msgbox Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy, MSGBOX_DEFAULT
 	closemessage
 	playse SE_PIN
-	applymovement LOCALID_SHELLY, Common_Movement_ExclamationMark
+	applymovement LOCALID_ROCKET_ADMIN, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_SHELLY, Common_Movement_Delay48
+	applymovement LOCALID_ROCKET_ADMIN, Common_Movement_Delay48
 	waitmovement 0
 	msgbox Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre, MSGBOX_DEFAULT
 	closemessage
@@ -74,7 +74,7 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 	setflag FLAG_HIDE_WEATHER_INSTITUTE_2F_AQUA_GRUNT_M
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
-	removeobject LOCALID_SHELLY
+	removeobject LOCALID_ROCKET_ADMIN
 	removeobject LOCALID_GRUNT_4
 	removeobject LOCALID_GRUNT_3
 	applymovement OBJ_EVENT_ID_PLAYER, Route119_WeatherInstitute_2F_Movement_PlayerReturnToPosition
@@ -83,6 +83,8 @@ Route119_WeatherInstitute_2F_EventScript_ShellyDefeated::
 	applymovement LOCALID_SCIENTIST, Route119_WeatherInstitute_2F_Movement_ScientistApproachPlayer
 	waitmovement 0
 	copyobjectxytoperm LOCALID_SCIENTIST
+	msgbox Route119_WeatherInstitute_2F_Text_ScientistFoundTempestOrb, MSGBOX_DEFAULT
+	giveitem ITEM_TEMPEST_ORB
 	goto Route119_WeatherInstitute_2F_EventScript_ReceiveCastform
 	end
 
@@ -236,78 +238,87 @@ Route119_WeatherInstitute_2F_EventScript_WeatherScientist::
 	end
 
 Route119_WeatherInstitute_2F_Text_Grunt2Intro:
-	.string "The INSTITUTE created a type of\n"
-	.string "POKéMON that has something to do with\l"
-	.string "the weather. We're here to take them!$"
+	.string "The INSTITUTE created a POKéMON\n"
+	.string "that has something to do with\l"
+	.string "the weather. We're here to take it!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt2Defeat:
 	.string "Our plan's being spoiled by a kid?$"
 
 Route119_WeatherInstitute_2F_Text_Grunt2PostBattle:
-	.string "If the POKéMON they made here can\n"
-	.string "control the weather freely, then we of\l"
-	.string "TEAM AQUA definitely need it!$"
+	.string "If the POKéMON here can alter weather,\n"
+	.string "TEAM ROCKET has the perfect use\l"
+	.string "for something like that!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt3Intro:
-	.string "We're TEAM AQUA!\n"
-	.string "We appear wherever anything rare is\l"
-	.string "found!$"
+	.string "TEAM ROCKET!\n"
+	.string "We appear wherever power is\l"
+	.string "waiting to be taken!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt3Defeat:
 	.string "You got me!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt3PostBattle:
-	.string "You don't have any idea what we of\n"
-	.string "TEAM AQUA are working towards!\l"
-	.string "You stay out of our way!$"
+	.string "You don't have any idea what\n"
+	.string "TEAM ROCKET is working towards!\l"
+	.string "Stay out of our way!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt5Intro:
-	.string "Don't tell me you're looking for that\n"
-	.string "weather POKéMON, too?\p"
+	.string "Don't tell me you're looking for\n"
+	.string "that weather POKéMON, too?\p"
 	.string "That's a no-no!\n"
-	.string "We were here to get it first!$"
+	.string "TEAM ROCKET claimed it first!$"
 
 Route119_WeatherInstitute_2F_Text_Grunt5Defeat:
 	.string "Oh, will you look at my POKéMON?$"
 
 Route119_WeatherInstitute_2F_Text_Grunt5PostBattle:
-	.string "Humph, so what?\n"
+	.string "Humph. So what?\n"
 	.string "What we want…\p"
 	.string "What we really want isn't here…\n"
-	.string "Ihihihihi…$"
+	.string "The BOSS will deal with this himself!$"
 
 Route119_WeatherInstitute_2F_Text_ShellyIntro:
-	.string "Ahahahaha!\p"
-	.string "You're going to meddle in TEAM AQUA's\n"
-	.string "affairs?\p"
-	.string "You're either absolutely fearless,\n"
-	.string "simply ignorant, or both!\p"
-	.string "You're so cute, you're disgusting!\n"
-	.string "I'll put you down, kiddy!$"
+	.string "A TRAINER in our way?\p"
+	.string "How boring.\p"
+	.string "TEAM ROCKET doesn't answer to\n"
+	.string "children. Stand aside - or battle!$"
 
 Route119_WeatherInstitute_2F_Text_ShellyDefeat:
-	.string "Ahahahaha!\n"
-	.string "You're disgustingly strong!$"
+	.string "You- you're not nothing, are you?\p"
+	.string "…The BOSS will hear of this.$"
 
 Route119_WeatherInstitute_2F_Text_ShellyPostBattle:
-	.string "It's bad enough to have TEAM MAGMA\n"
-	.string "blunder about, but now there's you!\p"
-	.string "What makes you want to sniff around\n"
-	.string "in our business, anyway?$"
+	.string "Che.\p"
+	.string "The HOENN DEFENDERS have been\n"
+	.string "a thorn in our plans all along.\p"
+	.string "And now some TRAINER shows up\n"
+	.string "and beats me here, too?!\p"
+	.string "This isn't over.$"
 
 Route119_WeatherInstitute_2F_Text_TeamMagmaJustPassedBy:
-	.string "We have a situation here!\p"
-	.string "A TEAM MAGMA mob just passed\n"
-	.string "the WEATHER INSTITUTE.\p"
+	.string "Emergency report!\p"
+	.string "A TEAM ROCKET squad just passed\n"
+	.string "the WEATHER INSTITUTE heading west!\p"
 	.string "They appear to be headed for\n"
 	.string "MT. PYRE!$"
 
 Route119_WeatherInstitute_2F_Text_WeHaveToHurryToMtPyre:
 	.string "What?!\p"
-	.string "We can't waste any more time here!\n"
-	.string "We have to hurry to MT. PYRE, too!\p"
-	.string "Ahahahaha!\n"
-	.string "TEAM MAGMA, just you wait!$"
+	.string "MT. PYRE?\n"
+	.string "The ORBS are kept there!\p"
+	.string "TEAM ROCKET - retreat!\n"
+	.string "We move now!$"
+
+Route119_WeatherInstitute_2F_Text_ScientistFoundTempestOrb:
+	.string "RESEARCHER: Thank goodness!\n"
+	.string "TEAM ROCKET is gone!\p"
+	.string "While they were ransacking the lab,\n"
+	.string "one of them dropped this orb.\p"
+	.string "It was crackling with static\n"
+	.string "electricity when I found it.\p"
+	.string "I don't know what it is, but it\n"
+	.string "feels like it belongs with you.$"
 
 Route119_WeatherInstitute_2F_Text_ThanksPleaseTakePokemon:
 	.string "Thanks!\n"
@@ -340,17 +351,17 @@ Route119_WeatherInstitute_2F_Text_ChangingWeatherRidiculous:
 Route119_WeatherInstitute_2F_Text_GroudonWeather:
 	.string "I track weather patterns over\n"
 	.string "the HOENN region.\p"
-	.string "Presently, a drought has been recorded\n"
-	.string "in {STR_VAR_1}.\p"
-	.string "Could that mean, somewhere near\n"
+	.string "Presently, extreme volcanic heat\n"
+	.string "and ashfall in {STR_VAR_1}.\p"
+	.string "Something powerful is near\n"
 	.string "{STR_VAR_1}…$"
 
 Route119_WeatherInstitute_2F_Text_KyogreWeather:
 	.string "I track weather patterns over\n"
 	.string "the HOENN region.\p"
-	.string "Presently, heavy rainfall has been\n"
-	.string "recorded over {STR_VAR_1}.\p"
-	.string "Could that mean, somewhere near\n"
+	.string "Presently, a severe blizzard has\n"
+	.string "been recorded over {STR_VAR_1}.\p"
+	.string "Something powerful is near\n"
 	.string "{STR_VAR_1}…$"
 
 Route119_WeatherInstitute_2F_Text_NoAbnormalWeather:

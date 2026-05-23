@@ -86,6 +86,8 @@
 #define OBJ_EVENT_GFX_CUSTOM_CHARACTER            OBJ_EVENT_GFX_UNUSED_NATU_DOLL
 #define OBJ_EVENT_GFX_ASH                         OBJ_EVENT_GFX_UNUSED_MAGNEMITE_DOLL
 #define OBJ_EVENT_GFX_SILVER                      OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL
+#define OBJ_EVENT_GFX_BLUE                        OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL
+#define OBJ_EVENT_GFX_GREEN                       OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL
 #define OBJ_EVENT_GFX_CUTTABLE_TREE               82
 #define OBJ_EVENT_GFX_MART_EMPLOYEE               83
 #define OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN          84
@@ -140,7 +142,7 @@
 #define OBJ_EVENT_GFX_WALLACE                    133
 #define OBJ_EVENT_GFX_STEVEN                     134
 #define OBJ_EVENT_GFX_WALLY                      135
-#define OBJ_EVENT_GFX_PAUL                       OBJ_EVENT_GFX_WALLY
+#define OBJ_EVENT_GFX_PAUL                       OBJ_EVENT_GFX_UNUSED_WOOPER_DOLL
 #define OBJ_EVENT_GFX_LITTLE_BOY_3               136
 #define OBJ_EVENT_GFX_BRENDAN_FISHING            137
 #define OBJ_EVENT_GFX_MAY_FISHING                138
@@ -249,8 +251,11 @@
 #define OBJ_EVENT_GFX_LIGHT_SPRITE               OBJ_EVENT_GFX_QUINTY_PLUMP
 #define OBJ_EVENT_GFX_WORMHOLE                   239
 #define OBJ_EVENT_GFX_WORMHOLE2                  240
+#define OBJ_EVENT_GFX_ROCKET_ADMIN_M             241
+#define OBJ_EVENT_GFX_ROCKET_ADMIN_F             242
+#define OBJ_EVENT_GFX_LANCE                      243
 
-#define NUM_REGULAR_OBJ_EVENT_GFX                (OBJ_EVENT_GFX_WORMHOLE2 + 1)
+#define NUM_REGULAR_OBJ_EVENT_GFX                (OBJ_EVENT_GFX_WORMHOLE2 + 4)
 
 //Pokemon overworlds
 #define OBJ_EVENT_GFX_POKEMON_001		(NUM_REGULAR_OBJ_EVENT_GFX + 0)

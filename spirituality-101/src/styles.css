@@ -1,0 +1,623 @@
+:root {
+  color-scheme: light;
+  --ink: #342138;
+  --muted: #7b637c;
+  --soft: #fff8fb;
+  --panel: rgba(255, 255, 255, 0.8);
+  --line: rgba(128, 67, 122, 0.14);
+  --purple: #7d45bd;
+  --pink: #e765aa;
+  --gold: #e3ad45;
+  --rose: #fff1f8;
+  --shadow: 0 18px 50px rgba(101, 48, 119, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #fff8fb;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(231, 101, 170, 0.12), transparent 24rem),
+    linear-gradient(180deg, #fff8fb 0%, #f8eefb 58%, #fff8fb 100%);
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  width: min(100%, 520px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 0 6.75rem;
+  background: linear-gradient(180deg, #fff8ff 0%, #f6edfb 62%, #fffafd 100%);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  min-height: 6.9rem;
+  padding: 0.8rem 1.25rem 1rem;
+  color: #fffaf4;
+  background:
+    linear-gradient(115deg, #a523cf 0%, #ea2fb1 48%, #ff9a45 100%),
+    #7d45bd;
+  text-align: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  right: -3rem;
+  bottom: -6rem;
+  width: 12rem;
+  height: 12rem;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+}
+
+.hero-glow {
+  position: absolute;
+  inset: auto auto -3rem -3rem;
+  width: 12rem;
+  height: 12rem;
+  border-radius: 999px;
+  background: rgba(255, 240, 181, 0.24);
+  filter: blur(10px);
+}
+
+.brand-kicker,
+.tagline,
+.program-pill,
+.mini-kicker,
+.section-intro p {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-kicker {
+  position: relative;
+  font-size: 0.68rem;
+  opacity: 0.82;
+}
+
+.hero h1 {
+  position: relative;
+  max-width: none;
+  margin: 0.05rem auto 0;
+  font-size: clamp(2rem, 9vw, 3rem);
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.tagline {
+  position: relative;
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.34em;
+}
+
+.program-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.72rem;
+  padding: 0.45rem 0.72rem;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  font-size: 0.74rem;
+  backdrop-filter: blur(14px);
+}
+
+.content-panel {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem 0 1rem;
+}
+
+.section-intro {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.2rem 1rem 0;
+}
+
+.section-intro p,
+.mini-kicker {
+  color: var(--purple);
+  font-size: 0.74rem;
+}
+
+.section-intro h2,
+.journal-card h2 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.45rem;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.section-intro span,
+.journal-card span,
+.source-card,
+.chakra-details,
+.crystal-card p,
+.angel-card span,
+.frequency-card p,
+.quote-card span {
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.chakra-grid,
+.crystal-grid,
+.angel-list,
+.frequency-list,
+.session-list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.chakra-grid {
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.chakra-heading {
+  margin: 0.15rem 1rem 0;
+  color: #281b62;
+  font-size: 1.55rem;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.chakra-heading::before {
+  content: "✨ ";
+}
+
+.chakra-card,
+.crystal-card,
+.angel-card,
+.affirmation-card,
+.quote-card,
+.frequency-card,
+.session-card,
+.journal-card,
+.source-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.chakra-card.expanded {
+  grid-column: auto;
+}
+
+.chakra-card {
+  overflow: hidden;
+  margin: 0 0.05rem;
+  border-color: rgba(255, 255, 255, 0.72);
+  border-radius: 22px;
+  background:
+    linear-gradient(95deg, color-mix(in srgb, var(--chakra), white 90%), rgba(255, 255, 255, 0.76)),
+    var(--panel);
+  box-shadow: 0 12px 30px rgba(92, 37, 103, 0.08);
+}
+
+.chakra-card button {
+  width: 100%;
+  min-height: 6.1rem;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0.95rem;
+  color: var(--ink);
+  text-align: left;
+  border: 0;
+  background: transparent;
+  border-radius: 22px;
+  cursor: pointer;
+}
+
+.chakra-card strong,
+.crystal-card h3,
+.angel-card h3,
+.frequency-card h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+.chakra-card strong {
+  display: block;
+  color: #281b62;
+  font-size: 1.25rem;
+  line-height: 1.05;
+}
+
+.chakra-card small,
+.crystal-card small,
+.angel-card p {
+  color: var(--muted);
+  font-weight: 800;
+}
+
+.chakra-card small {
+  display: block;
+  margin-top: 0.28rem;
+  color: #7a28a9;
+  font-size: 0.95rem;
+}
+
+.chakra-orb,
+.crystal-orb,
+.angel-light {
+  display: block;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.chakra-orb {
+  display: grid;
+  place-items: center;
+  width: 3.45rem;
+  height: 3.45rem;
+  background:
+    radial-gradient(circle at 50% 47%, color-mix(in srgb, var(--chakra), white 42%) 0 24%, transparent 25%),
+    var(--chakra);
+  box-shadow:
+    inset 0 -7px 12px rgba(0, 0, 0, 0.12),
+    0 9px 18px color-mix(in srgb, var(--chakra), transparent 62%);
+}
+
+.chakra-orb span {
+  color: #fff45f;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.chakra-copy {
+  min-width: 0;
+}
+
+.chakra-chevron {
+  color: #b430ec;
+  font-size: 1.35rem;
+  font-weight: 900;
+  transition: transform 180ms ease;
+}
+
+.chakra-chevron.open {
+  transform: rotate(180deg);
+}
+
+.chakra-details {
+  display: grid;
+  gap: 0.6rem;
+  padding: 0 1.1rem 1.05rem 5.45rem;
+}
+
+.chakra-details p {
+  margin: 0;
+}
+
+.chakra-details b {
+  color: var(--ink);
+}
+
+.crystal-card,
+.angel-card {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+  padding: 0.95rem;
+}
+
+.crystal-orb {
+  width: 3rem;
+  height: 3rem;
+  background:
+    radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.95), transparent 18%),
+    radial-gradient(circle, var(--crystal), color-mix(in srgb, var(--crystal), #6a336e 32%));
+  box-shadow: 0 10px 26px color-mix(in srgb, var(--crystal), transparent 52%);
+}
+
+.crystal-card div,
+.angel-card div,
+.frequency-card div {
+  min-width: 0;
+}
+
+.crystal-card p,
+.angel-card p,
+.frequency-card p {
+  margin: 0.25rem 0;
+}
+
+.angel-light {
+  width: 0.55rem;
+  align-self: stretch;
+  min-height: 5rem;
+  background: linear-gradient(180deg, var(--angel), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 0 24px color-mix(in srgb, var(--angel), transparent 35%);
+}
+
+.angel-card strong {
+  display: inline-flex;
+  margin: 0.25rem 0 0.45rem;
+  color: var(--purple);
+}
+
+.affirmation-card {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.35rem;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.86), rgba(255, 240, 248, 0.72)),
+    var(--panel);
+}
+
+.affirmation-card p {
+  margin: 0;
+  color: #4e2b55;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.85rem;
+  line-height: 1.18;
+}
+
+.affirmation-card button,
+.journal-actions button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  min-height: 2.85rem;
+  padding: 0 1rem;
+  color: #fffaf6;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--purple), var(--pink));
+  cursor: pointer;
+  box-shadow: 0 12px 28px rgba(126, 69, 189, 0.2);
+}
+
+.quote-card {
+  display: grid;
+  gap: 0.65rem;
+  padding: 1rem;
+  background: rgba(255, 250, 241, 0.8);
+}
+
+.quote-card p {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.08rem;
+  line-height: 1.45;
+}
+
+.frequency-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.frequency-card strong,
+.session-card strong {
+  color: var(--purple);
+}
+
+.bar {
+  overflow: hidden;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: rgba(127, 69, 189, 0.12);
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--purple), var(--pink), var(--gold));
+}
+
+.session-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.88), rgba(255, 243, 251, 0.72)),
+    var(--panel);
+}
+
+.session-card h3 {
+  margin: 0.18rem 0 0;
+  font-size: 1.2rem;
+  letter-spacing: 0;
+}
+
+.session-card p {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.session-card ol {
+  display: grid;
+  gap: 0.45rem;
+  margin: 0;
+  padding-left: 1.2rem;
+  color: #523b56;
+  line-height: 1.45;
+}
+
+.session-card li::marker {
+  color: var(--pink);
+  font-weight: 900;
+}
+
+.session-card .session-prompt {
+  margin: 0;
+  padding: 0.78rem;
+  color: #54305a;
+  font-weight: 800;
+  border-radius: 8px;
+  background: rgba(231, 101, 170, 0.1);
+}
+
+.journal-card {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0.4rem 1rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.journal-card label {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.journal-card textarea {
+  width: 100%;
+  min-height: 8.5rem;
+  resize: vertical;
+  padding: 0.9rem;
+  color: var(--ink);
+  border: 1px solid rgba(127, 69, 189, 0.18);
+  border-radius: 8px;
+  outline: none;
+  background: rgba(255, 248, 253, 0.88);
+}
+
+.journal-card textarea:focus {
+  border-color: rgba(231, 101, 170, 0.65);
+  box-shadow: 0 0 0 3px rgba(231, 101, 170, 0.14);
+}
+
+.journal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.source-card {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0 1rem;
+  padding: 1rem;
+  font-size: 0.92rem;
+  background: rgba(255, 249, 239, 0.72);
+}
+
+.source-card p {
+  margin: 0;
+}
+
+.source-links {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.source-links a {
+  color: #68409d;
+  font-weight: 800;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.future-note {
+  padding-top: 0.7rem;
+  border-top: 1px solid rgba(127, 69, 189, 0.14);
+}
+
+.tab-bar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.3rem;
+  width: min(100%, 520px);
+  margin: 0 auto;
+  padding: 0.6rem 0.55rem max(0.58rem, env(safe-area-inset-bottom));
+  border-top: 1px solid rgba(127, 69, 189, 0.16);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(250, 250, 252, 0.94));
+  backdrop-filter: blur(22px);
+  box-shadow: 0 -14px 38px rgba(71, 35, 90, 0.12);
+}
+
+.tab-bar button {
+  display: grid;
+  justify-items: center;
+  gap: 0.22rem;
+  min-height: 3.75rem;
+  padding: 0.4rem 0.2rem;
+  color: #8e8a95;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.tab-bar button.active {
+  color: #8c28cb;
+  background: rgba(140, 40, 203, 0.08);
+  box-shadow: none;
+}
+
+.tab-bar span {
+  max-width: 100%;
+  font-size: clamp(0.62rem, 2.4vw, 0.72rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 760px) {
+  body {
+    padding: 2rem 0;
+  }
+
+  .app-shell {
+    min-height: calc(100vh - 4rem);
+    overflow: hidden;
+    border: 1px solid rgba(127, 69, 189, 0.13);
+    border-radius: 28px;
+    box-shadow: 0 24px 90px rgba(79, 39, 99, 0.18);
+  }
+
+  .tab-bar {
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 18px 18px 0 0;
+  }
+}

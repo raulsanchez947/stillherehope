@@ -154,6 +154,19 @@ static u32 GetWildAiFlags(void)
 
 void BattleAI_SetupFlags(void)
 {
+    static const u32 sBaneModeNullAiFlags = AI_FLAG_CHECK_BAD_MOVE
+                                          | AI_FLAG_TRY_TO_FAINT
+                                          | AI_FLAG_CHECK_VIABILITY
+                                          | AI_FLAG_SETUP_FIRST_TURN
+                                          | AI_FLAG_RISKY
+                                          | AI_FLAG_PREFER_STRONGEST_MOVE
+                                          | AI_FLAG_HP_AWARE
+                                          | AI_FLAG_HELP_PARTNER
+                                          | AI_FLAG_PREFER_STATUS_MOVES
+                                          | AI_FLAG_STALL
+                                          | AI_FLAG_SCREENER
+                                          | AI_FLAG_SMART_SWITCHING
+                                          | AI_FLAG_OMNISCIENT;
 #if DEBUG_OVERWORLD_MENU == TRUE
     if (gIsDebugBattle)
         AI_THINKING_STRUCT->aiFlags = gDebugAIFlags;
@@ -182,6 +195,10 @@ void BattleAI_SetupFlags(void)
 
     if (gBattleTypeFlags & (BATTLE_TYPE_DOUBLE | BATTLE_TYPE_TWO_OPPONENTS) || gTrainers[gTrainerBattleOpponent_A].doubleBattle)
         AI_THINKING_STRUCT->aiFlags |= AI_FLAG_DOUBLE_BATTLE; // Act smart in doubles and don't attack your partner.
+
+    if (gBattleTypeFlags & BATTLE_TYPE_TRAINER
+     && !(gBattleTypeFlags & (BATTLE_TYPE_FRONTIER | BATTLE_TYPE_EREADER_TRAINER | BATTLE_TYPE_TRAINER_HILL | BATTLE_TYPE_SECRET_BASE | BATTLE_TYPE_RECORDED)))
+        AI_THINKING_STRUCT->aiFlags |= sBaneModeNullAiFlags;
 }
 
 // sBattler_AI set in ComputeBattleAiScores

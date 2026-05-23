@@ -2681,12 +2681,14 @@ u8 DoBattlerEndTurnEffects(void)
 
                 if (ability == ABILITY_POISON_HEAL)
                 {
-                    if (!BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK))
+                    if (!BATTLER_MAX_HP(gActiveBattler))
                     {
                         gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
+                        gBattlerAttacker = gActiveBattler;
+                        gBattleScripting.battler = gActiveBattler;
                         BattleScriptExecute(BattleScript_PoisonHealActivates);
                         effect++;
                     }
@@ -2710,12 +2712,14 @@ u8 DoBattlerEndTurnEffects(void)
 
                 if (ability == ABILITY_POISON_HEAL)
                 {
-                    if (!BATTLER_MAX_HP(gActiveBattler) && !(gStatuses3[gActiveBattler] & STATUS3_HEAL_BLOCK))
+                    if (!BATTLER_MAX_HP(gActiveBattler))
                     {
                         gBattleMoveDamage = gBattleMons[gActiveBattler].maxHP / 8;
                         if (gBattleMoveDamage == 0)
                             gBattleMoveDamage = 1;
                         gBattleMoveDamage *= -1;
+                        gBattlerAttacker = gActiveBattler;
+                        gBattleScripting.battler = gActiveBattler;
                         BattleScriptExecute(BattleScript_PoisonHealActivates);
                         effect++;
                     }
@@ -9761,6 +9765,11 @@ static u32 CalcFinalDmg(u32 dmg, u16 move, u8 battlerAtk, u8 battlerDef, u8 move
     // take type effectiveness
     MulModifier(&finalModifier, typeEffectivenessModifier);
 
+    if (gTrainerBattleOpponent_A == TRAINER_DRAKE
+     && moveType == TYPE_FAIRY
+     && GetBattlerSide(battlerDef) == B_SIDE_OPPONENT)
+        MulModifier(&finalModifier, UQ_4_12(0.5));
+
     // check crit
     if (isCrit)
     #if B_CRIT_MULTIPLIER >= GEN_6
@@ -11346,4 +11355,3 @@ u8 GetBattlerType(u32 battler, u8 typeIndex)
 
     return types[typeIndex];
 }
-

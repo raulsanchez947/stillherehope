@@ -1,83 +1,34 @@
 SootopolisCity_Gym_1F_MapScripts::
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, SootopolisCity_Gym_1F_OnFrame
-	map_script MAP_SCRIPT_ON_RESUME, SootopolisCity_Gym_1F_OnResume
 	map_script MAP_SCRIPT_ON_LOAD, SootopolisCity_Gym_1F_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, SootopolisCity_Gym_1F_OnTransition
 	.byte 0
 
-SootopolisCity_Gym_1F_OnTransition:
-	setvar VAR_ICE_STEP_COUNT, 1
-	end
-
-SootopolisCity_Gym_1F_OnResume:
-	setstepcallback STEP_CB_SOOTOPOLIS_ICE
-	end
-
 SootopolisCity_Gym_1F_OnLoad:
-	call SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles
-	special SetSootopolisGymCrackedIceMetatiles
+	goto_if_set FLAG_DEFEATED_SOOTOPOLIS_GYM, SootopolisCity_Gym_1F_EventScript_DeactivatePuzzle
 	end
 
-SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles::
-	goto_if_lt VAR_ICE_STEP_COUNT, 8, SootopolisCity_Gym_1F_EventScript_StopCheckingStairs  @ All stairs ice
-	goto_if_lt VAR_ICE_STEP_COUNT, 28, SootopolisCity_Gym_1F_EventScript_OpenFirstStairs
-	goto_if_lt VAR_ICE_STEP_COUNT, 67, SootopolisCity_Gym_1F_EventScript_OpenFirstAndSecondStairs
-	setmetatile 8, 4, METATILE_SootopolisGym_Stairs, FALSE
-	setmetatile 8, 5, METATILE_SootopolisGym_Stairs, FALSE
-SootopolisCity_Gym_1F_EventScript_OpenFirstAndSecondStairs::
-	setmetatile 8, 10, METATILE_SootopolisGym_Stairs, FALSE
-	setmetatile 8, 11, METATILE_SootopolisGym_Stairs, FALSE
-SootopolisCity_Gym_1F_EventScript_OpenFirstStairs::
-	setmetatile 8, 15, METATILE_SootopolisGym_Stairs, FALSE
-	setmetatile 8, 16, METATILE_SootopolisGym_Stairs, FALSE
-SootopolisCity_Gym_1F_EventScript_StopCheckingStairs::
-	return
-
-SootopolisCity_Gym_1F_OnFrame:
-	map_script_2 VAR_ICE_STEP_COUNT, 8, SootopolisCity_Gym_1F_EventScript_UnlockFirstStairs
-	map_script_2 VAR_ICE_STEP_COUNT, 28, SootopolisCity_Gym_1F_EventScript_UnlockSecondStairs
-	map_script_2 VAR_ICE_STEP_COUNT, 67, SootopolisCity_Gym_1F_EventScript_UnlockThirdStairs
-	map_script_2 VAR_ICE_STEP_COUNT, 0, SootopolisCity_Gym_1F_EventScript_FallThroughIce
-	.2byte 0
-
-SootopolisCity_Gym_1F_EventScript_UnlockFirstStairs::
-	addvar VAR_ICE_STEP_COUNT, 1
-	delay 40
-	playse SE_ICE_STAIRS
-	call SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles
-	special DrawWholeMapView
+SootopolisCity_Gym_1F_EventScript_DeactivatePuzzle::
+	special MauvilleGymDeactivatePuzzle
 	end
 
-SootopolisCity_Gym_1F_EventScript_UnlockSecondStairs::
-	addvar VAR_ICE_STEP_COUNT, 1
-	delay 40
-	playse SE_ICE_STAIRS
-	call SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles
-	special DrawWholeMapView
+SootopolisCity_Gym_1F_EventScript_Switch1::
+	setvar VAR_0x8004, 0
+	special MauvilleGymPressSwitch
 	end
 
-SootopolisCity_Gym_1F_EventScript_UnlockThirdStairs::
-	addvar VAR_ICE_STEP_COUNT, 1
-	delay 40
-	playse SE_ICE_STAIRS
-	call SootopolisCity_Gym_1F_EventScript_CheckSetStairMetatiles
-	special DrawWholeMapView
+SootopolisCity_Gym_1F_EventScript_Switch2::
+	setvar VAR_0x8004, 1
+	special MauvilleGymPressSwitch
 	end
 
-SootopolisCity_Gym_1F_EventScript_FallThroughIce::
-	lockall
-	delay 20
-	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Gym_1F_Movement_FallThroughIce
-	waitmovement 0
-	playse SE_FALL
-	delay 60
-	warphole MAP_SOOTOPOLIS_CITY_GYM_B1F
-	waitstate
+SootopolisCity_Gym_1F_EventScript_Switch3::
+	setvar VAR_0x8004, 2
+	special MauvilleGymPressSwitch
 	end
 
-SootopolisCity_Gym_1F_Movement_FallThroughIce:
-	set_invisible
-	step_end
+SootopolisCity_Gym_1F_EventScript_Switch4::
+	setvar VAR_0x8004, 3
+	special MauvilleGymPressSwitch
+	end
 
 SootopolisCity_Gym_1F_EventScript_Wattson::
 	trainerbattle_single TRAINER_WATTSON_1, SootopolisCity_Gym_1F_Text_WattsonIntro, SootopolisCity_Gym_1F_Text_WattsonDefeat, SootopolisCity_Gym_1F_EventScript_WattsonDefeated, NO_MUSIC
@@ -118,14 +69,14 @@ SootopolisCity_Gym_1F_EventScript_WattsonDefeated::
 	end
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
-	giveitem ITEM_TM34
+	giveitem ITEM_TERRAIN_EXTENDER
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM34
 	return
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
-	giveitem ITEM_TM34
+	giveitem ITEM_TERRAIN_EXTENDER
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM34
@@ -229,15 +180,13 @@ SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis:
 	.string "battle we shared, take this…$"
 
 SootopolisCity_Gym_1F_Text_ExplainWaterPulse:
-	.string "The TECHNICAL MACHINE I handed you\n"
-	.string "contains SHOCK WAVE.\p"
-	.string "In use, it lashes out with a jolt that\n"
-	.string "never misses its target.\p"
-	.string "… … … … … …$"
+	.string "That TERRAIN EXTENDER keeps the field\n"
+	.string "charged longer.\p"
+	.string "Electric pressure is the whole room\n"
+	.string "buzzing before the first hit lands.$"
 
 SootopolisCity_Gym_1F_Text_RegisteredWattson:
-	.string "Registered GYM LEADER WATTSON\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 SootopolisCity_Gym_1F_Text_WattsonPostBattle:
 	.string "WATTSON: That's all eight, then.\p"

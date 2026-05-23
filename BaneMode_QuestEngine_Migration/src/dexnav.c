@@ -724,6 +724,15 @@ static bool8 TryStartHiddenMonFieldEffect(u8 environment, u8 xSize, u8 ySize, bo
     
     if (DexNavPickTile(environment, xSize, ySize, smallScan))
     {
+        if (environment == ENCOUNTER_TYPE_LAND && currMapType == MAP_TYPE_UNDERGROUND)
+        {
+            // Cave searches are stable if we keep the search logic but skip the
+            // cave-dust field effect lifecycle entirely.
+            gDexNavSearchDataPtr->fldEffId = 0;
+            gDexNavSearchDataPtr->fldEffSpriteId = MAX_SPRITES;
+            return TRUE;
+        }
+
         u8 metatileBehaviour = MapGridGetMetatileBehaviorAt(gDexNavSearchDataPtr->tileX, gDexNavSearchDataPtr->tileY);
 
         switch (environment)
@@ -1073,7 +1082,8 @@ void EndDexNavSearch(u8 taskId)
     }    
     DestroyTask(taskId);
     RemoveDexNavWindowAndGfx();
-    FieldEffectStop(&gSprites[gDexNavSearchDataPtr->fldEffSpriteId], gDexNavSearchDataPtr->fldEffId);
+    if (gDexNavSearchDataPtr->fldEffId != 0 && gDexNavSearchDataPtr->fldEffSpriteId != MAX_SPRITES)
+        FieldEffectStop(&gSprites[gDexNavSearchDataPtr->fldEffSpriteId], gDexNavSearchDataPtr->fldEffId);
     Free(gDexNavSearchDataPtr);
 }
 
@@ -1190,12 +1200,10 @@ static void Task_DexNavSearch(u8 taskId)
     }
 
     //Caves and water the pokemon moves around
-    if ((gDexNavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER || GetCurrentMapType() == MAP_TYPE_UNDERGROUND)
+    if (gDexNavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER
         && gDexNavSearchDataPtr->proximity < GetMovementProximityBySearchLevel() && gDexNavSearchDataPtr->movementCount < 1
         && task->tRevealed)
     {
-        bool8 ret;
-        
         FieldEffectStop(&gSprites[gDexNavSearchDataPtr->fldEffSpriteId], gDexNavSearchDataPtr->fldEffId);
         while (1) {
             if (TryStartHiddenMonFieldEffect(gDexNavSearchDataPtr->environment, 5, 5, TRUE))

@@ -2050,6 +2050,17 @@ static void Cmd_adjustdamage(void)
         RecordItemEffectBattle(gBattlerTarget, holdEffect);
         gSpecialStatuses[gBattlerTarget].focusSashed = TRUE;
     }
+    else if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER)
+        && gTrainerBattleOpponent_A == TRAINER_WALLY_MAUVILLE
+        && GetBattlerSide(gBattlerTarget) == B_SIDE_OPPONENT
+        && GetBattlerSide(gBattlerAttacker) == B_SIDE_PLAYER
+        && BATTLER_MAX_HP(gBattlerTarget)
+        && gBattlerPartyIndexes[gBattlerTarget] < PARTY_SIZE
+        && !(gPaulFightingSpiritTriggered & gBitTable[gBattlerPartyIndexes[gBattlerTarget]]))
+    {
+        gPaulFightingSpiritTriggered |= gBitTable[gBattlerPartyIndexes[gBattlerTarget]];
+        gMoveResultFlags |= MOVE_RESULT_FIGHTING_SPIRIT;
+    }
 #if B_AFFECTION_MECHANICS == TRUE
     else if (GetBattlerSide(gBattlerTarget) == B_SIDE_PLAYER && friendshipScore >= FRIENDSHIP_100_TO_149)
     {
@@ -2065,6 +2076,7 @@ static void Cmd_adjustdamage(void)
         && !gProtectStructs[gBattlerTarget].endured
         && !gSpecialStatuses[gBattlerTarget].focusBanded
         && !gSpecialStatuses[gBattlerTarget].focusSashed
+        && !(gMoveResultFlags & MOVE_RESULT_FIGHTING_SPIRIT)
 #if B_AFFECTION_MECHANICS == TRUE
         && !gSpecialStatuses[gBattlerTarget].affectionEndured
 #endif
@@ -2087,6 +2099,10 @@ static void Cmd_adjustdamage(void)
     {
         gMoveResultFlags |= MOVE_RESULT_STURDIED;
         gLastUsedAbility = ABILITY_STURDY;
+    }
+    else if (gMoveResultFlags & MOVE_RESULT_FIGHTING_SPIRIT)
+    {
+        // The custom result flag already carries the message choice.
     }
 #if B_AFFECTION_MECHANICS == TRUE
     else if (gSpecialStatuses[gBattlerTarget].affectionEndured)
@@ -2473,6 +2489,7 @@ static void Cmd_effectivenesssound(void)
         case MOVE_RESULT_ONE_HIT_KO:
         case MOVE_RESULT_FOE_HUNG_ON:
         case MOVE_RESULT_STURDIED:
+        case MOVE_RESULT_FIGHTING_SPIRIT:
         default:
             if (gMoveResultFlags & MOVE_RESULT_SUPER_EFFECTIVE)
             {
@@ -2536,6 +2553,10 @@ static void Cmd_resultmessage(void)
         case MOVE_RESULT_FOE_ENDURED:
             stringId = STRINGID_PKMNENDUREDHIT;
             break;
+        case MOVE_RESULT_FIGHTING_SPIRIT:
+            stringId = STRINGID_PAULFIGHTINGSPIRIT;
+            gMoveResultFlags &= ~MOVE_RESULT_FIGHTING_SPIRIT;
+            break;
         case MOVE_RESULT_FAILED:
             stringId = STRINGID_BUTITFAILED;
             break;
@@ -2570,6 +2591,11 @@ static void Cmd_resultmessage(void)
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_SturdiedMsg;
                 return;
+            }
+            else if (gMoveResultFlags & MOVE_RESULT_FIGHTING_SPIRIT)
+            {
+                stringId = STRINGID_PAULFIGHTINGSPIRIT;
+                gMoveResultFlags &= ~MOVE_RESULT_FIGHTING_SPIRIT;
             }
             else if (gMoveResultFlags & MOVE_RESULT_FOE_ENDURED)
             {
@@ -8375,6 +8401,9 @@ bool32 CanUseLastResort(u8 battlerId)
 
 static void RemoveAllTerrains(void)
 {
+    if (gBaneModeLockArenaEffects)
+        return;
+
     gFieldTimers.terrainTimer = 0;
     switch (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY)
     {
@@ -8416,6 +8445,9 @@ static void RemoveAllTerrains(void)
 
 static bool32 TryDefogClear(u8 battlerAtk, bool32 clear)
 {
+    if (clear && gBaneModeLockArenaEffects)
+        return FALSE;
+
     s32 i;
     for (i = 0; i < 2; i++)
     {
@@ -8593,6 +8625,9 @@ static bool32 IsTeatimeAffected(u32 battlerId)
 
 static bool32 CourtChangeSwapSideStatuses(void)
 {
+    if (gBaneModeLockArenaEffects)
+        return FALSE;
+
     struct SideTimer *sideTimerPlayer = &gSideTimers[B_SIDE_PLAYER];
     struct SideTimer *sideTimerOpp = &gSideTimers[B_SIDE_OPPONENT];
     u32 temp;
@@ -10305,6 +10340,8 @@ static void Cmd_various(void)
     case VARIOUS_REMOVE_TERRAIN:
     {
         VARIOUS_ARGS();
+        if (gBaneModeLockArenaEffects)
+            break;
         RemoveAllTerrains();
         break;
     }
@@ -10397,6 +10434,9 @@ static void Cmd_various(void)
     case VARIOUS_TRY_TO_CLEAR_PRIMAL_WEATHER:
     {
         bool8 shouldNotClear = FALSE;
+
+        if (gBaneModeLockArenaEffects && (gBattleWeather & B_WEATHER_PRIMAL_ANY))
+            shouldNotClear = TRUE;
 
         for (i = 0; i < gBattlersCount; i++)
         {
@@ -13792,6 +13832,11 @@ static void Cmd_rapidspinfree(void)
     }
     else if (gSideStatuses[atkSide] & SIDE_STATUS_SPIKES)
     {
+        if (gBaneModeLockArenaEffects)
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+            return;
+        }
         gSideStatuses[atkSide] &= ~SIDE_STATUS_SPIKES;
         gSideTimers[atkSide].spikesAmount = 0;
         BattleScriptPushCursor();
@@ -13799,6 +13844,11 @@ static void Cmd_rapidspinfree(void)
     }
     else if (gSideStatuses[atkSide] & SIDE_STATUS_TOXIC_SPIKES)
     {
+        if (gBaneModeLockArenaEffects)
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+            return;
+        }
         gSideStatuses[atkSide] &= ~SIDE_STATUS_TOXIC_SPIKES;
         gSideTimers[atkSide].toxicSpikesAmount = 0;
         BattleScriptPushCursor();
@@ -13806,6 +13856,11 @@ static void Cmd_rapidspinfree(void)
     }
     else if (gSideStatuses[atkSide] & SIDE_STATUS_STICKY_WEB)
     {
+        if (gBaneModeLockArenaEffects)
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+            return;
+        }
         gSideStatuses[atkSide] &= ~SIDE_STATUS_STICKY_WEB;
         gSideTimers[atkSide].stickyWebAmount = 0;
         BattleScriptPushCursor();
@@ -13813,6 +13868,11 @@ static void Cmd_rapidspinfree(void)
     }
     else if (gSideStatuses[atkSide] & SIDE_STATUS_STEALTH_ROCK)
     {
+        if (gBaneModeLockArenaEffects)
+        {
+            gBattlescriptCurrInstr = cmd->nextInstr;
+            return;
+        }
         gSideStatuses[atkSide] &= ~SIDE_STATUS_STEALTH_ROCK;
         gSideTimers[atkSide].stealthRockAmount = 0;
         BattleScriptPushCursor();

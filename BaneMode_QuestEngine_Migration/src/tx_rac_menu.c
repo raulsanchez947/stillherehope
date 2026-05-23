@@ -1217,7 +1217,9 @@ void CB2_InitTxRandomizerChallengesMenu(void)
         
         sOptions->sel_gamemode[MENUITEM_GAMEMODE]           = gSaveBlock1Ptr->tx_Challenges_OpenWorld; 
         sOptions->sel_gamemode[MENUITEM_GAMEMODE_STARTLOC]  = gSaveBlock1Ptr->tx_Challenges_StartLoc;
-        sOptions->sel_gamemode[MENUITEM_GAMEMODE_DIFFICULTY] = gSaveBlock1Ptr->tx_Difficulty;
+        // BaneMode: difficulty is permanently locked to HARD. No Easy/Normal.
+        sOptions->sel_gamemode[MENUITEM_GAMEMODE_DIFFICULTY] = 2;
+        gSaveBlock1Ptr->tx_Difficulty = 2;
         sOptions->sel_gamemode[MENUITEM_GAMEMODE_GEN]      = gSaveBlock1Ptr->tx_Random_Gen;
       
         gSaveBlock1Ptr->tx_Random_Starter                   = TX_RANDOM_STARTER;
@@ -2497,26 +2499,12 @@ static void DrawChoices_StartLoc(int selection, int y)
 
 static void DrawChoices_Difficulty(int selection, int y)
 {
-    bool8 active = CheckConditions(MENUITEM_GAMEMODE_DIFFICULTY);
-    u8 n = selection;
-
-    StringCopyPadded(gStringVar1, sText_GameMode_Diff[n], 0, 2);
-
-    DrawOptionMenuChoice(gStringVar1, 104, y, 1, active);
-
-    if (!StringCompare(gStringVar1, sText_Easy))
-    {
-        gSaveBlock1Ptr->tx_Difficulty = 0;
-    }
-    else if (!StringCompare(gStringVar1, sText_Challenges_Nuzlocke_Normal))
-    {
-        gSaveBlock1Ptr->tx_Difficulty = 1;
-    }
-    else if (!StringCompare(gStringVar1, sText_Challenges_Nuzlocke_Hardcore))
-    {
-        gSaveBlock1Ptr->tx_Difficulty = 2;
-        sOptions->sel_randomizer[MENUITEM_RANDOM_OFF_ON] = 0;
-    }
+    // BaneMode: difficulty is permanently HARD. Easy/Normal modes are removed.
+    // The selection value is ignored — always display and enforce Hard.
+    (void)selection;
+    gSaveBlock1Ptr->tx_Difficulty = 2;
+    sOptions->sel_randomizer[MENUITEM_RANDOM_OFF_ON] = 0;
+    DrawOptionMenuChoice(sText_Challenges_Nuzlocke_Hardcore, 104, y, 1, TRUE);
 }
 
 static void DrawChoices_Challenges_EvoLimit(int selection, int y)

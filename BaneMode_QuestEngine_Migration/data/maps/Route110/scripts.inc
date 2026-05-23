@@ -797,29 +797,29 @@ Route110_Text_MayExplainItemfinder:
 	.string "harder for the next time.$"
 
 Route110_Text_BrendanLetsBattle:
-	.string "BRENDAN: Hey, {PLAYER}.\n"
-	.string "So this is where you were.\l"
-	.string "How's it going?\p"
-	.string "Have you been raising your POKéMON?\n"
-	.string "I'll check for you.$"
+	.string "BRENDAN: Yo, {PLAYER}.\n"
+	.string "So this is where you been.\l"
+	.string "How you living?\p"
+	.string "You been raising your POKéMON?\n"
+	.string "Let me check that.$"
 
 Route110_Text_BrendanDefeated:
 	.string "Hmm…\n"
-	.string "You're pretty good.$"
+	.string "You're kinda nice with it.$"
 
 Route110_Text_BrendanTakeThis:
-	.string "BRENDAN: {PLAYER}, you've trained\n"
-	.string "without me noticing…\p"
-	.string "Good enough!\n"
+	.string "BRENDAN: {PLAYER}, you been training\n"
+	.string "while I wasn't looking…\p"
+	.string "Aight, good enough!\n"
 	.string "Here, take this.$"
 
 Route110_Text_BrendanExplainItemfinder:
 	.string "BRENDAN: That's an ITEMFINDER.\p"
-	.string "Use it to root around for items that\n"
-	.string "aren't visible.\p"
-	.string "If it senses something, it emits\n"
-	.string "a sound.\p"
-	.string "Anyway, I'm off to look for new\n"
+	.string "Use it to sniff out items you\n"
+	.string "can't see.\p"
+	.string "If it senses something, it'll make\n"
+	.string "noise.\p"
+	.string "Anyway, I'm out to find new\n"
 	.string "POKéMON.$"
 
 Route110_Text_RideBikeAtFullSpeed:
@@ -993,8 +993,7 @@ Route110_Text_HeardYouInstallMatchCall:
 	.string "… … … … … …$"
 
 Route110_Text_RegisteredBirchInPokenav:
-	.string "Registered PROF. BIRCH\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 Route110_Text_KeepAnEyeOutForRival:
 	.string "PROF. BIRCH: {PLAYER}{KUN}…\p"
@@ -1002,4 +1001,3 @@ Route110_Text_KeepAnEyeOutForRival:
 	.string "… … … … … …\p"
 	.string "Well, I had better get going.\n"
 	.string "See you again, {PLAYER}{KUN}!$"
-

@@ -14,12 +14,11 @@ EverGrandeCity_ChampionsRoom_OnTransition:
 	end
 
 Eventscript_ChampionOPW::
-goto_if_set FLAG_OPEN_WORLD, Eventscript_ChangeChampion
-setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_WALLACE
+setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_BRENDAN_NORMAL
 return
 
 Eventscript_ChangeChampion::
-setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_STEVEN
+setvar VAR_OBJ_GFX_ID_1, OBJ_EVENT_GFX_BRENDAN_NORMAL
 return
 
 EverGrandeCity_ChampionsRoom_OnWarp:
@@ -52,20 +51,32 @@ EverGrandeCity_ChampionsRoom_Movement_PlayerApproachWallace:
 	step_end
 
 EverGrandeCity_ChampionsRoom_EventScript_Wallace::
-	goto_if_set FLAG_OPEN_WORLD, EverGrandeCity_ChampionsRoom_EventScript_Steven
+	@ Already beaten the champion - rematch speech
+	goto_if_set FLAG_OPEN_WORLD, EverGrandeCity_ChampionsRoom_EventScript_RematchSpeech
+	@ Gate Battle 1: Brendan + Bane combined squad
 	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
 	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeech, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_WALLACE, EverGrandeCity_ChampionsRoom_Text_Defeat
 	addrankpoints 15
-	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
-	end
-
-EverGrandeCity_ChampionsRoom_EventScript_Steven::
+	@ Won Gate 1 - full heal before Gate 2
+	msgbox EverGrandeCity_ChampionsRoom_Text_GateHealMessage, MSGBOX_DEFAULT
+	special HealPlayerParty
+	@ Gate Battle 2: Brendan + Bane legendary squad
 	playbgm MUS_ENCOUNTER_CHAMPION, FALSE
 	msgbox EverGrandeCity_ChampionsRoom_Text_IntroSpeechOPW, MSGBOX_DEFAULT
 	trainerbattle_no_intro TRAINER_STEVEN, EverGrandeCity_ChampionsRoom_Text_DefeatOPW
 	addrankpoints 15
-	goto EverGrandeCity_ChampionsRoom_EventScript_DefeatedOPW
+	@ Won both gates - mark champion cleared
+	setflag FLAG_OPEN_WORLD
+	goto EverGrandeCity_ChampionsRoom_EventScript_Defeated
+	end
+
+EverGrandeCity_ChampionsRoom_EventScript_Steven::
+	end
+
+EverGrandeCity_ChampionsRoom_EventScript_RematchSpeech::
+	msgbox EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	releaseall
 	end
 
 EverGrandeCity_ChampionsRoom_EventScript_Defeated::
@@ -262,92 +273,88 @@ EverGrandeCity_ChampionsRoom_Movement_BirchArrives:
 	step_end
 
 EverGrandeCity_ChampionsRoom_Text_IntroSpeech:
-	.string "WALLACE: Welcome, {PLAYER}{KUN}.\p"
-	.string "That incident in SOOTOPOLIS CITY…\n"
-	.string "That was superb work, putting an end\l"
-	.string "to that crisis all by yourself.\p"
-	.string "Oops!\p"
-	.string "It wouldn't be fair to say that you\n"
-	.string "alone ended the crisis.\p"
-	.string "You overcame that difficult situation\n"
-	.string "by working as one with your POKéMON.\p"
-	.string "We TRAINERS raise POKéMON by giving\n"
-	.string "them items and by teaching them new\l"
-	.string "techniques for battle.\p"
-	.string "But we ourselves also learn many\n"
-	.string "things from POKéMON.\p"
-	.string "And this is where your achievements\n"
-	.string "are put to the test against what\l"
-	.string "others like you have achieved.\p"
-	.string "Now!\p"
-	.string "Who can most elegantly dance with\n"
-	.string "their POKéMON in HOENN?\p"
-	.string "Show me right here and now!$"
+	.string "BRENDAN: Yo, {PLAYER}{KUN}.\p"
+	.string "Every battle you fought.\n"
+	.string "Every gym you cleared.\p"
+	.string "I was watching.\p"
+	.string "I seen you at MAUVILLE.\n"
+	.string "At MOSSDEEP. On ROUTE 131.\p"
+	.string "While you were moving forward,\n"
+	.string "I was moving quiet.\p"
+	.string "TEAM ROCKET wanted DEOXYS\n"
+	.string "as a weapon.\p"
+	.string "I caught it first.\n"
+	.string "word to my dead homie and my\l"
+	.string "buttas, I'll keep it safe.\p"
+	.string "But now? You made it.\n"
+	.string "Four ELITE FOUR. No losses.\p"
+	.string "Two gates. Twelve POKéMON.\n"
+	.string "Me and BANE built for this moment.\p"
+	.string "Now I need to see it for myself.\n"
+	.string "Let's go!$"
+
+EverGrandeCity_ChampionsRoom_Text_GateHealMessage:
+	.string "BRENDAN: Aight. You cleared\n"
+	.string "round one. Word.\p"
+	.string "We're healing your squad.\n"
+	.string "No cap - you earned that.\p"
+	.string "But the real test is round two.\n"
+	.string "Legendary tier. Brace up.$"
 
 EverGrandeCity_ChampionsRoom_Text_IntroSpeechOPW::
-	.string "Welcome, {PLAYER}{KUN}.\p"
-	.string "That incident in SOOTOPOLIS CITY…\n"
-	.string "That was superb work, putting an end\l"
-	.string "to that crisis all by yourself.\p"
-	.string "Oops!\p"
-	.string "It wouldn't be fair to say that you\n"
-	.string "alone ended the crisis.\p"
-	.string "You overcame that difficult situation\n"
-	.string "by working as one with your POKéMON.\p"
-	.string "We TRAINERS raise POKéMON by giving\n"
-	.string "them items and by teaching them new\l"
-	.string "techniques for battle.\p"
-	.string "But we ourselves also learn many\n"
-	.string "things from POKéMON.\p"
-	.string "And this is where your achievements\n"
-	.string "are put to the test against what\l"
-	.string "others like you have achieved.\p"
-	.string "Now!\p"
-	.string "{PLAYER}{KUN}, if you're going to mount\n"
-	.string "a serious challenge, expect the worst!$"
+	.string "BRENDAN: This is round two.\p"
+	.string "ARTICUNO. MOLTRES. ZAPDOS.\n"
+	.string "MEW. DEOXYS. MEWTWO.\p"
+	.string "All legendary. No filler.\n"
+	.string "Deadass strongest squad alive.\p"
+	.string "You want CHAMPION status?\n"
+	.string "Beat this. Final round!$"
 
 EverGrandeCity_ChampionsRoom_Text_Defeat:
-	.string "I, the CHAMPION, fall in defeat…\p"
-	.string "That was wonderful work.\n"
-	.string "You were elegant, infuriatingly so.\l"
-	.string "And yet it was utterly glorious!\p"
-	.string "Kudos to you, {PLAYER}{KUN}!\p"
-	.string "You are a truly noble POKéMON\n"
-	.string "TRAINER!$"
+	.string "BRENDAN: …Word.\n"
+	.string "You beat round one. Facts.$"
 
 EverGrandeCity_ChampionsRoom_Text_DefeatOPW::
-	.string "Come to think of it, ever since\n"
-	.string "our paths first crossed in GRANITE\l"
-	.string "CAVE in DEWFORD, I had this feeling.\p"
-	.string "I thought that you would eventually\n"
-	.string "become the CHAMPION.\p"
-	.string "My predictions usually come true.\p"
-	.string "And where will you go from here?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "Fufufu, even I couldn't tell you that.$"
+	.string "BRENDAN: …Deadass.\p"
+	.string "Both squads. Twelve POKéMON.\n"
+	.string "You cleared the gate. Facts.\p"
+	.string "I watched your whole journey.\n"
+	.string "Kept DEOXYS safe for HOENN.\p"
+	.string "Coordinated with STEVEN and\n"
+	.string "the HOENN DEFENDERS.\p"
+	.string "Now that title is yours.\n"
+	.string "No cap - you're the CHAMPION.\p"
+	.string "HOENN is yours.$"
 
 EverGrandeCity_ChampionsRoom_Text_PostBattleSpeech:
-	.string "WALLACE: The POKéMON you sent into\n"
-	.string "battle…\p"
-	.string "At times they danced like a spring\n"
-	.string "breeze, and at times they struck\l"
-	.string "like lightning.\p"
-	.string "It was with light, yet surefooted,\n"
-	.string "elegance that you led your POKéMON.\p"
-	.string "Even I felt bedazzled by your\n"
-	.string "masterful performance!\p"
-	.string "You now stand at the glorious peak\n"
-	.string "of the POKéMON LEAGUE.\p"
+	.string "BRENDAN: You already cleared\n"
+	.string "the gate, {PLAYER}{KUN}.\p"
+	.string "Both squads. No cap.\n"
+	.string "You proved it.\p"
+	.string "MOLTRES. ARTICUNO. ZAPDOS.\n"
+	.string "Still out there.\p"
+	.string "MEW went quiet.\n"
+	.string "DEOXYS is safe - for now.\p"
+	.string "TEAM ROCKET got pressed back,\n"
+	.string "but they don't break easy.\p"
+	.string "HOENN is yours.\n"
+	.string "Stay sharp.\p"
 	.string "I now proclaim you to be the new\n"
 	.string "HOENN region…$"
 
 EverGrandeCity_ChampionsRoom_Text_PostBattleSpeechOPW::
-	.string "You…\n"
-	.string "I had no idea you'd become so strong…\p"
-	.string "You now stand at the glorious peak\n"
+	.string "BRENDAN: Word.\n"
+	.string "You cleared both gates. Respect.\p"
+	.string "MOLTRES. ARTICUNO. ZAPDOS.\n"
+	.string "Still out there.\p"
+	.string "MEW went quiet.\n"
+	.string "DEOXYS is safe - for now.\p"
+	.string "TEAM ROCKET got pressed back,\n"
+	.string "but they don't break easy.\p"
+	.string "You now stand at the top\n"
 	.string "of the POKéMON LEAGUE.\p"
-	.string "I now proclaim you to be the new\n"
+	.string "Stay sharp, CHAMPION.\n"
+	.string "I now proclaim you to be the new\l"
 	.string "HOENN region…$"
 
 EverGrandeCity_ChampionsRoom_Text_MayAdvice:
@@ -363,14 +370,14 @@ EverGrandeCity_ChampionsRoom_Text_MayItsAlreadyOver:
 	.string "It's already over?$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanAdvice:
-	.string "BRENDAN: {PLAYER}!\p"
-	.string "How would you like some advice before\n"
-	.string "you challenge the CHAMPION?…$"
+	.string "BRENDAN: Yo, {PLAYER}!\p"
+	.string "You want a little wisdom before\n"
+	.string "you step to the CHAMPION?…$"
 
 EverGrandeCity_ChampionsRoom_Text_BrendanYouveWon:
 	.string "BRENDAN: {PLAYER}…\p"
-	.string "Are you trying to tell me…\n"
-	.string "You've beaten the CHAMPION?$"
+	.string "Hold up, deadass?\n"
+	.string "You already beat the CHAMPION?$"
 
 EverGrandeCity_ChampionsRoom_Text_BirchArriveRatePokedex:
 	.string "PROF. BIRCH: See?\n"
@@ -394,17 +401,16 @@ EverGrandeCity_ChampionsRoom_Text_BirchCongratulations:
 	.string "Now, go proudly into the final room!$"
 
 EverGrandeCity_ChampionsRoom_Text_WallaceComeWithMe:
-	.string "{PLAYER}{KUN}…\p"
-	.string "No, let me rephrase that properly.\p"
+	.string "BRENDAN: {PLAYER}{KUN}…\p"
+	.string "Nah, let me say it right.\p"
 	.string "The new CHAMPION!\p"
 	.string "Come with me.$"
 
 EverGrandeCity_ChampionsRoom_Text_WallaceWaitOutside:
-	.string "I'm sorry, but…\p"
-	.string "From here on, only those TRAINERS who\n"
-	.string "have become CHAMPIONS may enter.\p"
-	.string "You'll have to wait outside with\n"
-	.string "PROF. BIRCH.$"
+	.string "BRENDAN: Aight, but…\p"
+	.string "From here, only CHAMPIONS enter.\p"
+	.string "You'll have to wait outside\n"
+	.string "with PROF. BIRCH.$"
 
 EverGrandeCity_ChampionsRoom_Text_MayCongratulations:
 	.string "MAY: Groan…\p"
@@ -418,7 +424,6 @@ EverGrandeCity_ChampionsRoom_Text_MayCongratulations:
 EverGrandeCity_ChampionsRoom_Text_BrendanCongratulations:
 	.string "BRENDAN: Whaaaat?! … … … … …\n"
 	.string "… … … … … … … …\p"
-	.string "It can't be helped if that's the rule.\p"
-	.string "{PLAYER}, way to go!\n"
-	.string "Congratulations!$"
-
+	.string "Aight, rules are rules.\p"
+	.string "{PLAYER}, you really did that.\n"
+	.string "Respect, CHAMPION!$"

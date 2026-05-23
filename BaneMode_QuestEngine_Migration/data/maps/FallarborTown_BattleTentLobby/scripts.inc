@@ -327,22 +327,18 @@ FallarborTown_BattleTentLobby_Text_CameToCampOut:
 	.string "my hand at battling!$"
 
 FallarborTown_BattleTentLobby_Text_ScottLookingForSomeone:
-	.string "SCOTT: Hi, {PLAYER}{KUN}!\n"
-	.string "So you came out to this BATTLE TENT!\p"
-	.string "The people in these parts tend to be\n"
-	.string "easygoing and laid-back.\p"
-	.string "But, you see, what I'm looking for are\n"
-	.string "people with…\p"
-	.string "How should I say this?\p"
-	.string "Someone bursting with the desire\n"
-	.string "and the drive to win.\p"
-	.string "If there were a TRAINER like that,\n"
+	.string "BRENDAN: Yo, {PLAYER}{KUN}!\n"
+	.string "You came out to this BATTLE TENT!\p"
+	.string "People around here are easygoing,\n"
+	.string "real laid-back.\p"
+	.string "But I'm looking for people with…\p"
+	.string "How do I put it?\p"
+	.string "That hunger to win.\p"
+	.string "If there was a TRAINER like that,\n"
 	.string "I'd immediately…\p"
-	.string "Whoops! Never mind!\n"
+	.string "Nah, never mind!\n"
 	.string "Keep working at it!$"
 
 FallarborTown_BattleTentLobby_Text_ScottMakeChallenge:
-	.string "SCOTT: Instead of wasting your\n"
-	.string "time with the likes of me, why not\l"
-	.string "make a challenge?$"
-
+	.string "BRENDAN: Instead of wasting time\n"
+	.string "with me, why not take the challenge?$"

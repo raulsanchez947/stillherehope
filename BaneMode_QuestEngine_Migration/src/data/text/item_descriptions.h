@@ -1556,14 +1556,24 @@ static const u8 sRustedShieldDesc[] = _(
 
 // Colored Orbs
 static const u8 sRedOrbDesc[] = _(
-    "A red, glowing orb\n"
-    "said to contain an\n"
-    "ancient power.");
+    "A smoldering orb\n"
+    "resonating with the\n"
+    "Cinder spirit.");
 
 static const u8 sBlueOrbDesc[] = _(
-    "A blue, glowing orb\n"
-    "said to contain an\n"
-    "ancient power.");
+    "A frost-cold orb\n"
+    "resonating with the\n"
+    "Glacial spirit.");
+
+static const u8 sTempestOrbDesc[] = _(
+    "A storm-charged orb\n"
+    "resonating with the\n"
+    "Tempest spirit.");
+
+static const u8 sPsychicOrbDesc[] = _(
+    "An orb brimming with\n"
+    "psychic energy, tied\n"
+    "to a distant world.");
 
 // Mega Stones
 static const u8 sVenusauriteDesc[] = _(
@@ -3041,504 +3051,305 @@ static const u8 sEnigmaBerryEReaderDesc[] = _(
 
 // TMs/HMs
 static const u8 sTM01Desc[] = _(
-    "Powerful, but makes\n"
-    "the user flinch if\n"
-    "hit by the foe.");
-
+    "Contains Take Down.\n"
+    "Use from TM pocket.");
 static const u8 sTM02Desc[] = _(
-    "Hooks and slashes\n"
-    "the foe with long,\n"
-    "sharp claws.");
-
+    "Contains Charm.\n"
+    "Use from TM pocket.");
 static const u8 sTM03Desc[] = _(
-    "Generates an\n"
-    "ultrasonic wave\n"
-    "that may confuse.");
-
+    "Contains Fake Tears.\n"
+    "Use from TM pocket.");
 static const u8 sTM04Desc[] = _(
-    "Raises Sp. Atk and\n"
-    "Sp. Def by focusing\n"
-    "the mind.");
-
+    "Contains Agility.\n"
+    "Use from TM pocket.");
 static const u8 sTM05Desc[] = _(
-    "A savage roar that\n"
-    "makes the foe flee \n"
-    "to end the battle.");
-
+    "Contains Mud-Slap.\n"
+    "Use from TM pocket.");
 static const u8 sTM06Desc[] = _(
-    "Poisons the foe\n"
-    "with a toxin that\n"
-    "gradually worsens.");
-
+    "Contains Scary Face.\n"
+    "Use from TM pocket.");
 static const u8 sTM07Desc[] = _(
-    "Creates a hailstorm\n"
-    "that damages all\n"
-    "types except Ice.");
-
+    "Contains Protect.\n"
+    "Use from TM pocket.");
 static const u8 sTM08Desc[] = _(
-    "Bulks up the body\n"
-    "to boost both\n"
-    "Attack & Defense.");
-
+    "Contains Fire Fang.\n"
+    "Use from TM pocket.");
 static const u8 sTM09Desc[] = _(
-    "Shoots 2 to 5 seeds\n"
-    "in a row to strike\n"
-    "the foe.");
-
+    "Contains Thunder Fang.\n"
+    "Use from TM pocket.");
 static const u8 sTM10Desc[] = _(
-    "The attack power\n"
-    "varies among\n"
-    "different Pokémon.");
-
+    "Contains Ice Fang.\n"
+    "Use from TM pocket.");
 static const u8 sTM11Desc[] = _(
-    "Raises the power of\n"
-    "Fire-type moves\n"
-    "for 5 turns.");
-
+    "Contains Water Pulse.\n"
+    "Use from TM pocket.");
 static const u8 sTM12Desc[] = _(
-    "Enrages the foe so\n"
-    "it can only use\n"
-    "attack moves.");
-
+    "Contains Low Kick.\n"
+    "Use from TM pocket.");
 static const u8 sTM13Desc[] = _(
-    "Fires an icy cold\n"
-    "beam that may\n"
-    "freeze the foe.");
-
+    "Contains Acid Spray.\n"
+    "Use from TM pocket.");
 static const u8 sTM14Desc[] = _(
-    "A brutal snow-and-\n"
-    "wind attack that\n"
-    "may freeze the foe.");
-
+    "Contains Acrobatics.\n"
+    "Use from TM pocket.");
 static const u8 sTM15Desc[] = _(
-    "Powerful, but needs\n"
-    "recharging the\n"
-    "next turn.");
-
+    "Contains Struggle Bug.\n"
+    "Use from TM pocket.");
 static const u8 sTM16Desc[] = _(
-    "Creates a wall of\n"
-    "light that lowers\n"
-    "Sp. Atk damage.");
-
+    "Contains Psybeam.\n"
+    "Use from TM pocket.");
 static const u8 sTM17Desc[] = _(
-    "Negates all damage,\n"
-    "but may fail if used\n"
-    "in succession.");
-
+    "Contains Endure.\n"
+    "Use from TM pocket.");
 static const u8 sTM18Desc[] = _(
-    "Raises the power of\n"
-    "Water-type moves\n"
-    "for 5 turns.");
-
+    "Contains Thief.\n"
+    "Use from TM pocket.");
 static const u8 sTM19Desc[] = _(
-    "Recovers half the\n"
-    "HP of the damage \n"
-    "this move inflicts.");
-
+    "Contains Disarming Voice.\n"
+    "Use from TM pocket.");
 static const u8 sTM20Desc[] = _(
-    "Prevents status\n"
-    "abnormality with a\n"
-    "mystical power.");
-
+    "Contains Trailblaze.\n"
+    "Use from TM pocket.");
 static const u8 sTM21Desc[] = _(
-    "The less the user\n"
-    "likes you, the more\n"
-    "powerful this move.");
-
+    "Contains Pounce.\n"
+    "Use from TM pocket.");
 static const u8 sTM22Desc[] = _(
-    "Absorbs sunlight in\n"
-    "the 1st turn, then\n"
-    "attacks next turn.");
-
+    "Contains Chilling Water.\n"
+    "Use from TM pocket.");
 static const u8 sTM23Desc[] = _(
-    "Slams the foe with\n"
-    "a hard tail. It may\n"
-    "lower Defense.");
-
+    "Contains Charge Beam.\n"
+    "Use from TM pocket.");
 static const u8 sTM24Desc[] = _(
-    "A powerful electric\n"
-    "attack that may\n"
-    "cause paralysis.");
-
+    "Contains Fire Spin.\n"
+    "Use from TM pocket.");
 static const u8 sTM25Desc[] = _(
-    "Strikes the foe\n"
-    "with a thunderbolt.\n"
-    "It may paralyze.");
-
+    "Contains Facade.\n"
+    "Use from TM pocket.");
 static const u8 sTM26Desc[] = _(
-    "Causes a quake\n"
-    "that has no effect\n"
-    "on flying foes.");
-
+    "Contains Poison Tail.\n"
+    "Use from TM pocket.");
 static const u8 sTM27Desc[] = _(
-    "The more the user\n"
-    "likes you, the more\n"
-    "powerful this move.");
-
+    "Contains Aerial Ace.\n"
+    "Use from TM pocket.");
 static const u8 sTM28Desc[] = _(
-    "Digs underground\n"
-    "the 1st turn, then\n"
-    "strikes next turn.");
-
+    "Contains Bulldoze.\n"
+    "Use from TM pocket.");
 static const u8 sTM29Desc[] = _(
-    "A powerful psychic\n"
-    "attack that may\n"
-    "lower Sp. Def.");
-
+    "Contains Hex.\n"
+    "Use from TM pocket.");
 static const u8 sTM30Desc[] = _(
-    "Hurls a dark lump\n"
-    "at the foe. It may\n"
-    "lower Sp. Def.");
-
+    "Contains Snarl.\n"
+    "Use from TM pocket.");
 static const u8 sTM31Desc[] = _(
-    "Destroys barriers\n"
-    "like Light Screen\n"
-    "and causes damage.");
-
+    "Contains Metal Claw.\n"
+    "Use from TM pocket.");
 static const u8 sTM32Desc[] = _(
-    "Creates illusory\n"
-    "copies to enhance\n"
-    "elusiveness.");
-
+    "Contains Swift.\n"
+    "Use from TM pocket.");
 static const u8 sTM33Desc[] = _(
-    "Creates a wall of\n"
-    "light that weakens\n"
-    "physical attacks.");
-
+    "Contains Magical Leaf.\n"
+    "Use from TM pocket.");
 static const u8 sTM34Desc[] = _(
-    "Zaps the foe with a\n"
-    "jolt of electricity\n"
-    "that never misses.");
-
+    "Contains Icy Wind.\n"
+    "Use from TM pocket.");
 static const u8 sTM35Desc[] = _(
-    "Looses a stream of\n"
-    "fire that may burn\n"
-    "the foe.");
-
+    "Contains Mud Shot.\n"
+    "Use from TM pocket.");
 static const u8 sTM36Desc[] = _(
-    "Hurls sludge at the\n"
-    "foe. It may poison\n"
-    "the foe.");
-
+    "Contains Rock Tomb.\n"
+    "Use from TM pocket.");
 static const u8 sTM37Desc[] = _(
-    "Causes a sandstorm\n"
-    "that hits the foe\n"
-    "over several turns.");
-
+    "Contains Draining Kiss.\n"
+    "Use from TM pocket.");
 static const u8 sTM38Desc[] = _(
-    "A powerful fire\n"
-    "attack that may\n"
-    "burn the foe.");
-
+    "Contains Flame Charge.\n"
+    "Use from TM pocket.");
 static const u8 sTM39Desc[] = _(
-    "Stops the foe from\n"
-    "moving with rocks.\n"
-    "May lower Speed.");
-
+    "Contains Low Sweep.\n"
+    "Use from TM pocket.");
 static const u8 sTM40Desc[] = _(
-    "An extremely fast\n"
-    "attack that can't\n"
-    "be avoided.");
-
+    "Contains Air Cutter.\n"
+    "Use from TM pocket.");
 static const u8 sTM41Desc[] = _(
-    "Prevents the foe\n"
-    "from using the same\n"
-    "move in a row.");
-
+    "Contains Stored Power.\n"
+    "Use from TM pocket.");
 static const u8 sTM42Desc[] = _(
-    "Raises Attack when\n"
-    "poisoned, burned,\n"
-    "or paralyzed.");
-
+    "Contains Night Shade.\n"
+    "Use from TM pocket.");
 static const u8 sTM43Desc[] = _(
-    "Adds an effect to\n"
-    "attack depending\n"
-    "on the location.");
-
+    "Contains Fling.\n"
+    "Use from TM pocket.");
 static const u8 sTM44Desc[] = _(
-    "The user sleeps for\n"
-    "2 turns to restore\n"
-    "health and status.");
-
+    "Contains Dragon Tail.\n"
+    "Use from TM pocket.");
 static const u8 sTM45Desc[] = _(
-    "Makes it tough to\n"
-    "attack a foe of the\n"
-    "opposite gender.");
-
+    "Contains Venoshock.\n"
+    "Use from TM pocket.");
 static const u8 sTM46Desc[] = _(
-    "While attacking,\n"
-    "it may steal the\n"
-    "foe's held item.");
-
+    "Contains Avalanche.\n"
+    "Use from TM pocket.");
 static const u8 sTM47Desc[] = _(
-    "Spreads hard-\n"
-    "edged wings and\n"
-    "slams into the foe.");
-
+    "Contains Endure.\n"
+    "Use from TM pocket.");
 static const u8 sTM48Desc[] = _(
-    "Switches abilities\n"
-    "with the foe on the\n"
-    "turn this is used.");
-
+    "Contains Volt Switch.\n"
+    "Use from TM pocket.");
 static const u8 sTM49Desc[] = _(
-    "Steals the effects\n"
-    "of the move the foe\n"
-    "is trying to use.");
-
+    "Contains Sunny Day.\n"
+    "Use from TM pocket.");
 static const u8 sTM50Desc[] = _(
-    "Enables full-power\n"
-    "attack, but sharply\n"
-    "lowers Sp. Atk.");
-
+    "Contains Rain Dance.\n"
+    "Use from TM pocket.");
 static const u8 sTM51Desc[] = _(
-    "Attacks the foe by\n"
-    "firing 2 to 5 icicles\n"
-    "in a row.");
-
+    "Contains Sandstorm.\n"
+    "Use from TM pocket.");
 static const u8 sTM52Desc[] = _(
-    "Bounces up, then\n"
-    "down the next turn.\n"
-    "May Paralyze.");
-
+    "Contains Snowscape.\n"
+    "Use from TM pocket.");
 static const u8 sTM53Desc[] = _(
-    "Hurls mud at the\n"
-    "foe and reduces\n"
-    "SPEED.");
-
+    "Contains Smart Strike.\n"
+    "Use from TM pocket.");
 static const u8 sTM54Desc[] = _(
-    "Hurls boulders at\n"
-    "the foe 2 to 5 times\n"
-    "in a row.");
-
+    "Contains Psyshock.\n"
+    "Use from TM pocket.");
 static const u8 sTM55Desc[] = _(
-    "Attacks the foe by\n"
-    "shooting hot water.\n"
-    "May burn the foe.");
-
+    "Contains Dig.\n"
+    "Use from TM pocket.");
 static const u8 sTM56Desc[] = _(
-    "After the attack\n"
-    "the user switch\n"
-    "place with an ally.");
-
+    "Contains Bullet Seed.\n"
+    "Use from TM pocket.");
 static const u8 sTM57Desc[] = _(
-    "If the user attacks\n"
-    "after the foe, its\n"
-    "power is doubled.");
-
+    "Contains False Swipe.\n"
+    "Use from TM pocket.");
 static const u8 sTM58Desc[] = _(
-    "If the foe has\n"
-    "taken some damage,\n"
-    "power is doubled.");
-
+    "Contains Brick Break.\n"
+    "Use from TM pocket.");
 static const u8 sTM59Desc[] = _(
-    "The power and\n"
-    "effect depend on\n"
-    "the helditem.");
-
+    "Contains Zen Headbutt.\n"
+    "Use from TM pocket.");
 static const u8 sTM60Desc[] = _(
-    "Swaps changes to\n"
-    "Attack and Sp. Atk\n"
-    "with the foe.");
-
+    "Contains U-turn.\n"
+    "Use from TM pocket.");
 static const u8 sTM61Desc[] = _(
-    "Swaps changes to\n" 
-    "Defense and Sp. Def\n"
-    "with the foe.");
-
+    "Contains Shadow Claw.\n"
+    "Use from TM pocket.");
 static const u8 sTM62Desc[] = _(
-    "The user exchanges\n"
-    "Speed stats with\n"
-    "the target.");
-
+    "Contains Foul Play.\n"
+    "Use from TM pocket.");
 static const u8 sTM63Desc[] = _(
-    "An attack that\n"
-    "absorbs half the\n" 
-    "damage inflicted.");
-
-static const u8 sTM64Desc[] = _( 
-    "An attack that\n"
-    "gains power if\n"
-    "injured by the foe.");
-
-static const u8 sTM65Desc[] = _( 
-    "Strikes with a\n" 
-    "shadow claw. High\n"
-    "critical-hit ratio.");
-
-static const u8 sTM66Desc[] = _( 
-    "May cause flinching\n"
-    "or leave the foe\n"
-    "paralyzed.");
-
-static const u8 sTM67Desc[] = _( 
-    "May cause flinching\n"
-    "or leave the foe\n"
-    "frozen.");
-
-static const u8 sTM68Desc[] = _( 
-    "May cause flinching\n"
-    "or leave the foe\n"
-    "with a burn.");
-
-static const u8 sTM69Desc[] = _( 
-    "Tears with psychic\n" 
-    "blades. High\n"
-    "critical-hit ratio.");
-
-static const u8 sTM70Desc[] = _( 
-    "Slower Pokémon get\n"
-    "to move first for\n"
-    "5 turns.");
-
-static const u8 sTM71Desc[] = _( 
-    "Defense and Sp. Def\n"
-    "stats are swapped\n"
-    "for 5 turns.");
-
-static const u8 sTM72Desc[] = _( 
-    "Hold items lose\n"
-    "their effects for\n"
-    "5 turns.");
-
-static const u8 sTM73Desc[] = _( 
-    "A slash that may\n"
-    "poison a foe and\n"
-    "do critical damage.");
-
-static const u8 sTM74Desc[] = _( 
-    "Does double damage\n"
-    "if the foe is\n"
-    "poisoned.");
-
-static const u8 sTM75Desc[] = _( 
-    "Attacks the foe's\n"
-    "legs lowering its\n"
-    "Speed.");
-
-static const u8 sTM76Desc[] = _( 
-    "A song that inflicts\n"
-    "damage. Others can\n"
-    "join in too.");
-
-static const u8 sTM77Desc[] = _( 
-    "Does double damage\n"
-    "if the foe has a\n"
-    "status problem.");
-
-static const u8 sTM78Desc[] = _( 
-    "Does double damage\n"
-    "if the user has no\n"
-    "item.");
-
-static const u8 sTM79Desc[] = _( 
-    "An attack that\n"
-    "does more damage if\n"
-    "an ally fainted.");
-
-static const u8 sTM80Desc[] = _( 
-    "Does damage then\n"
-    "switches out the\n"
-    "user.");
-
-static const u8 sTM81Desc[] = _( 
-    "Stomps down on\n"
-    "the ground. Lowers\n"
-    "Speed.");
-
-static const u8 sTM82Desc[] = _( 
-    "Snares the foe\n"
-    "with an electric\n"
-    "net. Lowers Speed.");
-
-static const u8 sTM83Desc[] = _( 
-    "Tears at the foe\n"
-    "with sharp shells.\n"
-    "May lower Defense.");
-
-static const u8 sTM84Desc[] = _( 
-    "Strikes the foe\n"
-    "with its tail 2 to\n"
-    "5 times.");
-
-static const u8 sTM85Desc[] = _( 
-    "Yells and rants\n"
-    "at the foe lowering\n"
-    "its Sp. Atk.");
-
-static const u8 sTM86Desc[] = _( 
-    "Vanishes on first\n"
-    "turn then strikes\n"
-    "the next turn.");
-
-static const u8 sTM87Desc[] = _( 
-    "An attack that\n"
-    "absorbs half the\n"
-    "damage inflicted.");
-
-static const u8 sTM88Desc[] = _( 
-    "The ground turns\n"
-    "to grass for 5\n"
-    "turns. Restores HP.");
-
-static const u8 sTM89Desc[] = _( 
-    "Covers the ground\n"
-    "with mist for 5\n"
-    "turns. Blocks status.");
-
-static const u8 sTM90Desc[] = _( 
-    "Electrifies the foe,\n"
-    "making its next\n"
-    "move Electric-type.");
-
-static const u8 sTM91Desc[] = _( 
-    "The ground turns\n"
-    "weird for 5 turns.\n"
-    "Blocks priority.");
-
-static const u8 sTM92Desc[] = _( 
-    "Breathes a special,\n"
-    "hot fire. Lowers\n"
-    "Sp. Atk.");
-
-static const u8 sTM93Desc[] = _( 
-    "Exposes the foe to\n"
-    "a pulse that sharply\n"
-    "cuts Sp. Atk.");
-
-static const u8 sTM94Desc[] = _( 
-    "An attack that\n"
-    "leaves the foe with\n"
-    "at least 1 HP.");
-
-static const u8 sTM95Desc[] = _( 
-    "Attacks with a\n"
-    "blade of air. May\n"
-    "cause flinching.");
-
-static const u8 sTM96Desc[] = _( 
-    "Hits with an\n"
-    "accurate horn that\n" 
-    "never misses.");
-
-static const u8 sTM97Desc[] = _( 
-    "Violently swings\n"
-    "around to hurt\n"
-    "everyone nearby.");
-
-static const u8 sTM98Desc[] = _( 
-    "Stomps around\n"
-    "angrily. Stronger\n"
-    "after a failure.");
-
-static const u8 sTM99Desc[] = _( 
-    "Swings its tail to\n"
-    "attack. Lowers the\n"
-    "Atk of those hit.");
-
-static const u8 sTM100Desc[] = _( 
-    "A strong punch\n"
-    "thrown with\n"
-    "incredible power.");
+    "Contains Psychic Fangs.\n"
+    "Use from TM pocket.");
+static const u8 sTM64Desc[] = _(
+    "Contains Bulk Up.\n"
+    "Use from TM pocket.");
+static const u8 sTM65Desc[] = _(
+    "Contains Air Slash.\n"
+    "Use from TM pocket.");
+static const u8 sTM66Desc[] = _(
+    "Contains Body Slam.\n"
+    "Use from TM pocket.");
+static const u8 sTM67Desc[] = _(
+    "Contains Fire Punch.\n"
+    "Use from TM pocket.");
+static const u8 sTM68Desc[] = _(
+    "Contains Thunder Punch.\n"
+    "Use from TM pocket.");
+static const u8 sTM69Desc[] = _(
+    "Contains Ice Punch.\n"
+    "Use from TM pocket.");
+static const u8 sTM70Desc[] = _(
+    "Contains Sleep Talk.\n"
+    "Use from TM pocket.");
+static const u8 sTM71Desc[] = _(
+    "Contains Seed Bomb.\n"
+    "Use from TM pocket.");
+static const u8 sTM72Desc[] = _(
+    "Contains Electro Ball.\n"
+    "Use from TM pocket.");
+static const u8 sTM73Desc[] = _(
+    "Contains Drain Punch.\n"
+    "Use from TM pocket.");
+static const u8 sTM74Desc[] = _(
+    "Contains Reflect.\n"
+    "Use from TM pocket.");
+static const u8 sTM75Desc[] = _(
+    "Contains Light Screen.\n"
+    "Use from TM pocket.");
+static const u8 sTM76Desc[] = _(
+    "Contains Rock Blast.\n"
+    "Use from TM pocket.");
+static const u8 sTM77Desc[] = _(
+    "Contains Waterfall.\n"
+    "Use from TM pocket.");
+static const u8 sTM78Desc[] = _(
+    "Contains Dragon Claw.\n"
+    "Use from TM pocket.");
+static const u8 sTM79Desc[] = _(
+    "Contains Dazzling Gleam.\n"
+    "Use from TM pocket.");
+static const u8 sTM80Desc[] = _(
+    "Contains Metronome.\n"
+    "Use from TM pocket.");
+static const u8 sTM81Desc[] = _(
+    "Contains Grass Knot.\n"
+    "Use from TM pocket.");
+static const u8 sTM82Desc[] = _(
+    "Contains Thunder Wave.\n"
+    "Use from TM pocket.");
+static const u8 sTM83Desc[] = _(
+    "Contains Poison Jab.\n"
+    "Use from TM pocket.");
+static const u8 sTM84Desc[] = _(
+    "Contains Stomping Tantrum.\n"
+    "Use from TM pocket.");
+static const u8 sTM85Desc[] = _(
+    "Contains Rest.\n"
+    "Use from TM pocket.");
+static const u8 sTM86Desc[] = _(
+    "Contains Rock Slide.\n"
+    "Use from TM pocket.");
+static const u8 sTM87Desc[] = _(
+    "Contains Taunt.\n"
+    "Use from TM pocket.");
+static const u8 sTM88Desc[] = _(
+    "Contains Swords Dance.\n"
+    "Use from TM pocket.");
+static const u8 sTM89Desc[] = _(
+    "Contains Body Press.\n"
+    "Use from TM pocket.");
+static const u8 sTM90Desc[] = _(
+    "Contains Spikes.\n"
+    "Use from TM pocket.");
+static const u8 sTM91Desc[] = _(
+    "Contains Toxic Spikes.\n"
+    "Use from TM pocket.");
+static const u8 sTM92Desc[] = _(
+    "Contains Imprison.\n"
+    "Use from TM pocket.");
+static const u8 sTM93Desc[] = _(
+    "Contains Flash Cannon.\n"
+    "Use from TM pocket.");
+static const u8 sTM94Desc[] = _(
+    "Contains Dark Pulse.\n"
+    "Use from TM pocket.");
+static const u8 sTM95Desc[] = _(
+    "Contains Leech Life.\n"
+    "Use from TM pocket.");
+static const u8 sTM96Desc[] = _(
+    "Contains Eerie Impulse.\n"
+    "Use from TM pocket.");
+static const u8 sTM97Desc[] = _(
+    "Contains Fly.\n"
+    "Use from TM pocket.");
+static const u8 sTM98Desc[] = _(
+    "Contains Skill Swap.\n"
+    "Use from TM pocket.");
+static const u8 sTM99Desc[] = _(
+    "Contains Iron Head.\n"
+    "Use from TM pocket.");
+static const u8 sTM100Desc[] = _(
+    "Contains Dragon Dance.\n"
+    "Use from TM pocket.");
 
 static const u8 sHM01Desc[] = _(
     "Attacks the foe\n"
@@ -3709,10 +3520,10 @@ static const u8 sVsSeekerDesc[] = _(
     "that flags battle-\n"
     "ready Trainers.");
 
-static const u8 sTMCaseDesc[] = _(
-    "A convenient case \n"
-    "that holds TMs and\n"
-    "HMs.");
+static const u8 sSafetyLineDesc[] = _(
+    "A reusable wire that\n"
+    "warps you out of any\n"
+    "cave or dungeon.");
 
 static const u8 sBerryPouchDesc[] = _(
     "A convenient\n"

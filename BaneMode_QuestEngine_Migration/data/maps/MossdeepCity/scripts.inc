@@ -468,16 +468,14 @@ MossdeepCity_Text_SpaceCenterSign:
 	.string "“The closest place to space.”$"
 
 MossdeepCity_Text_ScottSomethingWrongWithTown:
-	.string "SCOTT: {PLAYER}{KUN}, feeling good?\n"
-	.string "I'm doing great!\p"
-	.string "I'd heard MOSSDEEP's GYM LEADER is\n"
-	.string "pretty strong, so I decided to come\l"
-	.string "take a look-see for myself.\p"
-	.string "But there's something wrong about\n"
-	.string "this town.\p"
-	.string "People are going on about a warning\n"
+	.string "BRENDAN: {PLAYER}{KUN}, you good?\n"
+	.string "I'm solid.\p"
+	.string "I heard MOSSDEEP's GYM LEADER is\n"
+	.string "strong, so I came to see for myself.\p"
+	.string "But this town feels off.\p"
+	.string "People keep talking about a warning\n"
 	.string "letter and the SPACE CENTER…\p"
-	.string "I don't think it concerns me in any\n"
+	.string "I don't think it's my business in any\n"
 	.string "way, though.$"
 
 MossdeepCity_Text_SootopolisNewGymLeader:

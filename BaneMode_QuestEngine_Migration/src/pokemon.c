@@ -78,6 +78,7 @@ static void DecryptBoxMon(struct BoxPokemon *boxMon);
 static void Task_PlayMapChosenOrBattleBGM(u8 taskId);
 static bool8 ShouldSkipFriendshipChange(void);
 static void RemoveIVIndexFromList(u8 *ivs, u8 selectedIv);
+static void BaneModeNormalizePlayerMon(struct Pokemon *mon);
 void TrySpecialOverworldEvo();
 
 EWRAM_DATA static u8 sLearningMoveTableID = 0;
@@ -25446,7 +25447,26 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 FlagSet(FLAG_SHINY_CREATION);   // use a flag bc of CreateDexNavWildMon
         }
 
-        // Chain Fishing 
+        // Bane Mode shiny rate boost
+        {
+            u16 baneModeRate = VarGet(VAR_BANEMODE_SHINY_RATE);
+            if (baneModeRate == 2) // Ultra High: every encounter is shiny
+            {
+                FlagSet(FLAG_SHINY_CREATION);
+            }
+            else if (baneModeRate == 1) // High: ~16x base rate (15 extra rolls)
+            {
+                u32 j;
+                shinyRolls += 15;
+                for (j = 0; j < 15; j++)
+                {
+                    if (Random() < SHINY_ODDS)
+                        FlagSet(FLAG_SHINY_CREATION);
+                }
+            }
+        }
+
+        // Chain Fishing
         if (gIsFishingEncounter)
             shinyRolls += 1 + 2 * gChainFishingStreak; //1 + 2 rolls per streak count. max 41
 
@@ -27689,6 +27709,8 @@ u8 GiveMonToPlayer(struct Pokemon *mon)
 {
     s32 i;
     u8 typeChallenge = gSaveBlock1Ptr->tx_Challenges_OneTypeChallenge;
+    
+    BaneModeNormalizePlayerMon(mon);
 
     SetMonData(mon, MON_DATA_OT_NAME, gSaveBlock2Ptr->playerName);
     SetMonData(mon, MON_DATA_OT_GENDER, &gSaveBlock2Ptr->playerGender);
@@ -27717,6 +27739,7 @@ u8 SendMonToPC(struct Pokemon* mon)
 {
     s32 boxNo, boxPos;
 
+    BaneModeNormalizePlayerMon(mon);
     SetPCBoxToSendMon(VarGet(VAR_PC_BOX_TO_SEND_MON));
 
     boxNo = StorageGetCurrentBox();
@@ -27745,6 +27768,25 @@ u8 SendMonToPC(struct Pokemon* mon)
     } while (boxNo != StorageGetCurrentBox());
 
     return MON_CANT_GIVE;
+}
+
+static void BaneModeNormalizePlayerMon(struct Pokemon *mon)
+{
+    u8 iv = MAX_PER_STAT_IVS;
+    u8 ev = 0;
+    s32 i;
+
+    if (GetMonData(mon, MON_DATA_SPECIES, NULL) == SPECIES_NONE)
+        return;
+
+    for (i = 0; i < NUM_STATS; i++)
+    {
+        SetMonData(mon, MON_DATA_HP_IV + i, &iv);
+        SetMonData(mon, MON_DATA_HP_EV + i, &ev);
+    }
+
+    CalculateMonStats(mon);
+    MonRestorePP(mon);
 }
 
 u8 CalculatePartyCount(struct Pokemon *party)
@@ -27847,6 +27889,21 @@ u16 GetAbilityBySpecies(u16 species, u8 abilityNum)
     for (i = 0; i < NUM_ABILITY_SLOTS && gLastUsedAbility == ABILITY_NONE; i++) // look for any non-empty ability
     {
         gLastUsedAbility = gSpeciesInfo[species].abilities[i];
+    }
+
+    // BaneMode: Globally enforce Poison Heal. If a species has Poison Heal in
+    // any ability slot, all members of that species use it (player, enemy, wild).
+    // This lets Toxic Orb strategies work without manual ability manipulation.
+    if (!gSaveBlock1Ptr->tx_Random_Abilities)
+    {
+        for (i = 0; i < NUM_ABILITY_SLOTS; i++)
+        {
+            if (gSpeciesInfo[species].abilities[i] == ABILITY_POISON_HEAL)
+            {
+                gLastUsedAbility = ABILITY_POISON_HEAL;
+                break;
+            }
+        }
     }
 
     return gLastUsedAbility;
@@ -29513,8 +29570,7 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
     stat = ItemId_GetSecondaryId(heldItem);
     bonus = ItemId_GetHoldEffectParam(heldItem);
 
-    if (gSaveBlock1Ptr->tx_Challenges_NoEVs && !FlagGet(FLAG_IS_CHAMPION))
-        return;
+    return;
 
     for (i = 0; i < NUM_STATS; i++)
     {
@@ -29848,9 +29904,47 @@ u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
     u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
     int i, j, k;
     u16 move;
+    static const u16 sBaneModeOverflowTutorMoves[] =
+    {
+        MOVE_POWER_GEM, MOVE_GUNK_SHOT, MOVE_SUBSTITUTE, MOVE_IRON_DEFENSE,
+        MOVE_X_SCISSOR, MOVE_DRILL_RUN, MOVE_WILL_O_WISP, MOVE_CRUNCH,
+        MOVE_TRICK, MOVE_LIQUIDATION, MOVE_GIGA_DRAIN, MOVE_AURA_SPHERE,
+        MOVE_TAILWIND, MOVE_SHADOW_BALL, MOVE_DRAGON_PULSE, MOVE_STEALTH_ROCK,
+        MOVE_HYPER_VOICE, MOVE_HEAT_WAVE, MOVE_ENERGY_BALL, MOVE_PSYCHIC,
+        MOVE_HEAVY_SLAM, MOVE_ENCORE, MOVE_SURF, MOVE_ICE_SPINNER,
+        MOVE_FLAMETHROWER, MOVE_THUNDERBOLT, MOVE_PLAY_ROUGH, MOVE_AMNESIA,
+        MOVE_CALM_MIND, MOVE_HELPING_HAND, MOVE_POLLEN_PUFF, MOVE_BATON_PASS,
+        MOVE_EARTH_POWER, MOVE_REVERSAL, MOVE_ICE_BEAM, MOVE_ELECTRIC_TERRAIN,
+        MOVE_GRASSY_TERRAIN, MOVE_PSYCHIC_TERRAIN, MOVE_MISTY_TERRAIN,
+        MOVE_NASTY_PLOT, MOVE_FIRE_BLAST, MOVE_HYDRO_PUMP, MOVE_BLIZZARD,
+        MOVE_FIRE_PLEDGE, MOVE_WATER_PLEDGE, MOVE_GRASS_PLEDGE, MOVE_WILD_CHARGE,
+        MOVE_SLUDGE_BOMB, MOVE_EARTHQUAKE, MOVE_STONE_EDGE, MOVE_PHANTOM_FORCE,
+        MOVE_GIGA_IMPACT, MOVE_BLAST_BURN, MOVE_HYDRO_CANNON, MOVE_FRENZY_PLANT,
+        MOVE_OUTRAGE, MOVE_OVERHEAT, MOVE_FOCUS_BLAST, MOVE_LEAF_STORM,
+        MOVE_HURRICANE, MOVE_TRICK_ROOM, MOVE_BUG_BUZZ, MOVE_HYPER_BEAM,
+        MOVE_BRAVE_BIRD, MOVE_FLARE_BLITZ, MOVE_THUNDER, MOVE_CLOSE_COMBAT,
+        MOVE_SOLAR_BEAM, MOVE_DRACO_METEOR, MOVE_STEEL_BEAM, MOVE_TERA_BLAST,
+    };
 
     for (i = 0; i < MAX_MON_MOVES; i++)
         learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
+
+    if (FlagGet(FLAG_TM_OVERFLOW_TUTOR))
+    {
+        for (i = 0; i < ARRAY_COUNT(sBaneModeOverflowTutorMoves); i++)
+        {
+            move = sBaneModeOverflowTutorMoves[i];
+            if (CanLearnTeachableMove(species, move) != TRUE)
+                continue;
+
+            for (j = 0; j < MAX_MON_MOVES && learnedMoves[j] != move; j++)
+                ;
+
+            if (j == MAX_MON_MOVES)
+                moves[numMoves++] = move;
+        }
+        return numMoves;
+    }
 
     for (i = 0; i < MAX_LEVEL_UP_MOVES; i++)
     {
@@ -29924,6 +30018,9 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
         numEggMoves = GetEggMoves(mon, eggMoves);
         return numEggMoves;
     }
+
+    if (FlagGet(FLAG_TM_OVERFLOW_TUTOR))
+        return GetMoveRelearnerMoves(mon, moves);
 
     if (species == SPECIES_EGG)
         return 0;

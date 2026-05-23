@@ -81,7 +81,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_EXEGGCUTE]             = {{EVO_ITEM, ITEM_LEAF_STONE, SPECIES_EXEGGUTOR},
                                        {EVO_SPECIFIC_MAP, MAP_PETALBURG_WOODS, SPECIES_EXEGGUTOR_ALOLAN}},
     [SPECIES_CUBONE]                = {{EVO_LEVEL, 28, SPECIES_MAROWAK},
-                                       {EVO_LEVEL_NIGHT, 28, SPECIES_MAROWAK_ALOLAN}},
+                                       {EVO_ITEM, ITEM_DUSK_STONE, SPECIES_MAROWAK_ALOLAN}},
 #if P_GEN_4_POKEMON == TRUE
     [SPECIES_LICKITUNG]             = {{EVO_MOVE, MOVE_ROLLOUT, SPECIES_LICKILICKY}},
 #endif

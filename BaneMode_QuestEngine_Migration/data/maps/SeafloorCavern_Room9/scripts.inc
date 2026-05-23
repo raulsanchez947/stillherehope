@@ -1,17 +1,17 @@
-.set LOCALID_KYOGRE, 1
-.set LOCALID_ARCHIE, 2
-.set LOCALID_MAXIE, 3
+.set LOCALID_G_ZAPDOS, 1
+.set LOCALID_GIOVANNI, 2
+.set LOCALID_WALLACE, 3
 .set LOCALID_GRUNT_1, 4
 .set LOCALID_GRUNT_2, 5
-.set LOCALID_KYOGRE_SLEEPING, 7
+.set LOCALID_G_ZAPDOS_SLEEPING, 7
 
 SeafloorCavern_Room9_MapScripts::
 	.byte 0
 
 SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	lockall
-	setvar VAR_0x8004, LOCALID_ARCHIE
-	setvar VAR_0x8005, LOCALID_MAXIE
+	setvar VAR_0x8004, LOCALID_GIOVANNI
+	setvar VAR_0x8005, LOCALID_WALLACE
 	setvar VAR_0x8006, LOCALID_GRUNT_1
 	setvar VAR_0x8007, LOCALID_GRUNT_2
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
@@ -55,11 +55,11 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
 	delay 150
-	removeobject LOCALID_KYOGRE_SLEEPING
-	addobject LOCALID_KYOGRE
+	removeobject LOCALID_G_ZAPDOS_SLEEPING
+	addobject LOCALID_G_ZAPDOS
 	waitstate
 	delay 60
-	applymovement LOCALID_KYOGRE, SeafloorCavern_Room9_Movement_KyogreApproach
+	applymovement LOCALID_G_ZAPDOS, SeafloorCavern_Room9_Movement_G_ZapdosApproach
 	waitmovement 0
 	special FadeOutOrbEffect
 	waitstate
@@ -69,9 +69,9 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SeafloorCavern_Room9_Movement_KyogreExit
+	applymovement LOCALID_G_ZAPDOS, SeafloorCavern_Room9_Movement_G_ZapdosExit
 	waitmovement 0
-	removeobject LOCALID_KYOGRE
+	removeobject LOCALID_G_ZAPDOS
 	delay 4
 	setvar VAR_0x8004, 2  @ vertical pan
 	setvar VAR_0x8005, 2  @ horizontal pan
@@ -80,8 +80,8 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	special ShakeCamera
 	waitstate
 	delay 30
-	setvar VAR_0x8004, LOCALID_ARCHIE
-	setvar VAR_0x8005, LOCALID_MAXIE
+	setvar VAR_0x8004, LOCALID_GIOVANNI
+	setvar VAR_0x8005, LOCALID_WALLACE
 	setvar VAR_0x8006, LOCALID_GRUNT_1
 	setvar VAR_0x8007, LOCALID_GRUNT_2
 	msgbox SeafloorCavern_Room9_Text_ArchieWhereDidKyogreGo, MSGBOX_DEFAULT
@@ -122,6 +122,8 @@ SeafloorCavern_Room9_EventScript_ArchieAwakenKyogre::
 	applymovement VAR_0x8004, SeafloorCavern_Room9_Movement_ArchieExit
 	waitmovement 0
 	msgbox SeafloorCavern_Room9_Text_MaxieComeOnPlayer, MSGBOX_DEFAULT
+	msgbox SeafloorCavern_Room9_Text_WallaceGivesThunderOrb, MSGBOX_DEFAULT
+	giveitem ITEM_BLUE_ORB
 	setvar VAR_ROUTE128_STATE, 1
 	setvar VAR_SOOTOPOLIS_CITY_STATE, 1
 	clearflag FLAG_HIDE_SOOTOPOLIS_CITY_STEVEN
@@ -182,7 +184,7 @@ SeafloorCavern_Room9_Movement_ArchieExit:
 	walk_in_place_faster_right
 	step_end
 
-SeafloorCavern_Room9_Movement_KyogreApproach:
+SeafloorCavern_Room9_Movement_G_ZapdosApproach:
 	delay_16
 	delay_16
 	walk_slow_down
@@ -195,7 +197,7 @@ SeafloorCavern_Room9_Movement_KyogreApproach:
 	delay_16
 	step_end
 
-SeafloorCavern_Room9_Movement_KyogreExit:
+SeafloorCavern_Room9_Movement_G_ZapdosExit:
 	slide_up
 	slide_up
 	step_end
@@ -226,101 +228,102 @@ SeafloorCavern_Room9_Movement_Delay32:
 	step_end
 
 SeafloorCavern_Room9_Text_ArchieHoldItRightThere:
-	.string "ARCHIE: Hold it right there.$"
+	.string "GIOVANNI: Stop.$"
 
 SeafloorCavern_Room9_Text_ArchieSoItWasYou:
-	.string "ARCHIE: Fufufu…\n"
-	.string "So it was you, after all.$"
+	.string "GIOVANNI: …\n"
+	.string "You followed me all the way here.$"
 
 SeafloorCavern_Room9_Text_ArchieBeholdKyogre:
-	.string "ARCHIE: Behold!\p"
-	.string "See how beautiful it is, the sleeping\n"
-	.string "form of the ancient POKéMON KYOGRE!\p"
-	.string "I have waited so long for this day to\n"
-	.string "come…$"
+	.string "GIOVANNI: Look at it.\p"
+	.string "ZAPDOS - the ancient bird of lightning.\n"
+	.string "Sleeping.\l"
+	.string "Helpless.\p"
+	.string "A weapon waiting to be claimed.\p"
+	.string "And TEAM ROCKET will claim it.$"
 
 SeafloorCavern_Room9_Text_ArchieYouMustDisappear:
-	.string "ARCHIE: It surprises me, how you've\n"
-	.string "managed to chase me here.\p"
-	.string "But that's all over now.\p"
-	.string "For the realization of my dream,\n"
-	.string "you must disappear now!$"
+	.string "GIOVANNI: You've done well to chase\n"
+	.string "me this far.\p"
+	.string "But it ends here.\p"
+	.string "I cannot afford any witnesses to\n"
+	.string "what happens next.$"
 
 SeafloorCavern_Room9_Text_ArchieDefeat:
 	.string "What?!\n"
-	.string "I lost to a mere child like you?!$"
+	.string "I lost to a child?! Impossible!$"
 
 SeafloorCavern_Room9_Text_ArchieWithThisRedOrb:
-	.string "ARCHIE: Fufufu…\p"
-	.string "I commend you. I must recognize that\n"
-	.string "you are truly gifted.\p"
-	.string "But!\n"
-	.string "I have this in my possession!\p"
-	.string "With this RED ORB, I can make KYOGRE…$"
+	.string "GIOVANNI: …Impressive.\n"
+	.string "You are genuinely talented.\p"
+	.string "But it changes nothing.\p"
+	.string "I still have the THUNDER ORB.\n"
+	.string "And with it, ZAPDOS answers to me…$"
 
 SeafloorCavern_Room9_Text_RedOrbShinesByItself:
-	.string "The RED ORB suddenly began shining\n"
-	.string "by itself!$"
+	.string "The THUNDER ORB suddenly blazed with\n"
+	.string "electric light - all on its own!$"
 
 SeafloorCavern_Room9_Text_ArchieWhereDidKyogreGo:
-	.string "ARCHIE: What?!\p"
-	.string "I didn't do anything.\n"
-	.string "Why did the RED ORB…\p"
-	.string "Where did KYOGRE go?$"
+	.string "GIOVANNI: What?!\p"
+	.string "I did nothing wrong.\n"
+	.string "Why is the THUNDER ORB…\p"
+	.string "Where- Where did ZAPDOS go?!$"
 
 SeafloorCavern_Room9_Text_ArchieAMessageFromOutside:
-	.string "ARCHIE: Hm? It's a message from our\n"
-	.string "members outside…$"
+	.string "GIOVANNI: …A report from the\n"
+	.string "operatives on the surface.$"
 
 SeafloorCavern_Room9_Text_ArchieWhatRainingTooHard:
-	.string "ARCHIE: Yes, what is it?\p"
-	.string "Hm…\n"
-	.string "It's raining heavily?\p"
-	.string "Good… That should have happened.\n"
-	.string "That is why we awakened KYOGRE,\l"
-	.string "to realize TEAM AQUA's vision of\l"
-	.string "expanding the sea.\p"
+	.string "GIOVANNI: Report.\p"
+	.string "Hm.\n"
+	.string "Storm conditions on the coast?\p"
+	.string "Good. That was expected.\n"
+	.string "ZAPDOS's power was meant to cause\l"
+	.string "disruption - to destabilize HOENN.\p"
 	.string "What?!\p"
-	.string "It's raining far harder than we\n"
-	.string "envisioned? You're in danger?\p"
-	.string "That can't be…\n"
-	.string "That's just not possible…\p"
-	.string "Hold your position and monitor\n"
-	.string "the situation!$"
+	.string "The lightning is beyond projections?\n"
+	.string "Operatives are in danger?!\p"
+	.string "That is not…\n"
+	.string "That should not be possible.\p"
+	.string "Maintain your positions.\n"
+	.string "Continue monitoring!$"
 
 SeafloorCavern_Room9_Text_ArchieWhyDidKyogreDisappear:
-	.string "ARCHIE: There's something wrong…\p"
-	.string "The RED ORB is supposed to awaken\n"
-	.string "and control KYOGRE…\p"
-	.string "But… Why?\n"
-	.string "Why did KYOGRE disappear?\p"
-	.string "Why?!$"
+	.string "GIOVANNI: Something is wrong.\p"
+	.string "The THUNDER ORB was meant to bind\n"
+	.string "ZAPDOS to my will.\p"
+	.string "But ZAPDOS is… gone.\n"
+	.string "Out of control.\p"
+	.string "WHY?!$"
 
 SeafloorCavern_Room9_Text_MaxieWhatHaveYouWrought:
-	.string "MAXIE: What have you wrought?\p"
-	.string "ARCHIE… You've finally awoken KYOGRE,\n"
-	.string "haven't you?\p"
-	.string "What will happen to the world if this\n"
-	.string "downpour continues for all eternity?\p"
-	.string "The world's landmass will drown in\n"
-	.string "the deepening sea…$"
+	.string "WALLACE: What have you done?!\p"
+	.string "GIOVANNI… You've unleashed ZAPDOS.\p"
+	.string "If this lightning storm isn't stopped,\n"
+	.string "HOENN's grid will be shattered!$"
 
 SeafloorCavern_Room9_Text_ArchieDontGetAllHighAndMighty:
-	.string "ARCHIE: W-what?!\n"
-	.string "Don't get all high and mighty with me!\p"
-	.string "Wasn't it you, TEAM MAGMA, that\n"
-	.string "infuriated GROUDON?\p"
-	.string "So long as I have this RED ORB,\n"
-	.string "I should be able to control KYOGRE…\p"
-	.string "I should be able to control it…$"
+	.string "GIOVANNI: Don't lecture me!\p"
+	.string "The HOENN DEFENDERS drove ARTICUNO\n"
+	.string "into chaos first!\p"
+	.string "The THUNDER ORB should give control-\n"
+	.string "I should be able to contain this…\p"
+	.string "I just need more time…$"
 
 SeafloorCavern_Room9_Text_MaxieWeDontHaveTimeToArgue:
-	.string "MAXIE: We don't have the time to\n"
-	.string "argue about it here!\p"
-	.string "Get outside and see for yourself!\p"
-	.string "See if what you've wrought is the\n"
-	.string "world that we desired!$"
+	.string "WALLACE: There is no more time!\p"
+	.string "Get to the surface.\n"
+	.string "See what TEAM ROCKET has done!\p"
+	.string "ZAPDOS and ARTICUNO are both\n"
+	.string "loose. Is this what you wanted?!$"
 
 SeafloorCavern_Room9_Text_MaxieComeOnPlayer:
-	.string "MAXIE: {PLAYER}, come on, you have\n"
-	.string "to get out of here, too!$"
+	.string "WALLACE: {PLAYER}!\n"
+	.string "Get out of here - now!$"
+
+SeafloorCavern_Room9_Text_WallaceGivesThunderOrb:
+	.string "WALLACE: Wait - GIOVANNI dropped\n"
+	.string "the THUNDER ORB when he fled.\p"
+	.string "Take it.\n"
+	.string "Something tells me you'll need it.$"

@@ -48,15 +48,16 @@ enum
 #define TX_NUZLOCKE_NICKNAMING 1
 #define TX_NUZLOCKE_DELETION 0
 
-#define TX_DIFFICULTY_PARTY_LIMIT 0
-#define TX_DIFFICULTY_LEVEL_CAP 0
-#define TX_DIFFICULTY_EXP_MULTIPLIER 0
-#define TX_DIFFICULTY_NO_ITEM_PLAYER 0
-#define TX_DIFFICULTY_NO_ITEM_TRAINER 0
-#define TX_DIFFICULTY_NO_EVS 0
-#define TX_DIFFICULTY_SCALING_IVS 0
-#define TX_DIFFICULTY_SCALING_EVS 0
-#define TX_DIFFICULTY_PKMN_CENTER 0 //0 no limit, 1 none
+// BaneMode: all difficulty defaults are locked to maximum hardness.
+#define TX_DIFFICULTY_PARTY_LIMIT 0      // 0 = no party limit (full 6-mon team allowed)
+#define TX_DIFFICULTY_LEVEL_CAP 2        // 2 = hard cap (capped at lowest gym mon level)
+#define TX_DIFFICULTY_EXP_MULTIPLIER 0   // 0 = normal EXP (1×); grind is intentional
+#define TX_DIFFICULTY_NO_ITEM_PLAYER 1   // 1 = no in-battle items for player
+#define TX_DIFFICULTY_NO_ITEM_TRAINER 0  // 0 = trainers keep items (makes them harder)
+#define TX_DIFFICULTY_NO_EVS 0           // 0 = player can use EVs (grinding is the reward)
+#define TX_DIFFICULTY_SCALING_IVS 2      // 2 = trainer Pokémon have perfect IVs
+#define TX_DIFFICULTY_SCALING_EVS 2      // 2 = trainer Pokémon have 252 EVs (extreme)
+#define TX_DIFFICULTY_PKMN_CENTER 0      // 0 = Pokémon Centers usable (healing gating via design)
 
 #define TX_CHALLENGE_EVO_LIMIT 0 //0 off, 1 first, 2 none
 #define TX_CHALLENGE_BASE_STAT_EQUALIZER 0 //0=off, 1=100, 2=255, 3=500

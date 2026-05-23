@@ -67,7 +67,7 @@
 #define FLAG_TYPE_INVERSE_ON    0x34 // Unused Flag
 #define FLAG_ITEM_N_LUNARIZER_FOUND    0x35 // Unused Flag
 #define FLAG_EGG_MOVES_TUTOR    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
+#define FLAG_TM_OVERFLOW_TUTOR    0x37 // Unused Flag
 #define FLAG_UNUSED_0x038    0x38 // Unused Flag
 #define FLAG_UNUSED_0x039    0x39 // Unused Flag
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
@@ -671,8 +671,9 @@
 #define FLAG_DYNAMIC_OW    0x26F // Unused Flag
 #define FLAG_GENERATED_SPOTLIGHT_EVENT  0x270 // Unused Flag
 #define FLAG_RECEIVED_STONER_INSURANCE_SCRAGGY  0x271 // Received Stoner's shiny Scraggy insurance gift.
+#define FLAG_RECEIVED_JOE_ROD_PACKAGE           0x272 // Received Joe's rods and shiny hidden-ability Magikarp.
 #define FLAG_UNUSED_0x272  0x272 // Unused Flag
-#define FLAG_UNUSED_0x273  0x273 // Unused Flag
+#define FLAG_USED_HOLY_BLUNT_RECENTLY           0x273 // Test flag for nearby NPC reaction to Holy Blunt.
 #define FLAG_UNUSED_0x274  0x274 // Unused Flag
 #define FLAG_UNUSED_0x275  0x275 // Unused Flag
 #define FLAG_UNUSED_0x276  0x276 // Unused Flag
@@ -732,7 +733,7 @@
 #define FLAG_HIDE_MESPRIT  0x2AC // Unused Flag
 #define FLAG_HIDE_DARKRAI  0x2AD // Unused Flag
 #define FLAG_DEFEATED_LANDORUS  0x2AE // Unused Flag
-#define FLAG_UNUSED_0x2AF  0x2AF // Unused Flag
+#define FLAG_DEFEATED_G_MOLTRES  0x2AF
 #define FLAG_DEFEATED_TERRAKION  0x2B0 // Unused Flag
 #define FLAG_DEFEATED_UXIE  0x2B1 // Unused Flag
 #define FLAG_DEFEATED_AZELF  0x2B2 // Unused Flag

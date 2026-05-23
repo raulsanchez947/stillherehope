@@ -1136,97 +1136,96 @@ RustboroCity_Text_PleaseComeWithMe:
 	.string "Please come with me!$"
 
 RustboroCity_Text_MayHiLetsRegister:
-	.string "MAY: Oh, hi, {PLAYER}{KUN}!\p"
-	.string "You had a MATCH CALL feature put\n"
-	.string "on your POKéNAV!\p"
-	.string "Let's register each other so we can\n"
-	.string "contact one another anytime!\p"
+	.string "MAY: What's good, fam?\p"
+	.string "DEVON slapped the BURNER onto\n"
+	.string "my setup and it's kinda valid.\p"
+	.string "Let's lock each other in so I can\n"
+	.string "check on you anytime, deadass.\p"
 	.string "… … … … … …$"
 
 RustboroCity_Text_RegisteredMay:
-	.string "Registered MAY\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 RustboroCity_Text_MayPassedBrineyWantToBattle:
-	.string "MAY: Oh, by the way, I passed\n"
-	.string "MR. BRINEY in PETALBURG WOODS.\p"
-	.string "I guess he's on his way home to his\n"
-	.string "cottage by the sea.\p"
-	.string "How's your POKéDEX coming along,\n"
-	.string "{PLAYER}{KUN}? Mine's looking pretty decent!\p"
-	.string "So…\n"
-	.string "How about a little battle?$"
+	.string "MAY: Real quick, I passed\n"
+	.string "MR. BRINEY back by the woods.\p"
+	.string "Old head looked like he was sliding\n"
+	.string "back to the shore, no stress.\p"
+	.string "How's your DEX looking, {PLAYER}{KUN}?\n"
+	.string "Mine's moving sturdy right now.\p"
+	.string "So what we doing?\n"
+	.string "You tryna battle or what?$"
 
 RustboroCity_Text_MayOhHaventRaisedPokemonEnough:
-	.string "MAY: Oh, what's the matter?\p"
-	.string "Haven't you caught or raised your\n"
-	.string "POKéMON very much?\p"
-	.string "That's not very good for a TRAINER!$"
+	.string "MAY: C'mon, don't fold now.\p"
+	.string "If you ain't been raising your squad,\n"
+	.string "that ain't trainer timing, fam.$"
 
 RustboroCity_Text_MayWantToBattle:
-	.string "MAY: So, what do you think?\n"
-	.string "How about a little battle here?$"
+	.string "MAY: So what's the word?\n"
+	.string "Run this fade right here?$"
 
 RustboroCity_Text_MayImNotGoingToLose:
-	.string "MAY: You just became a TRAINER,\n"
-	.string "{PLAYER}{KUN}. I'm not going to lose!$"
+	.string "MAY: Don't get it twisted,\n"
+	.string "{PLAYER}{KUN}. My squad is built.\p"
+	.string "Uxie set the tone, and the rest of\n"
+	.string "them move like a real lineup.$"
 
 RustboroCity_Text_MayDefeat:
-	.string "Yikes!\n"
-	.string "You're better than I expected!$"
+	.string "Ayo…\n"
+	.string "You really packed me up there!$"
 
 RustboroCity_Text_MayMrBrineyHint:
-	.string "MAY: Oh, by the way, MR. BRINEY, who\n"
-	.string "I just passed…\p"
-	.string "{PLAYER}{KUN}, you just moved here so you\n"
-	.string "might not know this, but MR. BRINEY\l"
-	.string "was once a revered seafarer.$"
+	.string "MAY: And yo, about MR. BRINEY…\p"
+	.string "Since you're still learning the town,\n"
+	.string "you should know he's the real deal.\p"
+	.string "Old man used to rule the sea before he\n"
+	.string "ever posted up by that cottage.$"
 
 RustboroCity_Text_BrendanHiLetsRegister:
-	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
-	.string "You had a MATCH CALL feature put\n"
-	.string "on your POKéNAV! Cool!\p"
-	.string "Let's register each other so we can\n"
-	.string "get in touch anytime!\p"
+	.string "BRENDAN: Yo, {PLAYER}!\p"
+	.string "You got MATCH CALL put on that\n"
+	.string "POKéNAV? That's clean.\p"
+	.string "Register me so we can link up\n"
+	.string "whenever.\p"
 	.string "… … … … … …$"
 
 RustboroCity_Text_RegisteredBrendan:
-	.string "Registered BRENDAN\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 RustboroCity_Text_BrendanPassedBrineyWantToBattle:
-	.string "BRENDAN: By the way, {PLAYER}, I walked\n"
-	.string "by MR. BRINEY in PETALBURG WOODS.\p"
-	.string "I bet he was on his way home to his\n"
-	.string "cottage by the sea.\p"
-	.string "{PLAYER}, how's your POKéDEX?\n"
-	.string "Have you filled in any pages yet?\p"
-	.string "Mine rules.\p"
-	.string "Want to have a battle to test how\n"
-	.string "far you've progressed?$"
+	.string "BRENDAN: Yo, {PLAYER}, I passed\n"
+	.string "MR. BRINEY in PETALBURG WOODS.\p"
+	.string "Bet he was heading back to that\n"
+	.string "cottage by the water.\p"
+	.string "How's your POKéDEX looking?\n"
+	.string "You fill any pages yet?\p"
+	.string "Mine's looking proper.\p"
+	.string "Run a battle with me so I can see\n"
+	.string "your progress.$"
 
 RustboroCity_Text_BrendanNoConfidenceInPokemon:
-	.string "BRENDAN: What's the matter? Don't have\n"
-	.string "any confidence in your POKéMON?$"
+	.string "BRENDAN: What happened?\n"
+	.string "You don't trust your POKéMON yet?$"
 
 RustboroCity_Text_BrendanWantToBattle:
-	.string "BRENDAN: What's up?\n"
-	.string "Want to have a battle with me?$"
+	.string "BRENDAN: What's good?\n"
+	.string "You trying to battle me?$"
 
 RustboroCity_Text_BrendanIWontGoEasy:
-	.string "BRENDAN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy!$"
+	.string "BRENDAN: I know you're new at this,\n"
+	.string "but I ain't going easy!$"
 
 RustboroCity_Text_BrendanDefeat:
 	.string "Hmm…\n"
-	.string "You're pretty good.$"
+	.string "You're kinda nice with it.$"
 
 RustboroCity_Text_BrendanMrBrineyHint:
 	.string "BRENDAN: By the way, you know\n"
-	.string "MR. BRINEY? The guy I just passed?\p"
-	.string "I bet you didn't know this, since you\n"
-	.string "just moved here, {PLAYER}, but\l"
-	.string "MR. BRINEY was once a great sailor.$"
+	.string "MR. BRINEY? The guy I passed?\p"
+	.string "You just moved here, so maybe you\n"
+	.string "don't know, {PLAYER}, but\l"
+	.string "MR. BRINEY used to run the sea.$"
 
 RustboroCity_Text_TunnelNearingCompletion:
 	.string "“Timesaving tunnel nearing\n"
@@ -1272,15 +1271,13 @@ RustboroCity_Text_DevelopedNewPokenavFeature:
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone:
 	.string "There you go, {PLAYER}!\p"
-	.string "I added a new feature named\n"
-	.string "MATCH CALL to your POKéNAV.\p"
-	.string "Using the MATCH CALL feature,\n"
-	.string "you can chat with people who have\l"
-	.string "been registered in your POKéNAV.\p"
+	.string "I added a new feature to your\n"
+	.string "BURNER.\p"
+	.string "Numbers can get saved, but don't be\n"
+	.string "shocked when they come back blocked.\p"
 	.string "{PLAYER}, our PRESIDENT STONE should\n"
-	.string "be registered in your POKéNAV.\p"
-	.string "Test it out.\n"
-	.string "Please give our PRESIDENT a call.$"
+	.string "already be in there.\p"
+	.string "Try it and you'll see what I mean.$"
 
 RustboroCity_Text_PleaseSelectPokenav:
 	.string "Please select the POKéNAV.$"

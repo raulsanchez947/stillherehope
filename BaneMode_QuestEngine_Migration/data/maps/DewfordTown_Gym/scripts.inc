@@ -16,7 +16,7 @@ DewfordTown_Gym_OnTransition:
 	end
 
 DewfordTown_Gym_EventScript_ResetObjects::
-	setobjectxyperm LOCALID_FLANNERY, 13, 9
+	setobjectxyperm LOCALID_FLANNERY, 14, 9
 	setobjectmovementtype LOCALID_FLANNERY, MOVEMENT_TYPE_FACE_DOWN
 	setobjectxyperm LOCALID_COLE, 3, 14
 	setobjectxyperm LOCALID_GERALD, 2, 15
@@ -65,14 +65,14 @@ DewfordTown_Gym_EventScript_FlanneryDefeated::
 	end
 
 DewfordTown_Gym_EventScript_GiveOverheat::
-	giveitem ITEM_TM50
+	giveitem ITEM_HEAT_ROCK
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM50
 	return
 
 DewfordTown_Gym_EventScript_GiveOverheat2:
-	giveitem ITEM_TM50
+	giveitem ITEM_HEAT_ROCK
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM50
@@ -155,12 +155,12 @@ DewfordTown_Gym_Text_HeatBadgeInfoTakeThis:
 	.string "the temperature never lets up.$"
 
 DewfordTown_Gym_Text_ExplainOverheat:
-	.string "That TM contains OVERHEAT.\p"
-	.string "It hits like a blast furnace, but you\n"
-	.string "need the nerve to use it well.$"
+	.string "That HEAT ROCK keeps the sun leaning\n"
+	.string "on your side longer.\p"
+	.string "Fire pressure don't blink first.$"
 
 DewfordTown_Gym_Text_RegisteredFlannery:
-	.string "Registered FLANNERY in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 DewfordTown_Gym_Text_FlanneryPostBattle:
 	.string "FLANNERY: The fire in your team is real.\p"

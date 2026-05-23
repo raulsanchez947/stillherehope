@@ -1091,6 +1091,207 @@ static const union AnimCmd *const sAnimTable_Standard[] = {
     [ANIM_STD_GO_FASTEST_EAST] = sAnim_GoFastestEast,
 };
 
+// Paul sprite: 9 frames, 3 per direction.
+// Frames 0-2 = south (stand, walk-L, walk-R)
+// Frames 3-5 = north (stand, walk-L, walk-R)
+// Frames 6-8 = west  (stand, walk-L, walk-R); east uses west H-flipped.
+
+// --- Face animations ---
+static const union AnimCmd sAnim_PaulFaceSouth[] =
+{
+    ANIMCMD_FRAME(0, 16),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulFaceNorth[] =
+{
+    ANIMCMD_FRAME(3, 16),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulFaceWest[] =
+{
+    ANIMCMD_FRAME(6, 16),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulFaceEast[] =
+{
+    ANIMCMD_FRAME(6, 16, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+// --- Go South ---
+static const union AnimCmd sAnim_PaulGoSouth[] =
+{
+    ANIMCMD_FRAME(1, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_FRAME(2, 8),
+    ANIMCMD_FRAME(0, 8),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastSouth[] =
+{
+    ANIMCMD_FRAME(1, 4),
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_FRAME(2, 4),
+    ANIMCMD_FRAME(0, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFasterSouth[] =
+{
+    ANIMCMD_FRAME(1, 2),
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_FRAME(2, 2),
+    ANIMCMD_FRAME(0, 2),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastestSouth[] =
+{
+    ANIMCMD_FRAME(1, 1),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_FRAME(2, 1),
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_JUMP(0),
+};
+
+// --- Go North ---
+static const union AnimCmd sAnim_PaulGoNorth[] =
+{
+    ANIMCMD_FRAME(4, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_FRAME(5, 8),
+    ANIMCMD_FRAME(3, 8),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastNorth[] =
+{
+    ANIMCMD_FRAME(4, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_FRAME(5, 4),
+    ANIMCMD_FRAME(3, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFasterNorth[] =
+{
+    ANIMCMD_FRAME(4, 2),
+    ANIMCMD_FRAME(3, 2),
+    ANIMCMD_FRAME(5, 2),
+    ANIMCMD_FRAME(3, 2),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastestNorth[] =
+{
+    ANIMCMD_FRAME(4, 1),
+    ANIMCMD_FRAME(3, 1),
+    ANIMCMD_FRAME(5, 1),
+    ANIMCMD_FRAME(3, 1),
+    ANIMCMD_JUMP(0),
+};
+
+// --- Go West ---
+static const union AnimCmd sAnim_PaulGoWest[] =
+{
+    ANIMCMD_FRAME(7, 8),
+    ANIMCMD_FRAME(6, 8),
+    ANIMCMD_FRAME(8, 8),
+    ANIMCMD_FRAME(6, 8),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastWest[] =
+{
+    ANIMCMD_FRAME(7, 4),
+    ANIMCMD_FRAME(6, 4),
+    ANIMCMD_FRAME(8, 4),
+    ANIMCMD_FRAME(6, 4),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFasterWest[] =
+{
+    ANIMCMD_FRAME(7, 2),
+    ANIMCMD_FRAME(6, 2),
+    ANIMCMD_FRAME(8, 2),
+    ANIMCMD_FRAME(6, 2),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastestWest[] =
+{
+    ANIMCMD_FRAME(7, 1),
+    ANIMCMD_FRAME(6, 1),
+    ANIMCMD_FRAME(8, 1),
+    ANIMCMD_FRAME(6, 1),
+    ANIMCMD_JUMP(0),
+};
+
+// --- Go East (west frames H-flipped) ---
+static const union AnimCmd sAnim_PaulGoEast[] =
+{
+    ANIMCMD_FRAME(7, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 8, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 8, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastEast[] =
+{
+    ANIMCMD_FRAME(7, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 4, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 4, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFasterEast[] =
+{
+    ANIMCMD_FRAME(7, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 2, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 2, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd sAnim_PaulGoFastestEast[] =
+{
+    ANIMCMD_FRAME(7, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(8, 1, .hFlip = TRUE),
+    ANIMCMD_FRAME(6, 1, .hFlip = TRUE),
+    ANIMCMD_JUMP(0),
+};
+
+static const union AnimCmd *const sAnimTable_Paul[] = {
+    [ANIM_STD_FACE_SOUTH] = sAnim_PaulFaceSouth,
+    [ANIM_STD_FACE_NORTH] = sAnim_PaulFaceNorth,
+    [ANIM_STD_FACE_WEST] = sAnim_PaulFaceWest,
+    [ANIM_STD_FACE_EAST] = sAnim_PaulFaceEast,
+    [ANIM_STD_GO_SOUTH] = sAnim_PaulGoSouth,
+    [ANIM_STD_GO_NORTH] = sAnim_PaulGoNorth,
+    [ANIM_STD_GO_WEST] = sAnim_PaulGoWest,
+    [ANIM_STD_GO_EAST] = sAnim_PaulGoEast,
+    [ANIM_STD_GO_FAST_SOUTH] = sAnim_PaulGoFastSouth,
+    [ANIM_STD_GO_FAST_NORTH] = sAnim_PaulGoFastNorth,
+    [ANIM_STD_GO_FAST_WEST] = sAnim_PaulGoFastWest,
+    [ANIM_STD_GO_FAST_EAST] = sAnim_PaulGoFastEast,
+    [ANIM_STD_GO_FASTER_SOUTH] = sAnim_PaulGoFasterSouth,
+    [ANIM_STD_GO_FASTER_NORTH] = sAnim_PaulGoFasterNorth,
+    [ANIM_STD_GO_FASTER_WEST] = sAnim_PaulGoFasterWest,
+    [ANIM_STD_GO_FASTER_EAST] = sAnim_PaulGoFasterEast,
+    [ANIM_STD_GO_FASTEST_SOUTH] = sAnim_PaulGoFastestSouth,
+    [ANIM_STD_GO_FASTEST_NORTH] = sAnim_PaulGoFastestNorth,
+    [ANIM_STD_GO_FASTEST_WEST] = sAnim_PaulGoFastestWest,
+    [ANIM_STD_GO_FASTEST_EAST] = sAnim_PaulGoFastestEast,
+};
+
 static const union AnimCmd *const sAnimTable_Following[] = {
     sAnim_FaceSouth,
     sAnim_FaceNorth2F,

@@ -239,79 +239,98 @@ MeteorFalls_1F_1R_EventScript_MetCozmo::
 	release
 	end
 
+MeteorFalls_1F_1R_EventScript_Lance::
+	lock
+	faceplayer
+	msgbox MeteorFalls_1F_1R_Text_LanceAlly, MSGBOX_DEFAULT
+	release
+	end
+
+MeteorFalls_1F_1R_EventScript_DefenderPatrol::
+	lock
+	faceplayer
+	msgbox MeteorFalls_1F_1R_Text_DefenderPatrol, MSGBOX_DEFAULT
+	release
+	end
+
+MeteorFalls_1F_1R_EventScript_DefenderSafe::
+	lock
+	faceplayer
+	msgbox MeteorFalls_1F_1R_Text_DefenderSafe, MSGBOX_DEFAULT
+	release
+	end
+
 MeteorFalls_1F_1R_Text_WithThisMeteorite:
-	.string "Hehehe!\p"
-	.string "With this METEORITE, that thing in\n"
-	.string "MT. CHIMNEY will…$"
+	.string "ROCKET GRUNT: With this METEORITE,\n"
+	.string "TEAM ROCKET will control\l"
+	.string "MT. CHIMNEY's power.\p"
+	.string "Stay out of our way!$"
 
 MeteorFalls_1F_1R_Text_DontExpectMercyFromMagma:
-	.string "Heh?\p"
-	.string "I don't know who you are, but if you get\n"
-	.string "in the way of TEAM MAGMA, don't\l"
-	.string "expect any mercy!$"
+	.string "ROCKET GRUNT: I don't know who\n"
+	.string "you are, but if you get in the way\l"
+	.string "of TEAM ROCKET, don't expect to\l"
+	.string "walk away!$"
 
 MeteorFalls_1F_1R_Text_HoldItRightThereMagma:
-	.string "Hold it right there, TEAM MAGMA!\p"
-	.string "You're badly mistaken if you think you\n"
-	.string "can have your way with the world!$"
+	.string "LANCE: Hold it right there,\n"
+	.string "TEAM ROCKET!$"
 
 MeteorFalls_1F_1R_Text_BeSeeingYouTeamAqua:
-	.string "Hehehe!\n"
-	.string "Even TEAM AQUA joins us!\p"
+	.string "ROCKET GRUNT: Hehehe!\n"
+	.string "Even the HOENN DEFENDERS join us!\p"
 	.string "But it's too much trouble to deal with\n"
 	.string "you all…\p"
 	.string "Heh, it doesn't matter!\p"
 	.string "We've got the METEORITE, so off to\n"
 	.string "MT. CHIMNEY we go!\p"
-	.string "Hehehe! Be seeing you, you TEAM\n"
-	.string "AQUA dingbats!$"
+	.string "Hehehe! Be seeing you, you\n"
+	.string "DEFENDER dingbats!$"
 
 MeteorFalls_1F_1R_Text_ArchieSeenYouBefore:
-	.string "ARCHIE: Didn't I see you before?\n"
-	.string "At SLATEPORT's MUSEUM?\p"
-	.string "Ah, so your name is {PLAYER}.\p"
-	.string "At the time, I thought you were one\n"
-	.string "of TEAM MAGMA's goons.\p"
-	.string "Humph…\n"
-	.string "You're one odd kid.\p"
-	.string "TEAM MAGMA is a dangerous group of\n"
-	.string "total fanatics.\p"
-	.string "They engage in destruction, claiming\n"
-	.string "to expand the land mass.\p"
-	.string "They are the rivals to us,\n"
-	.string "the sea-loving TEAM AQUA!$"
+MeteorFalls_1F_1R_Text_LanceAlly:
+	.string "LANCE: You made it.\p"
+	.string "We've been tracking these ROCKETS\n"
+	.string "since RUSTBORO.\p"
+	.string "The METEORITE stays here.$"
 
 MeteorFalls_1F_1R_Text_BossWeShouldChaseMagma:
-	.string "BOSS, we should give chase to\n"
-	.string "TEAM MAGMA…$"
+MeteorFalls_1F_1R_Text_DefenderPatrol:
+	.string "We are the HOENN DEFENDERS.\p"
+	.string "We stand against TEAM ROCKET\n"
+	.string "wherever they show up.$"
 
 MeteorFalls_1F_1R_Text_ArchieYesNoTellingWhatMagmaWillDo:
-	.string "ARCHIE: Yes, yes, we must!\n"
-	.string "We've got to hurry.\p"
-	.string "There's no telling what TEAM MAGMA\n"
-	.string "will do at MT. CHIMNEY!$"
+	.string "LANCE: We move for MT. CHIMNEY\n"
+	.string "now.\p"
+	.string "TEAM ROCKET can't be allowed to use\n"
+	.string "that METEORITE.$"
 
 MeteorFalls_1F_1R_Text_ArchieFarewell:
-	.string "ARCHIE: {PLAYER}, you should keep\n"
-	.string "an eye out for TEAM MAGMA, too.\p"
-	.string "Farewell!$"
+	.string "LANCE: Stay sharp, {PLAYER}.\p"
+	.string "The HOENN DEFENDERS are with you.$"
+
+MeteorFalls_1F_1R_Text_DefenderSafe:
+	.string "LANCE led us here.\p"
+	.string "You're not alone in this fight,\n"
+	.string "TRAINER.$"
 
 MeteorFalls_1F_1R_Text_MeetProfCozmo:
 	.string "I… I'm COZMO…\n"
 	.string "I'm a PROFESSOR…\p"
-	.string "TEAM MAGMA asked me to guide them\n"
+	.string "TEAM ROCKET asked me to guide them\n"
 	.string "to METEOR FALLS…\p"
 	.string "But they tricked me.\n"
 	.string "They even took my METEORITE away…\p"
-	.string "And then another similar bunch,\n"
-	.string "TEAM AQUA showed up.\p"
+	.string "Then LANCE and the\n"
+	.string "HOENN DEFENDERS showed up to help.\p"
 	.string "After that…\n"
 	.string "I don't understand any of it.\p"
-	.string "But that TEAM MAGMA…\p"
+	.string "But that TEAM ROCKET…\p"
 	.string "What are they going to do with that\n"
 	.string "METEORITE at MT. CHIMNEY?$"
 
 MeteorFalls_1F_1R_Text_WhatsTeamMagmaDoingAtMtChimney:
-	.string "PROF. COZMO: But that TEAM MAGMA…\p"
+	.string "PROF. COZMO: But that TEAM ROCKET…\p"
 	.string "What are they going to do with that\n"
 	.string "METEORITE at MT. CHIMNEY?$"

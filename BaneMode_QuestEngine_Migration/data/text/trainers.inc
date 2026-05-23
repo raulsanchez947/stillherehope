@@ -577,14 +577,15 @@ Route106_Text_NedPostBattle:
 	.string "a big one!$"
 
 Route106_Text_DouglasIntro:
-	.string "Hahahah! I'm a lousy runner, but in\n"
-	.string "the water you can't catch me!$"
+	.string "DOUGLAS: On land? I'm cooked.\n"
+	.string "In the water, though? You not touching me.$"
 
 Route106_Text_DouglasDefeated:
-	.string "I give up!$"
+	.string "DOUGLAS: Aight, aight, I fold!$"
 
 Route106_Text_DouglasPostBattle:
-	.string "I wouldn't lose in a swim race…$"
+	.string "DOUGLAS: In a straight swim race,\n"
+	.string "I'm still smoking you, deadass.$"
 
 Route106_Text_KylaIntro:
 	.string "The sea is my backyard. I'm not going\n"
@@ -2731,15 +2732,15 @@ Route119_Text_TaylorPostBattle:
 	.string "It's burning me up…$"
 
 Route119_Text_DougIntro:
-	.string "Yep, you've finally caught me!\n"
-	.string "Or were you trying to avoid me?$"
+	.string "DOUG: There you go, finally caught me.\n"
+	.string "Or you been ducking me on purpose?$"
 
 Route119_Text_DougDefeat:
-	.string "Whoop, that was a great match!$"
+	.string "DOUG: Whew, that was valid.$"
 
 Route119_Text_DougPostBattle:
-	.string "We're the MIMIC CIRCLE!\n"
-	.string "I hope you enjoyed our performance.$"
+	.string "DOUG: We the MIMIC CIRCLE, fam.\n"
+	.string "Hope you enjoyed the show.$"
 
 Route119_Text_GregIntro:
 	.string "You don't know who I am, do you?\p"

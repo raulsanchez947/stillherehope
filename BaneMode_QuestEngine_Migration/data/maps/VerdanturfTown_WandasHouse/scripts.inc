@@ -15,25 +15,6 @@ VerdanturfTown_WandasHouse_EventScript_WallyShortSpeech::
 	release
 	end
 
-VerdanturfTown_WandasHouse_EventScript_WallysUncle::
-	lock
-	faceplayer
-	goto_if_set FLAG_DEFEATED_WALLY_VICTORY_ROAD, VerdanturfTown_WandasHouse_EventScript_WallysUncleEverGrande
-	goto_if_set FLAG_DEFEATED_LAVARIDGE_GYM, VerdanturfTown_WandasHouse_EventScript_WallysUncleSlippedOff
-	msgbox VerdanturfTown_WandasHouse_Text_WallysNextDoor, MSGBOX_DEFAULT
-	release
-	end
-
-VerdanturfTown_WandasHouse_EventScript_WallysUncleSlippedOff::
-	msgbox VerdanturfTown_WandasHouse_Text_WallySlippedOff, MSGBOX_DEFAULT
-	release
-	end
-
-VerdanturfTown_WandasHouse_EventScript_WallysUncleEverGrande::
-	msgbox VerdanturfTown_WandasHouse_Text_WallyGoneThatFar, MSGBOX_DEFAULT
-	release
-	end
-
 VerdanturfTown_WandasHouse_EventScript_WandasBoyfriend::
 	msgbox VerdanturfTown_WandasHouse_Text_CanSeeGirlfriendEveryDay, MSGBOX_NPC
 	end
@@ -99,21 +80,6 @@ VerdanturfTown_WandasHouse_Text_StrongerSpeechShort:
 	.string "I'm going to get stronger than you.\p"
 	.string "When I do, I'm going to challenge you\n"
 	.string "to another battle.$"
-
-VerdanturfTown_WandasHouse_Text_WallysNextDoor:
-	.string "PAUL's next door.\p"
-	.string "The air out here and the daily grind\n"
-	.string "have him moving way better.\p"
-	.string "Honestly, the POKéMON are giving that\n"
-	.string "boy a whole new purpose.$"
-
-VerdanturfTown_WandasHouse_Text_WallySlippedOff:
-	.string "PAUL's gone away…\n"
-	.string "He slipped off on his own…$"
-
-VerdanturfTown_WandasHouse_Text_WallyGoneThatFar:
-	.string "PAUL made it that far all by himself?\p"
-	.string "Yeah… I gotta give him credit for that.$"
 
 VerdanturfTown_WandasHouse_Text_MeetWanda:
 	.string "WANDA: You are?\n"

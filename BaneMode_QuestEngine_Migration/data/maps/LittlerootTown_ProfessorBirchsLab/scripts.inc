@@ -538,12 +538,14 @@ LittlerootTown_ProfessorBirchsLab_EventScript_TryRestoreLegacyBundle::
 	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_RestoreLegacyBundle
 	checkitem ITEM_BLACK_AUGURITE, 1
 	goto_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_RestoreLegacyBundle
+	call LittlerootTown_ProfessorBirchsLab_EventScript_GiveMissingBattleItems
 	goto LittlerootTown_ProfessorBirchsLab_EventScript_TryRatePokedexOrRegister
 	end
 
 LittlerootTown_ProfessorBirchsLab_EventScript_RestoreLegacyBundle::
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchRestoringBundle, MSGBOX_DEFAULT
 	special BaneModeGiveLegacyBirchBundle
+	call LittlerootTown_ProfessorBirchsLab_EventScript_GiveMissingBattleItems
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_BirchRestoredBundleDone, MSGBOX_DEFAULT
 	release
 	end
@@ -644,7 +646,6 @@ LittlerootTown_ProfessorBirchsLab_EventScript_BrendanGivePokeBalls::
 	return
 
 LittlerootTown_ProfessorBirchsLab_EventScript_GiveBirchTmBundle::
-	giveitem ITEM_TM_CASE, 1
 	special BaneModeGiveAllTMs
 	return
 
@@ -904,24 +905,24 @@ LittlerootTown_ProfessorBirchsLab_Text_MayWhereShouldIGoNext:
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanGotPokedexTooTakeThese:
 	.string "BRENDAN: Huh…\n"
-	.string "So you got a POKéDEX, too.\p"
-	.string "Well then, here.\n"
+	.string "So you got a POKéDEX too.\p"
+	.string "Aight, here.\n"
 	.string "I'll give you these.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CatchCoolPokemonWithPokeBalls:
-	.string "BRENDAN: You know it's more fun to\n"
-	.string "have a whole bunch of POKéMON.\p"
-	.string "I'm going to explore all over the place\n"
-	.string "to find different POKéMON.\p"
-	.string "If I find any cool POKéMON, you bet\n"
-	.string "I'll try to get them with POKé BALLS.$"
+	.string "BRENDAN: You know it's more fun\n"
+	.string "with a whole squad of POKéMON.\p"
+	.string "I'm gonna move all over the place\n"
+	.string "looking for different POKéMON.\p"
+	.string "If I find anything cool, best believe\n"
+	.string "I'm catching it with POKé BALLS.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_HeyYourBagsFull:
 	.string "Hey, your BAG's full.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanWhereShouldIGoNext:
-	.string "BRENDAN: Where should I look for\n"
-	.string "POKéMON next…$"
+	.string "BRENDAN: Where should I go looking\n"
+	.string "for POKéMON next…$"
 
 LittlerootTown_ProfessorBirchsLab_Text_SeriousLookingMachine:
 	.string "It's a serious-looking machine.\n"
@@ -958,11 +959,11 @@ LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool:
 	.string "so many POKéMON, {PLAYER}{KUN}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe:
-	.string "BRENDAN: I went out all over HOENN\n"
-	.string "and checked out POKéMON.\p"
+	.string "BRENDAN: I went all over HOENN\n"
+	.string "checking out POKéMON.\p"
 	.string "You can thank me for getting\n"
 	.string "the NATIONAL Mode POKéDEX.\p"
-	.string "Yep, you're lucky, {PLAYER}!$"
+	.string "You're lucky, {PLAYER}, no cap!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone:
 	.string "PROF. BIRCH: Okay, all done!$"
@@ -987,9 +988,9 @@ LittlerootTown_ProfessorBirchsLab_Text_MayTakeBreakFromFieldwork:
 	.string "a while.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanTakeBreakFromFieldwork:
-	.string "BRENDAN: For the time being,\n"
-	.string "I'm taking a break from fieldwork.\p"
-	.string "I'll be helping out the PROF here\n"
+	.string "BRENDAN: For now, I'm taking\n"
+	.string "a break from fieldwork.\p"
+	.string "I'll help the PROF here\n"
 	.string "for a while.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_CompletedDexChoosePokemon:
@@ -1080,9 +1081,9 @@ LittlerootTown_ProfessorBirchsLab_Text_MayWhatNextImStayingHere:
 	.string "I'm staying here to help the PROF.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanPreferCollectingSlowly:
-	.string "BRENDAN: Rather than collecting\n"
-	.string "POKéMON, I prefer slowly and \l"
-	.string "steadily raising the one I chose.$"
+	.string "BRENDAN: Instead of catching everything,\n"
+	.string "I like raising my chosen one slow\l"
+	.string "and steady.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayHaveYouGoneToBattleFrontier:
 	.string "MAY: Oh, hi, {PLAYER}{KUN}!\n"
@@ -1090,24 +1091,24 @@ LittlerootTown_ProfessorBirchsLab_Text_MayHaveYouGoneToBattleFrontier:
 	.string "the BATTLE FRONTIER?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanHaveYouGoneToBattleFrontier:
-	.string "BRENDAN: Hey, {PLAYER}!\n"
-	.string "Have you gone out to that place,\l"
+	.string "BRENDAN: Yo, {PLAYER}!\n"
+	.string "You been out to that place yet,\l"
 	.string "the BATTLE FRONTIER?$"
 
 LittlerootTown_ProfessorBirchsLab_Text_ScottAboardSSTidalCall:
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "SCOTT: Hi, hi, {PLAYER}!\n"
-	.string "It's me, SCOTT.\p"
-	.string "I'm aboard the S.S. TIDAL now.\n"
-	.string "It feels great to be on the sea!\p"
+	.string "BRENDAN: Yo, yo, {PLAYER}!\n"
+	.string "It's BRENDAN.\p"
+	.string "I'm on the S.S. TIDAL now.\n"
+	.string "Feels good being out at sea!\p"
 	.string "By the way…\p"
-	.string "There's this place that I'd like to\n"
-	.string "invite you to for a visit.\p"
-	.string "If you're interested, board a ferry\n"
-	.string "at either SLATEPORT or LILYCOVE.\p"
-	.string "I'll fill you in on the details when\n"
-	.string "we meet. I'll be waiting!\p"
+	.string "There's a place I want you to\n"
+	.string "come see.\p"
+	.string "If you're interested, catch a ferry\n"
+	.string "from SLATEPORT or LILYCOVE.\p"
+	.string "I'll explain when we meet.\n"
+	.string "I'll be waiting!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 
@@ -1123,3 +1124,429 @@ LittlerootTown_ProfessorBirchsLab_Text_BirchRestoredBundleDone:
 	.string "gear should all be packed in.\p"
 	.string "If your bag was tight, check your PC\n"
 	.string "for the overflow stash.$"
+
+@ ============================================================
+@ Battle Items Distribution - checks and fills missing items
+@ ============================================================
+
+LittlerootTown_ProfessorBirchsLab_EventScript_GiveMissingBattleItems::
+	@ Choice Items
+	checkitem ITEM_CHOICE_BAND, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ChoiceBand
+	checkitem ITEM_CHOICE_SCARF, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ChoiceScarf
+	checkitem ITEM_CHOICE_SPECS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ChoiceSpecs
+	@ Stat-Boosting Held Items
+	checkitem ITEM_LIFE_ORB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_LifeOrb
+	checkitem ITEM_ASSAULT_VEST, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_AssaultVest
+	checkitem ITEM_EXPERT_BELT, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ExpertBelt
+	checkitem ITEM_MUSCLE_BAND, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_MuscleBand
+	checkitem ITEM_WISE_GLASSES, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_WiseGlasses
+	checkitem ITEM_EVIOLITE, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_Eviolite
+	checkitem ITEM_WEAKNESS_POLICY, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_WeaknessPolicy
+	@ Survival / Defense
+	checkitem ITEM_FOCUS_SASH, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_FocusSash
+	checkitem ITEM_FOCUS_BAND, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_FocusBand
+	checkitem ITEM_ROCKY_HELMET, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_RockyHelmet
+	checkitem ITEM_WHITE_HERB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_WhiteHerb
+	checkitem ITEM_MENTAL_HERB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_MentalHerb
+	checkitem ITEM_POWER_HERB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_PowerHerb
+	@ HP Recovery
+	checkitem ITEM_LEFTOVERS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_Leftovers
+	checkitem ITEM_SHELL_BELL, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ShellBell
+	checkitem ITEM_BIG_ROOT, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BigRoot
+	@ Status Orbs
+	checkitem ITEM_FLAME_ORB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_FlameOrb
+	checkitem ITEM_TOXIC_ORB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ToxicOrb
+	checkitem ITEM_BLACK_SLUDGE, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlackSludge
+	@ Speed Items
+	checkitem ITEM_QUICK_CLAW, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_QuickClaw
+	checkitem ITEM_LAGGING_TAIL, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_LaggingTail
+	checkitem ITEM_ZOOM_LENS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ZoomLens
+	checkitem ITEM_ROOM_SERVICE, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_RoomService
+	@ Accuracy Items
+	checkitem ITEM_WIDE_LENS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_WideLens
+	checkitem ITEM_SCOPE_LENS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ScopeLens
+	checkitem ITEM_BRIGHT_POWDER, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BrightPowder
+	checkitem ITEM_KINGS_ROCK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_KingsRock
+	@ Weather Rocks
+	checkitem ITEM_HEAT_ROCK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_HeatRock
+	checkitem ITEM_DAMP_ROCK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_DampRock
+	checkitem ITEM_SMOOTH_ROCK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SmoothRock
+	checkitem ITEM_ICY_ROCK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_IcyRock
+	checkitem ITEM_LIGHT_CLAY, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_LightClay
+	checkitem ITEM_TERRAIN_EXTENDER, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_TerrainExtender
+	@ Seeds
+	checkitem ITEM_ELECTRIC_SEED, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ElectricSeed
+	checkitem ITEM_PSYCHIC_SEED, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_PsychicSeed
+	checkitem ITEM_MISTY_SEED, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_MistySeed
+	checkitem ITEM_GRASSY_SEED, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_GrassySeed
+	@ Reactive Held Items
+	checkitem ITEM_ABSORB_BULB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_AbsorbBulb
+	checkitem ITEM_CELL_BATTERY, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_CellBattery
+	checkitem ITEM_LUMINOUS_MOSS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_LuminousMoss
+	checkitem ITEM_SNOWBALL, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_Snowball
+	checkitem ITEM_ADRENALINE_ORB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_AdrenalineOrb
+	checkitem ITEM_THROAT_SPRAY, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ThroatSpray
+	checkitem ITEM_BLUNDER_POLICY, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlunderPolicy
+	checkitem ITEM_EJECT_BUTTON, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_EjectButton
+	checkitem ITEM_EJECT_PACK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_EjectPack
+	checkitem ITEM_RED_CARD, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_RedCard
+	@ Utility / Competitive
+	checkitem ITEM_AIR_BALLOON, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_AirBalloon
+	checkitem ITEM_FLOAT_STONE, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_FloatStone
+	checkitem ITEM_IRON_BALL, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_IronBall
+	checkitem ITEM_GRIP_CLAW, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_GripClaw
+	checkitem ITEM_BINDING_BAND, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BindingBand
+	checkitem ITEM_SHED_SHELL, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ShedShell
+	checkitem ITEM_STICKY_BARB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_StickyBarb
+	checkitem ITEM_RAZOR_CLAW, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_RazorClaw
+	checkitem ITEM_RING_TARGET, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_RingTarget
+	checkitem ITEM_SAFETY_GOGGLES, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SafetyGoggles
+	checkitem ITEM_HEAVY_DUTY_BOOTS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_HeavyDutyBoots
+	checkitem ITEM_PROTECTIVE_PADS, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_ProtectivePads
+	checkitem ITEM_UTILITY_UMBRELLA, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_UtilityUmbrella
+	checkitem ITEM_NORMAL_GEM, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_NormalGem
+	@ Type-Boosting Items
+	checkitem ITEM_SILK_SCARF, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SilkScarf
+	checkitem ITEM_CHARCOAL, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_Charcoal
+	checkitem ITEM_MYSTIC_WATER, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_MysticWater
+	checkitem ITEM_MAGNET, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_Magnet
+	checkitem ITEM_MIRACLE_SEED, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_MiracleSeed
+	checkitem ITEM_NEVER_MELT_ICE, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_NeverMeltIce
+	checkitem ITEM_BLACK_BELT, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlackBelt
+	checkitem ITEM_POISON_BARB, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_PoisonBarb
+	checkitem ITEM_SOFT_SAND, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SoftSand
+	checkitem ITEM_SHARP_BEAK, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SharpBeak
+	checkitem ITEM_TWISTED_SPOON, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_TwistedSpoon
+	checkitem ITEM_SILVER_POWDER, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SilverPowder
+	checkitem ITEM_HARD_STONE, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_HardStone
+	checkitem ITEM_SPELL_TAG, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_SpellTag
+	checkitem ITEM_DRAGON_FANG, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_DragonFang
+	checkitem ITEM_BLACK_GLASSES, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlackGlasses
+	checkitem ITEM_METAL_COAT, 1
+	call_if_eq VAR_RESULT, FALSE, LittlerootTown_ProfessorBirchsLab_EventScript_Give_MetalCoat
+	return
+
+@ ---- Individual give subroutines ----
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ChoiceBand::
+	additem ITEM_CHOICE_BAND
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ChoiceScarf::
+	additem ITEM_CHOICE_SCARF
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ChoiceSpecs::
+	additem ITEM_CHOICE_SPECS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_LifeOrb::
+	additem ITEM_LIFE_ORB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_AssaultVest::
+	additem ITEM_ASSAULT_VEST
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ExpertBelt::
+	additem ITEM_EXPERT_BELT
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_MuscleBand::
+	additem ITEM_MUSCLE_BAND
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_WiseGlasses::
+	additem ITEM_WISE_GLASSES
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_Eviolite::
+	additem ITEM_EVIOLITE
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_WeaknessPolicy::
+	additem ITEM_WEAKNESS_POLICY
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_FocusSash::
+	additem ITEM_FOCUS_SASH
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_FocusBand::
+	additem ITEM_FOCUS_BAND
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_RockyHelmet::
+	additem ITEM_ROCKY_HELMET
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_WhiteHerb::
+	additem ITEM_WHITE_HERB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_MentalHerb::
+	additem ITEM_MENTAL_HERB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_PowerHerb::
+	additem ITEM_POWER_HERB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_Leftovers::
+	additem ITEM_LEFTOVERS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ShellBell::
+	additem ITEM_SHELL_BELL
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BigRoot::
+	additem ITEM_BIG_ROOT
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_FlameOrb::
+	additem ITEM_FLAME_ORB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ToxicOrb::
+	additem ITEM_TOXIC_ORB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlackSludge::
+	additem ITEM_BLACK_SLUDGE
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_QuickClaw::
+	additem ITEM_QUICK_CLAW
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_LaggingTail::
+	additem ITEM_LAGGING_TAIL
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ZoomLens::
+	additem ITEM_ZOOM_LENS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_RoomService::
+	additem ITEM_ROOM_SERVICE
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_WideLens::
+	additem ITEM_WIDE_LENS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ScopeLens::
+	additem ITEM_SCOPE_LENS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BrightPowder::
+	additem ITEM_BRIGHT_POWDER
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_KingsRock::
+	additem ITEM_KINGS_ROCK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_HeatRock::
+	additem ITEM_HEAT_ROCK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_DampRock::
+	additem ITEM_DAMP_ROCK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SmoothRock::
+	additem ITEM_SMOOTH_ROCK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_IcyRock::
+	additem ITEM_ICY_ROCK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_LightClay::
+	additem ITEM_LIGHT_CLAY
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_TerrainExtender::
+	additem ITEM_TERRAIN_EXTENDER
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ElectricSeed::
+	additem ITEM_ELECTRIC_SEED
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_PsychicSeed::
+	additem ITEM_PSYCHIC_SEED
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_MistySeed::
+	additem ITEM_MISTY_SEED
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_GrassySeed::
+	additem ITEM_GRASSY_SEED
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_AbsorbBulb::
+	additem ITEM_ABSORB_BULB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_CellBattery::
+	additem ITEM_CELL_BATTERY
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_LuminousMoss::
+	additem ITEM_LUMINOUS_MOSS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_Snowball::
+	additem ITEM_SNOWBALL
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_AdrenalineOrb::
+	additem ITEM_ADRENALINE_ORB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ThroatSpray::
+	additem ITEM_THROAT_SPRAY
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlunderPolicy::
+	additem ITEM_BLUNDER_POLICY
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_EjectButton::
+	additem ITEM_EJECT_BUTTON
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_EjectPack::
+	additem ITEM_EJECT_PACK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_RedCard::
+	additem ITEM_RED_CARD
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_AirBalloon::
+	additem ITEM_AIR_BALLOON
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_FloatStone::
+	additem ITEM_FLOAT_STONE
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_IronBall::
+	additem ITEM_IRON_BALL
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_GripClaw::
+	additem ITEM_GRIP_CLAW
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BindingBand::
+	additem ITEM_BINDING_BAND
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ShedShell::
+	additem ITEM_SHED_SHELL
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_StickyBarb::
+	additem ITEM_STICKY_BARB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_RazorClaw::
+	additem ITEM_RAZOR_CLAW
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_RingTarget::
+	additem ITEM_RING_TARGET
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SafetyGoggles::
+	additem ITEM_SAFETY_GOGGLES
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_HeavyDutyBoots::
+	additem ITEM_HEAVY_DUTY_BOOTS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_ProtectivePads::
+	additem ITEM_PROTECTIVE_PADS
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_UtilityUmbrella::
+	additem ITEM_UTILITY_UMBRELLA
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_NormalGem::
+	additem ITEM_NORMAL_GEM
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SilkScarf::
+	additem ITEM_SILK_SCARF
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_Charcoal::
+	additem ITEM_CHARCOAL
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_MysticWater::
+	additem ITEM_MYSTIC_WATER
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_Magnet::
+	additem ITEM_MAGNET
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_MiracleSeed::
+	additem ITEM_MIRACLE_SEED
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_NeverMeltIce::
+	additem ITEM_NEVER_MELT_ICE
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlackBelt::
+	additem ITEM_BLACK_BELT
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_PoisonBarb::
+	additem ITEM_POISON_BARB
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SoftSand::
+	additem ITEM_SOFT_SAND
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SharpBeak::
+	additem ITEM_SHARP_BEAK
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_TwistedSpoon::
+	additem ITEM_TWISTED_SPOON
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SilverPowder::
+	additem ITEM_SILVER_POWDER
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_HardStone::
+	additem ITEM_HARD_STONE
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_SpellTag::
+	additem ITEM_SPELL_TAG
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_DragonFang::
+	additem ITEM_DRAGON_FANG
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_BlackGlasses::
+	additem ITEM_BLACK_GLASSES
+	return
+LittlerootTown_ProfessorBirchsLab_EventScript_Give_MetalCoat::
+	additem ITEM_METAL_COAT
+	return

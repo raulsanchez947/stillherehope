@@ -55,6 +55,27 @@ Route104_EventScript_PaulPreview::
 	release
 	end
 
+Route104_EventScript_TestSilver::
+	lock
+	faceplayer
+	msgbox Route104_Text_TestSilver, MSGBOX_DEFAULT
+	release
+	end
+
+Route104_EventScript_TestAsh::
+	lock
+	faceplayer
+	msgbox Route104_Text_TestAsh, MSGBOX_DEFAULT
+	release
+	end
+
+Route104_EventScript_TestCustomCharacter::
+	lock
+	faceplayer
+	msgbox Route104_Text_TestCustomCharacter, MSGBOX_DEFAULT
+	release
+	end
+
 Route104_EventScript_Rival::
 	lockall
 	setvar VAR_0x8008, 1
@@ -1089,8 +1110,7 @@ Route104_Text_MayWeShouldRegister:
 	.string "can get in contact anytime.$"
 
 Route104_Text_RegisteredMay:
-	.string "{PLAYER} registered MAY\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 Route104_Text_MayHowsYourPokedex:
 	.string "MAY: Oh, by the way, {PLAYER}{KUN},\n"
@@ -1128,51 +1148,58 @@ Route104_Text_MayPostBattle:
 	.string "POKéMON, too.$"
 
 Route104_Text_BrendanWeShouldRegister:
-	.string "BRENDAN: Oh, hey, {PLAYER}!\p"
-	.string "Cool, you had DEVON install the MATCH\n"
-	.string "CALL system on your POKéNAV!\p"
-	.string "Let's register each other in our\n"
-	.string "POKéNAVS so we can keep in touch.$"
+	.string "BRENDAN: Yo, {PLAYER}!\p"
+	.string "DEVON put MATCH CALL on your\n"
+	.string "POKéNAV? That's fire.\p"
+	.string "Register me so we can keep\n"
+	.string "in touch.$"
 
 Route104_Text_RegisteredBrendan:
-	.string "{PLAYER} registered BRENDAN\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 Route104_Text_BrendanHowsYourPokedex:
-	.string "BRENDAN: {PLAYER}, how's your POKéDEX?\n"
-	.string "Have you filled in any pages yet?$"
+	.string "BRENDAN: {PLAYER}, how's that POKéDEX?\n"
+	.string "You fill any pages yet?$"
 
 Route104_Text_BrendanDoingGreatLetsBattle:
-	.string "Me, I'm doing great!\p"
-	.string "Want to check out how good I am with\n"
-	.string "a battle?$"
+	.string "Me? I'm doing real good.\p"
+	.string "Run a battle and see how sharp\n"
+	.string "I got.$"
 
 Route104_Text_BrendanNoConfidence:
-	.string "BRENDAN: What's the matter? Don't have\n"
-	.string "any confidence in your POKéMON?$"
+	.string "BRENDAN: What happened?\n"
+	.string "You don't trust your POKéMON yet?$"
 
 Route104_Text_BrendanLetsBattle:
-	.string "BRENDAN: What's up?\n"
-	.string "Want to have a battle with me?$"
+	.string "BRENDAN: What's good?\n"
+	.string "You trying to battle me?$"
 
 Route104_Text_BrendanIntro:
-	.string "BRENDAN: I know you just became\n"
-	.string "a TRAINER, but I won't go easy!$"
+	.string "BRENDAN: I know you're new at this,\n"
+	.string "but I ain't going easy!$"
 
 Route104_Text_BrendanDefeat:
 	.string "Hmm…\n"
-	.string "You're pretty good.$"
+	.string "You're kinda nice with it.$"
 
 Route104_Text_BrendanPostBattle:
-	.string "BRENDAN: You've gotten pretty decent\n"
-	.string "at handling POKéMON.\p"
-	.string "But, you know, you shouldn't just be\n"
-	.string "making POKéMON battle.\p"
-	.string "Like MR. BRINEY, it's important to\n"
-	.string "become friends with your POKéMON.$"
+	.string "BRENDAN: You're getting solid\n"
+	.string "handling POKéMON.\p"
+	.string "But don't make it all about battle.\p"
+	.string "Like MR. BRINEY, you gotta be\n"
+	.string "friends with your POKéMON too.$"
 
 Route104_Text_PaulPreview:
 	.string "PAUL: What's good, my guy?\n"
 	.string "I'm posted up here for a minute.\p"
 	.string "You wanna scope the fit, do that.\n"
 	.string "Just don't waste my time.$"
+
+Route104_Text_TestSilver:
+	.string "SILVER: ...$"
+
+Route104_Text_TestAsh:
+	.string "ASH: ...$"
+
+Route104_Text_TestCustomCharacter:
+	.string "...$"

@@ -88,21 +88,30 @@ Route119_EventScript_BattleMay::
 
 Route119_EventScript_BattleMayTreecko::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TREECKO, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
+	goto Route119_EventScript_MayDefeatedBrendanPopIn
 	end
 
 Route119_EventScript_BattleMayTorchic::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_TORCHIC, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
+	goto Route119_EventScript_MayDefeatedBrendanPopIn
 	end
 
 Route119_EventScript_BattleMayMudkip::
 	trainerbattle_no_intro TRAINER_MAY_ROUTE_119_MUDKIP, Route119_Text_MayDefeat
-	goto Route119_EventScript_DefeatedMay
+	goto Route119_EventScript_MayDefeatedBrendanPopIn
 	end
 
-Route119_EventScript_DefeatedMay::
-	msgbox Route119_Text_MayPresentForYou, MSGBOX_DEFAULT
+Route119_EventScript_MayDefeatedBrendanPopIn::
+	msgbox Route119_Text_MayDefeatedBrendanPopIn_May, MSGBOX_DEFAULT
+	closemessage
+	msgbox Route119_Text_MayDefeatedBrendanPopIn_Brendan, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_double TRAINER_BRENDAN_ROUTE_119_POPUP, Route119_Text_MayBrendanDoubleIntro, Route119_Text_MayBrendanDoubleDefeat, Route119_Text_MayBrendanNeedTwoMons
+	goto Route119_EventScript_BothDefeatedMale
+	end
+
+Route119_EventScript_BothDefeatedMale::
+	msgbox Route119_Text_BothDefeatedMale, MSGBOX_DEFAULT
 	call Route119_EventScript_GiveFlyHM
 	msgbox Route119_Text_MayExplainFly, MSGBOX_DEFAULT
 	giveitem ITEM_DRAGONIUM_Z
@@ -119,21 +128,30 @@ Route119_EventScript_BattleBrendan::
 
 Route119_EventScript_BattleBrendanTreecko::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TREECKO, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	goto Route119_EventScript_BrendanDefeatedMayPopIn
 	end
 
 Route119_EventScript_BattleBrendanTorchic::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_TORCHIC, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	goto Route119_EventScript_BrendanDefeatedMayPopIn
 	end
 
 Route119_EventScript_BattleBrendanMudkip::
 	trainerbattle_no_intro TRAINER_BRENDAN_ROUTE_119_MUDKIP, Route119_Text_BrendanDefeat
-	goto Route119_EventScript_DefeatedBrendan
+	goto Route119_EventScript_BrendanDefeatedMayPopIn
 	end
 
-Route119_EventScript_DefeatedBrendan::
-	msgbox Route119_Text_BrendanIllGiveYouThis, MSGBOX_DEFAULT
+Route119_EventScript_BrendanDefeatedMayPopIn::
+	msgbox Route119_Text_BrendanDefeatedMayPopIn_Brendan, MSGBOX_DEFAULT
+	closemessage
+	msgbox Route119_Text_BrendanDefeatedMayPopIn_May, MSGBOX_DEFAULT
+	closemessage
+	trainerbattle_double TRAINER_BRENDAN_ROUTE_119_POPUP, Route119_Text_MayBrendanDoubleIntro, Route119_Text_MayBrendanDoubleDefeat, Route119_Text_MayBrendanNeedTwoMons
+	goto Route119_EventScript_BothDefeatedFemale
+	end
+
+Route119_EventScript_BothDefeatedFemale::
+	msgbox Route119_Text_BothDefeatedFemale, MSGBOX_DEFAULT
 	call Route119_EventScript_GiveFlyHM
 	msgbox Route119_Text_BrendanExplainFly, MSGBOX_DEFAULT
 	giveitem ITEM_DRAGONIUM_Z
@@ -545,90 +563,133 @@ Eventscript_EscapedUB::
 	end
 
 Route119_Text_MayIntro:
-	.string "MAY: {PLAYER}{KUN}!\n"
-	.string "Where were you? I was looking for you!\p"
-	.string "How much stronger have you gotten?\n"
-	.string "Let me check for you!\p"
-	.string "Ready with your POKéMON?\n"
-	.string "Of course you are! Go!$"
+	.string "MAY: {PLAYER}{KUN}!\p"
+	.string "Oh word, you actually out here\n"
+	.string "in the tall grass?\p"
+	.string "Thought you was just collecting\n"
+	.string "them badges, not putting in work.\p"
+	.string "Aight - let me see what you got.\n"
+	.string "Run that!$"
 
 Route119_Text_MayDefeat:
-	.string "Achah!\n"
-	.string "{PLAYER}{KUN}, you're strong!\p"
-	.string "I was worried that you might be\n"
-	.string "struggling with your training.$"
+	.string "MAY: Aight, no cap.\n"
+	.string "You built different, fr.$"
 
-Route119_Text_MayPresentForYou:
-	.string "MAY: But I had absolutely nothing to\n"
-	.string "worry about! Keep it up!\p"
-	.string "And, here! I have a present for you.$"
+Route119_Text_MayDefeatedBrendanPopIn_May:
+	.string "MAY: You're nice - I'll give you\n"
+	.string "that, no frontin'.\p"
+	.string "But hold on.$"
+
+Route119_Text_MayDefeatedBrendanPopIn_Brendan:
+	.string "BRENDAN: Ayo - I was watching\n"
+	.string "from the cut.\p"
+	.string "You think you done?\n"
+	.string "Nah. I'm getting some too.\p"
+	.string "Don't get comfortable.$"
+
+Route119_Text_BrendanPopInDefeat:
+	.string "BRENDAN: …Word.\n"
+	.string "That's facts. You got it.$"
+
+Route119_Text_MayBrendanDoubleIntro:
+	.string "MAY: Aight, partner round.\p"
+	.string "BRENDAN: Two on one? Nah.\n"
+	.string "Two rivals, one test.\p"
+	.string "MAY: Bring two POKéMON and run it!$"
+
+Route119_Text_MayBrendanDoubleDefeat:
+	.string "MAY: …No cap.\n"
+	.string "You're different. I'll give you that.\p"
+	.string "BRENDAN: …Word.\n"
+	.string "That's facts. You got it.$"
+
+Route119_Text_MayBrendanNeedTwoMons:
+	.string "MAY: You need at least two POKéMON\n"
+	.string "for both of us.\p"
+	.string "BRENDAN: Come back ready.$"
+
+Route119_Text_BothDefeatedMale:
+	.string "MAY: Deadass…\n"
+	.string "We both caught hands out here.\p"
+	.string "BRENDAN: Yeah. That's real.\n"
+	.string "You're the one, fr.\p"
+	.string "Here - you're gonna need this\n"
+	.string "pressing forward.$"
 
 Route119_Text_MayExplainFly:
-	.string "MAY: Use FLY, and your POKéMON will\n"
-	.string "instantly carry you to any town you've\l"
-	.string "already visited.\p"
-	.string "But, to use FLY, you have to get\n"
-	.string "the GYM BADGE from FORTREE CITY.\l"
-	.string "That's important, so don't forget.\p"
-	.string "You should FLY home and visit\n"
-	.string "LITTLEROOT for a change.\p"
-	.string "I bet your mom's worried about you,\n"
-	.string "{PLAYER}{KUN}.\p"
-	.string "Here take this too, you'll need it.$"
+	.string "MAY: Use FLY, and your POKéMON\n"
+	.string "carries you right to any town\l"
+	.string "you've already hit.\p"
+	.string "But you gotta get the GYM BADGE\n"
+	.string "from FORTREE CITY first.\p"
+	.string "Don't sleep on that.\p"
+	.string "And here - this is for the road.\n"
+	.string "You'll know when to use it.$"
 
 Route119_Text_BrendanIntro:
-	.string "BRENDAN: {PLAYER}! So this is where\n"
-	.string "you've been looking for POKéMON?\p"
-	.string "Let me see how good you got.\n"
-	.string "I'll test you!\p"
-	.string "Now!\n"
-	.string "It's a battle, so battle!$"
+	.string "BRENDAN: {PLAYER}!\p"
+	.string "So this is where you been grinding?\n"
+	.string "Out here in the tall grass?\p"
+	.string "Aight - let me see what you built.\n"
+	.string "No cap, I been waiting for this.\p"
+	.string "Run it!$"
 
 Route119_Text_BrendanDefeat:
-	.string "Hmm…\n"
-	.string "You've gotten pretty darn decent.$"
+	.string "BRENDAN: …Deadass.\n"
+	.string "You got it. That's real.$"
 
-Route119_Text_BrendanIllGiveYouThis:
-	.string "BRENDAN: I'd say you're good enough\n"
-	.string "to search for POKéMON anywhere.\p"
-	.string "Here, I'll give you this.\n"
-	.string "Try it out.$"
+Route119_Text_BrendanDefeatedMayPopIn_Brendan:
+	.string "BRENDAN: …Aight. Facts.\n"
+	.string "You got it. But wait.$"
+
+Route119_Text_BrendanDefeatedMayPopIn_May:
+	.string "MAY: Excuse me?!\p"
+	.string "You think you done with us?\n"
+	.string "I ain't even went yet.\p"
+	.string "My turn.$"
+
+Route119_Text_BothDefeatedFemale:
+	.string "BRENDAN: …Aight.\n"
+	.string "Both of us. That's different.\p"
+	.string "MAY: Yeah. No frontin' -\n"
+	.string "that was clean.\p"
+	.string "Here. Take this.\n"
+	.string "You earned it.$"
 
 Route119_Text_BrendanExplainFly:
 	.string "BRENDAN: Use FLY, and your POKéMON\n"
-	.string "instantly carries you to any town\l"
+	.string "carries you right to any town\l"
 	.string "you've already visited.\p"
-	.string "But you need the FORTREE GYM BADGE \n"
-	.string "to do that.\p"
-	.string "Here take this too, you'll need it.$"
+	.string "But you need the FORTREE GYM BADGE\n"
+	.string "to do that - don't forget.\p"
+	.string "And here - this is for the road.\n"
+	.string "You'll know when to use it.$"
 
 Route119_Text_ScottWayToGoBeSeeingYou:
-	.string "SCOTT: Hahahah!\n"
+	.string "BRENDAN: Hahahah!\n"
 	.string "Way to go, {PLAYER}{KUN}!\p"
-	.string "I just passed by a TRAINER riding\n"
-	.string "a BIKE.\p"
-	.string "You just beat that TRAINER, didn't you?\n"
-	.string "It was pretty obvious that you did.\p"
-	.string "The kid looked really upset with\n"
-	.string "a face all red from anger.\p"
-	.string "I sure seem to run into you often.\n"
-	.string "Are you off to FORTREE GYM next?\p"
-	.string "I expect that you'll do well at the GYM.\n"
-	.string "Well, I'll be seeing you!$"
+	.string "I just passed a TRAINER on a BIKE.\p"
+	.string "You beat that kid, didn't you?\n"
+	.string "Obvious from the face he made.\p"
+	.string "He was red-hot mad.\p"
+	.string "I keep running into you, huh?\n"
+	.string "You off to FORTREE GYM next?\p"
+	.string "You'll do work in there.\n"
+	.string "I'll see you around!$"
 
 
 Route119_Text_ScottYouWonAtFortreeGym:
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "SCOTT: Hiya, {PLAYER}{KUN}, it's me!\p"
-	.string "Just as I thought, you won at\n"
+	.string "BRENDAN: Yo, {PLAYER}{KUN}, it's me!\p"
+	.string "Just like I figured, you won at\n"
 	.string "the FORTREE GYM.\p"
 	.string "Your strength…\n"
-	.string "Perhaps you really are the TRAINER\l"
-	.string "that I've been searching for.\p"
-	.string "Remember, you have a fan in me.\n"
-	.string "I'll be cheering from the sidelines.\l"
-	.string "Keep up the great work!\p"
+	.string "Maybe you're really the TRAINER\l"
+	.string "I've been looking for.\p"
+	.string "Remember, I'm rooting for you.\n"
+	.string "I'll be watching from the side.\l"
+	.string "Keep moving like that!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … Click!$"
 

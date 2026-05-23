@@ -1,10 +1,10 @@
-.set LOCALID_ARCHIE, 2
+.set LOCALID_GIOVANNI, 2
 .set LOCALID_OLD_LADY, 3
 .set LOCALID_GRUNT_1, 4
 .set LOCALID_GRUNT_2, 5
 .set LOCALID_GRUNT_3, 6
 .set LOCALID_GRUNT_4, 7
-.set LOCALID_MAXIE, 8
+.set LOCALID_APOLLO, 8
 .set LOCALID_OLD_MAN, 1
 .set LOCALID_LEGEND, 9
 
@@ -13,6 +13,7 @@ MtPyre_Summit_MapScripts::
 	.byte 0
 
 MtPyre_Summit_OnTransition:
+	call_if_eq VAR_MT_PYRE_STATE, 1, MtPyre_Summit_EventScript_MoltresOnSummit
 	call_if_eq VAR_MT_PYRE_STATE, 2, MtPyre_Summit_EventScript_SetArchieMaxiePositions
 	call_if_eq VAR_MT_PYRE_STATE, 9, MtPyre_Summit_EventScript_CaughtAllLegends
 	call_if_ge VAR_MT_PYRE_STATE, 3, MtPyre_Summit_EventScript_GetLegendsReady
@@ -117,9 +118,21 @@ EventScript_Thundurus::
 	setobjectxyperm LOCALID_LEGEND, 23, 5
 	end
 
+MtPyre_Summit_EventScript_MoltresOnSummit::
+	goto_if_set FLAG_DEFEATED_G_MOLTRES, MtPyre_Summit_EventScript_MoltresGone
+	callnative TryGenerateShinyOW
+	setvar VAR_TEMP_6, SPECIES_MOLTRES_GALARIAN
+	setvar VAR_0x8004, SPECIES_MOLTRES_GALARIAN
+	setobjectxyperm LOCALID_LEGEND, 23, 5
+	return
+
+MtPyre_Summit_EventScript_MoltresGone::
+	setobjectxyperm LOCALID_LEGEND, 20, 47
+	return
+
 MtPyre_Summit_EventScript_SetArchieMaxiePositions::
-	setobjectxyperm LOCALID_MAXIE, 23, 6
-	setobjectxyperm LOCALID_ARCHIE, 22, 6
+	setobjectxyperm LOCALID_APOLLO, 23, 6
+	setobjectxyperm LOCALID_GIOVANNI, 22, 6
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger0::
@@ -144,7 +157,7 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GIOVANNI, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 50
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_ArchieFacePlayer0
@@ -153,7 +166,7 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	msgbox MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo, MSGBOX_DEFAULT
 	closemessage
 	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject LOCALID_ARCHIE
+	removeobject LOCALID_GIOVANNI
 	removeobject LOCALID_GRUNT_1
 	removeobject LOCALID_GRUNT_2
 	removeobject LOCALID_GRUNT_3
@@ -175,7 +188,7 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	end
 
 MtPyre_Summit_EventScript_ArchieFacePlayer0::
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieFacePlayer0
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieFacePlayer0
 	waitmovement 0
 	return
 
@@ -184,7 +197,7 @@ MtPyre_Summit_EventScript_ArchieFacePlayer1::
 	return
 
 MtPyre_Summit_EventScript_ArchieFacePlayer2::
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieFacePlayer2
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieFacePlayer2
 	waitmovement 0
 	return
 
@@ -314,9 +327,9 @@ MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs::
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_ArchieMaxieBeginExit1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_ArchieMaxieBeginExit2
 	playse SE_PIN
-	applymovement LOCALID_MAXIE, Common_Movement_ExclamationMark
+	applymovement LOCALID_APOLLO, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_MAXIE, Common_Movement_Delay48
+	applymovement LOCALID_APOLLO, Common_Movement_Delay48
 	waitmovement 0
 	delay 30
 	call_if_eq VAR_0x8008, 0, MtPyre_Summit_EventScript_MaxieApproachPlayer0
@@ -328,88 +341,120 @@ MtPyre_Summit_EventScript_ArchieMaxieReturnOrbs::
 	call_if_eq VAR_0x8008, 1, MtPyre_Summit_EventScript_MaxieApproachArchie1
 	call_if_eq VAR_0x8008, 2, MtPyre_Summit_EventScript_MaxieApproachArchie2
 	delay 30
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieExit
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieExit
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieExit
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieExit
 	waitmovement 0
-	removeobject LOCALID_ARCHIE
-	removeobject LOCALID_MAXIE
+	removeobject LOCALID_GIOVANNI
+	removeobject LOCALID_APOLLO
 	setvar VAR_MT_PYRE_STATE, 3
 	releaseall
 	end
 
 MtPyre_Summit_EventScript_ArchieMaxieBeginExit0::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchArchieMaxieExit0
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieExit
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieExit
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieExit
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieExit
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_ArchieMaxieBeginExit1::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchArchieMaxieExit1
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieExit
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieExit
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieExit
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieExit
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_ArchieMaxieBeginExit2::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchArchieMaxieExit2
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieExit
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieExit
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieExit
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieExit
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_MaxieApproachPlayer0::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerFaceMaxie0
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieWatchMaxie
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieApproachPlayer0
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieWatchMaxie
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieApproachPlayer0
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_MaxieApproachPlayer1::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerFaceMaxie
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieWatchMaxie
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieApproachPlayer1
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieWatchMaxie
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieApproachPlayer1
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_MaxieApproachPlayer2::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerFaceMaxie
-	applymovement LOCALID_ARCHIE, MtPyre_Summit_Movement_ArchieWatchMaxie
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieApproachPlayer2
+	applymovement LOCALID_GIOVANNI, MtPyre_Summit_Movement_ArchieWatchMaxie
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieApproachPlayer2
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_MaxieApproachArchie0::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchMaxie
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieApproachArchie0
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieApproachArchie0
 	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_GIOVANNI, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_MaxieApproachArchie1::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchMaxie
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieApproachArchie1
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieApproachArchie1
 	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_GIOVANNI, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
 MtPyre_Summit_EventScript_MaxieApproachArchie2::
 	applymovement OBJ_EVENT_ID_PLAYER, MtPyre_Summit_Movement_PlayerWatchMaxie
-	applymovement LOCALID_MAXIE, MtPyre_Summit_Movement_MaxieApproachArchie2
+	applymovement LOCALID_APOLLO, MtPyre_Summit_Movement_MaxieApproachArchie2
 	waitmovement 0
-	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_GIOVANNI, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	return
 
-MtPyre_Summit_EventScript_Legend::	
+MtPyre_Summit_EventScript_Legend::
+	call_if_eq VAR_0x8004, SPECIES_MOLTRES_GALARIAN, MtPyre_Summit_EventScript_GMoltres
 	call_if_eq VAR_0x8004, SPECIES_TORNADUS, MtPyre_Summit_EventScript_Tornadus
 	call_if_eq VAR_0x8004, SPECIES_THUNDURUS, MtPyre_Summit_EventScript_Thundurs
 	call_if_eq VAR_0x8004, SPECIES_LANDORUS, MtPyre_Summit_EventScript_Landorus
 	call_if_eq VAR_0x8004, SPECIES_RESHIRAM, MtPyre_Summit_EventScript_Reshiram
 	call_if_eq VAR_0x8004, SPECIES_ZEKROM, MtPyre_Summit_EventScript_Zekrom
 	call_if_eq VAR_0x8004, SPECIES_KYUREM, MtPyre_Summit_EventScript_kyurem
+	end
+
+MtPyre_Summit_EventScript_GMoltres::
+	lockall
+	call Eventscript_TryGenerateShinyMon
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
+	waitmovement 0
+	msgbox MtPyre_Summit_Text_GMoltresAppears, MSGBOX_DEFAULT
+	closemessage
+	waitse
+	playmoncry SPECIES_MOLTRES_GALARIAN, CRY_MODE_ENCOUNTER
+	delay 40
+	waitmoncry
+	msgbox MtPyre_Summit_Text_GMoltresTurns, MSGBOX_DEFAULT
+	closemessage
+	setvar VAR_LAST_TALKED, LOCALID_LEGEND
+	setwildbattle SPECIES_MOLTRES_GALARIAN, 50
+	setflag FLAG_SYS_CTRL_OBJ_DELETE
+	special BattleSetup_StartLegendaryBattle
+	waitstate
+	clearflag FLAG_SYS_CTRL_OBJ_DELETE
+	setvar VAR_TEMP_1, 0
+	setvar VAR_0x8004, SPECIES_MOLTRES_GALARIAN
+	specialvar VAR_RESULT, GetBattleOutcome
+	goto_if_eq VAR_RESULT, B_OUTCOME_WON, MtPyre_Summit_EventScript_DefeatedLegend
+	goto_if_eq VAR_RESULT, B_OUTCOME_RAN, MtPyre_Summit_EventScript_RanFromLegend
+	goto_if_eq VAR_RESULT, B_OUTCOME_PLAYER_TELEPORTED, MtPyre_Summit_EventScript_RanFromLegend
+	goto_if_eq VAR_RESULT, B_OUTCOME_CAUGHT, MtPyre_Summit_EventScript_DefeatedLegend2
+	goto_if_eq VAR_RESULT, B_OUTCOME_LOST, MtPyre_Summit_EventScript_RanFromLegend
+	goto_if_eq VAR_RESULT, B_OUTCOME_DREW, MtPyre_Summit_EventScript_RanFromLegend
+	releaseall
 	end
 	
 MtPyre_Summit_EventScript_Tornadus::
@@ -576,6 +621,7 @@ MtPyre_Summit_EventScript_DefeatedLegend::
 
 MtPyre_Summit_EventScript_DefeatedLegend2::
 	setobjectxyperm LOCALID_LEGEND, 20, 47
+	call_if_eq VAR_0x8004, SPECIES_MOLTRES_GALARIAN, EventScript_DefeatedGMoltres
 	call_if_eq VAR_0x8004, SPECIES_TORNADUS, EventScript_DefeatedTornadus
 	call_if_eq VAR_0x8004, SPECIES_THUNDURUS, EventScript_DefeatedThundurus
 	call_if_eq VAR_0x8004, SPECIES_LANDORUS, EventScript_DefeatedLandorus
@@ -585,6 +631,10 @@ MtPyre_Summit_EventScript_DefeatedLegend2::
 	goto Common_EventScript_RemoveStaticPokemon
 	releaseall
 	end
+
+EventScript_DefeatedGMoltres::
+	setflag FLAG_DEFEATED_G_MOLTRES
+	return
 
 EventScript_DefeatedTornadus::
 	setflag FLAG_DEFEATED_TORNADUS
@@ -751,114 +801,107 @@ MtPyre_Summit_EventScript_Grunt4::
 	end
 
 MtPyre_Summit_Text_Grunt1Intro:
-	.string "No! Those TEAM MAGMA goons got\n"
-	.string "here ahead of us!\p"
-	.string "We can't fall behind!$"
+	.string "Out of the way!\n"
+	.string "TEAM ROCKET has business here!\p"
+	.string "Nobody interferes with the BOSS!$"
 
 MtPyre_Summit_Text_Grunt1Defeat:
-	.string "I thought you were one of the MAGMAS\n"
-	.string "who happened to come back…$"
+	.string "H-how?!\n"
+	.string "Nobody's ever beaten me that fast…$"
 
 MtPyre_Summit_Text_Grunt1PostBattle:
-	.string "Yeah, so you are strong…\n"
-	.string "But there're a lot of us!$"
+	.string "Tch… You're strong.\n"
+	.string "But the BOSS already has what he wants!$"
 
 MtPyre_Summit_Text_Grunt2Intro:
-	.string "Hah!\n"
-	.string "Too bad for you!\p"
-	.string "If you came earlier, you only would've\n"
-	.string "had to battle the wimpy TEAM MAGMA.\p"
-	.string "But since you arrived now, you have\n"
-	.string "to take on us toughies!$"
+	.string "You think stopping one of us matters?\p"
+	.string "TEAM ROCKET doesn't lose because\n"
+	.string "one grunt goes down!\p"
+	.string "The BOSS will be long gone\n"
+	.string "before you get through all of us!$"
 
 MtPyre_Summit_Text_Grunt2Defeat:
-	.string "Urgh… I should've let you take on\n"
-	.string "TEAM MAGMA first…$"
+	.string "Unbelievable…\n"
+	.string "Did the BOSS really underestimate you?!$"
 
 MtPyre_Summit_Text_Grunt2PostBattle:
-	.string "You don't know anything!\n"
-	.string "So why are you messing with us?$"
+	.string "You don't know what you've\n"
+	.string "gotten yourself into…$"
 
 MtPyre_Summit_Text_Grunt3Intro:
-	.string "You…\n"
-	.string "We saw you at MT. CHIMNEY.\p"
-	.string "You don't belong to either TEAM,\n"
-	.string "so why would you be here?$"
+	.string "You again?!\n"
+	.string "We saw you at MT. CHIMNEY!\p"
+	.string "Why do you keep following TEAM ROCKET?\n"
+	.string "Give it up!$"
 
 MtPyre_Summit_Text_Grunt3Defeat:
-	.string "If you're going to mess with anyone,\n"
-	.string "let it be TEAM MAGMA…$"
+	.string "Fine! Go ahead!\n"
+	.string "You're already too late!$"
 
 MtPyre_Summit_Text_Grunt3PostBattle:
-	.string "Heh, it doesn't matter!\n"
-	.string "We bought ourselves some time!\p"
-	.string "The BOSS should have snatched what\n"
-	.string "he was after!$"
+	.string "The BOSS has the ORB.\n"
+	.string "Doesn't matter that you beat me!$"
 
 MtPyre_Summit_Text_Grunt4Intro:
-	.string "Oh, I know!\n"
-	.string "You tried to join TEAM MAGMA,\l"
-	.string "but they wouldn't have you!\p"
-	.string "Well, don't think that we'll let you\n"
-	.string "join our TEAM AQUA!$"
+	.string "TEAM ROCKET is everywhere!\p"
+	.string "There is nowhere in HOENN you can\n"
+	.string "run from us!\p"
+	.string "And there is nowhere you can hide\n"
+	.string "from GIOVANNI's vision!$"
 
 MtPyre_Summit_Text_Grunt4Defeat:
-	.string "If you want to join TEAM AQUA that\n"
-	.string "badly, we can consider it…$"
+	.string "You're… something else…\n"
+	.string "The BOSS will want to know about you.$"
 
 MtPyre_Summit_Text_Grunt4PostBattle:
-	.string "We have a great combination going\n"
-	.string "with us members and our leader.$"
+	.string "The BOSS and APOLLO make an\n"
+	.string "unstoppable team. You'll see.$"
 
 MtPyre_Summit_Text_ArchieWeGotTheOrbLetsGo:
-	.string "ARCHIE: TEAM MAGMA's MAXIE got ahead\n"
-	.string "of us, but we also got what we wanted.\p"
-	.string "The RED ORB preserved at MT. PYRE…\n"
-	.string "I, ARCHIE, now have it in my possession!\p"
-	.string "Fufufu… Now we can bring our ultimate\n"
-	.string "objective to fruition!\p"
-	.string "Okay, TEAM!\n"
-	.string "We're pulling out!$"
+	.string "GIOVANNI: The HOENN DEFENDERS thought\n"
+	.string "they could protect this place.\p"
+	.string "They were wrong.\p"
+	.string "The CINDER ORB preserved at MT. PYRE…\n"
+	.string "Now belongs to TEAM ROCKET.\p"
+	.string "With this, our plan advances.\n"
+	.string "TEAM ROCKET - we move out!$"
 
 MtPyre_Summit_Text_BothOrbsTakenMagmaLeftThis:
 	.string "Oh, no…\n"
 	.string "This cannot happen…\p"
-	.string "Not only the BLUE ORB, but even\n"
-	.string "the RED ORB has been taken…\p"
-	.string "The BLUE ORB and RED ORB must never\n"
-	.string "be separated. They belong together.\p"
-	.string "What are those men trying to do with\n"
-	.string "the two ORBS?\p"
+	.string "TEAM ROCKET took both ORBS.\n"
+	.string "The THUNDER ORB first, now the CINDER…\p"
+	.string "The THUNDER ORB and CINDER ORB must\n"
+	.string "never be separated. They belong here.\p"
+	.string "In the wrong hands, they could bring\n"
+	.string "catastrophe upon HOENN.\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
-	.string "Oh, yes. Was it TEAM MAGMA who came\n"
-	.string "and took the BLUE ORB first?\p"
-	.string "Well, in their haste, they left this\n"
-	.string "behind.\p"
-	.string "I couldn't imagine what exactly it\n"
-	.string "could be.\p"
-	.string "I would like you to have it.\n"
+	.string "When those men stormed through,\n"
+	.string "one of them dropped this emblem.\p"
+	.string "I do not know what it means.\p"
+	.string "But I would like you to have it.\n"
 	.string "Perhaps it will be useful in some way.$"
 
 MtPyre_Summit_Text_OrbsHaveBeenTaken:
-	.string "The BLUE ORB and RED ORB taken by\n"
-	.string "those sinister men…\p"
+	.string "The THUNDER ORB and CINDER ORB taken\n"
+	.string "by those sinister men…\p"
 	.string "They must never be apart…\n"
 	.string "I fear something terrible will happen…$"
 
 MtPyre_Summit_Text_GroudonKyogreAwakened:
 	.string "Oh, my goodness…\p"
-	.string "You say that both GROUDON and KYOGRE\n"
-	.string "have been awakened?\p"
-	.string "It is said that the BLUE ORB and\n"
-	.string "the RED ORB quelled the rage of\l"
-	.string "the two POKéMON…\p"
-	.string "It is also said that the true owner\n"
-	.string "of the ORBS still exists.\p"
-	.string "However, no one knows who, or what\n"
-	.string "exactly, the ORBS belong to.\p"
-	.string "It could be a human, or perhaps\n"
-	.string "a POKéMON, but no one knows.$"
+	.string "You say that ARTICUNO and ZAPDOS\n"
+	.string "have both been disturbed?\p"
+	.string "It is said that the THUNDER ORB and\n"
+	.string "the CINDER ORB could quell the rage\l"
+	.string "of the ancient birds…\p"
+	.string "And MOLTRES…\n"
+	.string "It stirred here when the CINDER ORB\l"
+	.string "was taken from this very summit.\p"
+	.string "Perhaps you encountered it.\p"
+	.string "Three birds in turmoil…\n"
+	.string "I pray something ancient hears us.$"
 
 MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs:
 	.string "The two men who took the ORBS came\n"
@@ -867,14 +910,14 @@ MtPyre_Summit_Text_ThoseTwoMenReturnedOrbs:
 	.string "Perhaps they are not so evil after all…$"
 
 MtPyre_Summit_Text_SuperAncientPokemonTaughtUs:
-	.string "The embodiments of the land, sea,\n"
-	.string "and the sky…\p"
+	.string "The embodiments of fire, ice,\n"
+	.string "and storm…\p"
 	.string "That is said to be the identities of\n"
-	.string "the super-ancient POKéMON…\p"
+	.string "the ancient guardian birds…\p"
 	.string "In the same way that we humans and\n"
 	.string "POKéMON have life, our world, too,\l"
 	.string "is alive…\p"
-	.string "The super-ancient POKéMON have\n"
+	.string "The ancient birds have\n"
 	.string "taught us that…$"
 
 MtPyre_Summit_Text_WillYouHearOutMyTale:
@@ -891,29 +934,28 @@ MtPyre_Summit_Text_WillYouHearOutMyTale:
 MtPyre_Summit_Text_GroudonKyogreTale:
 	.string "It happened long, long ago…\p"
 	.string "The world was wracked by a ferocious\n"
-	.string "clash between the POKéMON of the land\l"
-	.string "and the POKéMON of the sea…\p"
-	.string "The POKéMON of the land raised\n"
-	.string "mountains and created continents…\p"
-	.string "The POKéMON of the sea raised huge\n"
-	.string "waves and carved out oceans…\p"
+	.string "clash between the bird of flame\l"
+	.string "and the bird of eternal ice…\p"
+	.string "The bird of flame scorched the skies\n"
+	.string "and set the mountains ablaze…\p"
+	.string "The bird of ice froze the seas\n"
+	.string "and buried the coasts in frost…\p"
 	.string "Their fierce duel raged without end.\p"
-	.string "The world was engulfed in massive\n"
-	.string "infernos and vicious storms.\p"
-	.string "The BLUE ORB and the RED ORB brought\n"
-	.string "an end to the calamity.\p"
-	.string "Light poured from the two ORBS and\n"
-	.string "becalmed the enraged adversaries.\p"
-	.string "The pair, made docile, dove deep into\n"
-	.string "the sea where eventually they\l"
-	.string "disappeared…$"
+	.string "The world was engulfed in fire\n"
+	.string "and blizzard in equal measure.\p"
+	.string "The GLACIAL ORB and the CINDER ORB\n"
+	.string "brought an end to the calamity.\p"
+	.string "A shimmering light from both ORBS\n"
+	.string "becalmed the enraged birds.\p"
+	.string "Stilled at last, they vanished into\n"
+	.string "the deep places of the world…$"
 
 MtPyre_Summit_Text_WellThatTooIsFine:
 	.string "I see…\n"
 	.string "Well, that, too, is fine…$"
 
 MtPyre_Summit_Text_MaxieSilence:
-	.string "MAXIE: {PLAYER}…\p"
+	.string "GIOVANNI: {PLAYER}…\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …$"
 
@@ -943,3 +985,22 @@ MtPyre_Summit_Text_HoennTrioTale:
 	.string "becalmed the two enraged POKéMON.\p"
 	.string "Then, its duty done, the green POKéMON\n"
 	.string "flew off into the wild blue yonder…$"
+
+MtPyre_Summit_Text_GMoltresAppears:
+	.string "The air above MT. PYRE has changed.\p"
+	.string "Something vast circles overhead -\n"
+	.string "dark against a darker sky.\p"
+	.string "The CINDER ORB was held here\n"
+	.string "for generations.\p"
+	.string "It kept this one still.\n"
+	.string "Dormant. Bound.\p"
+	.string "Now the ORB is gone.\p"
+	.string "And MOLTRES is awake.$"
+
+MtPyre_Summit_Text_GMoltresTurns:
+	.string "MOLTRES descends.\p"
+	.string "Its eyes carry something ancient -\n"
+	.string "not hatred, but a darkness\l"
+	.string "that predates language.\p"
+	.string "It studies you.\p"
+	.string "Then it decides.$"

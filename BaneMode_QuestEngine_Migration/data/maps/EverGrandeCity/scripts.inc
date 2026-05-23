@@ -1,3 +1,5 @@
+	.set LOCALID_BRANDON, 4
+
 EverGrandeCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, EverGrandeCity_OnTransition
 	.byte 0
@@ -22,6 +24,18 @@ EverGrandeCity_EventScript_CitySign::
 
 EverGrandeCity_EventScript_PokemonLeagueSign::
 	msgbox EverGrandeCity_Text_EnteringPokemonLeague, MSGBOX_SIGN
+	end
+
+EverGrandeCity_EventScript_BrandonLeagueGate::
+	trainerbattle_single TRAINER_BRANDON, EverGrandeCity_Text_BrandonLeagueGateIntro, EverGrandeCity_Text_BrandonLeagueGateDefeat
+	specialvar VAR_RESULT, ShouldTryRematchBattle
+	goto_if_eq VAR_RESULT, TRUE, EverGrandeCity_EventScript_BrandonLeagueGateRematch
+	msgbox EverGrandeCity_Text_BrandonLeagueGatePostBattle, MSGBOX_AUTOCLOSE
+	end
+
+EverGrandeCity_EventScript_BrandonLeagueGateRematch::
+	trainerbattle_rematch TRAINER_BRANDON, EverGrandeCity_Text_BrandonLeagueGateIntro, EverGrandeCity_Text_BrandonLeagueGateDefeat
+	msgbox EverGrandeCity_Text_BrandonLeagueGatePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 EverGrandeCity_EventScript_SetVisitedEverGrande::
@@ -75,3 +89,17 @@ EverGrandeCity_Text_CitySign:
 	.string "“The paradise of flowers, the sea,\n"
 	.string "and POKéMON.”$"
 
+EverGrandeCity_Text_BrandonLeagueGateIntro:
+	.string "BRANDON: Hold up.\p"
+	.string "Before you post up in that LEAGUE\n"
+	.string "CENTER, show me you can tank a full\l"
+	.string "Regi squad under pressure.$"
+
+EverGrandeCity_Text_BrandonLeagueGateDefeat:
+	.string "BRANDON: Solid.\p"
+	.string "You cracked the relic line clean.$"
+
+EverGrandeCity_Text_BrandonLeagueGatePostBattle:
+	.string "BRANDON: Good work.\p"
+	.string "Now go heal, lock in, and don't let\n"
+	.string "the ELITE FOUR catch you sleeping.$"

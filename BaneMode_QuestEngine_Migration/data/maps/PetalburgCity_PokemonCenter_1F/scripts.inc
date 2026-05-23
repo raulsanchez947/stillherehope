@@ -20,16 +20,51 @@ PetalburgCity_PokemonCenter_1F_EventScript_Nurse::
 	end
 
 PetalburgCity_PokemonCenter_1F_EventScript_FatMan::
+	goto_if_set FLAG_USED_HOLY_BLUNT_RECENTLY, PetalburgCity_PokemonCenter_1F_EventScript_HolyBluntReactionFatMan
 	msgbox PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem, MSGBOX_NPC
 	end
 
 PetalburgCity_PokemonCenter_1F_EventScript_Youngster::
+	goto_if_set FLAG_USED_HOLY_BLUNT_RECENTLY, PetalburgCity_PokemonCenter_1F_EventScript_HolyBluntReactionYoungster
 	msgbox PetalburgCity_PokemonCenter_1F_Text_OranBerryRegainedHP, MSGBOX_NPC
+	end
+
+PetalburgCity_PokemonCenter_1F_EventScript_Joe::
+	lock
+	faceplayer
+	goto_if_set FLAG_RECEIVED_JOE_ROD_PACKAGE, PetalburgCityPokemonCenter1F_EventScript_JoeAlreadyHookedUp
+	msgbox PetalburgCityPokemonCenter1F_Text_JoePitch, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, PetalburgCityPokemonCenter1F_EventScript_JoeNoDeal
+	special CalculatePlayerPartyCount
+	goto_if_eq VAR_RESULT, PARTY_SIZE, PetalburgCityPokemonCenter1F_EventScript_JoePartyFull
+	giveitem ITEM_OLD_ROD
+	giveitem ITEM_GOOD_ROD
+	giveitem ITEM_SUPER_ROD
+	special BaneModeGiveJoeMagikarp
+	setflag FLAG_RECEIVED_JOE_ROD_PACKAGE
+	msgbox PetalburgCityPokemonCenter1F_Text_JoeSignedUp, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCityPokemonCenter1F_EventScript_JoePartyFull::
+	msgbox PetalburgCityPokemonCenter1F_Text_JoePartyFull, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCityPokemonCenter1F_EventScript_JoeNoDeal::
+	msgbox PetalburgCityPokemonCenter1F_Text_JoeNoDeal, MSGBOX_DEFAULT
+	release
+	end
+
+PetalburgCityPokemonCenter1F_EventScript_JoeAlreadyHookedUp::
+	msgbox PetalburgCityPokemonCenter1F_Text_JoeAlreadySigned, MSGBOX_DEFAULT
+	release
 	end
 
 PetalburgCity_PokemonCenter_1F_EventScript_Woman::
 	lock
 	faceplayer
+	goto_if_set FLAG_USED_HOLY_BLUNT_RECENTLY, PetalburgCity_PokemonCenter_1F_EventScript_HolyBluntReactionWoman
 	msgbox PetalburgCity_PokemonCenter_1F_Text_ManyTypesOfPokemon, MSGBOX_DEFAULT
 	specialvar VAR_RESULT, IsStarterInParty
 	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_PokemonCenter_1F_EventScript_SayStarterTypeInfo
@@ -84,6 +119,20 @@ PetalburgCityPokemonCenter1F_EventScript_AlreadyCovered::
 	release
 	end
 
+PetalburgCity_PokemonCenter_1F_EventScript_HolyBluntReactionFatMan::
+	msgbox PetalburgCity_PokemonCenter_1F_Text_HolyBluntReactionFatMan, MSGBOX_NPC
+	end
+
+PetalburgCity_PokemonCenter_1F_EventScript_HolyBluntReactionYoungster::
+	msgbox PetalburgCity_PokemonCenter_1F_Text_HolyBluntReactionYoungster, MSGBOX_NPC
+	end
+
+PetalburgCity_PokemonCenter_1F_EventScript_HolyBluntReactionWoman::
+	msgbox PetalburgCity_PokemonCenter_1F_Text_HolyBluntReactionWoman, MSGBOX_DEFAULT
+	clearflag FLAG_USED_HOLY_BLUNT_RECENTLY
+	release
+	end
+
 PetalburgCity_PokemonCenter_1F_Text_PCStorageSystem:
 	.string "That PC-based POKéMON Storage\n"
 	.string "System…\p"
@@ -125,29 +174,76 @@ PetalburgCity_PokemonCenter_1F_Text_HoundourIsDarkFireType:
 	.string "But, WATER, FIGHTING, GROUND,\n"
 	.string "and ROCK are scary.$"
 
+PetalburgCity_PokemonCenter_1F_Text_HolyBluntReactionFatMan:
+	.string "Whoa, pal… Your POKeMON went from\n"
+	.string "half-faded to glowing.\p"
+	.string "That purple haze was not standard\n"
+	.string "healing tech, no shot.$"
+
+PetalburgCity_PokemonCenter_1F_Text_HolyBluntReactionYoungster:
+	.string "Yo! Your POKeMON looks mad fresh\n"
+	.string "all of a sudden!\p"
+	.string "Whatever that blunt thing was,\n"
+	.string "it had your whole team sparkling.$"
+
+PetalburgCity_PokemonCenter_1F_Text_HolyBluntReactionWoman:
+	.string "I saw that purple aura around your\n"
+	.string "POKeMON just now.\p"
+	.string "It looks way healthier, like every\n"
+	.string "last bit of energy came back.$"
+
 PetalburgCityPokemonCenter1F_Text_StonerPitch:
-	.string "Yo, I'm STONER.\p"
-	.string "I sell POKeMON insurance.\p"
+	.string "Yo, I'm STONER, feel me?\p"
+	.string "I move POKeMON insurance for trainers\n"
+	.string "that don't like getting lined.\p"
 	.string "Sign up today and I'll throw in a\n"
-	.string "shiny SCRAGGY for free.\p"
+	.string "shiny SCRAFTY for free, easy.\p"
 	.string "You in?$"
 
 PetalburgCityPokemonCenter1F_Text_StonerSignedUp:
-	.string "Smart move.\p"
+	.string "Smart move, my guy.\p"
 	.string "Your policy is live, and that shiny\n"
-	.string "SCRAGGY is all yours.$"
+	.string "SCRAFTY is all yours.$"
 
 PetalburgCityPokemonCenter1F_Text_StonerPartyFull:
-	.string "Your party's packed.\p"
+	.string "Your party's packed right now.\p"
 	.string "Make room, then come back for your\n"
-	.string "insured shiny SCRAGGY.$"
+	.string "insured shiny SCRAFTY.$"
 
 PetalburgCityPokemonCenter1F_Text_StonerNoDeal:
-	.string "No pressure.\p"
-	.string "Insurance hits different when the\n"
-	.string "crit animation starts.$"
+	.string "No pressure, fam.\p"
+	.string "Insurance hit different when the\n"
+	.string "crit animation get disrespectful.$"
 
 PetalburgCityPokemonCenter1F_Text_StonerAlreadySigned:
-	.string "You're already covered.\p"
+	.string "You already covered, bro.\p"
 	.string "That shiny SCRAGGY was part of the\n"
 	.string "welcome package.$"
+
+PetalburgCityPokemonCenter1F_Text_JoePitch:
+	.string "JOE: Ayo, you fish at all?\p"
+	.string "I'm Joe from out Queens, and I got\n"
+	.string "the full rod pack on me right now.\p"
+	.string "Old Rod, Good Rod, Super Rod, plus a\n"
+	.string "shiny hidden-ability MAGIKARP.\p"
+	.string "You want the starter tackle box?$"
+
+PetalburgCityPokemonCenter1F_Text_JoeSignedUp:
+	.string "JOE: Say less.\p"
+	.string "You got all three rods, and that shiny\n"
+	.string "MAGIKARP is ready to flop with purpose.$"
+
+PetalburgCityPokemonCenter1F_Text_JoePartyFull:
+	.string "JOE: Your party jammed up.\p"
+	.string "Slide one mon out and I'll hand over\n"
+	.string "the shiny MAGIKARP package.$"
+
+PetalburgCityPokemonCenter1F_Text_JoeNoDeal:
+	.string "JOE: Copy that.\p"
+	.string "Come find me when you're ready to\n"
+	.string "fish like somebody from the boroughs.$"
+
+PetalburgCityPokemonCenter1F_Text_JoeAlreadySigned:
+	.string "JOE: I already blessed you, fam.\p"
+	.string "You got the rods and the shiny hidden-\l"
+	.string "ability MAGIKARP already.$"

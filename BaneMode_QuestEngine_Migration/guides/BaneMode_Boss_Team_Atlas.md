@@ -67,23 +67,257 @@ Bane appearance lock:
   2. Elite Four final gate Battle 1
   3. Elite Four final gate Battle 2
 
+Live Winstrate binding:
+- Bane now appears in the Winstrate family house after the `MACHO BRACE` reward gate.
+- Current live implementation uses the six-Scrafty pressure gimmick documented in the mini-boss guide.
+
 ---
 
 ## 2) Rival / Checkpoint Bosses
 
-## Paul (Early Petalburg-Path Mandatory)
+## Paul — Full Rival Arc (Wally Replacement)
 
-1. Elekid (Lv 15) - Oran Berry - Static  
-EVs: 36 Atk / 36 SpA / 36 Spe  
-Moves: Thunder Punch, Low Kick, Swift, Leer
+Paul replaces Wally across all canonical Wally encounter points. His team evolves across three
+stages mirroring his Sinnoh anime arc. Chimchar is present only in the first battle (released
+before Mauville, per anime canon).
 
-2. Chimchar (Lv 15) - Oran Berry - Blaze  
-EVs: 36 Atk / 36 SpA / 36 Spe  
-Moves: Ember, Mach Punch, Taunt, Scratch
+Wally's uncle has been fully removed from all maps and scripts
+(MauvilleCity, VerdanturfTown_WandasHouse). No uncle NPC, no uncle dialogue.
 
-3. Turtwig (Lv 15) - Oran Berry - Overgrow  
-EVs: 36 HP / 36 Atk / 36 Def  
-Moves: Razor Leaf, Bite, Reflect, Tackle
+---
+
+### Stage 1 — First Battle (Route 111 area / Winstrate)
+*Trainer ID: TRAINER_PAUL | Party: sParty_Paul*  
+*3-Pokémon team. No Full Restores.*
+
+1. **Elekid** (Lv 15) — Oran Berry | Static  
+   IVs: 20 | Moves: Thunder Punch, Low Kick, Swift, Leer
+
+2. **Chimchar** (Lv 15) — Oran Berry | Blaze  
+   IVs: 20 | Moves: Ember, Mach Punch, Taunt, Scratch
+
+3. **Turtwig** (Lv 15) — Oran Berry | Overgrow  
+   IVs: 20 | Moves: Razor Leaf, Bite, Reflect, Tackle
+
+*Chimchar does not appear in any later Paul battle (released per anime canon).*
+
+---
+
+### Stage 2 — Mauville Battle
+*Trainer ID: TRAINER_WALLY_MAUVILLE | Party: sParty_WallyMauville*  
+*Full 6v6. No Full Restores.*
+
+**Pressure Mechanic:** Custom Mauville-only fighting spirit hook. The first time each
+of Paul's Pokémon would be knocked out from full HP by a single attack, it survives
+with 1 HP and prints the fighting-spirit message. This is not implemented with
+Focus Sash items and does not affect any other trainer battle.
+
+Post-battle overworld note: Paul's Mauville exit uses the standard NPC Fly-out
+field effect and sets the Wally/Mauville defeated flag path so the battle does not
+loop.
+
+1. **Electabuzz** (Lv 26) — held item per live trainer table | Static  
+   IVs: 30 | Moves: Thunder Punch, Low Kick, Ice Punch, Quick Attack
+
+2. **Torterra** (Lv 27) — held item per live trainer table | Overgrow  
+   IVs: 30 | Moves: Wood Hammer, Earthquake, Crunch, Stone Edge
+
+3. **Honchkrow** (Lv 26) — held item per live trainer table | Insomnia  
+   IVs: 30 | Moves: Night Slash, Drill Peck, Sucker Punch, Superpower
+
+4. **Weavile** (Lv 25) — held item per live trainer table | Pressure  
+   IVs: 30 | Moves: Ice Punch, Night Slash, Brick Break, Aerial Ace
+
+5. **Ursaring** (Lv 25) — held item per live trainer table | Guts  
+   IVs: 30 | Moves: Earthquake, Slash, Brick Break, Crunch
+
+6. **Gliscor** (Lv 26) — held item per live trainer table | Hyper Cutter  
+   IVs: 30 | Moves: Earthquake, X-Scissor, Stone Edge, Aerial Ace
+
+---
+
+## Brendan — Scott Replacement / Champion Reveal Arc
+
+Current live role:
+- Scott is removed as a visible overworld presence. Existing Scott story flags and vars
+  remain under the hood for save compatibility.
+- Scott's visible map objects now use Brendan's overworld sprite.
+- Match Call header now reads Brendan / BKLYN WATCH.
+- Mauville post-Paul observer scene is now Brendan: he watches the Paul battle, speaks
+  in Brooklyn lines, then battles the player instead of giving Scott's pep talk.
+- All former Scott dialogue should now read as Brendan dialogue in-game. The internal
+  label names may still say Scott where old flags/vars are preserved for save safety.
+
+Brendan observer locations:
+- Petalburg City opening observer beat
+- Rustboro Pokemon School
+- Slateport City museum / Battle Tent beats
+- Mauville City post-Paul beat
+- Verdanturf Battle Tent lobby
+- Fallarbor Battle Tent lobby
+- Route 119 rival aftermath
+- Lilycove motel
+- Mossdeep City
+- Ever Grande Pokemon Center
+- S.S. Tidal corridor
+- Battle Frontier Reception Gate
+- Battle Frontier house slot
+
+### Arc Identity
+
+Brendan starts as a quiet Brooklyn scout who is "watching the league from the block."
+Across the former Scott route, he keeps showing up after major battles, measuring the
+player's growth. His final reveal is that he is the real Pokemon Champion waiting at
+the League endgame.
+
+### Petalburg Observer Seed
+
+Story function:
+- Brendan first clocks the player in Petalburg.
+- No battle required here by default; this is the "I am watching you" seed.
+- Dialogue tone: Brooklyn scout, calm pressure, still hiding Champion status.
+
+Team concept if promoted to battle later:
+1. Mudkip (Lv 12) - Oran Berry  
+   Moves: Water Gun, Mud-Slap, Tackle, Growl
+2. Shroomish (Lv 12) - Oran Berry  
+   Moves: Absorb, Stun Spore, Leech Seed, Headbutt
+3. Bagon (Lv 13) - Dragon Fang  
+   Moves: Bite, Dragon Breath, Headbutt, Leer
+
+### Rustboro / Slateport Scout Tier
+
+Team concept:
+1. Marshtomp (Lv 22) - Eviolite  
+   Moves: Mud Shot, Water Pulse, Rock Tomb, Protect
+2. Breloom (Lv 22) - Toxic Orb  
+   Moves: Mach Punch, Bullet Seed, Spore, Rock Tomb
+3. Manectric (Lv 22) - Magnet  
+   Moves: Volt Switch, Thunderbolt, Flame Burst, Thunder Wave
+4. Shelgon (Lv 23) - Lum Berry  
+   Moves: Dragon Claw, Fire Fang, Bite, Protect
+
+### Mauville Observer Battle
+*Trainer ID: TRAINER_BRENDAN_PLACEHOLDER | Party: sParty_BrendanBoss*  
+*Full 6v6. No Full Restores.*
+
+1. **Swampert** (Lv 38) — Leftovers  
+   Moves: Stealth Rock, Earthquake, Waterfall, Ice Punch
+
+2. **Breloom** (Lv 38) — Toxic Orb  
+   Moves: Spore, Mach Punch, Bullet Seed, Rock Tomb
+
+3. **Gliscor** (Lv 39) — Toxic Orb  
+   Moves: Earthquake, Knock Off, Roost, Swords Dance
+
+4. **Manectric** (Lv 39) — Choice Specs  
+   Moves: Thunderbolt, Volt Switch, Flamethrower, Hidden Power
+
+5. **Metagross** (Lv 40) — Assault Vest  
+   Moves: Meteor Mash, Bullet Punch, Zen Headbutt, Earthquake
+
+6. **Salamence** (Lv 41) — Lum Berry  
+   Moves: Dragon Dance, Dragon Claw, Earthquake, Fire Fang
+
+### Hard-Mode Brendan Observer Battle
+*Party: sHardParty_BrendanBoss*
+
+1. **Swampert** (Lv 58) — Leftovers  
+   Moves: Stealth Rock, Earthquake, Waterfall, Ice Punch
+
+2. **Breloom** (Lv 58) — Toxic Orb  
+   Moves: Spore, Mach Punch, Bullet Seed, Rock Tomb
+
+3. **Gliscor** (Lv 59) — Toxic Orb  
+   Moves: Earthquake, Knock Off, Roost, Swords Dance
+
+4. **Rotom-Wash** (Lv 59) — Choice Scarf  
+   Moves: Hydro Pump, Volt Switch, Thunderbolt, Trick
+
+5. **Metagross** (Lv 60) — Assault Vest  
+   Moves: Meteor Mash, Bullet Punch, Zen Headbutt, Earthquake
+
+6. **Salamence** (Lv 61) — Lum Berry  
+   Moves: Dragon Dance, Dragon Claw, Earthquake, Fire Fang
+
+Implementation note:
+- Poison Heal was hardened in the end-turn poison path so Toxic Orb Gliscor heals
+  reliably when poisoned and missing HP.
+
+### Lilycove / Mossdeep Late Scout Tier
+
+Team concept:
+1. Swampert (Lv 72) - Leftovers  
+   Moves: Stealth Rock, Earthquake, Flip Turn, Ice Punch
+2. Breloom (Lv 72) - Toxic Orb  
+   Moves: Spore, Mach Punch, Bullet Seed, Swords Dance
+3. Gliscor (Lv 73) - Toxic Orb  
+   Moves: Earthquake, Knock Off, Roost, Swords Dance
+4. Rotom-Wash (Lv 73) - Choice Scarf  
+   Moves: Hydro Pump, Volt Switch, Thunderbolt, Trick
+5. Metagross (Lv 74) - Assault Vest  
+   Moves: Meteor Mash, Bullet Punch, Zen Headbutt, Earthquake
+6. Salamence (Lv 75) - Lum Berry  
+   Moves: Dragon Dance, Dragon Claw, Earthquake, Fire Fang
+
+### Ever Grande Champion Reveal
+
+Story function:
+- Brendan stops pretending to be only an observer.
+- He reveals he has been scouting the player as the hidden Champion-level gatekeeper.
+- This is the end of the former Scott path and the start of Brendan's full Champion
+  identity.
+
+Champion reveal team:
+1. Deoxys-Speed (Lv 100) - Focus Sash - Pressure  
+   Moves: Psycho Boost, Stealth Rock, Ice Beam, Taunt
+2. Swampert-Mega (Lv 100) - Swampertite - Swift Swim  
+   Moves: Waterfall, Earthquake, Ice Punch, Flip Turn
+3. Breloom (Lv 100) - Toxic Orb - Poison Heal  
+   Moves: Spore, Mach Punch, Bullet Seed, Swords Dance
+4. Gliscor (Lv 100) - Toxic Orb - Poison Heal  
+   Moves: Earthquake, Knock Off, Roost, Swords Dance
+5. Metagross-Mega (Lv 100) - Metagrossite - Tough Claws  
+   Moves: Meteor Mash, Bullet Punch, Zen Headbutt, Earthquake
+6. Salamence-Mega (Lv 100) - Salamencite - Aerilate  
+   Moves: Dragon Dance, Double-Edge, Earthquake, Roost
+
+Champion pressure identity:
+- Brendan is a tempo-control Champion: hazards, pivoting, Toxic Orb sustain, and
+  late-game Mega cleaners.
+- His Brooklyn dialogue should feel relaxed but dangerous, like he has been watching
+  every mistake the player made since Petalburg.
+
+### Stage 3 — Evergrande / Victory Road Final Team
+*Trainer IDs: TRAINER_WALLY_VR_1 through TRAINER_WALLY_VR_5 (rematch tiers)*  
+*Party: sParty_WallyVR1–sParty_WallyVR5 (levels scale 55–60 across rematch tiers)*  
+*Full 6v6. TRAINER_WALLY_VR_2+ carry 2× Full Restore.*
+
+**Pressure Mechanic — Planned:** Permanent Magma Storm field effect targeting the
+player's entire party at battle start. This requires a custom battle initialization hook
+(not yet implemented). When added, it will be wired through the existing BaneMode
+battle hooks in `src/battle_setup.c`. Froslass and Ninjask carry Focus Sash in the
+interim to represent the oppressive pressure feel.
+
+1. **Aggron** (Lv 55–60) — Choice Band | Rock Head  
+   IVs: 255 | Moves: Iron Tail, Stone Edge, Earthquake, Ice Punch
+
+2. **Gastrodon** (Lv 54–59) — Leftovers | Storm Drain  
+   IVs: 255 | Moves: Surf, Ice Beam, Earthquake, Recover
+
+3. **Drapion** (Lv 55–60) — Scope Lens | Sniper  
+   IVs: 255 | Moves: Night Slash, Crunch, Earthquake, X-Scissor
+
+4. **Froslass** (Lv 54–59) — Focus Sash | Cursed Body  
+   IVs: 255 | Moves: Shadow Ball, Ice Beam, Spikes, Thunderbolt
+
+5. **Ninjask** (Lv 55–60) — Focus Sash | Speed Boost  
+   IVs: 255 | Moves: Swords Dance, Baton Pass, X-Scissor, Protect
+
+6. **Electivire** (Lv 56–60) — Expert Belt | Motor Drive  
+   IVs: 255 | Moves: Thunder Punch, Ice Punch, Fire Punch, Low Kick
+
+*Level ranges reflect VR1 (first encounter) through VR5 (max rematch tier).*
 
 ## May (Opening + Checkpoints)
 
@@ -92,42 +326,60 @@ Moves: Razor Leaf, Bite, Reflect, Tackle
 
 ### Rustboro checkpoint
 1. Uxie (Lv 15) - Oran Berry - Levitate  
-Moves: Confusion, Thunder Wave, Reflect, Swift
+Moves: Confusion, Thunder Wave, Reflect, Yawn
 
-2. Lotad (Lv 14) - Oran Berry - Swift Swim  
-Moves: Bubble Beam, Absorb, Astonish, Protect
+2. Pelipper (Lv 15) - Oran Berry - Keen Eye  
+Moves: Wing Attack, Water Pulse, Supersonic, Protect
+
+3. Croagunk (Lv 14) - Oran Berry - Anticipation  
+Moves: Venoshock, Fake Out, Mud Shot, Pursuit
+
+4. Roselia (Lv 14) - Oran Berry - Natural Cure  
+Moves: Magical Leaf, Stun Spore, Leech Seed, Mega Drain
+
+5. Misdreavus (Lv 13) - Oran Berry - Levitate  
+Moves: Psybeam, Astonish, Confuse Ray, Pain Split
+
+6. Elekid (Lv 13) - Oran Berry - Static  
+Moves: Thunder Shock, Swift, Low Kick, Quick Attack
 
 ### Route 110
-1. Uxie (Lv 32) - Sitrus Berry - Levitate  
-Moves: Psyshock, Thunder Wave, Reflect, U-turn
+1. Uxie (Lv 21) - Sitrus Berry - Levitate  
+Moves: Confusion, Thunder Wave, Reflect, U-turn
 
-2. Pelipper (Lv 31) - Damp Rock - Drizzle  
-Moves: Scald, Hurricane, Roost, Tailwind
+2. Pelipper (Lv 20) - Oran Berry - Keen Eye  
+Moves: Wing Attack, Water Pulse, Supersonic, Protect
 
-3. Lombre (Lv 31) - Eviolite - Swift Swim  
-Moves: Scald, Giga Drain, Fake Out, Icy Wind
+3. Lairon (Lv 20) - Oran Berry - Rock Head  
+Moves: Metal Claw, Rock Tomb, Mud-Slap, Roar
 
-4. Roselia (Lv 30) - Black Sludge - Natural Cure  
-Moves: Giga Drain, Sludge Bomb, Sleep Powder, Toxic Spikes
+4. Kirlia (Lv 20) - Oran Berry - Synchronize  
+Moves: Psybeam, Draining Kiss, Calm Mind, Charge Beam
+
+5. Numel (Lv 19) - Charcoal - Simple  
+Moves: Flame Charge, Mud Shot, Rock Tomb, Yawn
+
+6. Roselia (Lv 19) - Oran Berry - Natural Cure  
+Moves: Magical Leaf, Growth, Stun Spore, Leech Seed
 
 ### Route 119
-1. Uxie (Lv 64) - Leftovers - Levitate  
+1. Uxie (Lv 41) - Leftovers - Levitate  
 Moves: Psychic, Thunder Wave, Stealth Rock, U-turn
 
-2. Pelipper (Lv 63) - Damp Rock - Drizzle  
+2. Pelipper (Lv 39) - Damp Rock - Drizzle  
 Moves: Scald, Hurricane, U-turn, Roost
 
-3. Ludicolo (Lv 63) - Assault Vest - Swift Swim  
-Moves: Hydro Pump, Giga Drain, Ice Beam, Fake Out
+3. Aggron (Lv 39) - Leftovers - Rock Head  
+Moves: Heavy Slam, Rock Slide, Earthquake, Thunder Wave
 
-4. Tropius (Lv 63) - Sitrus Berry - Harvest  
-Moves: Dragon Hammer, Leech Seed, Air Slash, Protect
+4. Gardevoir (Lv 39) - Expert Belt - Synchronize  
+Moves: Psychic, Moonblast, Thunderbolt, Mystical Fire
 
-5. Roserade (Lv 64) - Black Sludge - Natural Cure  
+5. Camerupt (Lv 40) - Passho Berry - Solid Rock  
+Moves: Earth Power, Lava Plume, Ancient Power, Yawn
+
+6. Roserade (Lv 40) - Black Sludge - Natural Cure  
 Moves: Leaf Storm, Sludge Bomb, Sleep Powder, Spikes
-
-6. Milotic (Lv 64) - Flame Orb - Marvel Scale  
-Moves: Surf, Ice Beam, Recover, Mirror Coat
 
 ### Lilycove
 1. Uxie (Lv 80) - Leftovers - Levitate  
@@ -136,30 +388,32 @@ Moves: Psychic, Thunder Wave, Stealth Rock, U-turn
 2. Pelipper (Lv 79) - Damp Rock - Drizzle  
 Moves: Scald, Hurricane, U-turn, Roost
 
-3. Ludicolo (Lv 79) - Life Orb - Swift Swim  
-Moves: Hydro Pump, Giga Drain, Ice Beam, Focus Blast
+3. Aggron (Lv 79) - Leftovers - Rock Head  
+Moves: Head Smash, Heavy Slam, Earthquake, Ice Punch
 
-4. Tropius (Lv 79) - Sitrus Berry - Harvest  
-Moves: Dragon Hammer, Air Slash, Leech Seed, Protect
+4. Gardevoir (Lv 79) - Choice Scarf - Synchronize  
+Moves: Psychic, Moonblast, Thunderbolt, Mystical Fire
 
-5. Roserade (Lv 80) - Black Sludge - Natural Cure  
+5. Camerupt (Lv 80) - Passho Berry - Solid Rock  
+Moves: Earth Power, Fire Blast, Ancient Power, Yawn
+
+6. Roserade (Lv 80) - Black Sludge - Natural Cure  
 Moves: Leaf Storm, Sludge Bomb, Sleep Powder, Spikes
-
-6. Milotic (Lv 80) - Flame Orb - Marvel Scale  
-Moves: Surf, Ice Beam, Recover, Mirror Coat
 
 ---
 
 ## 3) Gym Leaders (Swapped Order)
 
-_Atlas synced to the live Quest branch (`pokeemerald_modern.gba`) on 2026-05-09. This reflects current script bindings and active trainer-party slots, including the veteran-trial-only Blaine / Erika / Sabrina teams and Fortree's Blue & Green restoration._
+_Atlas synced to the live Quest branch (`pokeemerald_modern.gba`) on 2026-05-11. This reflects current script bindings and active trainer-party slots, including the veteran-trial-only Blaine / Erika / Sabrina teams and Fortree's Blue & Green restoration. Core boss rule: every non-Kanto gym leader variant now carries at least one paradox or legendary slot, with Red, Blue, and Green as the only exceptions. Unless a section says otherwise, the listed gym teams match the live hard-path boss teams used by the Quest build._
 
 Level rule lock for gyms: each gym leader team is `current player cap + 2`, max 100.
 
 ## Gym 1 - Juan (Rustboro)
 
-1. Wingull (Lv 18) - Oran Berry - Hydration  
-Moves: Scald, Air Cutter, Supersonic, Roost
+_Live hard-path team: yes._
+
+1. Pelipper (Lv 18) - Damp Rock - Drizzle  
+Moves: Scald, Hurricane, U-turn, Roost
 
 2. Qwilfish (Lv 18) - Oran Berry - Intimidate  
 Moves: Spikes, Aqua Jet, Poison Sting, Taunt
@@ -167,16 +421,16 @@ Moves: Spikes, Aqua Jet, Poison Sting, Taunt
 3. Barboach (Lv 18) - Oran Berry - Oblivious  
 Moves: Mud Shot, Water Pulse, Protect, Tickle
 
-4. Pelipper (Lv 18) - Damp Rock - Drizzle  
-Moves: Scald, Hurricane, U-turn, Roost
+4. Poliwhirl (Lv 18) - Oran Berry - Water Absorb  
+Moves: Water Pulse, Hypnosis, Icy Wind, Protect
 
-5. Lanturn (Lv 18) - Sitrus Berry - Volt Absorb  
-Moves: Volt Switch, Scald, Thunder Wave, Ice Beam
+5. Suicune (Lv 18) - Sitrus Berry - Pressure  
+Moves: Scald, Icy Wind, Rain Dance, Protect
 
 6. Gyarados (Lv 18) - Gyaradosite - Intimidate  
 Moves: Waterfall, Crunch, Ice Fang, Taunt
 
-Locked pressure overlay: permanent rain + swamp speed reduction to 1/4.
+Locked pressure overlay: permanent rain + player-side speed reduced to one-third.
 
 ## Gym 2 - Flannery (Dewford)
 
@@ -196,14 +450,14 @@ Moves: Flare Blitz, Extreme Speed, Will-O-Wisp, Morning Sun
 Moves: Flamethrower, Solar Beam, Hypnosis, Nasty Plot
 
 6. Gouging Fire (Lv 34) - Booster Energy - Protosynthesis  
-Moves: Dragon Dance, Flare Blitz, Dragon Claw, Earthquake
+Moves: Dragon Dance, Flare Blitz, Dragon Claw, Protect
 
-Locked pressure overlay: permanent sun.
+Locked pressure overlay: Desolate Land sun (permanent harsh sunlight; Water-type attacks fail).
 
 ## Gym 3 - Brawly (Mauville)
 
-1. Heracross (Lv 50) - Flame Orb - Guts  
-Moves: Facade, Close Combat, Knock Off, Rock Tomb
+1. Slither Wing (Lv 50) - Booster Energy - Protosynthesis  
+Moves: Leech Life, Close Combat, Flare Blitz, Morning Sun
 
 2. Breloom (Lv 50) - Focus Sash - Technician  
 Moves: Spore, Bullet Seed, Mach Punch, Rock Tomb
@@ -422,7 +676,7 @@ Player prep:
 - don't rely on priority to stabilize,
 - be ready for setup from both special and physical angles.
 
-## Brandon (Post-Elite Four Regi Trial)
+## Brandon (Ever Grande Pre-League Regi Trial)
 
 1. Regirock (Lv 100) - Leftovers - Clear Body  
 Moves: Stone Edge, Earthquake, Body Press, Stealth Rock
@@ -440,7 +694,7 @@ Moves: Protect, Body Slam, Drain Punch, Ice Punch
 Pressure identity:
 - permanent sand plus Stealth Rock,
 - full-Regi stat wall into fast electric tempo,
-- late-game Regigigas cleanup after chip and paralysis.
+- pre-League gate check before the Ever Grande Pokemon Center / Elite Four run.
 
 ---
 
@@ -501,6 +755,31 @@ Moves: Swords Dance, Earthquake, Scale Shot, Fire Fang
 Moves: Psystrike, Aura Sphere, Ice Beam, Recover
 
 Pressure identity: brute-force execution with layered Ground pressure into mega legendary finisher.
+
+## Norman (Staged Late Rocket Reveal Team)
+
+Status note:
+- This is **not** the live Petalburg gym scene.
+- Petalburg still uses the retired-Norman NY dialogue beat.
+- This is the current staged 6v6 team slot intended for Norman's later Rocket-reveal boss binding.
+
+1. Porygon2 (Lv 42) - Eviolite  
+Moves: Tri Attack, Ice Beam, Recover, Thunder Wave
+2. Slaking (Lv 42) - Sitrus Berry  
+Moves: Double-Edge, Earthquake, Fire Punch, Yawn
+3. Snorlax (Lv 43) - Leftovers  
+Moves: Body Slam, Crunch, Rest, Sleep Talk
+4. Kangaskhan (Lv 43) - Silk Scarf  
+Moves: Fake Out, Return, Sucker Punch, Earthquake
+5. Ursaring (Lv 44) - Flame Orb  
+Moves: Facade, Crunch, Close Combat, Protect
+6. Slaking (Lv 45) - Chesto Berry  
+Moves: Giga Impact, Night Slash, Fire Punch, Rest
+
+Pressure identity:
+- heavy Normal-body pressure with para/yawn tempo,
+- bulky sustain into double Slaking endgame,
+- staged as a later-story boss package rather than a badge-fight team.
 
 ## Archer (Rocket Admin)
 
@@ -687,7 +966,9 @@ Player prep:
 
 ## 7) Teams To Finalize During Rebuild (Not Fully Locked Here)
 
-- Norman remains retired from the Petalburg badge fight in the current Quest branch; his future Rocket-reveal boss team is still a separate canonical slot to finalize.
+- Norman remains retired from the Petalburg badge fight in the current Quest branch.
+- Live Petalburg scene status: at 3 badges, Norman explicitly says he's retired and doesn't yet know who is taking the upstairs chair full-time.
+- Norman's separate Rocket-reveal boss team still exists as a later-story canonical slot to finalize and bind to the final Rocket battle.
 - Rocket admin final rebuilt teams for each storyline checkpoint.
 - Paul later benchmark battles beyond early mandatory fight.
 - Route-by-route mini-boss sheet now documented in `BaneMode_MiniBoss_Team_Sheet.md`.

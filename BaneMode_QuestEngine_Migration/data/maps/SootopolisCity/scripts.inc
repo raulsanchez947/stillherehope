@@ -5,15 +5,15 @@
 .set LOCALID_BOY_1, 5
 .set LOCALID_STEVEN, 7
 .set LOCALID_WOMAN_1, 8
-.set LOCALID_GROUDON, 9
-.set LOCALID_KYOGRE, 10
-.set LOCALID_RAYQUAZA, 11
+.set LOCALID_G_MOLTRES, 9
+.set LOCALID_G_ARTICUNO, 10
+.set LOCALID_MEW, 11
 .set LOCALID_MANIAC, 12
 .set LOCALID_GIRL, 13
 .set LOCALID_BLACK_BELT, 14
 .set LOCALID_BOY_2, 15
-.set LOCALID_MAXIE, 16
-.set LOCALID_ARCHIE, 17
+.set LOCALID_LANCE, 16
+.set LOCALID_GIOVANNI, 17
 .set LOCALID_WALLACE, 18
 
 SootopolisCity_MapScripts::
@@ -137,8 +137,8 @@ SootopolisCity_EventScript_SetExitCaveOfOriginObjPos::
 SootopolisCity_EventScript_SetOutsideGymObjPos::
 	setobjectxyperm LOCALID_EXPERT, 31, 18
 	setobjectxyperm LOCALID_STEVEN, 29, 33
-	setobjectxyperm LOCALID_MAXIE, 33, 35
-	setobjectxyperm LOCALID_ARCHIE, 34, 35
+	setobjectxyperm LOCALID_LANCE, 33, 35
+	setobjectxyperm LOCALID_GIOVANNI, 34, 35
 	call_if_eq VAR_SOOTOPOLIS_WALLACE_STATE, 0, SootopolisCity_EventScript_SetWallaceMiddle
 	call_if_eq VAR_SOOTOPOLIS_WALLACE_STATE, 1, SootopolisCity_EventScript_SetWallaceRight
 	call_if_eq VAR_SOOTOPOLIS_WALLACE_STATE, 2, SootopolisCity_EventScript_SetWallaceLeft
@@ -210,17 +210,17 @@ SootopolisCity_EventScript_LegendariesSceneFromPokeCenter::
 	fadescreenspeed FADE_TO_BLACK, 8
 	setweather WEATHER_ABNORMAL
 	doweather
-	setvar VAR_0x8004, FALSE @ Just do Groudon/Kyogre fight scene
+	setvar VAR_0x8004, FALSE @ Just do Moltres/Articuno fight scene
 	special Script_DoRayquazaScene
 	waitstate
-	applymovement LOCALID_KYOGRE, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_GROUDON, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_G_ARTICUNO, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_G_MOLTRES, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 60
 	waitse
-	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreAttack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonDefend
+	playmoncry SPECIES_ARTICUNO_GALARIAN, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoAttack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresDefend
 	waitmovement 0
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -228,13 +228,13 @@ SootopolisCity_EventScript_LegendariesSceneFromPokeCenter::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreMoveBack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonMoveBack
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoMoveBack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresMoveBack
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreDefend
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonAttack
+	playmoncry SPECIES_MOLTRES_GALARIAN, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoDefend
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresAttack
 	waitmovement 0
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -242,13 +242,13 @@ SootopolisCity_EventScript_LegendariesSceneFromPokeCenter::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreMoveBack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonMoveBack
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoMoveBack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresMoveBack
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreAttack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonDefend
+	playmoncry SPECIES_ARTICUNO_GALARIAN, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoAttack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresDefend
 	waitmovement 0
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -256,12 +256,12 @@ SootopolisCity_EventScript_LegendariesSceneFromPokeCenter::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreMoveBack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonMoveBack
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoMoveBack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresMoveBack
 	waitmovement 0
 	special SpawnCameraObject
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreIdle
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonIdle
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoIdle
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresIdle
 	applymovement OBJ_EVENT_ID_CAMERA, SootopolisCity_Movement_PanBackToPokeCenter
 	waitmovement 0
 	special RemoveCameraObject
@@ -311,17 +311,17 @@ SootopolisCity_EventScript_LegendariesSceneFromDive::
 	fadescreenspeed FADE_TO_BLACK, 8
 	setweather WEATHER_ABNORMAL
 	doweather
-	setvar VAR_0x8004, FALSE @ Just do Groudon/Kyogre fight scene
+	setvar VAR_0x8004, FALSE @ Just do Moltres/Articuno fight scene
 	special Script_DoRayquazaScene
 	waitstate
-	applymovement LOCALID_KYOGRE, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_GROUDON, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_G_ARTICUNO, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_G_MOLTRES, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 60
 	waitse
-	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreAttack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonDefend
+	playmoncry SPECIES_ARTICUNO_GALARIAN, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoAttack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresDefend
 	waitmovement 0
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -329,13 +329,13 @@ SootopolisCity_EventScript_LegendariesSceneFromDive::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreMoveBack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonMoveBack
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoMoveBack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresMoveBack
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_GROUDON, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreDefend
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonAttack
+	playmoncry SPECIES_MOLTRES_GALARIAN, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoDefend
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresAttack
 	waitmovement 0
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -343,13 +343,13 @@ SootopolisCity_EventScript_LegendariesSceneFromDive::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreMoveBack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonMoveBack
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoMoveBack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresMoveBack
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_KYOGRE, CRY_MODE_ENCOUNTER
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreAttack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonDefend
+	playmoncry SPECIES_ARTICUNO_GALARIAN, CRY_MODE_ENCOUNTER
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoAttack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresDefend
 	waitmovement 0
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
@@ -357,12 +357,12 @@ SootopolisCity_EventScript_LegendariesSceneFromDive::
 	setvar VAR_0x8007, 5  @ shake delay
 	special ShakeCamera
 	waitstate
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreMoveBack
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonMoveBack
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoMoveBack
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresMoveBack
 	waitmovement 0
 	special SpawnCameraObject
-	applymovement LOCALID_KYOGRE, SootopolisCity_Movement_KyogreIdle
-	applymovement LOCALID_GROUDON, SootopolisCity_Movement_GroudonIdle
+	applymovement LOCALID_G_ARTICUNO, SootopolisCity_Movement_G_ArticunoIdle
+	applymovement LOCALID_G_MOLTRES, SootopolisCity_Movement_G_MoltresIdle
 	applymovement OBJ_EVENT_ID_CAMERA, SootopolisCity_Movement_PanBackToDive
 	waitmovement 0
 	special RemoveCameraObject
@@ -395,7 +395,7 @@ SootopolisCity_Movement_PanBackToDive:
 	walk_slow_diag_southwest
 	step_end
 
-SootopolisCity_Movement_KyogreAttack:
+SootopolisCity_Movement_G_ArticunoAttack:
 	walk_in_place_slow_left
 	walk_in_place_slow_left
 	walk_in_place_slow_left
@@ -407,7 +407,7 @@ SootopolisCity_Movement_KyogreAttack:
 	clear_affine_anim
 	step_end
 
-SootopolisCity_Movement_KyogreDefend:
+SootopolisCity_Movement_G_ArticunoDefend:
 	delay_16
 	delay_16
 	delay_16
@@ -422,7 +422,7 @@ SootopolisCity_Movement_KyogreDefend:
 	clear_affine_anim
 	step_end
 
-SootopolisCity_Movement_KyogreMoveBack:
+SootopolisCity_Movement_G_ArticunoMoveBack:
 	lock_facing_direction
 	walk_right
 	delay_16
@@ -431,7 +431,7 @@ SootopolisCity_Movement_KyogreMoveBack:
 	unlock_facing_direction
 	step_end
 
-SootopolisCity_Movement_KyogreIdle:
+SootopolisCity_Movement_G_ArticunoIdle:
 	walk_in_place_slow_left
 	walk_in_place_slow_left
 	walk_in_place_slow_left
@@ -440,7 +440,7 @@ SootopolisCity_Movement_KyogreIdle:
 	walk_in_place_slow_left
 	step_end
 
-SootopolisCity_Movement_GroudonAttack:
+SootopolisCity_Movement_G_MoltresAttack:
 	walk_in_place_slow_right
 	walk_in_place_slow_right
 	walk_in_place_slow_right
@@ -450,7 +450,7 @@ SootopolisCity_Movement_GroudonAttack:
 	walk_fast_right
 	step_end
 
-SootopolisCity_Movement_GroudonDefend:
+SootopolisCity_Movement_G_MoltresDefend:
 	delay_16
 	delay_16
 	delay_16
@@ -463,7 +463,7 @@ SootopolisCity_Movement_GroudonDefend:
 	walk_fast_right
 	step_end
 
-SootopolisCity_Movement_GroudonMoveBack:
+SootopolisCity_Movement_G_MoltresMoveBack:
 	lock_facing_direction
 	walk_left
 	delay_16
@@ -472,7 +472,7 @@ SootopolisCity_Movement_GroudonMoveBack:
 	unlock_facing_direction
 	step_end
 
-SootopolisCity_Movement_GroudonIdle:
+SootopolisCity_Movement_G_MoltresIdle:
 	walk_in_place_slow_right
 	walk_in_place_slow_right
 	walk_in_place_slow_right
@@ -499,10 +499,10 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	delay 60
 	fadescreenspeed FADE_TO_BLACK, 8
 	call SootopolisCity_EventScript_SetRoughWater
-	removeobject LOCALID_GROUDON
-	removeobject LOCALID_KYOGRE
-	addobject LOCALID_RAYQUAZA
-  hideobjectat LOCALID_RAYQUAZA, MAP_SOOTOPOLIS_CITY
+	removeobject LOCALID_G_MOLTRES
+	removeobject LOCALID_G_ARTICUNO
+	addobject LOCALID_MEW
+  hideobjectat LOCALID_MEW, MAP_SOOTOPOLIS_CITY
 	setvar VAR_0x8004, TRUE
 	special Script_DoRayquazaScene
 	waitstate
@@ -511,7 +511,7 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	applymovement OBJ_EVENT_ID_CAMERA, SootopolisCity_Movement_PanUp
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_MEW, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
@@ -519,7 +519,7 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	special ShakeCamera
 	waitstate
 	waitse
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_MEW, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 2  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
@@ -529,9 +529,9 @@ SootopolisCity_EventScript_RayquazaSceneFromPokeCenter::
 	waitmoncry
 	setweather WEATHER_NONE
 	doweather
-	applymovement LOCALID_RAYQUAZA, SootopolisCity_Movement_RayquazaFlyOff
+	applymovement LOCALID_MEW, SootopolisCity_Movement_MewAscend
 	waitmovement 0
-	removeobject LOCALID_RAYQUAZA
+	removeobject LOCALID_MEW
 	special WaitWeather
 	waitstate
 	clearflag FLAG_SYS_WEATHER_CTRL
@@ -553,9 +553,9 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	delay 60
 	fadescreenspeed FADE_TO_BLACK, 8
 	call SootopolisCity_EventScript_SetRoughWater
-	removeobject LOCALID_GROUDON
-	removeobject LOCALID_KYOGRE
-	addobject LOCALID_RAYQUAZA
+	removeobject LOCALID_G_MOLTRES
+	removeobject LOCALID_G_ARTICUNO
+	addobject LOCALID_MEW
 	setvar VAR_0x8004, TRUE
 	special Script_DoRayquazaScene
 	waitstate
@@ -564,7 +564,7 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	applymovement OBJ_EVENT_ID_PLAYER, SootopolisCity_Movement_PlayerApproachLegendaries
 	waitmovement 0
 	waitse
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_MEW, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 1  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
@@ -572,7 +572,7 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	special ShakeCamera
 	waitstate
 	waitse
-	playmoncry SPECIES_RAYQUAZA, CRY_MODE_ENCOUNTER
+	playmoncry SPECIES_MEW, CRY_MODE_ENCOUNTER
 	setvar VAR_0x8004, 1  @ vertical pan
 	setvar VAR_0x8005, 2  @ horizontal pan
 	setvar VAR_0x8006, 8  @ num shakes
@@ -582,9 +582,9 @@ SootopolisCity_EventScript_RayquazaSceneFromDive::
 	waitmoncry
 	setweather WEATHER_NONE
 	doweather
-	applymovement LOCALID_RAYQUAZA, SootopolisCity_Movement_RayquazaFlyOff
+	applymovement LOCALID_MEW, SootopolisCity_Movement_MewAscend
 	waitmovement 0
-	removeobject LOCALID_RAYQUAZA
+	removeobject LOCALID_MEW
 	special WaitWeather
 	waitstate
 	clearflag FLAG_SYS_WEATHER_CTRL
@@ -624,7 +624,7 @@ SootopolisCity_EventScript_SetRoughWater::
 	setmetatile 35, 45, METATILE_Sootopolis_RoughWater, FALSE
 	return
 
-SootopolisCity_Movement_RayquazaFlyOff:
+SootopolisCity_Movement_MewAscend:
 	walk_fast_up
 	walk_faster_up
 	walk_faster_up
@@ -1443,12 +1443,12 @@ SootopolisCity_Text_GiantPokemonSuddenlyAppeared:
 
 SootopolisCity_Text_WhatIsThatGreenPokemon:
 	.string "What? What? What?\n"
-	.string "What is that green POKéMON?!$"
+	.string "What is that tiny pink POKéMON?!$"
 
 SootopolisCity_Text_WhereDidLegendariesGo:
-	.string "GROUDON and KYOGRE…\n"
+	.string "MOLTRES and ARTICUNO…\n"
 	.string "Where did they go?\p"
-	.string "Will they cause droughts or downpours\n"
+	.string "Will they bring storms and ice\n"
 	.string "somewhere else?$"
 
 SootopolisCity_Text_TwoPokemonArentAngry:
@@ -1476,8 +1476,8 @@ SootopolisCity_Text_ThatWasWicked:
 	.string "That was wicked!$"
 
 SootopolisCity_Text_GoRedAndBlueMon:
-	.string "Go for it, red POKéMON!\n"
-	.string "Don't back off, blue POKéMON!$"
+	.string "Come on, fiery MOLTRES!\n"
+	.string "Don't give in, icy ARTICUNO!$"
 
 SootopolisCity_Text_DoYouKnowMonNames:
 	.string "… … … … … …\p"
@@ -1486,8 +1486,8 @@ SootopolisCity_Text_DoYouKnowMonNames:
 
 SootopolisCity_Text_GreenOneSettlesThings:
 	.string "I was wondering which one would win,\n"
-	.string "the red one or the blue one, but, oh no,\l"
-	.string "it's the green one that settles things!\p"
+	.string "MOLTRES or ARTICUNO, but oh no-\l"
+	.string "it's a tiny pink one that settles it!\p"
 	.string "Talk about a huge turn of events!$"
 
 SootopolisCity_Text_SeeingLegendWithOwnEyes:
@@ -1552,9 +1552,10 @@ SootopolisCity_Text_LeadSuperiorTrainerToCave:
 
 SootopolisCity_Text_AwakenedPokemonClash:
 	.string "Oh, my…\p"
-	.string "The clash between the two awakened\n"
-	.string "POKéMON was quelled by the awakening\l"
-	.string "of a third POKéMON…$"
+	.string "MOLTRES and ARTICUNO, raging against\n"
+	.string "each other…\l"
+	.string "And MEW appeared and silenced them\n"
+	.string "both…$"
 
 SootopolisCity_Text_CaveOfOriginSleepsToo:
 	.string "This is the CAVE OF ORIGIN…\p"
@@ -1604,49 +1605,52 @@ SootopolisCity_Text_YouBroughtFlyingMon:
 	.string "Well, aren't you amazing!$"
 
 SootopolisCity_Text_GroudonPleaseStop:
-	.string "MAXIE: G… GROUDON…\n"
-	.string "Please! Stop what you're doing!\p"
-	.string "I know the extent of your power now!\p"
-	.string "If you keep going, all HOENN, not just\n"
-	.string "SOOTOPOLIS, will be utterly ruined!$"
+	.string "LANCE: MOLTRES…!\n"
+	.string "Please- stop this!\p"
+	.string "The HOENN DEFENDERS swore to protect\n"
+	.string "you, not weaponize you.\p"
+	.string "But this power- this is beyond us!\p"
+	.string "If you don't stop now, SOOTOPOLIS\n"
+	.string "won't be the only thing lost!$"
 
 SootopolisCity_Text_AfterAllOurScheming:
-	.string "MAXIE: So the super-ancient POKéMON\n"
-	.string "weren't only GROUDON and KYOGRE…\p"
-	.string "After all our fruitless scheming and\n"
-	.string "frantic efforts, that one POKéMON's\l"
-	.string "simple action puts everything right\l"
-	.string "again as if nothing had happened…\p"
-	.string "Fu…\n"
-	.string "Fuhahaha…$"
+	.string "LANCE: MEW…\n"
+	.string "It was here all along.\p"
+	.string "All of TEAM ROCKET's scheming.\n"
+	.string "All of our fighting to stop them.\l"
+	.string "And a single ancient POKéMON\n"
+	.string "puts everything right…\p"
+	.string "Heh…\n"
+	.string "Perhaps they were never ours to\l"
+	.string "control to begin with.$"
 
 SootopolisCity_Text_KyogreCalmDown:
-	.string "ARCHIE: KYOGRE! What's wrong?!\n"
-	.string "Look over here! It's the RED ORB!\l"
-	.string "Calm down! KYOGRE!\p"
+	.string "GIOVANNI: ARTICUNO! Enough!\n"
+	.string "I have the GLACIAL ORB - obey ME!\p"
+	.string "TEAM ROCKET commands you!\n"
+	.string "STOP!!\p"
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
-	.string "It's no good!\n"
-	.string "It's not responding at all!$"
+	.string "It's not working.\n"
+	.string "It doesn't even register me…!$"
 
 SootopolisCity_Text_TryingMeaninglessToPokemon:
-	.string "ARCHIE: KYOGRE and GROUDON both\n"
-	.string "flew off to who knows where.\p"
-	.string "The weather in HOENN has returned\n"
-	.string "to its normal state…\p"
-	.string "Haha…\n"
+	.string "GIOVANNI: …ARTICUNO and MOLTRES\n"
+	.string "are gone. The weather returns.\p"
+	.string "Haha…\p"
 	.string "Hahaha…\p"
-	.string "Maybe what we were trying to do was\n"
-	.string "something small, even meaningless,\l"
-	.string "to POKéMON…$"
+	.string "I could not control them.\n"
+	.string "They were never mine to control.\p"
+	.string "TEAM ROCKET… retreats.\n"
+	.string "For now.$"
 
 SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 	.string "STEVEN: Those POKéMON fighting…\n"
-	.string "GROUDON… And KYOGRE…\p"
-	.string "The two super-ancient POKéMON\n"
-	.string "were awakened from a long sleep…\p"
-	.string "And now they are smashing each other\n"
-	.string "with their uncontrollable energy…\p"
+	.string "MOLTRES… And ARTICUNO…\p"
+	.string "Ancient legendary birds,\n"
+	.string "awakened by forces beyond us…\p"
+	.string "And now they are tearing each other\n"
+	.string "apart with uncontrollable power…\p"
 	.string "…{PLAYER}{KUN}.\p"
 	.string "You being here now I'll take to mean\n"
 	.string "that you're prepared to become\l"
@@ -1657,8 +1661,8 @@ SootopolisCity_Text_InvolvedWithCrisisComeWithMe:
 
 SootopolisCity_Text_DoesThisMakeYourFearPokemon:
 	.string "STEVEN: Listen, {PLAYER}{KUN}.\p"
-	.string "Does seeing GROUDON and KYOGRE make\n"
-	.string "you think POKéMON are to be feared?\p"
+	.string "Does seeing MOLTRES and ARTICUNO\n"
+	.string "make you think POKéMON are feared?\p"
 	.string "But that's not true.\n"
 	.string "POKéMON are really more…\p"
 	.string "…Why am I asking you this?\n"
@@ -1681,15 +1685,17 @@ SootopolisCity_Text_NeverBeenToSkyPillar:
 	.string "I wonder where it could be?$"
 
 SootopolisCity_Text_SoThatsRayquaza:
-	.string "STEVEN: So that's RAYQUAZA…\p"
-	.string "It's incredible how the two rampaging\n"
-	.string "POKéMON would flee from it in fear…$"
+	.string "STEVEN: So that's MEW…\p"
+	.string "It's incredible - two rampaging\n"
+	.string "legends, stilled by one small voice…$"
 
 SootopolisCity_Text_MaxieArchieLeft:
-	.string "STEVEN: It looks like both MAXIE and\n"
-	.string "ARCHIE have gone away somewhere.\p"
-	.string "Perhaps they've gone to MT. PYRE to\n"
-	.string "return those ORBS…$"
+	.string "STEVEN: It looks like GIOVANNI and\n"
+	.string "his admin have withdrawn.\p"
+	.string "TEAM ROCKET is gone for now, though\n"
+	.string "I doubt it is for good…\p"
+	.string "And LANCE has gone to MT. PYRE\n"
+	.string "to see about the ORBS.$"
 
 SootopolisCity_Text_HaventYouScaledSkyPillar:
 	.string "WALLACE: Oh?\n"
@@ -1701,10 +1707,11 @@ SootopolisCity_Text_HaventYouScaledSkyPillar:
 
 SootopolisCity_Text_AquaMagmaDidntMeanHarm:
 	.string "WALLACE: {PLAYER}{KUN}…\p"
-	.string "The leaders of TEAM MAGMA and AQUA,\n"
-	.string "I don't think they meant harm.\p"
-	.string "It wouldn't hurt to hear what they\n"
-	.string "have to say for themselves.$"
+	.string "GIOVANNI and LANCE…\n"
+	.string "two sides of a conflict that got\l"
+	.string "beyond all of us.\p"
+	.string "Perhaps it's worth hearing\n"
+	.string "what they have to say.$"
 
 SootopolisCity_Text_ThankYouForHelpAcceptThis:
 	.string "WALLACE: {PLAYER}{KUN}…\n"

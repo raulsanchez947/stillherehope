@@ -20,7 +20,7 @@ FortreeCity_Gym_EventScript_Winona::
 	trainerbattle_double TRAINER_TATE_AND_LIZA_1, FortreeCity_Gym_Text_WinonaIntro, FortreeCity_Gym_Text_WinonaDefeat, FortreeCity_Gym_Text_WinonaRematchNeedTwoMons, FortreeCity_Gym_EventScript_WinonaDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, FortreeCity_Gym_EventScript_WinonaRematch
-	goto_if_unset FLAG_RECEIVED_TM40, FortreeCity_Gym_EventScript_GiveAerialAce2
+	goto_if_unset FLAG_RECEIVED_TM04, FortreeCity_Gym_EventScript_GiveAerialAce2
 	msgbox FortreeCity_Gym_Text_WinonaPostBattle, MSGBOX_DEFAULT
 	release
 	end
@@ -51,18 +51,18 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 	end
 
 FortreeCity_Gym_EventScript_GiveAerialAce2::
-	giveitem ITEM_TM40
+	giveitem ITEM_LIGHT_CLAY
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_TM40
+	setflag FLAG_RECEIVED_TM04
 	release
 	end
 
 FortreeCity_Gym_EventScript_GiveAerialAce::
-	giveitem ITEM_TM40
+	giveitem ITEM_LIGHT_CLAY
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainAerialAce, MSGBOX_DEFAULT
-	setflag FLAG_RECEIVED_TM40
+	setflag FLAG_RECEIVED_TM04
 	return
 
 FortreeCity_Gym_EventScript_WinonaRematch::
@@ -261,13 +261,12 @@ FortreeCity_Gym_Text_ExplainFeatherBadgeTakeThis:
 	.string "Call it a little respect.$"
 
 FortreeCity_Gym_Text_ExplainAerialAce:
-	.string "TM40 contains AERIAL ACE.\p"
-	.string "Fast pressure is still pressure.\n"
-	.string "Use it clean.$"
+	.string "LIGHT CLAY keeps screens up longer.\p"
+	.string "Psychic pressure is angles and timing.\n"
+	.string "Make the setup count.$"
 
 FortreeCity_Gym_Text_RegisteredWinona:
-	.string "Registered GYM LEADERS BLUE & GREEN\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 FortreeCity_Gym_Text_WinonaPostBattle:
 	.string "BLUE: You earned the room.\p"

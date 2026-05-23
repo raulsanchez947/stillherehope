@@ -6,8 +6,8 @@
 .set LOCALID_GRUNT_6, 5
 .set LOCALID_GRUNT_5, 6
 .set LOCALID_GRUNT_7, 7
-.set LOCALID_TABITHA, 8
-.set LOCALID_MAXIE, 9
+.set LOCALID_ROCKET_ADMIN, 8
+.set LOCALID_GIOVANNI, 9
 
 MossdeepCity_SpaceCenter_2F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, MossdeepCity_SpaceCenter_2F_OnTransition
@@ -275,12 +275,12 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided, MSGBOX_DEFAULT
 	closemessage
 	delay 20
-	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterLeft
-	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterDown
+	applymovement LOCALID_GIOVANNI, Common_Movement_WalkInPlaceFasterLeft
+	applymovement LOCALID_ROCKET_ADMIN, Common_Movement_WalkInPlaceFasterDown
 	waitmovement 0
 	delay 60
-	applymovement LOCALID_MAXIE, Common_Movement_WalkInPlaceFasterUp
-	applymovement LOCALID_TABITHA, Common_Movement_WalkInPlaceFasterRight
+	applymovement LOCALID_GIOVANNI, Common_Movement_WalkInPlaceFasterUp
+	applymovement LOCALID_ROCKET_ADMIN, Common_Movement_WalkInPlaceFasterRight
 	waitmovement 0
 	delay 20
 	msgbox MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp, MSGBOX_DEFAULT
@@ -295,8 +295,8 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	removeobject LOCALID_GRUNT_6
 	removeobject LOCALID_GRUNT_7
 	removeobject LOCALID_GRUNT_5
-	removeobject LOCALID_TABITHA
-	removeobject LOCALID_MAXIE
+	removeobject LOCALID_ROCKET_ADMIN
+	removeobject LOCALID_GIOVANNI
 	setobjectxy LOCALID_SCIENTIST, 5, 6
 	turnobject LOCALID_SCIENTIST, DIR_SOUTH
 	setobjectxy LOCALID_GENTLEMAN, 11, 8
@@ -306,6 +306,10 @@ MossdeepCity_SpaceCenter_2F_EventScript_DefeatedMaxieTabitha::
 	call MossdeepCity_SpaceCenter_2F_EventScript_StevenFacePlayer
 	fadescreen FADE_FROM_BLACK
 	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome, MSGBOX_DEFAULT
+	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenMeteoriteBeacon, MSGBOX_DEFAULT
+	msgbox MossdeepCity_SpaceCenter_2F_Text_BrendanWatching, MSGBOX_DEFAULT
+	msgbox MossdeepCity_SpaceCenter_2F_Text_StevenGivesPsychicOrb, MSGBOX_DEFAULT
+	giveitem ITEM_PSYCHIC_ORB
 	closemessage
 	fadescreen FADE_TO_BLACK
 	setflag FLAG_DEFEATED_MAGMA_SPACE_CENTER
@@ -371,7 +375,7 @@ MossdeepCity_SpaceCenter_2F_Text_MossdeepIdealForRockets:
 	.string "rockets.$"
 
 MossdeepCity_SpaceCenter_2F_Text_WhyWouldMagmaStealRocketFuel:
-	.string "Why would TEAM MAGMA want to steal\n"
+	.string "Why would TEAM ROCKET want to steal\n"
 	.string "our rocket fuel in the first place?$"
 
 MossdeepCity_SpaceCenter_2F_Text_WouldveLikedToBeAstronaut:
@@ -381,7 +385,7 @@ MossdeepCity_SpaceCenter_2F_Text_WouldveLikedToBeAstronaut:
 	.string "I can and will try!$"
 
 MossdeepCity_SpaceCenter_2F_Text_MagmaCantGetAwayWithThis:
-	.string "If TEAM MAGMA takes the rocket fuel,\n"
+	.string "If TEAM ROCKET takes the rocket fuel,\n"
 	.string "I won't be able to go to space!\p"
 	.string "They can't be allowed to get away\n"
 	.string "with such an outrage!$"
@@ -391,8 +395,8 @@ MossdeepCity_SpaceCenter_2F_Text_WishOrdinaryPeopleCouldGoIntoSpace:
 	.string "space one day…$"
 
 MossdeepCity_SpaceCenter_2F_Text_DoesMagmaWantToGoToSpace:
-	.string "TEAM MAGMA…\n"
-	.string "Do they want to go to space, too?$"
+	.string "TEAM ROCKET…\n"
+	.string "What do they want with rocket fuel?$"
 
 MossdeepCity_SpaceCenter_2F_Text_YoureOutnumberedTakeUsOn:
 	.string "What's wrong with you?\p"
@@ -440,36 +444,37 @@ MossdeepCity_SpaceCenter_2F_Text_Grunt5PostBattle:
 	.string "at all?$"
 
 MossdeepCity_SpaceCenter_2F_Text_WellTakeCareOfYou:
-	.string "Hehehe!\p"
-	.string "We come all the way here to get some\n"
-	.string "fuel, and we're interfered with again!\p"
-	.string "If you're going to mess with us too,\n"
-	.string "we'll take care of you at the same time!$"
+	.string "Heh!\p"
+	.string "We come all this way to grab the fuel\n"
+	.string "and we get blocked again!\p"
+	.string "If you want to play hero, TEAM ROCKET\n"
+	.string "will put you down along with the rest!$"
 
 MossdeepCity_SpaceCenter_2F_Text_MaxieDontInterfere:
-	.string "MAXIE: Clear out of the way!\n"
+	.string "GIOVANNI: Out of my way!\n"
 	.string "Don't you dare interfere!$"
 
 MossdeepCity_SpaceCenter_2F_Text_StevenWhyStealRocketFuel:
-	.string "STEVEN: TEAM MAGMA…\p"
-	.string "What's the point of stealing rocket\n"
-	.string "fuel?$"
+	.string "STEVEN: TEAM ROCKET…\p"
+	.string "What do they want with the Space\n"
+	.string "Center's rocket fuel?$"
 
 MossdeepCity_SpaceCenter_2F_Text_MaxieUseFuelToEruptVolcano:
-	.string "MAXIE: Fufufu… Since you're so\n"
-	.string "curious, you deserve an explanation.\p"
-	.string "We're going to jettison the entire\n"
-	.string "load into MT. CHIMNEY!\p"
-	.string "With GROUDON gone, we have no need\n"
-	.string "for that slag heap of a mountain!\p"
-	.string "So we'll use the fuel's power to make\n"
-	.string "the volcano erupt!\p"
-	.string "It will be savage!$"
+	.string "GIOVANNI: Hmph. Since you're so\n"
+	.string "nosy, I'll indulge you.\p"
+	.string "This fuel is worth a fortune on the\n"
+	.string "black market.\p"
+	.string "The revenue will rebuild TEAM ROCKET\n"
+	.string "into something this region has never\l"
+	.string "seen before.\p"
+	.string "HOENN is just the beginning.$"
 
 MossdeepCity_SpaceCenter_2F_Text_StevenAreYouReadyToBattle:
-	.string "STEVEN: {PLAYER}{KUN}!\n"
-	.string "You're going to help me?\p"
-	.string "Let's go into battle together!\n"
+	.string "STEVEN: {PLAYER}{KUN}!\p"
+	.string "I need you to pick three of your\n"
+	.string "best.\p"
+	.string "We're taking these ROCKETS\n"
+	.string "down together.\p"
 	.string "Are you ready?$"
 
 MossdeepCity_SpaceCenter_2F_Text_StevenHurryGetReadyQuickly:
@@ -477,32 +482,27 @@ MossdeepCity_SpaceCenter_2F_Text_StevenHurryGetReadyQuickly:
 	.string "Get ready quickly!$"
 
 MossdeepCity_SpaceCenter_2F_Text_JustWantToExpandLand:
-	.string "All I want…\n"
-	.string "I just want to expand the land mass…$"
+	.string "GIOVANNI: You may have won here…\n"
+	.string "but TEAM ROCKET never truly loses.$"
 
 MossdeepCity_SpaceCenter_Text_TabithaDefeat:
-	.string "I'm with our leader…$"
+	.string "The Boss won't forget this…$"
 
 MossdeepCity_SpaceCenter_2F_Text_MaxieWeFailedIsAquaAlsoMisguided:
-	.string "MAXIE: We failed to make the volcano\n"
-	.string "erupt…\p"
-	.string "We failed to control GROUDON after\n"
-	.string "we had awoken it…\p"
-	.string "Is our goal to expand the land\n"
-	.string "misguided?\p"
-	.string "… … … … … …\n"
-	.string "… … … … … …\p"
-	.string "If…\n"
-	.string "If we, TEAM MAGMA, are wrong…\l"
-	.string "… … … … … …\p"
-	.string "Then might TEAM AQUA's goal to expand\n"
-	.string "the sea also be equally misguided?$"
+	.string "GIOVANNI: …\n"
+	.string "You're stronger than I expected.\p"
+	.string "TEAM ROCKET has suffered setbacks\n"
+	.string "before.\p"
+	.string "In KANTO. In JOHTO.\p"
+	.string "And now here.\p"
+	.string "But we do not break.\n"
+	.string "We adapt.$"
 
 MossdeepCity_SpaceCenter_2F_Text_MaxieWeWillGiveUp:
-	.string "MAXIE: All right…\n"
-	.string "We will give up on the fuel…\p"
-	.string "There appear to be more important\n"
-	.string "matters that I must examine…$"
+	.string "GIOVANNI: We're pulling out.\n"
+	.string "For now.\p"
+	.string "Enjoy this victory, {PLAYER}{KUN}.\n"
+	.string "TEAM ROCKET will not forget you.$"
 
 MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:
 	.string "STEVEN: Whew, that was too tense.\n"
@@ -513,3 +513,38 @@ MossdeepCity_SpaceCenter_2F_Text_StevenThankYouComeSeeMeAtHome:
 	.string "after this.\p"
 	.string "Oh, yes, I don't live in RUSTBORO CITY.\n"
 	.string "I live right here on this island.$"
+
+MossdeepCity_SpaceCenter_2F_Text_StevenMeteoriteBeacon:
+	.string "STEVEN: But there's something else.\p"
+	.string "The equipment TEAM ROCKET left\n"
+	.string "behind - look at this.\p"
+	.string "This is a signal array tuned\n"
+	.string "to the meteorite in our observatory.\p"
+	.string "They weren't just here for fuel.\p"
+	.string "They were using our launch systems\n"
+	.string "to triangulate something.\p"
+	.string "Something that entered the atmosphere\n"
+	.string "with that meteorite.\p"
+	.string "Whatever it is - TEAM ROCKET has\n"
+	.string "been tracking it across HOENN.$"
+
+MossdeepCity_SpaceCenter_2F_Text_BrendanWatching:
+	.string "…A figure near the stairwell.\p"
+	.string "Watching.\p"
+	.string "Not TEAM ROCKET - someone else.\n"
+	.string "Hooded. Young.\p"
+	.string "He catches your eye for just\n"
+	.string "a moment.\p"
+	.string "Then he's gone.$"
+
+MossdeepCity_SpaceCenter_2F_Text_StevenGivesPsychicOrb:
+	.string "STEVEN: One more thing.\p"
+	.string "We recovered this from TEAM ROCKET's\n"
+	.string "equipment in the launch bay.\p"
+	.string "Our researchers couldn't identify it,\n"
+	.string "but the psychic energy radiating\l"
+	.string "from it is unlike anything known.\p"
+	.string "I think it was meant for whatever\n"
+	.string "TEAM ROCKET is planning next.\p"
+	.string "Keep it safe, {PLAYER}{KUN}.\n"
+	.string "You'll know when to use it.$"

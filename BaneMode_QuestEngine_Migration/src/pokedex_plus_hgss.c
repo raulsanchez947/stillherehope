@@ -3772,6 +3772,8 @@ static void FreeInfoScreenWindowAndBgBuffers(void)
 
 static void Task_HandleInfoScreenInput(u8 taskId)
 {
+    u16 species = NationalPokedexNumToSpecies(sPokedexListItem->dexNum);
+
     if (gTasks[taskId].tScrolling)
     {
         // Scroll up/down
@@ -3796,6 +3798,14 @@ static void Task_HandleInfoScreenInput(u8 taskId)
         gTasks[taskId].func = Task_SwitchScreensFromInfoScreen;
         PlaySE(SE_PIN);
     }
+    else if (JOY_NEW(START_BUTTON) && gFormSpeciesIdTables[species] != NULL)
+    {
+        sPokedexView->selectedScreen = FORMS_SCREEN;
+        BeginNormalPaletteFade(0xFFFFFFEB, 0, 0, 0x10, RGB_BLACK);
+        sPokedexView->screenSwitchState = 4;
+        gTasks[taskId].func = Task_SwitchScreensFromInfoScreen;
+        PlaySE(SE_PIN);
+    }
 
 }
 
@@ -3815,6 +3825,9 @@ static void Task_SwitchScreensFromInfoScreen(u8 taskId)
             break;
         case 3:
             gTasks[taskId].func = Task_LoadSizeScreen;
+            break;
+        case 4:
+            gTasks[taskId].func = Task_LoadFormsScreen;
             break;
         }
     }

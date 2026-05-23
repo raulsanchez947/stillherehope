@@ -110,20 +110,20 @@ Route112_EventScript_Shayla::
 	end
 
 Route112_Text_LeaderGoingToAwakenThing:
-	.string "Hey, man, is our leader really going\n"
-	.string "to awaken that thing?$"
+	.string "Yo, STEVEN really got us posted here\n"
+	.string "till the mountain calms down, huh?$"
 
 Route112_Text_YeahWeNeedMeteorite:
-	.string "Sounds like it, yeah. But I heard\n"
-	.string "we need a METEORITE to do it.$"
+	.string "Facts. Hoenn Defenders ain't moving\n"
+	.string "without the METEORITE and the all-clear.$"
 
 Route112_Text_OhThatsWhyCrewWentToFallarbor:
-	.string "Oh, I get it now. That's why the rest\n"
-	.string "of the crew went out to FALLARBOR.$"
+	.string "Aight, so that's why the rest of the\n"
+	.string "crew pushed up to FALLARBOR.$"
 
 Route112_Text_CantLetAnyonePassUntilTheyreBack:
-	.string "You got it. And until they come back,\n"
-	.string "we're not to let anyone pass, right.$"
+	.string "Exactly. Till they get back, we hold\n"
+	.string "the line and keep this climb closed.$"
 
 Route112_Text_NotEasyToGetBackToLavaridge:
 	.string "Eh, I'd like to get to MAUVILLE, but if\n"
@@ -142,4 +142,3 @@ Route112_Text_MtChimneySign:
 Route112_Text_RouteSignLavaridge:
 	.string "ROUTE 112\n"
 	.string "{LEFT_ARROW} LAVARIDGE TOWN$"
-

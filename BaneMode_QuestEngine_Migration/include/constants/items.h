@@ -355,6 +355,9 @@
 // Colored Orbs
 #define ITEM_RED_ORB 290
 #define ITEM_BLUE_ORB 291
+// Bane Mode orbs (Galarian bird / Mew arc)
+#define ITEM_TEMPEST_ORB 818
+#define ITEM_PSYCHIC_ORB 819
 
 // Mega Stones
 #define ITEM_VENUSAURITE 292
@@ -1042,7 +1045,7 @@
 #define ITEM_FRESH_START_MOCHI 816
 #define ITEM_GLIMMERING_CHARM 817
 
-#define ITEMS_COUNT 818
+#define ITEMS_COUNT 820
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

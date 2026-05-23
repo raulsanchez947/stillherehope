@@ -254,13 +254,13 @@ SSTidalCorridor_Movement_SailorReturn:
 	step_end
 
 SSTidalCorridor_Text_ScottBattleFrontierInvite:
-	.string "SCOTT: Well, hi, hi!\n"
+	.string "BRENDAN: Yo, yo!\n"
 	.string "{PLAYER}{KUN}, {PLAYER}{KUN}!\p"
-	.string "Something's come up, so I have to\n"
-	.string "disembark, but am I glad to see you!\p"
-	.string "Congratulations, LEAGUE CHAMPION!\p"
-	.string "There's a place I'd like to invite\n"
-	.string "someone like you.\p"
+	.string "Something came up, so I gotta\n"
+	.string "hop off, but I'm glad I caught you.\p"
+	.string "Congrats, LEAGUE CHAMPION!\p"
+	.string "There's a place I want someone\n"
+	.string "like you to see.\p"
 	.string "It's the…\n"
 	.string "BATTLE FRONTIER!\p"
 	.string "What's the place like?\n"

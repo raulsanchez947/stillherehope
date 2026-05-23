@@ -12,6 +12,14 @@ RustboroCity_Gym_OnResume:
 	end
 
 RustboroCity_Gym_OnLoad:
+	setvar VAR_ICE_STEP_COUNT, 67
+	setmetatile 8, 4, METATILE_SootopolisGym_Stairs, FALSE
+	setmetatile 8, 5, METATILE_SootopolisGym_Stairs, FALSE
+	setmetatile 8, 10, METATILE_SootopolisGym_Stairs, FALSE
+	setmetatile 8, 11, METATILE_SootopolisGym_Stairs, FALSE
+	setmetatile 8, 15, METATILE_SootopolisGym_Stairs, FALSE
+	setmetatile 8, 16, METATILE_SootopolisGym_Stairs, FALSE
+	special DrawWholeMapView
 	end
 
 RustboroCity_Gym_EventScript_CheckSetStairMetatiles::
@@ -104,7 +112,7 @@ EventScript_OPRustboroGym::
 	return
 
 RustboroCity_Gym_EventScript_GiveWaterPulse::
-	giveitem ITEM_TM03
+	giveitem ITEM_CHOICE_SCARF
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM03
 	msgbox RustboroCity_Gym_Text_ExplainWaterPulse, MSGBOX_DEFAULT
@@ -282,14 +290,9 @@ RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 	.string "Please take this with you, too.$"
 
 RustboroCity_Gym_Text_ExplainWaterPulse:
-	.string "That TECHNICAL MACHINE, TM03,\n"
-	.string "contains WATER PULSE.\p"
-	.string "It washes over the target in a strange\n"
-	.string "surge that can leave it confused.\p"
-	.string "If you use a TM, it instantly teaches\n"
-	.string "the move to a POKéMON.\p"
-	.string "Remember, a TM can be used only once,\n"
-	.string "so think before you use it.$"
+	.string "JUAN: Take this CHOICE SCARF.\p"
+	.string "Water battles are about tempo, mijo.\n"
+	.string "Move first, control the whole block.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "JUAN: Keep climbing.\p"
@@ -322,8 +325,7 @@ RustboroCity_Gym_Text_RoxanneRegisterCall:
 	.string "… … … … … Click!$"
 
 RustboroCity_Gym_Text_RegisteredRoxanne:
-	.string "Registered GYM LEADER JUAN\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 RustboroCity_Gym_Text_RoxannePreRematch:
 	.string "JUAN: I'm so glad to see you again.\n"

@@ -38,6 +38,7 @@
 #include "constants/field_poison.h"
 #include "constants/map_types.h"
 #include "constants/songs.h"
+#include "constants/trainer_types.h"
 #include "constants/trainer_hill.h"
 
 static EWRAM_DATA u8 sWildEncounterImmunitySteps = 0;
@@ -71,6 +72,8 @@ static bool8 TryStartCoordEventScript(struct MapPosition *);
 static bool8 TryStartWarpEventScript(struct MapPosition *, u16);
 static bool8 TryStartMiscWalkingScripts(u16);
 static bool8 TryStartStepCountScript(u16);
+
+extern const u8 EventScript_HolyBluntReactionGlobal[];
 static void UpdateFriendshipStepCounter(void);
 static bool8 UpdatePoisonStepCounter(void);
 void RandomizeMaps(void);
@@ -271,6 +274,11 @@ static bool8 TryStartInteractionScript(struct MapPosition *position, u16 metatil
     const u8 *script = GetInteractionScript(position, metatileBehavior, direction);
     if (script == NULL)
         return FALSE;
+
+    if (FlagGet(FLAG_USED_HOLY_BLUNT_RECENTLY)
+     && gSelectedObjectEvent < OBJECT_EVENTS_COUNT
+     && gObjectEvents[gSelectedObjectEvent].trainerType == TRAINER_TYPE_NONE)
+        script = EventScript_HolyBluntReactionGlobal;
 
     // Don't play interaction sound for certain scripts.
     if (script != LittlerootTown_BrendansHouse_2F_EventScript_PC

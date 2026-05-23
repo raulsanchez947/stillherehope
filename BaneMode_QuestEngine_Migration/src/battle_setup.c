@@ -1498,7 +1498,8 @@ void BattleSetup_StartTrainerBattle(void)
                 totalPlayerLevel += GetMonData(&gPlayerParty[i], MON_DATA_LEVEL);
             }
         }
-        gSaveBlock2Ptr->playerPartyAvg = totalPlayerLevel / playerPartySize;
+        if (playerPartySize > 0)
+            gSaveBlock2Ptr->playerPartyAvg = totalPlayerLevel / playerPartySize;
         FlagSet(FLAG_TEMP_F);
     }
 

@@ -90,13 +90,12 @@ EverGrandeCity_PokemonCenter_1F_Text_BelieveInYourPokemon:
 	.string "your very best!$"
 
 EverGrandeCity_PokemonCenter_1F_Text_ScottHappyForYou:
-	.string "SCOTT: {PLAYER}{KUN}, you've clawed your\n"
+	.string "BRENDAN: {PLAYER}{KUN}, you've clawed your\n"
 	.string "way up to face the POKéMON LEAGUE!\p"
-	.string "I'm happy for you!\n"
-	.string "You made my cheering worthwhile!\p"
-	.string "{PLAYER}{KUN}, if you were to become\n"
+	.string "I'm proud of you, deadass.\n"
+	.string "All that cheering paid off.\p"
+	.string "{PLAYER}{KUN}, when you become\n"
 	.string "the POKéMON LEAGUE CHAMPION…\p"
-	.string "I'll get in touch with you then.\p"
-	.string "Okay, {PLAYER}{KUN}.\n"
-	.string "Go for greatness!$"
-
+	.string "I'll get in touch with you.\p"
+	.string "Aight, {PLAYER}{KUN}.\n"
+	.string "Go be great!$"

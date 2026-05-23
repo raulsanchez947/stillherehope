@@ -139,6 +139,11 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Wally;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_CustomCharacter;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Ash;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Silver;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Paul;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Blue;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Green;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketAdminM;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RocketAdminF;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_RubySapphireLittleBoy;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanFishing;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayFishing;
@@ -200,6 +205,7 @@ extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_BrendanDeco
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_MayDecorating;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Archie;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Maxie;
+extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Lance;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_KyogreFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_GroudonFront;
 extern const struct ObjectEventGraphicsInfo gObjectEventGraphicsInfo_Fossil;
@@ -1184,9 +1190,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_CUSTOM_CHARACTER] =         &gObjectEventGraphicsInfo_CustomCharacter,
     [OBJ_EVENT_GFX_ASH] =                      &gObjectEventGraphicsInfo_Ash,
     [OBJ_EVENT_GFX_SILVER] =                   &gObjectEventGraphicsInfo_Silver,
-    [OBJ_EVENT_GFX_UNUSED_WOOPER_DOLL] =       &gObjectEventGraphicsInfo_UnusedWooperDoll,
-    [OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL] =      &gObjectEventGraphicsInfo_UnusedPikachuDoll,
-    [OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL] =     &gObjectEventGraphicsInfo_UnusedPorygon2Doll,
+    [OBJ_EVENT_GFX_PAUL] =                     &gObjectEventGraphicsInfo_Paul,
+    [OBJ_EVENT_GFX_BLUE] =                      &gObjectEventGraphicsInfo_Blue,
+    [OBJ_EVENT_GFX_GREEN] =                     &gObjectEventGraphicsInfo_Green,
     [OBJ_EVENT_GFX_CUTTABLE_TREE] =            &gObjectEventGraphicsInfo_CuttableTree,
     [OBJ_EVENT_GFX_MART_EMPLOYEE] =            &gObjectEventGraphicsInfo_MartEmployee,
     [OBJ_EVENT_GFX_ROOFTOP_SALE_WOMAN] =       &gObjectEventGraphicsInfo_RooftopSaleWoman,
@@ -2197,6 +2203,9 @@ const struct ObjectEventGraphicsInfo *const gObjectEventGraphicsInfoPointers[NUM
     [OBJ_EVENT_GFX_LIGHT_SPRITE] =             &gObjectEventGraphicsInfo_BallLight,
     [OBJ_EVENT_GFX_WORMHOLE] =      &gObjectEventGraphicsInfo_WormHole,
     [OBJ_EVENT_GFX_WORMHOLE2] =      &gObjectEventGraphicsInfo_WormHole2,
+    [OBJ_EVENT_GFX_ROCKET_ADMIN_M] = &gObjectEventGraphicsInfo_RocketAdminM,
+    [OBJ_EVENT_GFX_ROCKET_ADMIN_F] = &gObjectEventGraphicsInfo_RocketAdminF,
+    [OBJ_EVENT_GFX_LANCE] =          &gObjectEventGraphicsInfo_Lance,
 };
 
 const struct ObjectEventGraphicsInfo *const gMauvilleOldManGraphicsInfoPointers[] = {

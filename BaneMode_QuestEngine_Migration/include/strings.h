@@ -3136,6 +3136,7 @@ extern const u8 gText_NumberOfBattles[];
 extern const u8 gText_Unknown[];
 extern const u8 gText_TrainerCloseBy[];
 extern const u8 gText_Call[];
+extern const u8 gText_NumberBlocked[];
 extern const u8 gText_Check[];
 extern const u8 gText_Cancel6[];
 

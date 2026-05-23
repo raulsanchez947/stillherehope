@@ -1,8 +1,8 @@
-.set LOCALID_ARCHIE, 1
-.set LOCALID_MAXIE, 2
-.set LOCALID_TABITHA, 3
-.set LOCALID_MAGMA_GRUNT_2, 22
-.set LOCALID_MAGMA_GRUNT_1, 29
+.set LOCALID_HOENN_DEFENDER, 1
+.set LOCALID_GIOVANNI, 2
+.set LOCALID_ROCKET_ADMIN, 3
+.set LOCALID_ROCKET_GRUNT_2, 22
+.set LOCALID_ROCKET_GRUNT_1, 29
 
 
 MtChimney_MapScripts::
@@ -26,7 +26,19 @@ MtChimney_EventScript_Archie::
 	call_if_unset FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieGoStopTeamMagma
 	call_if_set FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieBusyFighting
 	closemessage
-	applymovement LOCALID_ARCHIE, Common_Movement_FaceOriginalDirection
+	applymovement LOCALID_HOENN_DEFENDER, Common_Movement_FaceOriginalDirection
+	waitmovement 0
+	setflag FLAG_EVIL_LEADER_PLEASE_STOP
+	release
+	end
+
+MtChimney_EventScript_DefenderAnabel::
+	lock
+	faceplayer
+	call_if_unset FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieGoStopTeamMagma
+	call_if_set FLAG_EVIL_LEADER_PLEASE_STOP, MtChimney_EventScript_ArchieBusyFighting
+	closemessage
+	applymovement LOCALID_HOENN_DEFENDER, Common_Movement_FaceOriginalDirection
 	waitmovement 0
 	setflag FLAG_EVIL_LEADER_PLEASE_STOP
 	release
@@ -42,38 +54,65 @@ MtChimney_EventScript_ArchieBusyFighting::
 
 MtChimney_EventScript_Maxie::
 	lockall
-	playbgm MUS_ENCOUNTER_MAGMA, FALSE
+	playbgm MUS_RG_ENCOUNTER_ROCKET, FALSE
 	msgbox MtChimney_Text_MeteoriteWillActivateVolcano, MSGBOX_DEFAULT
-	applymovement LOCALID_MAXIE, Common_Movement_FacePlayer
+	applymovement LOCALID_GIOVANNI, Common_Movement_FacePlayer
 	waitmovement 0
 	playse SE_PIN
-	applymovement LOCALID_MAXIE, Common_Movement_ExclamationMark
+	applymovement LOCALID_GIOVANNI, Common_Movement_ExclamationMark
 	waitmovement 0
-	applymovement LOCALID_MAXIE, Common_Movement_Delay48
+	applymovement LOCALID_GIOVANNI, Common_Movement_Delay48
 	waitmovement 0
 	msgbox MtChimney_Text_MaxieIntro, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_MAXIE_MT_CHIMNEY, MtChimney_Text_MaxieDefeat
+	msgbox MtChimney_Text_StevenJoinsGiovanniBattle, MSGBOX_DEFAULT
+	special SavePlayerParty
+	fadescreen FADE_TO_BLACK
+	special ChooseHalfPartyForBattle
+	waitstate
+	goto_if_ne VAR_RESULT, 0, MtChimney_EventScript_DoStevenGiovanniBattle
+	special LoadPlayerParty
+	releaseall
+	end
+
+MtChimney_EventScript_DoStevenGiovanniBattle::
+	special ReducePlayerPartyToSelectedMons
+	frontier_set FRONTIER_DATA_SELECTED_MON_ORDER
+	setvar VAR_0x8004, SPECIAL_BATTLE_MT_CHIMNEY_STEVEN
+	setvar VAR_0x8005, 0
+	special DoSpecialTrainerBattle
+	waitstate
+	frontier_saveparty
+	special LoadPlayerParty
+	switch VAR_RESULT
+	case 1, MtChimney_EventScript_DefeatedGiovanniWithSteven
+	fadescreen FADE_TO_BLACK
+	special SetCB2WhiteOut
+	waitstate
+
+MtChimney_EventScript_DefeatedGiovanniWithSteven::
 	msgbox MtChimney_Text_MaxieYouHaventSeenLastOfMagma, MSGBOX_DEFAULT
 	closemessage
 	delay 30
 	fadescreenswapbuffers FADE_TO_BLACK
-	removeobject LOCALID_MAXIE
-	removeobject LOCALID_MAGMA_GRUNT_1
-	removeobject LOCALID_TABITHA
-	removeobject LOCALID_MAGMA_GRUNT_2
+	removeobject LOCALID_GIOVANNI
+	removeobject LOCALID_ROCKET_GRUNT_1
+	removeobject LOCALID_ROCKET_ADMIN
+	removeobject LOCALID_ROCKET_GRUNT_2
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	fadescreenswapbuffers FADE_FROM_BLACK
-	setobjectxyperm LOCALID_ARCHIE, 10, 12
-	addobject LOCALID_ARCHIE
+	setobjectxyperm LOCALID_HOENN_DEFENDER, 10, 12
+	addobject LOCALID_HOENN_DEFENDER
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_ArchieApproachPlayerEast
 	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_ArchieApproachPlayerNorth
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	msgbox MtChimney_Text_ArchieThankYou, MSGBOX_DEFAULT
+	msgbox MtChimney_Text_LanceFindsOrbAtMachine, MSGBOX_DEFAULT
+	giveitem ITEM_RED_ORB
 	closemessage
 	call_if_eq VAR_FACING, DIR_EAST, MtChimney_EventScript_ArchieExitEast
 	call_if_eq VAR_FACING, DIR_NORTH, MtChimney_EventScript_ArchieExitNorth
-	removeobject LOCALID_ARCHIE
+	removeobject LOCALID_HOENN_DEFENDER
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_AQUA
 	setflag FLAG_DEFEATED_EVIL_TEAM_MT_CHIMNEY
 	clearflag FLAG_HIDE_FALLARBOR_HOUSE_PROF_COZMO
@@ -82,23 +121,31 @@ MtChimney_EventScript_Maxie::
 	releaseall
 	end
 
+MtChimney_EventScript_GiovanniTrainer::
+	trainerbattle TRAINER_BATTLE_SET_TRAINER_A, TRAINER_MAXIE_MT_CHIMNEY, 0, MtChimney_Text_MaxieDefeat, MtChimney_Text_MaxieDefeat
+	end
+
+MtChimney_EventScript_RocketAdminTrainer::
+	trainerbattle TRAINER_BATTLE_SET_TRAINER_B, TRAINER_TABITHA_MT_CHIMNEY, 0, MtChimney_Text_TabithaDefeat, MtChimney_Text_TabithaDefeat
+	end
+
 MtChimney_EventScript_ArchieApproachPlayerEast::
-	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieApproachPlayerEast
+	applymovement LOCALID_HOENN_DEFENDER, MtChimney_Movement_ArchieApproachPlayerEast
 	waitmovement 0
 	return
 
 MtChimney_EventScript_ArchieApproachPlayerNorth::
-	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieApproachPlayerNorth
+	applymovement LOCALID_HOENN_DEFENDER, MtChimney_Movement_ArchieApproachPlayerNorth
 	waitmovement 0
 	return
 
 MtChimney_EventScript_ArchieExitEast::
-	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieExitEast
+	applymovement LOCALID_HOENN_DEFENDER, MtChimney_Movement_ArchieExitEast
 	waitmovement 0
 	return
 
 MtChimney_EventScript_ArchieExitNorth::
-	applymovement LOCALID_ARCHIE, MtChimney_Movement_ArchieExitNorth
+	applymovement LOCALID_HOENN_DEFENDER, MtChimney_Movement_ArchieExitNorth
 	waitmovement 0
 	return
 
@@ -405,6 +452,8 @@ MtChimney_EventScript_Tabitha::
 	msgbox MtChimney_Text_TabithaPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+@ Note: TRAINER_TABITHA_MT_CHIMNEY is used here as a Rocket Admin blocking the player.
+
 MtChimney_EventScript_Grunt2::
 	trainerbattle_single TRAINER_GRUNT_MT_CHIMNEY_2, MtChimney_Text_Grunt2Intro, MtChimney_Text_Grunt2Defeat
 	msgbox MtChimney_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
@@ -432,6 +481,22 @@ MtChimney_EventScript_BusyMagmaGrunt5::
 
 MtChimney_EventScript_BusyMagmaGrunt6::
 	msgbox MtChimney_Text_KeepMakingMoreLand, MSGBOX_SIGN
+	end
+
+MtChimney_EventScript_DefenderLiza::
+	msgbox MtChimney_Text_DefenderLiza, MSGBOX_SIGN
+	end
+
+MtChimney_EventScript_DefenderTate::
+	msgbox MtChimney_Text_DefenderTate, MSGBOX_SIGN
+	end
+
+MtChimney_EventScript_DefenderSpenser::
+	msgbox MtChimney_Text_DefenderSpenser, MSGBOX_SIGN
+	end
+
+MtChimney_EventScript_DefenderSteven::
+	msgbox MtChimney_Text_DefenderSteven, MSGBOX_SIGN
 	end
 
 MtChimney_EventScript_MagmaPoochyena::
@@ -536,171 +601,210 @@ MtChimney_EventScript_SawyerRematch::
 	end
 
 MtChimney_Text_MeteoriteWillActivateVolcano:
-	.string "The power contained in the METEORITE…\p"
-	.string "By amplifying its power with this\n"
-	.string "machine, MT. CHIMNEY's volcanic\l"
-	.string "activity will instantly intensify…\p"
-	.string "Its energy will grow deep inside\n"
-	.string "the crater and…\l"
-	.string "Fufufu…$"
+	.string "The METEORITE's energy…\p"
+	.string "Channelled through this machine,\n"
+	.string "it will drive MT. CHIMNEY's volcanic\l"
+	.string "activity to a critical point.\p"
+	.string "The eruption will level everything\n"
+	.string "in this region.\l"
+	.string "…And TEAM ROCKET will be there\n"
+	.string "to fill the vacuum.$"
 
 MtChimney_Text_MaxieIntro:
-	.string "MAXIE: Hm?\n"
-	.string "Who are you?\p"
-	.string "… … … … … …\n"
+	.string "GIOVANNI: Hm.\n"
+	.string "A child?\p"
 	.string "… … … … … …\p"
-	.string "I'd heard ARCHIE bemoaning a child\n"
-	.string "who's been meddling in TEAM AQUA's\l"
-	.string "affairs.\p"
-	.string "It must be you he meant.\p"
-	.string "Humph! So you're thinking of\n"
-	.string "interfering with us, TEAM MAGMA?\p"
-	.string "Now you listen.\n"
-	.string "Long ago, living things used the\l"
-	.string "land to live and grow.\p"
-	.string "That is why land is all important!\n"
-	.string "It is the cradle of all!\p"
-	.string "That is why TEAM MAGMA is dedicated\n"
-	.string "to the expansion of the land mass.\p"
-	.string "It is for further advancement of\n"
-	.string "humankind and POKéMON!\p"
-	.string "And for that, we need the power of\n"
-	.string "what sleeps within this mountain…\p"
-	.string "Oh! There was no need for you to\n"
-	.string "learn that much.\p"
-	.string "But, no matter!\n"
-	.string "I'll teach you the consequences of\l"
-	.string "meddling in our grand design!$"
+	.string "You've been making quite a nuisance\n"
+	.string "of yourself, {PLAYER}.\p"
+	.string "I was told someone had been\n"
+	.string "interfering with TEAM ROCKET's\l"
+	.string "operations across HOENN.\p"
+	.string "I simply didn't believe a trainer\n"
+	.string "your age could be this persistent.\p"
+	.string "Let me explain something.\n"
+	.string "Power is the only language\l"
+	.string "the world understands.\p"
+	.string "TEAM ROCKET does not pursue goals.\n"
+	.string "We pursue dominance.\p"
+	.string "This mountain will erupt.\n"
+	.string "HOENN will fracture.\p"
+	.string "And in the chaos, TEAM ROCKET\n"
+	.string "will rise.\p"
+	.string "You should not have come here.\n"
+	.string "I will not go easy on you.$"
+
+MtChimney_Text_StevenJoinsGiovanniBattle:
+	.string "STEVEN: You won't face him alone,\n"
+	.string "{PLAYER}{KUN}.\p"
+	.string "LANCE and the HOENN DEFENDERS\n"
+	.string "are holding the ROCKET line.\p"
+	.string "I'll fight beside you.\n"
+	.string "Together, we stop GIOVANNI here!$"
 
 MtChimney_Text_MaxieDefeat:
 	.string "What?!\p"
-	.string "I, MAXIE, was caught off guard?!$"
+	.string "I, GIOVANNI, lost to a child?!$"
 
 MtChimney_Text_MaxieYouHaventSeenLastOfMagma:
-	.string "MAXIE: But, enough.\n"
-	.string "I will back off this time.\p"
-	.string "But don't think that this is the last\n"
-	.string "you've seen of TEAM MAGMA.\p"
-	.string "Fufufu…\p"
-	.string "Even without the METEORITE, if we\n"
-	.string "obtain that ORB… Fufufu…$"
+	.string "GIOVANNI: …Enough.\n"
+	.string "I'll withdraw for now.\p"
+	.string "But don't mistake this for a defeat.\p"
+	.string "TEAM ROCKET is patient.\n"
+	.string "We have plans within plans.\p"
+	.string "Enjoy this moment.\n"
+	.string "It won't last.$"
 
 MtChimney_Text_TabithaIntro:
-	.string "Hehehe!\p"
-	.string "So you've come all the way here!\p"
-	.string "But you're too late!\n"
-	.string "I've already delivered the METEORITE\l"
-	.string "from METEOR FALLS to the BOSS!$"
+	.string "Heh!\p"
+	.string "You made it this far.\n"
+	.string "Impressive.\p"
+	.string "But the BOSS already has the\n"
+	.string "METEORITE powering the machine.\p"
+	.string "You're too late to stop anything!\n"
+	.string "TEAM ROCKET wins either way!$"
 
 MtChimney_Text_TabithaDefeat:
-	.string "Hehehe…\p"
-	.string "Even though I've lost, if our leader\n"
-	.string "awakens that thing…$"
+	.string "Tch…\p"
+	.string "Even if I fall here, the BOSS\n"
+	.string "will see this through…$"
 
 MtChimney_Text_TabithaPostBattle:
-	.string "BOSS, hurry!\n"
-	.string "Give it the METEORITE's energy!\p"
-	.string "Hehehe…$"
+	.string "BOSS, the machine!\n"
+	.string "Don't stop now!$"
 
 MtChimney_Text_Grunt2Intro:
-	.string "We of TEAM MAGMA are working hard for\n"
-	.string "everyone's sake.\p"
-	.string "Like, if that thing's power made more\n"
-	.string "land, there'd be more places to live.\p"
-	.string "Everyone'd be happy!$"
+	.string "TEAM ROCKET doesn't take orders\n"
+	.string "from some kid!\p"
+	.string "The BOSS has a plan and we're\n"
+	.string "seeing it through!\p"
+	.string "Get out of the way!$"
 
 MtChimney_Text_Grunt2Defeat:
-	.string "Hunh?\n"
-	.string "What do you mean I lost?$"
+	.string "Wha-?!\n"
+	.string "That's not possible!$"
 
 MtChimney_Text_Grunt2PostBattle:
-	.string "Our BOSS says, “It will make everyone\n"
-	.string "happy.”\p"
-	.string "But why does everyone keep getting\n"
-	.string "in our way?$"
+	.string "The BOSS won't be pleased…\n"
+	.string "But at least the machine's still on.$"
 
 MtChimney_Text_Grunt1Intro:
-	.string "If there were more land, I'd be able\n"
-	.string "to get a big house of my own!\p"
-	.string "I'm going to build it on hardened lava!$"
+	.string "You've got nerve, coming up here!\n"
+	.string "TEAM ROCKET runs this mountain now!\p"
+	.string "I'll show you what that means!$"
 
 MtChimney_Text_Grunt1Defeat:
-	.string "My dream of a big house…$"
+	.string "No way… Beaten by a trainer?!$"
 
 MtChimney_Text_Grunt1PostBattle:
-	.string "A kid like you, you ought to be\n"
-	.string "splashing about in the waves!$"
+	.string "You beat me but you won't stop\n"
+	.string "what's already in motion!$"
 
 MtChimney_Text_TeamAquaAlwaysMessingWithPlans:
-	.string "That annoying TEAM AQUA…\n"
-	.string "They always mess with our plans!$"
+	.string "TEAM ROCKET…\n"
+	.string "We knew they'd make a move eventually!$"
 
 MtChimney_Text_MeteoritesPackAmazingPower:
-	.string "METEORITES pack amazing power!$"
+	.string "The METEORITE's energy is immense.\n"
+	.string "We can't let ROCKET exploit it!$"
 
 MtChimney_Text_YouBetterNotMessWithUs:
-	.string "You'd better not mess with us!\p"
-	.string "We're trying to awaken that thing\n"
-	.string "for the benefit of everyone!$"
+	.string "Hold your ground!\n"
+	.string "We defend HOENN here!$"
 
 MtChimney_Text_AquasNameSimilar:
-	.string "We're TEAM MAGMA!\p"
-	.string "They're TEAM AQUA!\p"
-	.string "It totally annoys me that they'd\n"
-	.string "use a name like ours!$"
+	.string "HOENN's people, land, and sea-\n"
+	.string "all of it must be protected.\p"
+	.string "That's what the HOENN DEFENDERS\n"
+	.string "stand for!$"
 
 MtChimney_Text_DouseThemInFire:
-	.string "Yeah!\n"
-	.string "Douse them in fire!$"
+	.string "Push them back!\n"
+	.string "Don't let a single ROCKET through!$"
 
 MtChimney_Text_KeepMakingMoreLand:
-	.string "We're going to keep making more land!$"
+	.string "We won't let ROCKET turn this\n"
+	.string "mountain into a weapon!$"
+
+MtChimney_Text_DefenderLiza:
+	.string "LIZA: TATE and I are holding this\n"
+	.string "side of the line.\p"
+	.string "TEAM ROCKET doesn't get one step\n"
+	.string "closer to that machine!$"
+
+MtChimney_Text_DefenderTate:
+	.string "TATE: LIZA can feel the pressure\n"
+	.string "building from here.\p"
+	.string "If ROCKET keeps pushing the\n"
+	.string "METEORITE, the volcano could blow!$"
+
+MtChimney_Text_DefenderSpenser:
+	.string "SPENSER: Do not mistake defense\n"
+	.string "for weakness.\p"
+	.string "The HOENN DEFENDERS will weather\n"
+	.string "this storm and break ROCKET's line.$"
+
+MtChimney_Text_DefenderSteven:
+	.string "STEVEN: I'm keeping these ROCKETS\n"
+	.string "from reaching ANABEL.\p"
+	.string "When you reach GIOVANNI, I will\n"
+	.string "fight beside you.$"
 
 MtChimney_Text_Bufoh:
 	.string "Bufoh!$"
 
 MtChimney_Text_ArchieGoStopTeamMagma:
-	.string "ARCHIE: Grr, {PLAYER}!\n"
-	.string "I should've guessed you'd show up!\p"
-	.string "See for yourself what the fanatics\n"
-	.string "of TEAM MAGMA are up to!\p"
-	.string "They're trying to inject the stolen\n"
-	.string "METEORITE's power into the volcano!\p"
-	.string "Doing something like that will cause\n"
-	.string "the volcano's eruption!$"
+	.string "ANABEL: {PLAYER}!\n"
+	.string "Good - I hoped you'd come.\p"
+	.string "TEAM ROCKET has stolen a METEORITE\n"
+	.string "and fitted it to a machine\l"
+	.string "on this summit.\p"
+	.string "If they finish, the energy feedback\n"
+	.string "will trigger a full eruption.\p"
+	.string "GIOVANNI is up there himself.\n"
+	.string "Go - stop him!$"
 
 MtChimney_Text_ArchieIHaveMyHandsFull:
-	.string "ARCHIE: Grrr…\p"
-	.string "I want to stop that MAXIE,\n"
-	.string "but I can't!\p"
-	.string "Not when I have my hands full battling\n"
-	.string "three opponents at once!$"
+	.string "ANABEL: Grrr…\p"
+	.string "I need to reach GIOVANNI\n"
+	.string "before it's too late!\p"
+	.string "But TEAM ROCKET has me pinned!\n"
+	.string "I'm fighting three at once!\p"
+	.string "You'll have to push through yourself!$"
 
 MtChimney_Text_ArchieThankYou:
-	.string "ARCHIE: {PLAYER}!\n"
-	.string "Thank you!\p"
-	.string "With your help, we thwarted TEAM\n"
-	.string "MAGMA's destructive plan!\p"
-	.string "But… You…\n"
-	.string "Whose side are you on?\p"
-	.string "Ah, it doesn't matter.\p"
-	.string "We will remain vigilant and keep up\n"
-	.string "our pursuit of TEAM MAGMA.\p"
-	.string "{PLAYER}, we shall meet again!$"
+	.string "ANABEL: {PLAYER}!\n"
+	.string "You did it!\p"
+	.string "Thanks to you, GIOVANNI has retreated\n"
+	.string "and the machine has been shut down.\p"
+	.string "MT. CHIMNEY is safe.\p"
+	.string "The HOENN DEFENDERS owe you one,\n"
+	.string "{PLAYER}.\p"
+	.string "LANCE and I will keep pursuing\n"
+	.string "TEAM ROCKET.\p"
+	.string "This battle is far from over.$"
+
+MtChimney_Text_LanceFindsOrbAtMachine:
+	.string "STEVEN: Wait - what's this?\p"
+	.string "GIOVANNI dropped something near\n"
+	.string "the machine…\p"
+	.string "The CINDER ORB.\n"
+	.string "It resonates with Galarian MOLTRES.\p"
+	.string "Take it, {PLAYER}.\n"
+	.string "It may matter later.$"
 
 MtChimney_Text_MagmaOutnumbersUs:
-	.string "Darn… TEAM MAGMA outnumbers us!\n"
-	.string "We can't keep up with them!$"
+	.string "These HOENN DEFENDERS are tougher\n"
+	.string "than the boss said they'd be!$"
 
 MtChimney_Text_LessHabitatForWaterPokemon:
-	.string "If they expand the land, there'll be\n"
-	.string "less habitats for WATER POKéMON!$"
+	.string "Once that machine blows, no one will\n"
+	.string "be able to stop TEAM ROCKET!$"
 
 MtChimney_Text_MagmasNameSimilar:
-	.string "We're TEAM AQUA!\p"
-	.string "They're TEAM MAGMA!\p"
-	.string "It burns me up that they'd use such\n"
-	.string "a confusing name!$"
+	.string "TEAM ROCKET is the strongest\n"
+	.string "organization in the world!\p"
+	.string "These HOENN amateurs don't stand\n"
+	.string "a chance against us!$"
 
 MtChimney_Text_Bushaa:
 	.string "Bushaa!$"
@@ -845,4 +949,3 @@ MtChimney_Text_SawyerRematchDefeat:
 MtChimney_Text_SawyerPostRematch:
 	.string "Actually, it really is hot here.\n"
 	.string "I'm overdressed for these parts.$"
-

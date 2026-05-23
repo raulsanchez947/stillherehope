@@ -335,7 +335,7 @@ PetalburgCity_Gym_EventScript_NormanTwoBadges::
 	end
 
 PetalburgCity_Gym_EventScript_NormanThreeBadges::
-	msgbox PetalburgCity_Gym_Text_YouHaveGottenStronger, MSGBOX_DEFAULT
+	msgbox PetalburgCity_Gym_Text_NormanThreeBadgesRetired, MSGBOX_DEFAULT
 	release
 	end
 
@@ -429,7 +429,7 @@ PetalburgCity_Gym_EventScript_NormanBattle::
 	end
 
 PetalburgCity_Gym_EventScript_GiveFacade::
-	giveitem ITEM_TM42
+	giveitem ITEM_EXPERT_BELT
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM42
 	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
@@ -1270,6 +1270,15 @@ PetalburgCity_Gym_Text_YouHaveGottenStronger:
 	.string "I can see it in how you move and in\n"
 	.string "those BADGES on your case.$"
 
+PetalburgCity_Gym_Text_NormanThreeBadgesRetired:
+	.string "NORMAN: Three BADGES? Aight, I see\n"
+	.string "you putting work in.\p"
+	.string "I'm still retired from that top room,\n"
+	.string "and deadass, I don't even know who's\l"
+	.string "taking the chair full-time yet.\p"
+	.string "Bring me one more BADGE and we'll see\n"
+	.string "who's really posted upstairs.$"
+
 PetalburgCity_Gym_Text_NormanIntro:
 	.string "RED: So Norman finally let you in.\p"
 	.string "Good. No speeches.\n"
@@ -1294,12 +1303,9 @@ PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
 	.string "Use it right.$"
 
 PetalburgCity_Gym_Text_ExplainFacade:
-	.string "DAD: TM42 contains FACADE.\p"
-	.string "It doubles the power of moves if\n"
-	.string "the POKéMON is poisoned, paralyzed,\l"
-	.string "or burned.\p"
-	.string "It might be able to turn a bad\n"
-	.string "situation into an advantage.$"
+	.string "RED: That's an EXPERT BELT.\p"
+	.string "Coverage wins fights when the room gets\n"
+	.string "ugly. Pick the right hit and cash out.$"
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
 	.string "NORMAN: That was clean work, kid.\p"

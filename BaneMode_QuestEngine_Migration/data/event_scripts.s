@@ -900,8 +900,7 @@ gText_PlayerWhitedOut::
 	.string "POKéMON!\p{PLAYER} whited out!$"
 
 gText_RegisteredTrainerinPokeNav::
-	.string "Registered {STR_VAR_1} {STR_VAR_2}\n"
-	.string "in the POKéNAV.$"
+	.string "This number is blocked!$"
 
 gText_ComeBackWithSecretPower::
 	.string "Do you know the TM SECRET POWER?\p"
@@ -1726,6 +1725,20 @@ EventScript_MaxStats::
 	msgbox Text_MaxStats, MSGBOX_DEFAULT
 	releaseall	
 	end
+
+EventScript_HolyBluntReactionGlobal::
+	lock
+	faceplayer
+	msgbox Text_HolyBluntReactionGlobal, MSGBOX_DEFAULT
+	clearflag FLAG_USED_HOLY_BLUNT_RECENTLY
+	release
+	end
+
+Text_HolyBluntReactionGlobal:
+	.string "Yo, your POKeMON looks way healthier\l"
+	.string "all of a sudden.\p"
+	.string "That purple haze around it was wild.\l"
+	.string "Whatever you used, it hit.$"
 
 EventScript_BottleCap::
 	checkitem ITEM_BOTTLE_CAP

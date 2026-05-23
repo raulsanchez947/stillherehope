@@ -144,6 +144,7 @@ gSpecials::
 	def_special SwapRegisteredBike
 	def_special CalculatePlayerPartyCount 		@ tx_randomizer_and_challenges
 	def_special BaneModeGiveShinyScraggyInsurance
+	def_special BaneModeGiveJoeMagikarp
 	def_special GetMaxPartySize 					@ tx_randomizer_and_challenges
 	def_special IsPokecenterChallengeActivated 	@ tx_randomizer_and_challenges
 	def_special IsNuzlockeNicknamingActive		@ tx_randomizer_and_challenges

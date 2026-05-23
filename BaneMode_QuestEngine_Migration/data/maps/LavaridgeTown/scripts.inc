@@ -300,23 +300,21 @@ LavaridgeTown_Text_MayExplainGoGogglesChallengeDad:
 	.string "See you again!$"
 
 LavaridgeTown_Text_BrendanNiceBadgesTakeThis:
-	.string "BRENDAN: {PLAYER}, hey, it's been a while.\n"
-	.string "How's it going?\p"
+	.string "BRENDAN: Yo, {PLAYER}, been a minute.\n"
+	.string "How you living?\p"
 	.string "Hmm…\n"
-	.string "That's a decent collection of BADGES.\p"
-	.string "All right, then.\n"
-	.string "You may as well have this.$"
+	.string "That's a clean stack of BADGES.\p"
+	.string "Aight, then.\n"
+	.string "You might as well hold this.$"
 
 LavaridgeTown_Text_BrendanExplainGoGogglesChallengeDad:
-	.string "BRENDAN: Keep those with you if you're\n"
-	.string "planning on going into that desert near\l"
-	.string "ROUTE 111.\p"
-	.string "There should be some POKéMON that\n"
-	.string "are exclusively desert-dwellers.\l"
-	.string "You might look around for those.\p"
-	.string "As for me…\n"
-	.string "I'm considering challenging NORMAN,\l"
-	.string "the GYM LEADER of PETALBURG.\p"
+	.string "BRENDAN: Keep those on you if you're\n"
+	.string "going into that desert by ROUTE 111.\p"
+	.string "Some POKéMON only post up out\n"
+	.string "there, so look around.\p"
+	.string "Me?\n"
+	.string "I'm thinking about challenging NORMAN,\l"
+	.string "the PETALBURG GYM LEADER.\p"
 	.string "Unlike you, {PLAYER}, your dad looks like\n"
 	.string "he really is tough.\p"
 	.string "See you around!$"
@@ -407,4 +405,3 @@ LavaridgeTown_Text_GymSign:
 LavaridgeTown_Text_HerbShopSign:
 	.string "POKéMON HERB SHOP\n"
 	.string "“Bitter taste--better cure!”$"
-

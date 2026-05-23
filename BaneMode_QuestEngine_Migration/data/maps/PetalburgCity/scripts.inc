@@ -775,18 +775,18 @@ PetalburgCity_Text_WallyHouseSign:
 	.string "PAUL'S CRIB$"
 
 PetalburgCity_Text_AreYouATrainer:
-	.string "Excuse me!\p"
-	.string "Let me guess, from the way you're\n"
-	.string "dressed, are you a POKéMON TRAINER?$"
+	.string "BRENDAN: Yo, hold up a sec.\p"
+	.string "You move like a TRAINER, but I gotta\n"
+	.string "see if that's real or just fit talk.$"
 
 PetalburgCity_Text_WellMaybeNot:
 	.string "… … … … … …\p"
-	.string "Well, maybe not.\n"
-	.string "Your clothes aren't all that dirty.\p"
-	.string "You're either a rookie TRAINER,\n"
-	.string "or maybe you're just an ordinary kid.$"
+	.string "Aight, maybe you're still fresh.\n"
+	.string "No grime on the sneakers yet.\p"
+	.string "Could be rookie energy.\n"
+	.string "Could be quiet pressure.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:
-	.string "I'm roaming the land in search of\n"
-	.string "talented TRAINERS.\p"
-	.string "I'm sorry to have taken your time.$"
+	.string "I'm checking Hoenn block by block\n"
+	.string "for TRAINERS with real motion.\p"
+	.string "If that's you, we'll find out soon.$"

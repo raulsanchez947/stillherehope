@@ -3037,7 +3037,7 @@ static void AppendEvolutionSummary(u8 *dest, size_t destSize)
 {
     const struct Evolution *evolutions;
     u16 species = sMonSummaryScreen->summary.species;
-    u8 line[96];
+    u8 line[128];
     u8 itemName[32];
     s32 i;
     s32 methodCount = 0;
@@ -3087,7 +3087,7 @@ static void AppendEvolutionSummary(u8 *dest, size_t destSize)
     case EVO_ITEM_DAY:
     case EVO_ITEM_NIGHT:
         CopyItemName(evolutions[0].param, itemName);
-        StringAppend(line, COMPOUND_STRING("Evolves with "));
+        StringAppend(line, COMPOUND_STRING("Use "));
         StringAppend(line, itemName);
         StringAppend(line, COMPOUND_STRING("."));
         break;
@@ -3096,7 +3096,7 @@ static void AppendEvolutionSummary(u8 *dest, size_t destSize)
         break;
     case EVO_TRADE_ITEM:
         CopyItemName(evolutions[0].param, itemName);
-        StringAppend(line, COMPOUND_STRING("Trade holding "));
+        StringAppend(line, COMPOUND_STRING("Trade w/ "));
         StringAppend(line, itemName);
         StringAppend(line, COMPOUND_STRING("."));
         break;
@@ -3106,7 +3106,7 @@ static void AppendEvolutionSummary(u8 *dest, size_t destSize)
         StringAppend(line, COMPOUND_STRING("Evolves by friendship."));
         break;
     case EVO_MOVE:
-        StringAppend(line, COMPOUND_STRING("Evolves knowing "));
+        StringAppend(line, COMPOUND_STRING("Know "));
         StringAppend(line, gMoveNames[evolutions[0].param]);
         StringAppend(line, COMPOUND_STRING("."));
         break;
@@ -3116,7 +3116,7 @@ static void AppendEvolutionSummary(u8 *dest, size_t destSize)
     }
 
     if (methodCount > 1)
-        StringAppend(line, COMPOUND_STRING(" Multiple paths."));
+        StringAppend(line, COMPOUND_STRING("\nMultiple paths."));
 
     if (StringLength(dest) + StringLength(line) < destSize)
         StringAppend(dest, line);

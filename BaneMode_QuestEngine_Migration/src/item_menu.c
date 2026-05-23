@@ -159,6 +159,7 @@ static void ReturnToItemList(u8);
 static void PrintItemQuantity(u8, s16);
 static u8 BagMenu_AddWindow(u8);
 static u8 GetSwitchBagPocketDirection(void);
+static void ChangeBagPocketId(u8 *, s8);
 static void SwitchBagPocket(u8, s16, bool16);
 static bool8 CanSwapItems(void);
 static void StartItemSwap(u8 taskId);
@@ -903,6 +904,9 @@ static bool8 SetupBagMenu(void)
         break;
     case 10:
         UpdatePocketItemLists();
+        // If the saved pocket is empty, advance to the first non-empty one.
+        if (!IsBagPocketNonEmpty(gBagPosition.pocket + 1))
+            ChangeBagPocketId(&gBagPosition.pocket, MENU_CURSOR_DELTA_RIGHT);
         InitPocketListPositions();
         InitPocketScrollPositions();
         gMain.state++;
@@ -1485,12 +1489,22 @@ static u8 GetSwitchBagPocketDirection(void)
 
 static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
 {
-    if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == POCKETS_COUNT - 1)
-        *bagPocketId = 0;
-    else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == 0)
-        *bagPocketId = POCKETS_COUNT - 1;
-    else
-        *bagPocketId += deltaBagPocketId;
+    u8 i;
+    // Advance at least once, then keep skipping empty pockets.
+    // Loops at most POCKETS_COUNT times to avoid an infinite loop
+    // if somehow all pockets are empty.
+    for (i = 0; i < POCKETS_COUNT; i++)
+    {
+        if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == POCKETS_COUNT - 1)
+            *bagPocketId = 0;
+        else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == 0)
+            *bagPocketId = POCKETS_COUNT - 1;
+        else
+            *bagPocketId += deltaBagPocketId;
+
+        if (IsBagPocketNonEmpty(*bagPocketId + 1))
+            break;
+    }
 }
 
 static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseList)

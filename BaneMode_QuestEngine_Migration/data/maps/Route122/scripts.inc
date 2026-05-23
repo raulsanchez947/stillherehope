@@ -41,34 +41,36 @@ Route122_EventScript_Special::
 	end
 
 Route122_Text_NachoIntro:
-	.string "NACHO: Mt. Pyre is sacred ground.\n"
-	.string "Rocket wants what sleeps here.$"
+	.string "NACHO: This whole hill is holy, bro.\n"
+	.string "Rocket wanna touch it like they own it.$"
 
 Route122_Text_NachoDefeat:
-	.string "NACHO: You can keep pace.\n"
-	.string "Good.$"
+	.string "NACHO: Aight, you can keep up.\n"
+	.string "Good looks.$"
 
 Route122_Text_NachoPostBattle:
-	.string "NACHO: Move fast, but don't move\n"
-	.string "careless. Rocket is already upstream.$"
+	.string "NACHO: Move quick, but don't move\n"
+	.string "stupid. Rocket already up the block.$"
 
 Route122_Text_DouglasIntro:
-	.string "DOUGLAS: The river is quiet because\n"
-	.string "everyone is afraid to speak.$"
+	.string "DOUGLAS: River quiet 'cause everybody\n"
+	.string "too shook to say the real.$"
 
 Route122_Text_DouglasDefeat:
-	.string "DOUGLAS: You broke the silence.$"
+	.string "DOUGLAS: Aight, you broke the hush.$"
 
 Route122_Text_DouglasPostBattle:
-	.string "DOUGLAS: Mew is not a prize.\n"
-	.string "It is the thing Rocket cannot own.$"
+	.string "DOUGLAS: Mew ain't loot, fam.\n"
+	.string "Rocket don't get to own miracles.$"
 
 Route122_Text_SpecialIntro:
-	.string "SHAMUS: {PLAYER}, I can handle it.$"
+	.string "SHAMUS: {PLAYER}, I'm sturdy.\n"
+	.string "Just don't sell the play.$"
 
 Route122_Text_SpecialDefeat:
-	.string "SHAMUS: Then don't slow me down.$"
+	.string "SHAMUS: Then stay sharp.\n"
+	.string "Don't slow me down.$"
 
 Route122_Text_SpecialPostBattle:
-	.string "SHAMUS: Keep moving.\n"
-	.string "Mt. Pyre won't wait for either of us.$"
+	.string "SHAMUS: Keep it pushing.\n"
+	.string "Mt. Pyre don't pause for nobody.$"

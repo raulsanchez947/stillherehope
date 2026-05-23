@@ -30,17 +30,17 @@ MagmaHideout_2F_2R_Text_Grunt15Defeat:
 
 MagmaHideout_2F_2R_Text_Grunt15PostBattle:
 	.string "We dug up something beyond belief!\n"
-	.string "And, we got the BLUE ORB!\p"
+	.string "And, we got the GLACIAL ORB!\p"
 	.string "All that's left is for our leader to…\n"
 	.string "Fufufu… Fwahahaha!$"
 
 MagmaHideout_2F_2R_Text_Grunt6Intro:
-	.string "I can't stand heat. Maybe I should've\n"
-	.string "joined TEAM AQUA instead…$"
+	.string "I can't stand heat. Maybe TEAM ROCKET\n"
+	.string "should've picked a cooler base…$"
 
 MagmaHideout_2F_2R_Text_Grunt6Defeat:
 	.string "Yeah, I really may not be right for\n"
-	.string "TEAM MAGMA…$"
+	.string "TEAM ROCKET…$"
 
 MagmaHideout_2F_2R_Text_Grunt6PostBattle:
 	.string "Don't you get lonely for the sea\n"
@@ -60,12 +60,12 @@ MagmaHideout_2F_2R_Text_Grunt7Defeat:
 MagmaHideout_2F_2R_Text_Grunt7PostBattle:
 	.string "You just happened to win this time,\n"
 	.string "but that doesn't matter.\p"
-	.string "TEAM MAGMA's goal is about to be\n"
+	.string "TEAM ROCKET's goal is about to be\n"
 	.string "reached!$"
 
 MagmaHideout_2F_2R_Text_Grunt8Intro:
 	.string "One of our guys was freaking out that\n"
-	.string "he lost his MAGMA EMBLEM…\p"
+	.string "he lost his base EMBLEM…\p"
 	.string "Wait a minute!\n"
 	.string "Was it you who found it?$"
 
@@ -75,4 +75,3 @@ MagmaHideout_2F_2R_Text_Grunt8Defeat:
 MagmaHideout_2F_2R_Text_Grunt8PostBattle:
 	.string "I'm getting this feeling that our plan\n"
 	.string "is going to end in failure…$"
-
