@@ -10272,8 +10272,8 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_LEAF,
         .trainerName = _("LEAF"),
         .items = {},
-        .doubleBattle = FALSE,
-        .aiFlags = 0,
+        .doubleBattle = TRUE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING | AI_FLAG_HELP_PARTNER,
         .party = NO_ITEM_DEFAULT_MOVES(sParty_Leaf),
     },
 
@@ -10372,5 +10372,17 @@ const struct Trainer gTrainers[] = {
         .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SMART_SWITCHING,
         .party = EVERYTHING_CUSTOMIZED(sParty_BrendanRoute119Popup),
+    },
+
+    [TRAINER_GARY_DEFAULT] =
+    {
+        .trainerClass = TRAINER_CLASS_CHAMPION,
+        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
+        .trainerPic = TRAINER_PIC_CHAMPION_WALLACE,
+        .trainerName = _("GARY"),
+        .items = {},
+        .doubleBattle = FALSE,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_SETUP_FIRST_TURN | AI_FLAG_RISKY | AI_FLAG_PREFER_STRONGEST_MOVE | AI_FLAG_HP_AWARE,
+        .party = ITEM_CUSTOM_MOVES(sParty_Gary_Default),
     },
 };

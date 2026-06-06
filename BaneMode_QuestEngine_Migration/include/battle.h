@@ -688,6 +688,7 @@ struct BattleStruct
     u32 aiDelayTimer; // Counts number of frames AI takes to choose an action.
     u32 aiDelayFrames; // Number of frames it took to choose an action.
     bool8 transformZeroToHero[PARTY_SIZE][NUM_BATTLE_SIDES];
+    bool8 zenMode;
 };
 
 #define F_DYNAMIC_TYPE_1 (1 << 6)

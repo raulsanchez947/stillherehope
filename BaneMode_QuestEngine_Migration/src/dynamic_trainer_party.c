@@ -305,6 +305,8 @@ static u8 GetBaneModeTargetTrainerLevel(u16 trainerNum, const struct Trainer *tr
 
     if (trainerNum == TRAINER_ARCHIE)
         targetLevel += 1;
+    else if (trainerNum == TRAINER_GARY_DEFAULT)
+        targetLevel += 2;
     else if (trainer->trainerClass == TRAINER_CLASS_LEADER)
         targetLevel += 2;
 

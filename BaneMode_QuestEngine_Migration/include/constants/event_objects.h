@@ -87,6 +87,7 @@
 #define OBJ_EVENT_GFX_ASH                         OBJ_EVENT_GFX_UNUSED_MAGNEMITE_DOLL
 #define OBJ_EVENT_GFX_SILVER                      OBJ_EVENT_GFX_UNUSED_SQUIRTLE_DOLL
 #define OBJ_EVENT_GFX_BLUE                        OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL
+#define OBJ_EVENT_GFX_GARY                        OBJ_EVENT_GFX_UNUSED_PIKACHU_DOLL
 #define OBJ_EVENT_GFX_GREEN                       OBJ_EVENT_GFX_UNUSED_PORYGON2_DOLL
 #define OBJ_EVENT_GFX_CUTTABLE_TREE               82
 #define OBJ_EVENT_GFX_MART_EMPLOYEE               83
