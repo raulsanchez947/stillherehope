@@ -100,6 +100,22 @@ FortreeCity_Gym_EventScript_Darius::
 	msgbox FortreeCity_Gym_Text_DariusPostBattle, MSGBOX_AUTOCLOSE
 	end
 
+FortreeCity_Gym_EventScript_Gary::
+	trainerbattle_single TRAINER_GARY_DEFAULT, FortreeCity_Gym_Text_GaryIntro, FortreeCity_Gym_Text_GaryDefeat
+	msgbox FortreeCity_Gym_Text_GaryPostBattle, MSGBOX_AUTOCLOSE
+	end
+
+FortreeCity_Gym_Text_GaryIntro:
+	.string "You made it this far?\n"
+	.string "I'm impressed.$"
+
+FortreeCity_Gym_Text_GaryDefeat:
+	.string "Not bad.\p"
+	.string "You've improved since we last met.$"
+
+FortreeCity_Gym_Text_GaryPostBattle:
+	.string "GARY: Keep up that strength.$"
+
 FortreeCity_Gym_EventScript_GymGuide::
 	lock
 	faceplayer

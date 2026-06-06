@@ -650,6 +650,17 @@ static void CB2_InitBattleInternal(void)
         TryFormChange(i, B_SIDE_OPPONENT, FORM_CHANGE_BEGIN_BATTLE);
     }
 
+    // Activate zen mode at battle start
+    gBattleStruct->zenMode = TRUE;
+
+    // Set permanent Grassy Surge terrain if battling Blue or Leaf
+    if (gTrainerBattleOpponent_A == TRAINER_LEAF ||
+        gTrainerBattleOpponent_B == TRAINER_LEAF)
+    {
+        gFieldStatuses |= STATUS_FIELD_GRASSY_TERRAIN | STATUS_FIELD_TERRAIN_PERMANENT;
+        gFieldTimers.terrainTimer = 0xFFFF; // Permanent terrain
+    }
+
     gBattleCommunication[MULTIUSE_STATE] = 0;
 
     gPlayerDoesNotWantToEvolveLeft = FALSE;

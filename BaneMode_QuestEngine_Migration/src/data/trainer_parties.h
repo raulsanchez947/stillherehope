@@ -13809,3 +13809,27 @@ static const struct TrainerMonCustomized sParty_BaneModeWinstrateBane[] = {
     .moves = {MOVE_FAKE_OUT, MOVE_SNARL, MOVE_DRAIN_PUNCH, MOVE_THUNDER_PUNCH}
     }
 };
+
+static const struct TrainerMonItemCustomMoves sParty_Gary_Default[] = {
+    {
+    .iv = 255,
+    .lvl = 62,
+    .species = SPECIES_BLASTOISE,
+    .heldItem = ITEM_ASSAULT_VEST,
+    .moves = {MOVE_HYDRO_PUMP, MOVE_ICE_BEAM, MOVE_DARK_PULSE, MOVE_FOCUS_BLAST}
+    },
+    {
+    .iv = 255,
+    .lvl = 62,
+    .species = SPECIES_ELECTIVIRE,
+    .heldItem = ITEM_CHOICE_SPECS,
+    .moves = {MOVE_THUNDERBOLT, MOVE_FOCUS_BLAST, MOVE_WILD_CHARGE, MOVE_EARTHQUAKE}
+    },
+    {
+    .iv = 255,
+    .lvl = 62,
+    .species = SPECIES_ARCANINE,
+    .heldItem = ITEM_CHOICE_BAND,
+    .moves = {MOVE_WILD_CHARGE, MOVE_CLOSE_COMBAT, MOVE_CRUNCH, MOVE_FLARE_BLITZ}
+    }
+};

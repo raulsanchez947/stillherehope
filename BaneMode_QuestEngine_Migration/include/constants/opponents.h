@@ -864,12 +864,13 @@
 #define TRAINER_GRUNT_MUSEUM_3              860
 #define TRAINER_GRUNT_MUSEUM_4              861
 #define TRAINER_BRENDAN_ROUTE_119_POPUP     862
+#define TRAINER_GARY_DEFAULT                863
 
 // NOTE: Because each Trainer uses a flag to determine when they are defeated, there is only space for 9 additional trainers before trainer flag space overflows
 //       More space can be made by shifting flags around in constants/flags.h or changing how trainer flags are handled
 //       MAX_TRAINERS_COUNT can be increased but will take up additional saveblock space
 
-#define TRAINERS_COUNT                      863
-#define MAX_TRAINERS_COUNT                  864
+#define TRAINERS_COUNT                      864
+#define MAX_TRAINERS_COUNT                  865
 
 #endif  // GUARD_CONSTANTS_OPPONENTS_H
